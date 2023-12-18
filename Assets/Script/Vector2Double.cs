@@ -30,8 +30,16 @@ public struct Vector2Double{
 		}
 	}
 
+	public Vector2Double opposite{
+		get{return -this;}
+	}
+
 	public static double Distance(Vector2Double a, Vector2Double b){
 		return Math.Sqrt(Math.Pow(a.x - b.x, 2) + Math.Pow(a.y - b.y, 2));
+	}
+
+	public static Vector2Double operator-(Vector2Double a){
+		return new Vector2Double(-a.x, -a.y);
 	}
 
 	public static Vector2Double operator+(Vector2Double a, Vector2Double b){
@@ -58,12 +66,24 @@ public struct Vector2Double{
 		return new Vector2Double(a / b.x, a / b.y);
 	}
 
+	public static bool operator==(Vector2Double a, Vector2Double b){
+		return a.x == b.x && a.y == b.y;
+	}
+
+	public static bool operator!=(Vector2Double a, Vector2Double b){
+		return a.x != b.x || a.y != b.y;
+	}
+
 	public Vector2 ToVector2(){
 		return new Vector2((float)x, (float)y);
 	}
 
 	public Vector3 ToVector3(){
 		return new Vector3((float)x, (float)y);
+	}
+
+	public static Vector2Double ToVector2Double(double intensity, double angle){
+		return new Vector2Double(Math.Cos(angle), Math.Sin(angle)) * intensity;
 	}
 
 	public static Vector2Double zero{
@@ -91,7 +111,7 @@ public struct Vector2Double{
 	}
 
 	public override string ToString(){
-		return $"({x}, {y})".Replace(',', '.');
+		return $"({x.ToString().Replace(',', '.')}, {y.ToString().Replace(',', '.')})";
 	}
 
 	public double ToRadians(){
@@ -102,5 +122,21 @@ public struct Vector2Double{
 	public double ToDegrees(){
 		Vector2Double dir = direction;
 		return Math.Atan2(dir.y, dir.x) * 180 / Math.PI;
+	}
+
+	public Vector2Double SumVectorAsAngle(Vector2Double vector2){
+
+		Vector2Double result;
+		result.x = x * vector2.x - y * vector2.y;
+		result.y = x * vector2.y + vector2.x * y;
+		return result;
+	}
+
+	public Vector2Double SubtractVectorAsAngle(Vector2Double vector2){
+
+		Vector2Double result;
+		result.x = x * vector2.x + y * vector2.y;
+		result.y = vector2.x * y - x * vector2.y;
+		return result;
 	}
 }

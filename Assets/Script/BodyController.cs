@@ -3,8 +3,7 @@ using UnityEngine;
 
 public class BodyController : MonoBehaviour{
 
-	[SerializeField] public Settings settings;
-
+	public SettingsController settingsController;
 	public List<Body> bodies = new List<Body>();
 	public int speedMultiplier = 0;
 	public double t = 0;
@@ -20,13 +19,13 @@ public class BodyController : MonoBehaviour{
 
 	private void CalculateOneFrame(){
 
-		foreach (Body body in bodies)
-			body.UpdateVelocity();
+		for(int i = 0; i < bodies.Count; i++)
+			bodies[i].UpdateVelocity();
 
 		foreach (Body body in bodies)
 			body.UpdatePosition();
 
-		t += settings.secondsPerFrame;
+		t += settingsController.settings.secondsPerFrame;
 	}
 
 	public void SpeedUp(){
@@ -57,29 +56,24 @@ public class BodyController : MonoBehaviour{
 		get{
 			return transform.localScale.x;
 		}
+		set{
+			transform.localScale = Vector3.one * value;
+		}
 	}
 
-	public void AddBody(Body bodyToCreate){
+	public void AddBody(){
 
-		Body body = Instantiate(bodyToCreate);
+		Body createdBody = Instantiate(settingsController.bodyToCreate);
+		Body.CopyData(settingsController.bodyToCreate, createdBody);
 
-		
-
-		body.Initialize();
-		bodies.Add(body);
-
-		/*body.staticFrictionCoef = bodyToCopy.staticFrictionCoef;
-		body.dynamicFrictionCoef = bodyToCopy.dynamicFrictionCoef;*/
-
-		// uncomment when u add those
-
-		
-
+		createdBody.Initialize();
+		bodies.Add(createdBody);
 	}
 
 	public void DeleteBody(Body body){
+		
 		bodies.Remove(body);
-		DestroyImmediate(body);
+		DestroyImmediate(body.gameObject);
 	}
 
 }

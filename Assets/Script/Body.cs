@@ -10,28 +10,16 @@ public class Body : MonoBehaviour{
 	public double mass, radius;
 	public Color color;
 
+	// Functions
+	public Action ForceOnce;
+	public Action<Body> ForceEachBody;
+	public List<Body> bodiesAlreadyCollided = new List<Body>();
+
+	// Other Stuff
 	private BodyController bodyController;
 	private Settings settings;
 
-	public Action ForceOnce;
-	public Action<Body> ForceEachBody;
-
-	public List<Body> bodiesAlreadyCollided = new List<Body>();
-
 	int nCollisions = 0;
-
-	public void Initialize(){
-
-		bodyController = FindObjectOfType<BodyController>();
-		settings = bodyController.settingsController.settings;
-
-		GetComponent<Renderer>().material.color = color;
-
-		transform.parent = bodyController.transform;
-		transform.localScale = Vector2.one * (float)radius * 2 * 0.78f;
-		
-		ApplyPosition();
-	}
 
 	public static void CopyData(Body from, Body to){
 
@@ -45,9 +33,21 @@ public class Body : MonoBehaviour{
 		to.name = from.name;
 	}
 
+	public void Initialize(BodyController bodyController){
+
+		this.bodyController = bodyController;
+		settings = bodyController.settingsController.settings;
+		
+		transform.parent = bodyController.transform;
+		
+		SetRadius(radius);
+		SetColor(color);
+		
+		ApplyPosition();
+	}
+
 	// Movement
 	private Vector2Double totalForces;
-
 	public void UpdateVelocity(){
 
 		totalForces = Vector2Double.zero;
@@ -74,23 +74,33 @@ public class Body : MonoBehaviour{
 		transform.localPosition = position.ToVector2();
 	}
 
-	// Forces
+	// Gravity Forces
 	public void DirectionalGravity(){
-		totalForces += mass * settings.globalGravityVector;
+		totalForces += settings.gravityDirection * settings.GravityForce(this);
 	}
 
-	public void Buoyancy(){
-		totalForces -= Volume * settings.airDensity * settings.globalGravityVector;
+	public void DirectionalBuoyancy(){
+		totalForces += settings.gravityDirection.opposite * settings.BuoyancyForce(this);
 	}
 
+	public void CenteredGravity(){
+		totalForces += position.direction.opposite * settings.GravityForce(this);
+	}
+	
+	public void CenteredBuoyancy(){
+		totalForces += position.direction * settings.BuoyancyForce(this);
+	}
+
+	// Other Forces
 	public void AirDrag(){
-		totalForces += velocity.direction.opposite * AirDragForce();
+		totalForces += velocity.direction.opposite * settings.AirDragForce(this);
 	}
 
 	public void AttractionGravity(Body body){
-		totalForces += Direction(body) * AttractionGravityForce(body);
+		totalForces += Direction(body) * settings.AttractionGravityForce(this, body);
 	}
 
+	// Collisions
 	public void Collision(Body body){
 
 		double distance = DistanceFromSurface(body);
@@ -143,17 +153,15 @@ public class Body : MonoBehaviour{
 
 		// Collision Happens
 		velocity = (mass * velocity + body.mass * body.velocity) / (mass + body.mass);
+		radius = Math.Cbrt(Math.Pow(radius, 3) + Math.Pow(body.radius, 3));
+		mass += body.mass;
 
 		double areaTot = Area + body.Area;
 		float percentage1 = (float)(Area / areaTot);
 		float percentage2 = (float)(body.Area / areaTot);
 
-		color = color * percentage1 + body.color * percentage2;
+		SetColor(color * percentage1 + body.color * percentage2);
 
-		mass += body.mass;
-		radius = Math.Cbrt(Math.Pow(radius, 3) + Math.Pow(body.radius, 3));
-
-		GetComponent<Renderer>().material.color = color;
 		transform.localScale = Vector2.one * 2 * (float)radius;
 
 		nCollisions ++;
@@ -163,15 +171,7 @@ public class Body : MonoBehaviour{
 		bodyController.DeleteBody(body);
 	}
 	
-	// Formulas
-	private double AttractionGravityForce(Body body){
-		return settings.gravityConstant * body.mass * mass / Math.Pow(Distance(body), 2);
-	}
-	private double AirDragForce(){
-		return Math.Pow(velocity.magnitude,2) * settings.dragCoefficient * settings.airDensity * Area / 2;
-	}
-	
-	// Other
+	// Other Stuff
 
 	public double Area{
 		get{
@@ -185,15 +185,35 @@ public class Body : MonoBehaviour{
 		}
 	}
 
+	public double Density{
+		get{
+			return mass / Volume;
+		}
+	}
+
+	public double Distance(Body body){
+		return Vector2Double.Distance(body.position, position);
+	}
+
 	private double DistanceFromSurface(Body body){
 		return Vector2Double.Distance(body.position, position) - body.radius - radius;
 	}
 
-	private double Distance(Body body){
-		return Vector2Double.Distance(body.position, position);
-	}
-
 	private Vector2Double Direction(Body body){
 		return (body.position - position).direction;
+	}
+
+	public void SetRadius(double radius){
+		this.radius = radius;
+		transform.localScale = Vector2.one * (float)radius * 2 * 0.78f;
+	}
+
+	public void SetColor(Color color){
+		this.color = color;
+		GetComponent<Renderer>().material.color = color;
+	}
+
+	public int Index(){
+		return bodyController.bodies.IndexOf(this);
 	}
 }

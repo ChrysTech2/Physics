@@ -82,8 +82,8 @@ public struct Vector2Double{
 		return new Vector3((float)x, (float)y);
 	}
 
-	public static Vector2Double ToVector2Double(double intensity, double angle){
-		return new Vector2Double(Math.Cos(angle), Math.Sin(angle)) * intensity;
+	public static Vector2Double ToVector2Double(double angle){
+		return new Vector2Double(Math.Cos(angle), Math.Sin(angle));
 	}
 
 	public static Vector2Double zero{
@@ -139,4 +139,12 @@ public struct Vector2Double{
 		result.y = vector2.x * y - x * vector2.y;
 		return result;
 	}
+
+    public override int GetHashCode(){
+        return base.GetHashCode();
+    }
+
+    public override bool Equals(object obj){
+        return base.Equals(obj);
+    }
 }

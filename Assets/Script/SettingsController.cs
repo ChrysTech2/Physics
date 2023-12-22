@@ -2,51 +2,51 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System;
-using Unity.Mathematics;
 
 public class SettingsController : MonoBehaviour{
 
-	// Global Settings Input
-	[SerializeField] private TMP_InputField secondsPerFrame;
-	[SerializeField] private TMP_InputField globalGravity, globalGravityAngle;
-	[SerializeField] private TMP_InputField airDensity, dragCoefficient;
-	[SerializeField] private TMP_InputField gravityCostant;
-	[SerializeField] private Toggle calculateCollisions, mergeBodiesInCollisions;
-	[SerializeField] private Toggle calculateBuoyancy;
-	[SerializeField] private TMP_InputField coefOfRestitution;
+	// Settings Input
+	public TMP_InputField secondsPerFrame;
+	public TMP_Dropdown gravityMode, parent;
+	public TMP_InputField gravityAcceleration, gravityAngle;
+	public TMP_InputField attractionGravityConstant;
+	public TMP_InputField fluidDensity, dragCoefficient;
+	public Toggle calculateCollisions, mergeBodiesInCollisions;
+	public TMP_InputField coefOfRestitution;
+	public Toggle useParent, sumParentRadius, sumBodyRadius, sumAutoVelocity;
 	
-	// Body Settings Input
-	[SerializeField] private TMP_InputField x, y;
-	[SerializeField] private TMP_InputField velocityX, velocityY;
-	[SerializeField] private TMP_InputField mass, radius, bodyName;
-	[SerializeField] private Slider r, g, b, a;
+	// Body Input
+	public TMP_InputField x, y;
+	public TMP_InputField velocityX, velocityY;
+	public TMP_InputField mass, radius, bodyName;
+	public Slider r, g, b, a;
 
 	// Other Stuff
 	[SerializeField] private Image colorPreview;
 	[SerializeField] private TMP_Text errorMessage;
 
 	public Settings settings;
-	private BodyController bodyController;
+	[SerializeField] private BodyController bodyController;
 	public Body bodyToCreate;
+
+	private int n = 1;
 	
 	private void Start(){
-		bodyController = FindObjectOfType<BodyController>();
 		errorMessage.SetText("");	
 	}
 
 	public void AddBody(){
 
 		ApplyDataToBody();
-		
 		CheckForErrors();
 
 		if (errorMessage.text == ""){
 			bodyController.AddBody();
+			n++;
+			bodyName.text = "Body " + n;
 		}
-
-		BodyFunctionCompiler();
-		
 	}
+
 	private void ApplyDataToBody(){
 
 		ExpressionEvaluator.Evaluate(x.text, out bodyToCreate.position.x);
@@ -62,6 +62,8 @@ public class SettingsController : MonoBehaviour{
 
 		bodyToCreate.color = new Color(r.value, g.value, b.value, a.value);
 
+		ApplyParent();
+
 		ApplyDataToSettings();
 	}
 
@@ -69,52 +71,85 @@ public class SettingsController : MonoBehaviour{
 
 		ExpressionEvaluator.Evaluate(secondsPerFrame.text, out settings.secondsPerFrame);
 
-		ExpressionEvaluator.Evaluate(globalGravity.text, out settings.globalGravity);
-		ExpressionEvaluator.Evaluate(globalGravityAngle.text, out settings.globalGravityAngle);
+		ExpressionEvaluator.Evaluate(gravityAcceleration.text, out settings.gravityAcceleration);
+		ExpressionEvaluator.Evaluate(gravityAngle.text, out settings.gravityAngle);
 
-		ExpressionEvaluator.Evaluate(airDensity.text, out settings.airDensity);
+		ExpressionEvaluator.Evaluate(fluidDensity.text, out settings.fluidDensity);
 		ExpressionEvaluator.Evaluate(dragCoefficient.text, out settings.dragCoefficient);
 
-		ExpressionEvaluator.Evaluate(gravityCostant.text, out settings.gravityConstant);
+		ExpressionEvaluator.Evaluate(attractionGravityConstant.text, out settings.attractionGravityConstant);
 
 		ExpressionEvaluator.Evaluate(coefOfRestitution.text, out settings.coefOfRestitution);
 
-		settings.calculateBuoyancy = calculateBuoyancy.isOn;
 		settings.calculateCollisions = calculateCollisions.isOn;
 		settings.mergeBodiesInCollisions = mergeBodiesInCollisions.isOn;
+
+		settings.gravityMode = gravityMode.value;
+		
+		settings.gravityDirection = Vector2Double.ToVector2Double(settings.gravityAngle * Math.PI/180);
+
+		foreach (Body body in bodyController.bodies)
+			bodyController.CompileFunctions(body);
 	}
 
-	private void BodyFunctionCompiler(){
+	private void ApplyParent(){
 
+		if (!useParent.isOn)
+			return;
 
-		foreach (Body body in bodyController.bodies){
+		Vector2Double parentPosition = Vector2Double.zero;
+		Vector2Double parentVelocity = Vector2Double.zero;
+		double parentMass = 0;
 
-			body.ForceOnce = new Action(() => {});
-			body.ForceEachBody = new Action<Body>((body2) => {});
-			
-			if (settings.airDensity != 0 && settings.dragCoefficient != 0)
-				body.ForceOnce += () => body.AirDrag();
-			
-			if (settings.globalGravity != 0){
+		if (parent.value != 0){
+			Body parentBody = bodyController.bodies[parent.value - 1];
 
-				body.ForceOnce += () => body.DirectionalGravity();
+			parentPosition = parentBody.position;
+			parentVelocity = parentBody.velocity;
+			parentMass = parentBody.mass;
+		}
+		else{ 
 
-				if (settings.airDensity != 0 && settings.calculateBuoyancy)
-					body.ForceOnce += () => body.Buoyancy();
+			// Parent = Center of Gravity
+			Vector2Double totalPositions = Vector2Double.zero;
+			Vector2Double totalVelocity = Vector2Double.zero;
+
+			foreach (Body body in bodyController.bodies){
+
+				totalPositions += body.position * body.mass;
+				totalVelocity += body.velocity * body.mass;
+				parentMass += body.mass;
 			}
 
-			if (settings.gravityConstant != 0)
-				body.ForceEachBody += (body2) => body.AttractionGravity(body2);
-
-			if (settings.calculateCollisions){
-
-				if (settings.mergeBodiesInCollisions)
-					body.ForceEachBody += (body2) => body.CollisionMerge(body2);
-				else{
-					body.ForceEachBody += (body2) => body.Collision(body2);
-					body.ForceOnce += () => body.bodiesAlreadyCollided.Clear();
-				}
+			if (parentMass != 0){
+				parentPosition = totalPositions / parentMass;
+				parentVelocity = totalVelocity / parentMass;
 			}
+
+			sumParentRadius.isOn = false;
+			sumBodyRadius.isOn = false;
+		}
+
+		bodyToCreate.position += parentPosition;
+		bodyToCreate.velocity += parentVelocity;
+
+		Vector2Double direction = (bodyToCreate.position - parentPosition).direction;
+
+		if (direction == Vector2Double.zero)
+			direction = Vector2Double.up;
+
+		if (sumBodyRadius.isOn)
+			bodyToCreate.position += direction * bodyToCreate.radius;
+		
+		if (sumParentRadius.isOn)
+			bodyToCreate.position += direction * bodyToCreate.radius;
+
+		if (sumAutoVelocity.isOn){
+			double distance = Vector2Double.Distance(bodyToCreate.position, parentPosition);
+			if (distance == 0)
+				return;
+			double autoVelocity = Math.Sqrt(settings.attractionGravityConstant * (parentMass + bodyToCreate.mass) / distance);
+			bodyToCreate.velocity += direction.SumVectorAsAngle(Vector2Double.down) * autoVelocity;
 		}
 	}
 
@@ -123,19 +158,16 @@ public class SettingsController : MonoBehaviour{
 		errorMessage.SetText("");
 
 		if (bodyToCreate.mass == 0){
-
 			errorMessage.SetText("The mass cannot be zero Kg.");
 			return;
 		}
 
 		if (bodyToCreate.radius <= 0){
-
 			errorMessage.SetText("The radius cannot be zero m.");
 			return;
 		}
 
 		if(!Utils.IsValidName(bodyToCreate.name)){
-
 			errorMessage.SetText("That name is not valid.");
 			return;
 		}
@@ -162,7 +194,20 @@ public class SettingsController : MonoBehaviour{
 	public void OnCollisionsSettingsChange(){
 
 		mergeBodiesInCollisions.gameObject.SetActive(calculateCollisions.isOn);
-		coefOfRestitution.gameObject.transform.parent.gameObject.SetActive(calculateCollisions.isOn);
-	
+		Utils.GetParent(coefOfRestitution).SetActive(calculateCollisions.isOn);
+	}
+
+	public void OnGravitySettingsChange(){
+
+		Utils.GetParent(gravityAcceleration).SetActive(gravityMode.value != GravityMode.DISABLED);
+		Utils.GetParent(gravityAngle).SetActive(gravityMode.value != GravityMode.DISABLED && gravityMode.value != GravityMode.CENTERED);
+	}
+
+	public void OnParentSettingsChange(){
+
+		sumParentRadius.gameObject.SetActive(useParent.isOn && parent.value != 0);
+		sumBodyRadius.gameObject.SetActive(useParent.isOn && parent.value != 0);
+		sumAutoVelocity.gameObject.SetActive(useParent.isOn);
+		Utils.GetParent(parent).SetActive(useParent.isOn);
 	}
 }

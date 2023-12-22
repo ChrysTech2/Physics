@@ -1,6 +1,20 @@
 using UnityEngine;
 using TMPro;
-using UnityEngine.UIElements;
+
+public static class GravityMode{
+	public const int DISABLED = 0;
+	public const int DIRECTIONAl = 1;
+	public const int CENTERED = 2;
+}
+
+public static class Times{
+	public const int SECONDS_PER_MINUTE = 60;
+	public const int SECONDS_PER_HOUR = 3_600;
+	public const int SECONDS_PER_DAY = 86_400;
+	public const int SECONDS_PER_WEEK = 604_800;
+	public const int SECONDS_PER_MONTH = 2_592_000;
+	public const int SECONDS_PER_YEAR = 31_536_000;
+}
 
 public class Utils : MonoBehaviour{
 	
@@ -56,5 +70,12 @@ public class Utils : MonoBehaviour{
 		}
 
 		return true;
+	}
+
+	public static GameObject GetParent(TMP_InputField obj){
+		return obj.transform.parent.gameObject;
+	}
+	public static GameObject GetParent(TMP_Dropdown obj){
+		return obj.transform.parent.gameObject;
 	}
 }

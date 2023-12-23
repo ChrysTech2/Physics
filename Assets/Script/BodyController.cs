@@ -19,8 +19,6 @@ public class BodyController : MonoBehaviour{
 		Application.targetFrameRate = 240;
 	}
 
-	
-
 	private void Update(){
 
 		if (settingsController.gameObject.activeSelf){
@@ -29,7 +27,6 @@ public class BodyController : MonoBehaviour{
 		}
 
 		CheckInputs();
-
 		DebugInformation();
 	}
 
@@ -53,45 +50,44 @@ public class BodyController : MonoBehaviour{
 
 		if (Input.GetKey(KeyCode.Equals))
 			ZoomIn(1.025f);
-		
 	}
 
 	private void DebugInformation(){
 
-		float time = 0; string timeUnit;
+		float time; string timeUnit;
 		fps = 1/Time.deltaTime;
 
-		if (t < Times.SECONDS_PER_MINUTE){
+		if (t < Times.SecondsPerMinute){
 			time = t;
 			timeUnit = "seconds";
 		}
-		else if (t < Times.SECONDS_PER_HOUR){
-			time = t / Times.SECONDS_PER_MINUTE;
+		else if (t < Times.SecondsPerHour){
+			time = t / Times.SecondsPerMinute;
 			timeUnit = "minutes";
 		}
-		else if (t < Times.SECONDS_PER_DAY){
-			time = t / Times.SECONDS_PER_HOUR;
+		else if (t < Times.SecondsPerDay){
+			time = t / Times.SecondsPerHour;
 			timeUnit = "hours";
 		}
-		else if (t < Times.SECONDS_PER_WEEK){
-			time = t / Times.SECONDS_PER_DAY;
+		else if (t < Times.SecondsPerWeek){
+			time = t / Times.SecondsPerDay;
 			timeUnit = "days";
 		}
-		else if (t < Times.SECONDS_PER_MONTH){
-			time = t / Times.SECONDS_PER_WEEK;
+		else if (t < Times.SecondsPerMonth){
+			time = t / Times.SecondsPerWeek;
 			timeUnit = "weeks";
 		}
-		else if (t < Times.SECONDS_PER_YEAR){
-			time = t / Times.SECONDS_PER_MONTH;
+		else if (t < Times.SecondsPerYear){
+			time = t / Times.SecondsPerMonth;
 			timeUnit = "months";
 		}
 		else{
-			time = t / Times.SECONDS_PER_YEAR;
+			time = t / Times.SecondsPerYear;
 			timeUnit = "years";
 		}
 
 		informations.SetText(
-			$"Speed : {(float)(speedMultiplier * settings.secondsPerFrame * 50)}x  |  Scale : {scale}\nTime ({timeUnit}): {time}\nFPS : {fps}\n{cameraController.Index}"
+			$"Speed : {(float)(speedMultiplier * settings.secondsPerFrame * 50)}x  |  Scale : {scale}\nTime ({timeUnit}): {time}\nFPS : {fps}"
 		);
 	}
 
@@ -102,7 +98,6 @@ public class BodyController : MonoBehaviour{
 		
 		foreach (Body body in bodies)
 			body.ApplyPosition();
-
 	}
 
 	private void CalculateOneFrame(){
@@ -186,7 +181,7 @@ public class BodyController : MonoBehaviour{
 
 			switch(settings.gravityMode){
 
-				case GravityMode.DIRECTIONAl:
+				case GravityMode.Directional:
 					//body.ForceOnce += () => body.DirectionalGravity();
 
 					if (settings.fluidDensity != 0)
@@ -196,7 +191,7 @@ public class BodyController : MonoBehaviour{
 
 					break;
 
-				case GravityMode.CENTERED:
+				case GravityMode.Centered:
 					//body.ForceOnce += () => body.CenteredGravity();
 
 					if (settings.fluidDensity != 0)

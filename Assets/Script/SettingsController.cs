@@ -14,6 +14,7 @@ public class SettingsController : MonoBehaviour{
 	public Toggle calculateCollisions, mergeBodiesInCollisions;
 	public TMP_InputField coefOfRestitution;
 	public Toggle useParent, sumParentRadius, sumBodyRadius, sumAutoVelocity;
+	public Toggle randomMode;
 	
 	// Body Input
 	public TMP_InputField x, y;
@@ -38,6 +39,8 @@ public class SettingsController : MonoBehaviour{
 	public void AddBody(){
 
 		ApplyDataToBody();
+		ApplyParent();
+		ApplyDataToSettings();
 		CheckForErrors();
 
 		if (errorMessage.text == ""){
@@ -60,11 +63,29 @@ public class SettingsController : MonoBehaviour{
 
 		bodyToCreate.name = bodyName.text;
 
-		bodyToCreate.color = new Color(r.value, g.value, b.value, a.value);
+		if (randomMode.isOn)
+			ApplyRandomDataToBody();
+		else
+			bodyToCreate.color = new Color(r.value, g.value, b.value, a.value);	
+	}
 
-		ApplyParent();
+	private void ApplyRandomDataToBody(){
 
-		ApplyDataToSettings();
+		System.Random random = new System.Random();
+
+		int maxValueX = (int)Math.Abs(bodyToCreate.position.x);
+		int maxValueY = (int)Math.Abs(bodyToCreate.position.y);
+
+		int maxValueVX = (int)Math.Abs(bodyToCreate.position.x);
+		int maxValueVY = (int)Math.Abs(bodyToCreate.velocity.y);
+		
+		bodyToCreate.position.x = random.Next(-maxValueX, maxValueX + 1);
+		bodyToCreate.position.y = random.Next(-maxValueY, maxValueY + 1);
+
+		bodyToCreate.velocity.x = random.Next(-maxValueVX, maxValueVX + 1);
+		bodyToCreate.velocity.y = random.Next(-maxValueVY, maxValueVY + 1);
+
+		bodyToCreate.color = new Color(r.value, g.value, b.value, a.value);	
 	}
 
 	public void ApplyDataToSettings(){
@@ -200,8 +221,8 @@ public class SettingsController : MonoBehaviour{
 
 	public void OnGravitySettingsChange(){
 
-		Utils.GetParent(gravityAcceleration).SetActive(gravityMode.value != GravityMode.DISABLED);
-		Utils.GetParent(gravityAngle).SetActive(gravityMode.value != GravityMode.DISABLED && gravityMode.value != GravityMode.CENTERED);
+		Utils.GetParent(gravityAcceleration).SetActive(gravityMode.value != GravityMode.Disabled);
+		Utils.GetParent(gravityAngle).SetActive(gravityMode.value != GravityMode.Disabled && gravityMode.value != GravityMode.Centered);
 	}
 
 	public void OnParentSettingsChange(){
@@ -210,5 +231,27 @@ public class SettingsController : MonoBehaviour{
 		sumBodyRadius.gameObject.SetActive(useParent.isOn && parent.value != 0);
 		sumAutoVelocity.gameObject.SetActive(useParent.isOn);
 		Utils.GetParent(parent).SetActive(useParent.isOn);
+	}
+
+	public void OnForcesSettingsChange(){
+
+		Utils.GetParent(dragCoefficient).SetActive(fluidDensity.text != "0");
+	}
+
+	public void OnRandomChange(){
+		if (randomMode.isOn){
+			Utils.GetTextChild(x).SetText("Max X");
+			Utils.GetTextChild(y).SetText("Max Y");
+
+			Utils.GetTextChild(velocityX).SetText("Max Velocity X");
+			Utils.GetTextChild(velocityY).SetText("Max Velocity Y");
+		}
+		else{
+			Utils.GetTextChild(x).SetText("X");
+			Utils.GetTextChild(y).SetText("Y");
+
+			Utils.GetTextChild(velocityX).SetText("Velocity X");
+			Utils.GetTextChild(velocityY).SetText("Velocity Y");
+		}
 	}
 }

@@ -10,7 +10,6 @@ public class CameraController : MonoBehaviour{
 
 	private SettingsController settingsController;
 
-
 	private int focus = 0;
 	private int index = -1;
 

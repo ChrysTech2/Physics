@@ -7,7 +7,7 @@ public class SettingsController : MonoBehaviour{
 
 	// Settings Input
 	public TMP_InputField secondsPerFrame;
-	public TMP_Dropdown gravityMode, parent;
+	public TMP_Dropdown gravityMode, parent, borderMode;
 	public TMP_InputField gravityAcceleration, gravityAngle;
 	public TMP_InputField attractionGravityConstant;
 	public TMP_InputField fluidDensity, dragCoefficient;
@@ -15,6 +15,7 @@ public class SettingsController : MonoBehaviour{
 	public TMP_InputField coefOfRestitution;
 	public Toggle useParent, sumParentRadius, sumBodyRadius, sumAutoVelocity;
 	public Toggle randomMode;
+	public TMP_InputField borderX, borderY;
 	
 	// Body Input
 	public TMP_InputField x, y;
@@ -23,12 +24,14 @@ public class SettingsController : MonoBehaviour{
 	public Slider r, g, b, a;
 
 	// Other Stuff
-	[SerializeField] private Image colorPreview;
+	[SerializeField] private BodyController bodyController;
 	[SerializeField] private TMP_Text errorMessage;
+	public GameObject linePreafab;
 
 	public Settings settings;
-	[SerializeField] private BodyController bodyController;
+	
 	public Body bodyToCreate;
+	
 
 	private int n = 1;
 	
@@ -102,10 +105,15 @@ public class SettingsController : MonoBehaviour{
 
 		ExpressionEvaluator.Evaluate(coefOfRestitution.text, out settings.coefOfRestitution);
 
+		ExpressionEvaluator.Evaluate(borderX.text, out settings.border.x);
+		ExpressionEvaluator.Evaluate(borderY.text, out settings.border.y);
+
 		settings.calculateCollisions = calculateCollisions.isOn;
 		settings.mergeBodiesInCollisions = mergeBodiesInCollisions.isOn;
 
 		settings.gravityMode = gravityMode.value;
+		settings.borderMode = borderMode.value;
+
 		
 		Vector2Double gravityDirection = Vector2Double.ToVector2Double(settings.gravityAngle * Math.PI/180);
 		settings.gravity = gravityDirection * settings.gravityAcceleration;
@@ -194,6 +202,29 @@ public class SettingsController : MonoBehaviour{
 			return;
 		}
 
+		if (borderMode.value == BorderMode.Rectangle){
+		
+			if (bodyToCreate.position.y - bodyToCreate.radius < -settings.border.y 	||
+				bodyToCreate.position.y + bodyToCreate.radius > settings.border.y 	||
+				bodyToCreate.position.x - bodyToCreate.radius < -settings.border.x 	||
+				bodyToCreate.position.x + bodyToCreate.radius > settings.border.x){
+
+				errorMessage.SetText("The body cannot be outside the border.");
+			}
+
+			if (bodyToCreate.radius >= settings.border.x || bodyToCreate.radius >= settings.border.y)
+				errorMessage.SetText("The body cannot fit in the border.");
+		}
+
+		else if (borderMode.value == BorderMode.Circle){
+
+			if (bodyToCreate.position.magnitude + bodyToCreate.radius > settings.border.x)
+				errorMessage.SetText("The body cannot be outside the border.");
+
+			if (bodyToCreate.radius >= settings.border.x)
+				errorMessage.SetText("The body cannot fit in the border.");
+		}
+
 		foreach (Body body in bodyController.bodies){
 
 			if (body.position == bodyToCreate.position){
@@ -205,60 +236,6 @@ public class SettingsController : MonoBehaviour{
 				errorMessage.SetText("There is already a body with that name.");
 				return;
 			}
-		}
-	}
-
-	public void OnColorChange(){
-		colorPreview.color = new Color(r.value, g.value, b.value, a.value);
-	}
-
-	// Events
-	public void OnCollisionsSettingsChange(){
-
-		mergeBodiesInCollisions.gameObject.SetActive(calculateCollisions.isOn);
-		Utils.GetParent(coefOfRestitution).SetActive(calculateCollisions.isOn);
-	}
-
-	public void OnGravitySettingsChange(){
-
-		Utils.GetParent(gravityAcceleration).SetActive(gravityMode.value != GravityMode.Disabled);
-		Utils.GetParent(gravityAngle).SetActive(gravityMode.value != GravityMode.Disabled && gravityMode.value != GravityMode.Centered);
-	}
-
-	public void OnParentSettingsChange(){
-
-		sumParentRadius.gameObject.SetActive(useParent.isOn && parent.value != 0);
-		sumBodyRadius.gameObject.SetActive(useParent.isOn && parent.value != 0);
-		sumAutoVelocity.gameObject.SetActive(useParent.isOn);
-		Utils.GetParent(parent).SetActive(useParent.isOn);
-	}
-
-	public void OnForcesSettingsChange(){
-
-		Utils.GetParent(dragCoefficient).SetActive(fluidDensity.text != "0");
-	}
-
-	public void OnRandomChange(){
-		if (randomMode.isOn){
-			Utils.GetTextChild(x).SetText("Max X");
-			Utils.GetTextChild(y).SetText("Max Y");
-
-			Utils.GetTextChild(velocityX).SetText("Max Velocity X");
-			Utils.GetTextChild(velocityY).SetText("Max Velocity Y");
-
-			if (x.text == "0") x.text = "20";
-			if (y.text == "0") y.text = "20";
-
-			if (velocityX.text == "0") velocityX.text = "20";
-			if (velocityY.text == "0") velocityY.text = "20";
-		}
-		else{
-
-			Utils.GetTextChild(x).SetText("X");
-			Utils.GetTextChild(y).SetText("Y");
-
-			Utils.GetTextChild(velocityX).SetText("Velocity X");
-			Utils.GetTextChild(velocityY).SetText("Velocity Y");
 		}
 	}
 }

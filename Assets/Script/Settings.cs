@@ -5,12 +5,13 @@ public class Settings : MonoBehaviour{
 
 	// Global Settings
 	public double secondsPerFrame;
-	public int gravityMode;
+	public int gravityMode, borderMode;
 	public double gravityAcceleration, gravityAngle;
 	public double attractionGravityConstant;
 	public double fluidDensity, dragCoefficient;
 	public double coefOfRestitution;
 	public bool calculateCollisions, mergeBodiesInCollisions;
+	public Vector2Double border;
 	
 	public Vector2Double gravity;
 

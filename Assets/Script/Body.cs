@@ -11,7 +11,7 @@ public class Body : MonoBehaviour{
 	public Color color;
 
 	// Functions
-	public Action ForceOnce;
+	public Action ForceOnce, ForceAfterPosition;
 	public Action<Body> ForceEachBody;
 	public List<Body> bodiesAlreadyCollided = new List<Body>();
 
@@ -67,6 +67,7 @@ public class Body : MonoBehaviour{
 
 	public void UpdatePosition(){
 		position += velocity * settings.secondsPerFrame;
+		ForceAfterPosition();
 	}
 
 	public void ApplyPosition(){
@@ -110,7 +111,6 @@ public class Body : MonoBehaviour{
 		if (bodiesAlreadyCollided.Contains(body))
 			return;
 
-		// Collision Happens
 		Vector2Double direction = Direction(body);
 		
 		Vector2Double velocity1 = velocity.magnitude * velocity.direction.SubtractVectorAsAngle(direction);
@@ -150,7 +150,6 @@ public class Body : MonoBehaviour{
 		if (distance > 0)
 			return;
 
-		// Collision Happens
 		velocity = (mass * velocity + body.mass * body.velocity) / (mass + body.mass);
 		radius = Math.Cbrt(Math.Pow(radius, 3) + Math.Pow(body.radius, 3));
 		mass += body.mass;
@@ -168,6 +167,58 @@ public class Body : MonoBehaviour{
 
 		position = position *  percentage1 + body.position * percentage2;
 		bodyController.DeleteBody(body);
+	}
+
+	public void CheckRectangleCollision(){
+
+		if (position.y - radius < -settings.border.y){
+
+			position.y = -settings.border.y + radius;
+			velocity.y = -velocity.y * settings.coefOfRestitution;
+			nCollisions ++;
+		}
+
+		else if (position.y + radius > settings.border.y){
+
+			position.y = settings.border.y - radius;
+			velocity.y = -velocity.y * settings.coefOfRestitution;
+			nCollisions ++;
+		}
+
+		if (position.x - radius < -settings.border.x){
+
+			position.x = -settings.border.x + radius;
+			velocity.x = -velocity.x * settings.coefOfRestitution;
+			nCollisions ++;
+		}
+
+		else if (position.x + radius > settings.border.x){
+			
+			position.x = settings.border.x - radius;
+			velocity.x = -velocity.x * settings.coefOfRestitution;
+			nCollisions ++;
+		}
+	}
+
+	public void CheckCircleCollision(){
+
+		if (settings.border.x - position.magnitude - radius > 0) // border.x is the radius here
+			return;
+		
+		Vector2Double direction = -1 * position.direction;
+
+		Vector2Double velocity1 = velocity.magnitude * velocity.direction.SubtractVectorAsAngle(direction);
+		Vector2Double velocityTemp1;
+
+		velocityTemp1.x = -1 * velocity1.x * settings.coefOfRestitution;
+		velocityTemp1.y = velocity1.y;
+
+		velocity = velocityTemp1.magnitude * velocityTemp1.direction.SumVectorAsAngle(direction);
+
+		position = position.direction * (settings.border.x - radius);
+
+		nCollisions ++;
+	
 	}
 	
 	// Other Stuff

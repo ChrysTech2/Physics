@@ -1,6 +1,6 @@
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
-using UnityEditor.SceneManagement;
 using UnityEngine.SceneManagement;
 
 public static class GravityMode{
@@ -13,7 +13,14 @@ public static class FocusMode{
 	public const int Disabled = 0;
 	public const int Enabled = 1;
 	public const int XAxis = 2;
-	public const int YAxis =3;
+	public const int YAxis = 3;
+}
+
+public static class BorderMode{
+
+	public const int Disabled = 0;
+	public const int Rectangle = 1;
+	public const int Circle = 2;
 }
 
 public static class Times{
@@ -26,8 +33,6 @@ public static class Times{
 }
 
 public class Utils : MonoBehaviour{
-
-	[SerializeField] private BodyController bodyController;
 	
 	public static void SetActiveTrue(GameObject obj){
 		obj.SetActive(true);
@@ -89,13 +94,27 @@ public class Utils : MonoBehaviour{
 	public static GameObject GetParent(TMP_Dropdown obj){
 		return obj.transform.parent.gameObject;
 	}
+
 	public static TMP_Text GetTextChild(TMP_InputField obj){
 		return obj.transform.parent.GetChild(0).GetComponent<TMP_Text>();
 	}
 
-	public void ResetWorld(){
+	public static void SetTextChild(TMP_InputField obj, string text){
+		GetTextChild(obj).SetText(text);
+	}
 
+	public void ResetWorld(){
 		SceneManager.LoadScene("Simulation");
+	}
+
+	public static void SetActiveIf(TMP_InputField obj, bool condition){
+		GetParent(obj).SetActive(condition);
+	}
+	public static void SetActiveIf(TMP_Dropdown obj, bool condition){
+		GetParent(obj).SetActive(condition);
+	}
+	public static void SetActiveIf(Toggle obj, bool condition){
+		obj.gameObject.SetActive(condition);
 	}
 
 }

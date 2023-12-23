@@ -174,7 +174,7 @@ public class BodyController : MonoBehaviour{
 			cameraController.Index = 0;
 
 		else if (cameraController.Index > index)
-			cameraController.Index --; // do that it doesnt center			
+			cameraController.Index --;	
 		
 		bodies.Remove(body);
 		DestroyImmediate(body.gameObject);
@@ -183,7 +183,9 @@ public class BodyController : MonoBehaviour{
 	public void CompileFunctions(Body body){
 
 		body.ForceOnce = new Action(() => {});
+		body.ForceAfterPosition = new Action(() => {});
 		body.ForceEachBody = new Action<Body>((body2) => {});
+		
 		
 		if (settings.fluidDensity != 0 && settings.dragCoefficient != 0)
 			body.ForceOnce += () => body.AirDrag();
@@ -193,7 +195,6 @@ public class BodyController : MonoBehaviour{
 			switch(settings.gravityMode){
 
 				case GravityMode.Directional:
-					//body.ForceOnce += () => body.DirectionalGravity();
 
 					if (settings.fluidDensity != 0)
 						body.ForceOnce += () => body.DirectionalGravityBuoyancy();
@@ -203,7 +204,6 @@ public class BodyController : MonoBehaviour{
 					break;
 
 				case GravityMode.Centered:
-					//body.ForceOnce += () => body.CenteredGravity();
 
 					if (settings.fluidDensity != 0)
 						body.ForceOnce += () => body.CenteredGravityBuoyancy();
@@ -226,6 +226,11 @@ public class BodyController : MonoBehaviour{
 				body.ForceOnce += () => body.bodiesAlreadyCollided.Clear();
 			}
 		}
-	}
 
+		if (settings.borderMode == BorderMode.Rectangle)
+			body.ForceAfterPosition += () => body.CheckRectangleCollision();
+
+		else if (settings.borderMode == BorderMode.Circle)
+			body.ForceAfterPosition += () => body.CheckCircleCollision();
+	}
 }

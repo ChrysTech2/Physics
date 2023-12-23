@@ -1,5 +1,7 @@
 using UnityEngine;
 using TMPro;
+using UnityEditor.SceneManagement;
+using UnityEngine.SceneManagement;
 
 public static class GravityMode{
 	public const int Disabled = 0;
@@ -24,6 +26,8 @@ public static class Times{
 }
 
 public class Utils : MonoBehaviour{
+
+	[SerializeField] private BodyController bodyController;
 	
 	public static void SetActiveTrue(GameObject obj){
 		obj.SetActive(true);
@@ -87,6 +91,11 @@ public class Utils : MonoBehaviour{
 	}
 	public static TMP_Text GetTextChild(TMP_InputField obj){
 		return obj.transform.parent.GetChild(0).GetComponent<TMP_Text>();
+	}
+
+	public void ResetWorld(){
+
+		SceneManager.LoadScene("Simulation");
 	}
 
 }

@@ -162,8 +162,19 @@ public class BodyController : MonoBehaviour{
 	}
 
 	public void DeleteBody(Body body){
+		
+		int index = body.Index();
+		settingsController.parent.options.RemoveAt(index);
+		// remove from editor too
 
-		settingsController.parent.options.RemoveAt(body.Index());
+		if (bodies.Count == 1)
+			cameraController.Index = -1;
+
+		else if (cameraController.Index == index)
+			cameraController.Index = 0;
+
+		else if (cameraController.Index > index)
+			cameraController.Index --; // do that it doesnt center			
 		
 		bodies.Remove(body);
 		DestroyImmediate(body.gameObject);

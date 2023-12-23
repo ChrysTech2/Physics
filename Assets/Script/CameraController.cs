@@ -121,9 +121,6 @@ public class CameraController : MonoBehaviour{
 			return index;
 		}
 		set{
-			if (bodyController.bodies.Count == 1)
-				Focus = FocusMode.Enabled;
-
 			index = value;
 			Center();
 		}

@@ -85,7 +85,7 @@ public class SettingsController : MonoBehaviour{
 		bodyToCreate.velocity.x = random.Next(-maxValueVX, maxValueVX + 1);
 		bodyToCreate.velocity.y = random.Next(-maxValueVY, maxValueVY + 1);
 
-		bodyToCreate.color = new Color(r.value, g.value, b.value, a.value);	
+		bodyToCreate.color = new Color((float)random.NextDouble(), (float)random.NextDouble(), (float)random.NextDouble(), (float)random.NextDouble());	
 	}
 
 	public void ApplyDataToSettings(){
@@ -245,8 +245,15 @@ public class SettingsController : MonoBehaviour{
 
 			Utils.GetTextChild(velocityX).SetText("Max Velocity X");
 			Utils.GetTextChild(velocityY).SetText("Max Velocity Y");
+
+			if (x.text == "0") x.text = "20";
+			if (y.text == "0") y.text = "20";
+
+			if (velocityX.text == "0") velocityX.text = "20";
+			if (velocityY.text == "0") velocityY.text = "20";
 		}
 		else{
+
 			Utils.GetTextChild(x).SetText("X");
 			Utils.GetTextChild(y).SetText("Y");
 

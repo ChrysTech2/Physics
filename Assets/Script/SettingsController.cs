@@ -86,7 +86,8 @@ public class SettingsController : MonoBehaviour{
 
 		settings.gravityMode = gravityMode.value;
 		
-		settings.gravityDirection = Vector2Double.ToVector2Double(settings.gravityAngle * Math.PI/180);
+		Vector2Double gravityDirection = Vector2Double.ToVector2Double(settings.gravityAngle * Math.PI/180);
+		settings.gravity = gravityDirection * settings.gravityAcceleration;
 
 		foreach (Body body in bodyController.bodies)
 			bodyController.CompileFunctions(body);

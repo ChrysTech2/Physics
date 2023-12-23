@@ -7,31 +7,59 @@ public class BodyController : MonoBehaviour{
 
 	[SerializeField] private TMP_Text informations;
 
+	public CameraController cameraController;
 	public SettingsController settingsController;
 	private Settings settings;
 	public List<Body> bodies = new List<Body>();
 	public int speedMultiplier = 0;
-	public double t = 0;
+	public float t = 0, fps = 60;
 
 	private void Start(){
 		settings = settingsController.settings;
 		Application.targetFrameRate = 240;
 	}
 
-	private void FixedUpdate(){
+	
 
-		for (int i = 0; i < speedMultiplier; i++)
-			CalculateOneFrame();
-		
-		foreach (Body body in bodies)
-			body.ApplyPosition();
+	private void Update(){
 
 		if (settingsController.gameObject.activeSelf){
 			informations.SetText("");
 			return;
 		}
 
-		double time = 0; string timeUnit;
+		CheckInputs();
+
+		DebugInformation();
+	}
+
+	private void CheckInputs(){
+
+		float mouseWheel = Input.GetAxis("Mouse ScrollWheel");
+
+		if (mouseWheel > 0)
+			ZoomIn(1.1f);
+		else if (mouseWheel < 0)
+			ZoomOut(1.1f);
+
+		if (Input.GetKeyDown(KeyCode.Comma))
+			SlowDown();
+
+		if (Input.GetKeyDown(KeyCode.Period))
+			SpeedUp();
+
+		if (Input.GetKey(KeyCode.Minus))
+			ZoomOut(1.025f);
+
+		if (Input.GetKey(KeyCode.Equals))
+			ZoomIn(1.025f);
+		
+	}
+
+	private void DebugInformation(){
+
+		float time = 0; string timeUnit;
+		fps = 1/Time.deltaTime;
 
 		if (t < Times.SECONDS_PER_MINUTE){
 			time = t;
@@ -62,7 +90,19 @@ public class BodyController : MonoBehaviour{
 			timeUnit = "years";
 		}
 
-		informations.SetText($"Speed : {(float)(speedMultiplier * settings.secondsPerFrame / Time.deltaTime)}x  |  Scale : {scale}\nTime ({timeUnit}): {(float)time}");
+		informations.SetText(
+			$"Speed : {(float)(speedMultiplier * settings.secondsPerFrame * 50)}x  |  Scale : {scale}\nTime ({timeUnit}): {time}\nFPS : {fps}\n{cameraController.Index}"
+		);
+	}
+
+	private void FixedUpdate(){
+
+		for (int i = 0; i < speedMultiplier; i++)
+			CalculateOneFrame();
+		
+		foreach (Body body in bodies)
+			body.ApplyPosition();
+
 	}
 
 	private void CalculateOneFrame(){
@@ -73,7 +113,7 @@ public class BodyController : MonoBehaviour{
 		foreach (Body body in bodies)
 			body.UpdatePosition();
 
-		t += settingsController.settings.secondsPerFrame;
+		t += (float)settingsController.settings.secondsPerFrame;
 	}
 
 	public void SpeedUp(){
@@ -81,7 +121,8 @@ public class BodyController : MonoBehaviour{
 		if (speedMultiplier == 0)
 			speedMultiplier = 1;
 		else
-			speedMultiplier *= 2;
+			if (fps > 20)
+				speedMultiplier *= 2;
 	}
 
 	public void SlowDown(){
@@ -92,12 +133,12 @@ public class BodyController : MonoBehaviour{
 			speedMultiplier /= 2;
 	}
 
-	public void ZoomOut(){
-		transform.localScale /= 1.25f;
+	public void ZoomOut(float zoomFactor = 1.25f){
+		transform.localScale /= zoomFactor;
 	}
 
-	public void ZoomIn(){
-		transform.localScale *= 1.25f;
+	public void ZoomIn(float zoomFactor = 1.25f){
+		transform.localScale *= zoomFactor;
 	}
 
 	public float scale{
@@ -121,6 +162,8 @@ public class BodyController : MonoBehaviour{
 
 		List<string> nameToList = new List<string>() {createdBody.name};
 		settingsController.parent.AddOptions(nameToList);
+
+		cameraController.Index = bodies.Count - 1;
 	}
 
 	public void DeleteBody(Body body){
@@ -144,17 +187,23 @@ public class BodyController : MonoBehaviour{
 			switch(settings.gravityMode){
 
 				case GravityMode.DIRECTIONAl:
-					body.ForceOnce += () => body.DirectionalGravity();
+					//body.ForceOnce += () => body.DirectionalGravity();
 
 					if (settings.fluidDensity != 0)
-						body.ForceOnce += () => body.DirectionalBuoyancy();
+						body.ForceOnce += () => body.DirectionalGravityBuoyancy();
+					else
+						body.ForceOnce += () => body.DirectionalGravity();
+
 					break;
 
 				case GravityMode.CENTERED:
-					body.ForceOnce += () => body.CenteredGravity();
+					//body.ForceOnce += () => body.CenteredGravity();
 
 					if (settings.fluidDensity != 0)
-						body.ForceOnce += () => body.CenteredBuoyancy();
+						body.ForceOnce += () => body.CenteredGravityBuoyancy();
+					else
+						body.ForceOnce += () => body.CenteredGravity();
+
 					break;
 			}	
 		}

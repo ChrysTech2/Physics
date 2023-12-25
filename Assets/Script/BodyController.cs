@@ -5,14 +5,18 @@ using TMPro;
 
 public class BodyController : MonoBehaviour{
 
-	[SerializeField] private TMP_Text informations;
+	public TMP_Text informations;
+	public TouchControl touchControl;
+	public GameObject centerOfGravity;
 
 	public CameraController cameraController;
 	public SettingsController settingsController;
-	private Settings settings;
+	public Settings settings;
+	public BodyEditor bodyEditor;
+
 	public List<Body> bodies = new List<Body>();
 	public int speedMultiplier = 0;
-	public float t = 0, fps = 60;
+	private float t = 0, fps = 60;
 
 	private void Start(){
 		settings = settingsController.settings;
@@ -21,11 +25,33 @@ public class BodyController : MonoBehaviour{
 
 	private void Update(){
 
-		if (settingsController.gameObject.activeSelf){
-			informations.SetText("");
-			return;
+		foreach (Body body in bodies)
+			body.ApplyPosition();
+
+		if (settings.showCenterOfGravity){
+
+			Vector2Double position = Vector2Double.zero;
+			Vector2Double velocity = Vector2Double.zero;
+			double totalMass = 0;
+
+			foreach (Body body in bodies){
+
+				position += body.position * body.mass;
+				velocity += body.velocity * body.mass;
+				totalMass += body.mass;
+			}
+
+			if (totalMass != 0){
+				position /= totalMass;
+				velocity /= totalMass;
+			}
+
+			centerOfGravity.transform.localPosition = (position - cameraController.position).ToVector2() * scale;
 		}
 
+		if (settingsController.gameObject.activeSelf)
+			return;
+		
 		CheckInputs();
 		DebugInformation();
 	}
@@ -95,9 +121,6 @@ public class BodyController : MonoBehaviour{
 
 		for (int i = 0; i < speedMultiplier; i++)
 			CalculateOneFrame();
-		
-		foreach (Body body in bodies)
-			body.ApplyPosition();
 	}
 
 	private void CalculateOneFrame(){
@@ -157,6 +180,7 @@ public class BodyController : MonoBehaviour{
 
 		List<string> nameToList = new List<string>() {createdBody.name};
 		settingsController.parent.AddOptions(nameToList);
+		bodyEditor.bodiesDropdown.AddOptions(nameToList);
 
 		cameraController.Index = bodies.Count - 1;
 	}
@@ -164,19 +188,45 @@ public class BodyController : MonoBehaviour{
 	public void DeleteBody(Body body){
 		
 		int index = body.Index();
-		settingsController.parent.options.RemoveAt(index);
-		// remove from editor too
 
+		settingsController.parent.options.RemoveAt(index + 1);
+		Debug.Log(index);
+		bodyEditor.bodiesDropdown.options.RemoveAt(index);
+
+		// Parent Checks
+		if (settingsController.parent.value == index + 1)
+			settingsController.parent.value = 0;
+
+		else if (settingsController.parent.value > index + 1)
+			settingsController.parent.value --;
+
+		// Editor Checks
+		if (bodyEditor.bodiesDropdown.value == index){
+
+			if (bodyEditor.bodiesDropdown.options.Count > 0)
+				if (index != 0)
+					bodyEditor.bodiesDropdown.value = 0;
+				else{
+					bodyEditor.gameObject.SetActive(false);
+				}
+			else{
+				bodyEditor.gameObject.SetActive(false);
+			}
+		}
+		else if (bodyEditor.bodiesDropdown.value > index)
+			bodyEditor.bodiesDropdown.value --;
+
+
+		// Camera Checks
 		if (bodies.Count == 1)
 			cameraController.Index = -1;
-
 		else if (cameraController.Index == index)
 			cameraController.Index = 0;
-
 		else if (cameraController.Index > index)
 			cameraController.Index --;	
 		
 		bodies.Remove(body);
+		
 		DestroyImmediate(body.gameObject);
 	}
 

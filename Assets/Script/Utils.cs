@@ -17,7 +17,6 @@ public static class FocusMode{
 }
 
 public static class BorderMode{
-
 	public const int Disabled = 0;
 	public const int Rectangle = 1;
 	public const int Circle = 2;
@@ -115,6 +114,10 @@ public class Utils : MonoBehaviour{
 	}
 	public static void SetActiveIf(Toggle obj, bool condition){
 		obj.gameObject.SetActive(condition);
+	}
+
+	public static Vector2Double ToVector2Double(Vector2 vector){
+		return new Vector2Double(vector.x, vector.y);
 	}
 
 }

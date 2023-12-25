@@ -3,10 +3,10 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour{
 
-	
 	[SerializeField] private BodyController bodyController;
 	[SerializeField] private TMP_Text focusModeText;
 	[SerializeField] private double sensibiliy = 6;
+	[SerializeField] private TouchControl touchControl;
 
 	private SettingsController settingsController;
 
@@ -47,12 +47,26 @@ public class CameraController : MonoBehaviour{
 		position = bodyPosition + offset;
 	}
 
+
+	private bool canCalculateOffset;
+
 	private void CalculateOffset(){
 
-		if (!Input.GetKey(KeyCode.Mouse0))
-			return;
 
-		if (settingsController.gameObject.activeSelf && Input.mousePosition.y / Screen.height > 0.2)
+		if (Input.GetKeyDown(KeyCode.Mouse0)){
+			float percentageY = Input.mousePosition.y / Screen.height;
+			float percentageX = Input.mousePosition.x / Screen.width;
+
+			bool condition1 = !touchControl.addOnTouch.isOn || (percentageY > 0.85 && percentageX > 0.75);
+			bool condition2 = !settingsController.gameObject.activeSelf;
+
+			canCalculateOffset = (condition1 && condition2) || percentageY < 0.2;
+		}
+
+		if (Input.GetKeyUp(KeyCode.Mouse0))
+			canCalculateOffset = false;
+
+		if (!canCalculateOffset)
 			return;
 
 		float x = -Input.GetAxis("Mouse X");
@@ -73,6 +87,8 @@ public class CameraController : MonoBehaviour{
 		if (Index == -1)
 			return;
 
+		focus = FocusMode.Enabled;
+
 		if (Index == bodyController.bodies.Count - 1)
 			Index = 0;
 		else
@@ -84,6 +100,8 @@ public class CameraController : MonoBehaviour{
 		if (Index == -1)
 			return;
 
+		focus = FocusMode.Enabled;
+
 		if (Index == 0)
 			index = bodyController.bodies.Count - 1;
 		else
@@ -92,10 +110,15 @@ public class CameraController : MonoBehaviour{
 
 	public void ChangeFocusMode(){
 
-		if (Focus == FocusMode.YAxis)
+		/*if (Focus == FocusMode.YAxis)
 			Focus = FocusMode.Disabled;
 		else
-			Focus ++;	
+			Focus ++;*/
+
+		if (Focus == FocusMode.Enabled)
+			Focus = FocusMode.Disabled;
+		else	
+			Focus = FocusMode.Enabled;
 	}
 
 	public string FocusModeToString(){

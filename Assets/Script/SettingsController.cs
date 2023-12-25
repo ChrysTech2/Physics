@@ -14,8 +14,8 @@ public class SettingsController : MonoBehaviour{
 	public Toggle calculateCollisions, mergeBodiesInCollisions;
 	public TMP_InputField coefOfRestitution;
 	public Toggle useParent, sumParentRadius, sumBodyRadius, sumAutoVelocity;
-	public Toggle randomMode;
-	public TMP_InputField borderX, borderY;
+	public Toggle randomMode, showCenterOfGravity;
+	public TMP_InputField borderX, borderY, touchMultiplier;
 	
 	// Body Input
 	public TMP_InputField x, y;
@@ -24,25 +24,33 @@ public class SettingsController : MonoBehaviour{
 	public Slider r, g, b, a;
 
 	// Other Stuff
+	[SerializeField] private TouchControl addOnTouch;
 	[SerializeField] private BodyController bodyController;
 	[SerializeField] private TMP_Text errorMessage;
-	public GameObject linePreafab;
 
 	public Settings settings;
 	
 	public Body bodyToCreate;
-	
-
 	private int n = 1;
 	
 	private void Start(){
 		errorMessage.SetText("");	
 	}
 
-	public void AddBody(){
+	private void OnEnable(){
+		bodyController.touchControl.addOnTouch.gameObject.SetActive(false);
+		bodyController.informations.gameObject.SetActive(false);
+	}
 
-		ApplyDataToBody();
-		ApplyParent();
+	private void OnDisable(){
+		bodyController.touchControl.addOnTouch.gameObject.SetActive(true);
+		bodyController.informations.gameObject.SetActive(true);
+	}
+
+	public void AddBody(bool addedOnTouch = false){
+
+		ApplyDataToBody(addedOnTouch);
+		ApplyParent(addedOnTouch);
 		ApplyDataToSettings();
 		CheckForErrors();
 
@@ -53,13 +61,15 @@ public class SettingsController : MonoBehaviour{
 		}
 	}
 
-	private void ApplyDataToBody(){
+	public void ApplyDataToBody(bool addedOnTouch){
 
-		ExpressionEvaluator.Evaluate(x.text, out bodyToCreate.position.x);
-		ExpressionEvaluator.Evaluate(y.text, out bodyToCreate.position.y);
+		if (!addedOnTouch){
+			ExpressionEvaluator.Evaluate(x.text, out bodyToCreate.position.x);
+			ExpressionEvaluator.Evaluate(y.text, out bodyToCreate.position.y);
 
-		ExpressionEvaluator.Evaluate(velocityX.text, out bodyToCreate.velocity.x);
-		ExpressionEvaluator.Evaluate(velocityY.text, out bodyToCreate.velocity.y);
+			ExpressionEvaluator.Evaluate(velocityX.text, out bodyToCreate.velocity.x);
+			ExpressionEvaluator.Evaluate(velocityY.text, out bodyToCreate.velocity.y);
+		}
 
 		ExpressionEvaluator.Evaluate(mass.text, out bodyToCreate.mass);
 		ExpressionEvaluator.Evaluate(radius.text, out bodyToCreate.radius);
@@ -67,28 +77,35 @@ public class SettingsController : MonoBehaviour{
 		bodyToCreate.name = bodyName.text;
 
 		if (randomMode.isOn)
-			ApplyRandomDataToBody();
+			ApplyRandomDataToBody(addedOnTouch);
 		else
 			bodyToCreate.color = new Color(r.value, g.value, b.value, a.value);	
 	}
 
-	private void ApplyRandomDataToBody(){
+	private void ApplyRandomDataToBody(bool addedOnTouch){
 
 		System.Random random = new System.Random();
+
+		float r = (float)random.NextDouble();
+		float g = (float)random.NextDouble();
+		float b = (float)random.NextDouble();
+
+		bodyToCreate.color = new Color(r, g, b, 1f);	
+
+		if (addedOnTouch)
+			return;
 
 		int maxValueX = (int)Math.Abs(bodyToCreate.position.x);
 		int maxValueY = (int)Math.Abs(bodyToCreate.position.y);
 
-		int maxValueVX = (int)Math.Abs(bodyToCreate.position.x);
+		int maxValueVX = (int)Math.Abs(bodyToCreate.velocity.x);
 		int maxValueVY = (int)Math.Abs(bodyToCreate.velocity.y);
-		
-		bodyToCreate.position.x = random.Next(-maxValueX, maxValueX + 1);
-		bodyToCreate.position.y = random.Next(-maxValueY, maxValueY + 1);
 
 		bodyToCreate.velocity.x = random.Next(-maxValueVX, maxValueVX + 1);
 		bodyToCreate.velocity.y = random.Next(-maxValueVY, maxValueVY + 1);
-
-		bodyToCreate.color = new Color((float)random.NextDouble(), (float)random.NextDouble(), (float)random.NextDouble(), (float)random.NextDouble());	
+		
+		bodyToCreate.position.x = random.Next(-maxValueX, maxValueX + 1);
+		bodyToCreate.position.y = random.Next(-maxValueY, maxValueY + 1);
 	}
 
 	public void ApplyDataToSettings(){
@@ -108,13 +125,17 @@ public class SettingsController : MonoBehaviour{
 		ExpressionEvaluator.Evaluate(borderX.text, out settings.border.x);
 		ExpressionEvaluator.Evaluate(borderY.text, out settings.border.y);
 
+		ExpressionEvaluator.Evaluate(touchMultiplier.text, out settings.touchMultiplier);
+
 		settings.calculateCollisions = calculateCollisions.isOn;
 		settings.mergeBodiesInCollisions = mergeBodiesInCollisions.isOn;
 
 		settings.gravityMode = gravityMode.value;
 		settings.borderMode = borderMode.value;
 
-		
+		settings.showCenterOfGravity = showCenterOfGravity.isOn;
+		bodyController.centerOfGravity.gameObject.SetActive(showCenterOfGravity.isOn);
+
 		Vector2Double gravityDirection = Vector2Double.ToVector2Double(settings.gravityAngle * Math.PI/180);
 		settings.gravity = gravityDirection * settings.gravityAcceleration;
 
@@ -122,7 +143,7 @@ public class SettingsController : MonoBehaviour{
 			bodyController.CompileFunctions(body);
 	}
 
-	private void ApplyParent(){
+	private void ApplyParent(bool addedOnTouch){
 
 		if (!useParent.isOn)
 			return;
@@ -130,6 +151,7 @@ public class SettingsController : MonoBehaviour{
 		Vector2Double parentPosition = Vector2Double.zero;
 		Vector2Double parentVelocity = Vector2Double.zero;
 		double parentMass = 0;
+		double parentRadius = 0;
 
 		if (parent.value != 0){
 			Body parentBody = bodyController.bodies[parent.value - 1];
@@ -137,9 +159,9 @@ public class SettingsController : MonoBehaviour{
 			parentPosition = parentBody.position;
 			parentVelocity = parentBody.velocity;
 			parentMass = parentBody.mass;
+			parentRadius = parentBody.radius;
 		}
-		else{ 
-
+		else{
 			// Parent = Center of Gravity
 			Vector2Double totalPositions = Vector2Double.zero;
 			Vector2Double totalVelocity = Vector2Double.zero;
@@ -160,7 +182,9 @@ public class SettingsController : MonoBehaviour{
 			sumBodyRadius.isOn = false;
 		}
 
-		bodyToCreate.position += parentPosition;
+		if (!addedOnTouch)
+			bodyToCreate.position += parentPosition;
+
 		bodyToCreate.velocity += parentVelocity;
 
 		Vector2Double direction = (bodyToCreate.position - parentPosition).direction;
@@ -168,11 +192,11 @@ public class SettingsController : MonoBehaviour{
 		if (direction == Vector2Double.zero)
 			direction = Vector2Double.up;
 
-		if (sumBodyRadius.isOn)
+		if (sumBodyRadius.isOn && !addedOnTouch)
 			bodyToCreate.position += direction * bodyToCreate.radius;
 		
-		if (sumParentRadius.isOn)
-			bodyToCreate.position += direction * bodyToCreate.radius;
+		if (sumParentRadius.isOn && !addedOnTouch)
+			bodyToCreate.position += direction * parentRadius;
 
 		if (sumAutoVelocity.isOn){
 			double distance = Vector2Double.Distance(bodyToCreate.position, parentPosition);

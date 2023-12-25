@@ -19,7 +19,7 @@ public class Body : MonoBehaviour{
 	private BodyController bodyController;
 	private Settings settings;
 
-	int nCollisions = 0;
+	public int nCollisions = 0;
 
 	public static void CopyData(Body from, Body to){
 
@@ -66,12 +66,17 @@ public class Body : MonoBehaviour{
 	}
 
 	public void UpdatePosition(){
+		lastPosition = position;
 		position += velocity * settings.secondsPerFrame;
 		ForceAfterPosition();
 	}
 
+	Vector2Double lastPosition = Vector2Double.zero;
+
 	public void ApplyPosition(){
+		
 		transform.localPosition = (position - bodyController.cameraController.position).ToVector2();
+
 	}
 
 	// Gravity Forces
@@ -159,11 +164,9 @@ public class Body : MonoBehaviour{
 		float percentage2 = (float)(body.Area / areaTot);
 
 		SetColor(color * percentage1 + body.color * percentage2);
-
-		transform.localScale = Vector2.one * 2 * (float)radius;
+		SetRadius(radius);
 
 		nCollisions ++;
-		body.nCollisions ++;
 
 		position = position *  percentage1 + body.position * percentage2;
 		bodyController.DeleteBody(body);
@@ -218,11 +221,10 @@ public class Body : MonoBehaviour{
 		position = position.direction * (settings.border.x - radius);
 
 		nCollisions ++;
-	
 	}
 	
 	// Other Stuff
-
+ 
 	public double Area{
 		get{
 			return Math.PI * Math.Pow(radius, 2);
@@ -255,7 +257,7 @@ public class Body : MonoBehaviour{
 
 	public void SetRadius(double radius){
 		this.radius = radius;
-		transform.localScale = Vector2.one * (float)radius * 2 * 0.78f;
+		transform.localScale = Vector2.one * (float)radius;
 	}
 
 	public void SetColor(Color color){

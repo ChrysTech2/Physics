@@ -12,6 +12,9 @@ public class Settings : MonoBehaviour{
 	public double coefOfRestitution;
 	public bool calculateCollisions, mergeBodiesInCollisions;
 	public Vector2Double border;
+
+	public double touchMultiplier;
+	public bool showCenterOfGravity;
 	
 	public Vector2Double gravity;
 

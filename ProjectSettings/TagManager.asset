@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Body
+  - Line
   layers:
   - Default
   - TransparentFX
@@ -40,4 +42,13 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Body
+    uniqueID: 2535632677
+    locked: 0
+  - name: CenterOfGravity
+    uniqueID: 3142518621
+    locked: 0
+  - name: Line
+    uniqueID: 3554958367
     locked: 0

@@ -36,6 +36,30 @@ public class MaterialsTable : MonoBehaviour{
 		new MaterialPreset("Rock", 		2500,  	new Color(0.251f, 0.22f, 0.22f, 1f)),
 		new MaterialPreset("Null", 		0,  	new Color(0.1f, 0.1f, 0.1f, 1f)),
 		new MaterialPreset("Wood", 		650,  	new Color(0.38f, 0.282f, 0.239f, 1f)),
+
+		new MaterialPreset("Oxygen", 	1.429,  new Color(1f, 1f, 1f, 0.12f)),
+		new MaterialPreset("Hydrogen",	0.08375,new Color(1f, 1f, 1f, 0.12f)),
+		new MaterialPreset("Helium", 	0.178,  new Color(1f, 1f, 1f, 0.12f)),
+		new MaterialPreset("Nitrogen", 	1.19,  	new Color(1f, 1f, 1f, 0.12f)),
+		new MaterialPreset("Sodium", 	970,  	new Color(0.471f, 0.471f, 0.467f, 1f)),
+
+		new MaterialPreset("Carbon", 	2200, 	new Color(0.09f, 0.078f, 0.075f, 1f)),
+		new MaterialPreset("Silicon", 	2329,  	new Color(0.361f, 0.42f, 0.518f, 1f)),
+		new MaterialPreset("Platinum", 	21450,  new Color(0.518f, 0.522f, 0.494f, 1f)),
+		new MaterialPreset("Osmium", 	22590,  new Color(0.573f, 0.69f, 0.714f, 1f)),
+		new MaterialPreset("Ceramic", 	4250,   new Color(0.698f, 0.596f, 0.569f, 1f)),
+
+		new MaterialPreset("Lead", 		11400, 	new Color(0.282f, 0.282f, 0.29f, 1f)),
+		new MaterialPreset("Sulfur", 	2000,  	new Color(0.757f, 0.663f, 0.267f, 1f)),
+		new MaterialPreset("Silver", 	10490 ,  new Color(0.592f, 0.596f, 0.58f, 1f)),
+		new MaterialPreset("Uranium", 	19000,  new Color(0.506f, 0.494f, 0.49f, 1f)),
+		new MaterialPreset("Steel", 	8050,   new Color(0.773f, 0.788f, 0.804f, 1f)),
+
+		new MaterialPreset("Paper", 	800, 	new Color(1f, 1f, 1f, 1f)),
+		new MaterialPreset("Plastic", 	1030,  	new Color(0.945f, 0.522f, 0.51f, 1f)),
+		new MaterialPreset("Glass", 	2500 ,  new Color(1f, 1f, 1f, 0.25f)),
+		new MaterialPreset("Sand", 		1520,  	new Color(0.898f, 0.776f, 0.616f, 1f)),
+		new MaterialPreset("Lithium", 	530,   	new Color(0.682f, 0.69f, 0.694f, 1f)),
 	
 	};
 	

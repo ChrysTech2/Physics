@@ -48,17 +48,12 @@ public class OnChangeEvent : MonoBehaviour{
 
 	public void OnRandomChange(){
 		if (settings.randomMode.isOn){
+			
 			Utils.SetTextChild(settings.x, "Max X");
 			Utils.SetTextChild(settings.y, "Max Y");
 
 			Utils.SetTextChild(settings.velocityX, "Max Velocity X");
 			Utils.SetTextChild(settings.velocityY, "Max Velocity Y");
-
-			if (settings.x.text == "0") settings.x.text = "20";
-			if (settings.y.text == "0") settings.y.text = "20";
-
-			if (settings.velocityX.text == "0") settings.velocityX.text = "20";
-			if (settings.velocityY.text == "0") settings.velocityY.text = "20";
 		}
 		else{
 

@@ -27,10 +27,11 @@ public class SettingsController : MonoBehaviour{
 	[SerializeField] private TouchControl addOnTouch;
 	[SerializeField] private BodyController bodyController;
 	[SerializeField] private TMP_Text errorMessage;
+	[SerializeField] private Toggle toggleEditor;
 
 	public Settings settings;
 	
-	public Body bodyToCreate;
+	public Body bodyToCreate, lineToCreate;
 	private int n = 1;
 	
 	private void Start(){
@@ -136,8 +137,9 @@ public class SettingsController : MonoBehaviour{
 		settings.showCenterOfGravity = showCenterOfGravity.isOn;
 		bodyController.centerOfGravity.gameObject.SetActive(showCenterOfGravity.isOn);
 
-		Vector2Double gravityDirection = Vector2Double.ToVector2Double(settings.gravityAngle * Math.PI/180);
-		settings.gravity = gravityDirection * settings.gravityAcceleration;
+		settings.gravityDirection = Vector2Double.ToVector2Double(settings.gravityAngle * Math.PI/180);
+		settings.gravity = settings.gravityDirection * settings.gravityAcceleration;
+		
 
 		foreach (Body body in bodyController.bodies)
 			bodyController.CompileFunctions(body);
@@ -261,5 +263,15 @@ public class SettingsController : MonoBehaviour{
 				return;
 			}
 		}
+	}
+
+	public void BodyEliminated(int index){
+
+		parent.options.RemoveAt(index + 1);
+
+		if (parent.value == index + 1)
+			parent.value = 0;
+		else if (parent.value > index + 1)
+			parent.value --;
 	}
 }

@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using TMPro;
+using UnityEditor;
 
 public class BodyController : MonoBehaviour{
 
@@ -15,6 +16,7 @@ public class BodyController : MonoBehaviour{
 	public BodyEditor bodyEditor;
 
 	public List<Body> bodies = new List<Body>();
+	public List<Line> lines = new List<Line>();
 	public int speedMultiplier = 0;
 	private float t = 0, fps = 60;
 
@@ -28,32 +30,31 @@ public class BodyController : MonoBehaviour{
 		foreach (Body body in bodies)
 			body.ApplyPosition();
 
-		if (settings.showCenterOfGravity){
-
-			Vector2Double position = Vector2Double.zero;
-			Vector2Double velocity = Vector2Double.zero;
-			double totalMass = 0;
-
-			foreach (Body body in bodies){
-
-				position += body.position * body.mass;
-				velocity += body.velocity * body.mass;
-				totalMass += body.mass;
-			}
-
-			if (totalMass != 0){
-				position /= totalMass;
-				velocity /= totalMass;
-			}
-
-			centerOfGravity.transform.localPosition = (position - cameraController.position).ToVector2() * scale;
-		}
+		if (settings.showCenterOfGravity)
+			ShowCenterOfGravity();
 
 		if (settingsController.gameObject.activeSelf)
 			return;
 		
 		CheckInputs();
 		DebugInformation();
+	}
+
+	private void ShowCenterOfGravity(){
+
+		Vector2Double position = Vector2Double.zero;
+		double totalMass = 0;
+
+		foreach (Body body in bodies){
+
+			position += body.position * body.mass;
+			totalMass += body.mass;
+		}
+
+		if (totalMass != 0)
+			position /= totalMass;
+
+		centerOfGravity.transform.localPosition = (position - cameraController.position).ToVector2() * scale;
 	}
 
 	private void CheckInputs(){
@@ -189,41 +190,9 @@ public class BodyController : MonoBehaviour{
 		
 		int index = body.Index();
 
-		settingsController.parent.options.RemoveAt(index + 1);
-		Debug.Log(index);
-		bodyEditor.bodiesDropdown.options.RemoveAt(index);
-
-		// Parent Checks
-		if (settingsController.parent.value == index + 1)
-			settingsController.parent.value = 0;
-
-		else if (settingsController.parent.value > index + 1)
-			settingsController.parent.value --;
-
-		// Editor Checks
-		if (bodyEditor.bodiesDropdown.value == index){
-
-			if (bodyEditor.bodiesDropdown.options.Count > 0)
-				if (index != 0)
-					bodyEditor.bodiesDropdown.value = 0;
-				else{
-					bodyEditor.gameObject.SetActive(false);
-				}
-			else{
-				bodyEditor.gameObject.SetActive(false);
-			}
-		}
-		else if (bodyEditor.bodiesDropdown.value > index)
-			bodyEditor.bodiesDropdown.value --;
-
-
-		// Camera Checks
-		if (bodies.Count == 1)
-			cameraController.Index = -1;
-		else if (cameraController.Index == index)
-			cameraController.Index = 0;
-		else if (cameraController.Index > index)
-			cameraController.Index --;	
+		settingsController.BodyEliminated(index);
+		bodyEditor.BodyEliminated(index);
+		cameraController.BodyEliminated(index);
 		
 		bodies.Remove(body);
 		
@@ -233,9 +202,8 @@ public class BodyController : MonoBehaviour{
 	public void CompileFunctions(Body body){
 
 		body.ForceOnce = new Action(() => {});
-		body.ForceAfterPosition = new Action(() => {});
+		body.ForceAfterPosition = new Action(() => {}); // add friction
 		body.ForceEachBody = new Action<Body>((body2) => {});
-		
 		
 		if (settings.fluidDensity != 0 && settings.dragCoefficient != 0)
 			body.ForceOnce += () => body.AirDrag();
@@ -261,11 +229,22 @@ public class BodyController : MonoBehaviour{
 						body.ForceOnce += () => body.CenteredGravity();
 
 					break;
+
+				case GravityMode.Velocity:
+
+					if (settings.fluidDensity != 0)
+						body.ForceOnce += () => body.VelocityGravityBuoyancy();
+					else
+						body.ForceOnce += () => body.VelocityGravity();
+
+					break;
 			}	
 		}
 
-		if (settings.attractionGravityConstant != 0)
+		if (settings.attractionGravityConstant != 0){
 			body.ForceEachBody += (body2) => body.AttractionGravity(body2);
+			body.ForceOnce += () => body.bodiesAlreadyGravited.Clear();
+		}
 
 		if (settings.calculateCollisions){
 

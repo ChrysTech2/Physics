@@ -16,7 +16,7 @@ public class Settings : MonoBehaviour{
 	public double touchMultiplier;
 	public bool showCenterOfGravity;
 	
-	public Vector2Double gravity;
+	public Vector2Double gravity, gravityDirection;
 
 	public double AttractionGravity(Body body1, Body body2){
 		return attractionGravityConstant * body2.mass / Math.Pow(body1.Distance(body2), 2);

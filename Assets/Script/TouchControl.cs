@@ -9,13 +9,15 @@ public class TouchControl : MonoBehaviour{
 	[SerializeField] private TMP_Text bodyInfo;
 
 	private SettingsController settingsController;
+	private BodyEditor bodyEditor;
 	public Toggle addOnTouch;
 
 	void Start(){
 		settingsController = bodyController.settingsController;
+		bodyEditor = bodyController.bodyEditor;
 	}
 
-	public bool canAddBody = false;
+	public bool canAddBody = false, bodyInstantiated = false;
 	Vector2Double worldPosition1 = Vector2Double.zero;
 	Vector2Double startVelocity = Vector2Double.zero;
 	Vector2Double velocity = Vector2Double.zero;
@@ -27,38 +29,28 @@ public class TouchControl : MonoBehaviour{
 			float percentageY = Input.mousePosition.y / Screen.height;
 			float percentageX = Input.mousePosition.x / Screen.width;
 
-			bool condition1 = addOnTouch.isOn && !settingsController.gameObject.activeSelf;
-			bool condition2 =  percentageY > 0.2 && !(percentageY > 0.85 && percentageX > 0.75);
+			bool condition1 = addOnTouch.isOn && !settingsController.gameObject.activeSelf && !bodyEditor.gameObject.activeSelf;
+			bool condition2 = percentageY > 0.2 && !(percentageY > 0.75 && percentageX > 0.8);
 
 			canAddBody = condition1 && condition2;
 
 			worldPosition1 = ToWorldPosition(cameraPosition);
 
-			ExpressionEvaluator.Evaluate(settingsController.velocityX.text, out startVelocity.x);
-			ExpressionEvaluator.Evaluate(settingsController.velocityY.text, out startVelocity.y);
-
-			if (settingsController.randomMode.isOn){
-				
-				System.Random random = new System.Random();
-
-				int maxValueVX = (int)Math.Abs(startVelocity.x);
-				int maxValueVY = (int)Math.Abs(startVelocity.y);
-
-				startVelocity.x = random.Next(-maxValueVX, maxValueVX + 1);
-				startVelocity.y = random.Next(-maxValueVY, maxValueVY + 1);
-			}
+			if (canAddBody)
+				InstantiateBody();
 		}
 
-
-		if (Input.GetKeyUp(KeyCode.Mouse0) && canAddBody){
+		if (Input.GetKeyUp(KeyCode.Mouse0) && bodyInstantiated){
 
 			AddBody();
 
-			canAddBody = false;
 			bodyInfo.SetText("");
+
+			canAddBody = false;
+			bodyInstantiated = false;
 		}
 
-		if (Input.GetKey(KeyCode.Mouse0) && canAddBody){
+		if (Input.GetKey(KeyCode.Mouse0) && bodyInstantiated){
 
 			Vector2Double worldPosition2 = ToWorldPosition(cameraPosition);
 
@@ -73,9 +65,26 @@ public class TouchControl : MonoBehaviour{
 		}
 	}
 
-	private void AddBody(){
+	private void InstantiateBody(){
 
-		//Vector2Double worldPosition2 = ToWorldPosition(mousePosition2);
+		bodyInstantiated = true;
+		
+		ExpressionEvaluator.Evaluate(settingsController.velocityX.text, out startVelocity.x);
+		ExpressionEvaluator.Evaluate(settingsController.velocityY.text, out startVelocity.y);
+
+		if (!settingsController.randomMode.isOn)
+			return;
+			
+		System.Random random = new System.Random();
+
+		int maxValueVX = (int)Math.Abs(startVelocity.x);
+		int maxValueVY = (int)Math.Abs(startVelocity.y);
+
+		startVelocity.x = random.Next(-maxValueVX, maxValueVX + 1);
+		startVelocity.y = random.Next(-maxValueVY, maxValueVY + 1);
+	}
+
+	private void AddBody(){
 
 		Body body = bodyController.settingsController.bodyToCreate;
 

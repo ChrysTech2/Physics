@@ -14,6 +14,7 @@ public class Body : MonoBehaviour{
 	public Action ForceOnce, ForceAfterPosition;
 	public Action<Body> ForceEachBody;
 	public List<Body> bodiesAlreadyCollided = new List<Body>();
+	public List<Body> bodiesAlreadyGravited = new List<Body>();
 
 	// Other Stuff
 	private BodyController bodyController;
@@ -46,11 +47,13 @@ public class Body : MonoBehaviour{
 		ApplyPosition();
 	}
 
+	public static int n = 0;
+
 	// Movement
-	private Vector2Double acceleration;
+	private Vector2Double acceleration = Vector2Double.zero;
 	public void UpdateVelocity(){
 
-		acceleration = Vector2Double.zero;
+		
 
 		for (int i = 0; i < bodyController.bodies.Count; i++){
 
@@ -63,20 +66,17 @@ public class Body : MonoBehaviour{
 		ForceOnce();
 
 		velocity += acceleration * settings.secondsPerFrame;
+
+		acceleration = Vector2Double.zero;
 	}
 
 	public void UpdatePosition(){
-		lastPosition = position;
 		position += velocity * settings.secondsPerFrame;
 		ForceAfterPosition();
 	}
 
-	Vector2Double lastPosition = Vector2Double.zero;
-
 	public void ApplyPosition(){
-		
 		transform.localPosition = (position - bodyController.cameraController.position).ToVector2();
-
 	}
 
 	// Gravity Forces
@@ -89,11 +89,19 @@ public class Body : MonoBehaviour{
 	}
 
 	public void CenteredGravity(){
-		acceleration = position.direction * -settings.gravityAcceleration;
+		acceleration = position.direction.opposite * settings.gravityAcceleration;
 	}
 	
 	public void CenteredGravityBuoyancy(){
-		acceleration += position.direction * settings.gravityAcceleration * (settings.fluidDensity/Density - 1);
+		acceleration += position.direction.opposite * settings.gravityAcceleration * (1 - settings.fluidDensity/Density);
+	}
+
+	public void VelocityGravity(){
+		acceleration += velocity.direction.SumVectorAsAngle(settings.gravityDirection) * settings.gravityAcceleration;
+	}
+
+	public void VelocityGravityBuoyancy(){
+		acceleration += velocity.direction.SumVectorAsAngle(settings.gravityDirection) * settings.gravityAcceleration * (1 - settings.fluidDensity/Density);
 	}
 
 	// Other Forces
@@ -102,7 +110,13 @@ public class Body : MonoBehaviour{
 	}
 
 	public void AttractionGravity(Body body){
-		acceleration += Direction(body) * settings.AttractionGravity(this, body);
+		if (bodiesAlreadyGravited.Contains(body))
+			return;
+
+		Vector2Double force = Direction(body) * settings.AttractionGravity(this, body);
+		acceleration += force;
+		body.acceleration -= force;
+		body.bodiesAlreadyGravited.Add(this);
 	}
 
 	// Collisions

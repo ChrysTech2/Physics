@@ -101,4 +101,5 @@ MonoBehaviour:
   radius: 1
   color: {r: 1, g: 1, b: 1, a: 1}
   bodiesAlreadyCollided: []
+  bodiesAlreadyGravited: []
   nCollisions: 0

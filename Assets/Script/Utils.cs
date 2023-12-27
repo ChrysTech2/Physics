@@ -7,6 +7,7 @@ public static class GravityMode{
 	public const int Disabled = 0;
 	public const int Directional = 1;
 	public const int Centered = 2;
+	public const int Velocity = 3;
 }
 
 public static class FocusMode{
@@ -94,12 +95,12 @@ public class Utils : MonoBehaviour{
 		return obj.transform.parent.gameObject;
 	}
 
-	public static TMP_Text GetTextChild(TMP_InputField obj){
-		return obj.transform.parent.GetChild(0).GetComponent<TMP_Text>();
+	public static TMP_Text GetTextChild(TMP_InputField obj, int textIndex = 0){
+		return obj.transform.parent.GetChild(textIndex).GetComponent<TMP_Text>();
 	}
 
-	public static void SetTextChild(TMP_InputField obj, string text){
-		GetTextChild(obj).SetText(text);
+	public static void SetTextChild(TMP_InputField obj, string text, int textIndex = 0){
+		GetTextChild(obj, textIndex).SetText(text);
 	}
 
 	public void ResetWorld(){

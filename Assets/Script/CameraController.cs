@@ -9,6 +9,7 @@ public class CameraController : MonoBehaviour{
 	[SerializeField] private TouchControl touchControl;
 
 	private SettingsController settingsController;
+	private BodyEditor bodyEditor;
 
 	private int focus = 0;
 	private int index = -1;
@@ -21,6 +22,7 @@ public class CameraController : MonoBehaviour{
 	private void Start(){
 		transform.position = -Vector3.forward;
 		settingsController = bodyController.settingsController;
+		bodyEditor = bodyController.bodyEditor;
 	}
 	
 	private void Update(){
@@ -47,20 +49,20 @@ public class CameraController : MonoBehaviour{
 		position = bodyPosition + offset;
 	}
 
-
-	private bool canCalculateOffset;
+	private bool canCalculateOffset = false;
 
 	private void CalculateOffset(){
 
-
 		if (Input.GetKeyDown(KeyCode.Mouse0)){
+
 			float percentageY = Input.mousePosition.y / Screen.height;
 			float percentageX = Input.mousePosition.x / Screen.width;
 
-			bool condition1 = !touchControl.addOnTouch.isOn || (percentageY > 0.85 && percentageX > 0.75);
+			bool condition1 = !touchControl.addOnTouch.isOn && !(bodyEditor.gameObject.activeSelf && percentageX > 0.7);
 			bool condition2 = !settingsController.gameObject.activeSelf;
+			bool condition3 = touchControl.addOnTouch.isOn && bodyEditor.gameObject.activeSelf && percentageX < 0.7;
 
-			canCalculateOffset = (condition1 && condition2) || percentageY < 0.2;
+			canCalculateOffset = ((condition1 && condition2) || percentageY < 0.2 || condition3) && Index != -1;
 		}
 
 		if (Input.GetKeyUp(KeyCode.Mouse0))
@@ -145,6 +147,11 @@ public class CameraController : MonoBehaviour{
 		set{
 			index = value;
 			Center();
+			if (index == -1){
+				offset = Vector2Double.zero;
+				bodyPosition = Vector2Double.zero;
+				position = Vector2Double.zero;
+			}
 		}
 	}
 
@@ -157,6 +164,16 @@ public class CameraController : MonoBehaviour{
 			focusModeText.SetText($"F : {FocusModeToString()}");
 			Center();
 		}
+	}
+
+	public void BodyEliminated(int index){
+
+		if (bodyController.bodies.Count == 1)
+			Index = -1;
+		else if (Index == index)
+			Index = 0;
+		else if (Index > index)
+			Index --;
 	}
 		
 }

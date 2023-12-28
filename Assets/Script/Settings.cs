@@ -4,7 +4,7 @@ using UnityEngine;
 public class Settings : MonoBehaviour{
 
 	// Global Settings
-	public double secondsPerFrame;
+	public double secondsPerFrame, lineDuration, lineThickness;
 	public int gravityMode, borderMode;
 	public double gravityAcceleration, gravityAngle;
 	public double attractionGravityConstant;

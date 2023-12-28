@@ -21,7 +21,7 @@ public class BodyEditor : MonoBehaviour{
 	[SerializeField] private Image backgroundImage;
 	[SerializeField] private Button showEditorButton;
 
-	private Body bodyToEdit;
+	public Body bodyToEdit;
 
 	private void OnEnable(){
 		bodyController.touchControl.addOnTouch.gameObject.SetActive(false);

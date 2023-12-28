@@ -6,7 +6,7 @@ using System;
 public class SettingsController : MonoBehaviour{
 
 	// Settings Input
-	public TMP_InputField secondsPerFrame;
+	public TMP_InputField secondsPerFrame, lineDuration, lineThickness;
 	public TMP_Dropdown gravityMode, parent, borderMode;
 	public TMP_InputField gravityAcceleration, gravityAngle;
 	public TMP_InputField attractionGravityConstant;
@@ -25,17 +25,19 @@ public class SettingsController : MonoBehaviour{
 
 	// Other Stuff
 	[SerializeField] private TouchControl addOnTouch;
-	[SerializeField] private BodyController bodyController;
 	[SerializeField] private TMP_Text errorMessage;
 	[SerializeField] private Toggle toggleEditor;
 
 	public Settings settings;
+	public BodyController bodyController;
 	
-	public Body bodyToCreate, lineToCreate;
+	public Body bodyToCreate;
 	private int n = 1;
+
+	[SerializeField] private Canvas canvas;
 	
 	private void Start(){
-		errorMessage.SetText("");	
+		errorMessage.SetText("");
 	}
 
 	private void OnEnable(){
@@ -126,6 +128,9 @@ public class SettingsController : MonoBehaviour{
 		ExpressionEvaluator.Evaluate(borderX.text, out settings.border.x);
 		ExpressionEvaluator.Evaluate(borderY.text, out settings.border.y);
 
+		ExpressionEvaluator.Evaluate(lineDuration.text, out settings.lineDuration);
+		ExpressionEvaluator.Evaluate(lineThickness.text, out settings.lineThickness);
+
 		ExpressionEvaluator.Evaluate(touchMultiplier.text, out settings.touchMultiplier);
 
 		settings.calculateCollisions = calculateCollisions.isOn;
@@ -139,10 +144,22 @@ public class SettingsController : MonoBehaviour{
 
 		settings.gravityDirection = Vector2Double.ToVector2Double(settings.gravityAngle * Math.PI/180);
 		settings.gravity = settings.gravityDirection * settings.gravityAcceleration;
-		
+
+		DrawBorder();
 
 		foreach (Body body in bodyController.bodies)
 			bodyController.CompileFunctions(body);
+	}
+
+	private void DrawBorder(){
+
+		bodyController.lineController.DeleteAllLines("Border");
+
+		if (borderMode.value == BorderMode.Rectangle)
+			bodyController.lineController.DrawRectangle(settings.border);
+			
+		else if (borderMode.value == BorderMode.Circle)
+			bodyController.lineController.DrawPolygon(settings.border.x, 100);
 	}
 
 	private void ApplyParent(bool addedOnTouch){
@@ -152,6 +169,7 @@ public class SettingsController : MonoBehaviour{
 
 		Vector2Double parentPosition = Vector2Double.zero;
 		Vector2Double parentVelocity = Vector2Double.zero;
+
 		double parentMass = 0;
 		double parentRadius = 0;
 
@@ -228,6 +246,11 @@ public class SettingsController : MonoBehaviour{
 			return;
 		}
 
+		if (settings.border.x <= 0 || settings.border.y <= 0){
+			errorMessage.SetText("The border/radius cannot be negative or 0.");
+			return;
+		}
+
 		if (borderMode.value == BorderMode.Rectangle){
 		
 			if (bodyToCreate.position.y - bodyToCreate.radius < -settings.border.y 	||
@@ -236,19 +259,26 @@ public class SettingsController : MonoBehaviour{
 				bodyToCreate.position.x + bodyToCreate.radius > settings.border.x){
 
 				errorMessage.SetText("The body cannot be outside the border.");
+				return;
 			}
 
-			if (bodyToCreate.radius >= settings.border.x || bodyToCreate.radius >= settings.border.y)
+			if (bodyToCreate.radius >= settings.border.x || bodyToCreate.radius >= settings.border.y){
 				errorMessage.SetText("The body cannot fit in the border.");
+				return;
+			}
 		}
 
 		else if (borderMode.value == BorderMode.Circle){
 
-			if (bodyToCreate.position.magnitude + bodyToCreate.radius > settings.border.x)
+			if (bodyToCreate.position.magnitude + bodyToCreate.radius > settings.border.x){
 				errorMessage.SetText("The body cannot be outside the border.");
+				return;
+			}
 
-			if (bodyToCreate.radius >= settings.border.x)
+			if (bodyToCreate.radius >= settings.border.x){
 				errorMessage.SetText("The body cannot fit in the border.");
+				return;
+			}
 		}
 
 		foreach (Body body in bodyController.bodies){

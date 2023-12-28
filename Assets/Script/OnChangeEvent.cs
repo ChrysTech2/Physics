@@ -6,7 +6,6 @@ public class OnChangeEvent : MonoBehaviour{
 	[SerializeField] private SettingsController settings;
 	[SerializeField] private Image colorPreview;
 
-
 	public void OnColorChange(){
 		colorPreview.color = new Color(settings.r.value, settings.g.value, settings.b.value, settings.a.value);
 	}
@@ -63,5 +62,15 @@ public class OnChangeEvent : MonoBehaviour{
 			Utils.SetTextChild(settings.velocityX, "Velocity X");
 			Utils.SetTextChild(settings.velocityY, "Velocity Y");
 		}
+	}
+
+	public void OnGeneralSettingsChange(){
+
+		if (settings.lineDuration.text == "0")
+			settings.bodyController.lineController.DeleteAllLines("Line");
+
+		settings.settings.lineDuration = 0;
+		
+
 	}
 }

@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using TMPro;
-using UnityEditor;
 
 public class BodyController : MonoBehaviour{
 
@@ -12,11 +11,11 @@ public class BodyController : MonoBehaviour{
 
 	public CameraController cameraController;
 	public SettingsController settingsController;
+	public WorldLineLineController lineController;
 	public Settings settings;
 	public BodyEditor bodyEditor;
 
 	public List<Body> bodies = new List<Body>();
-	public List<Line> lines = new List<Line>();
 	public int speedMultiplier = 0;
 	private float t = 0, fps = 60;
 
@@ -122,6 +121,9 @@ public class BodyController : MonoBehaviour{
 
 		for (int i = 0; i < speedMultiplier; i++)
 			CalculateOneFrame();
+
+		foreach(Body body in bodies)
+			body.DrawLine();
 	}
 
 	private void CalculateOneFrame(){
@@ -241,10 +243,8 @@ public class BodyController : MonoBehaviour{
 			}	
 		}
 
-		if (settings.attractionGravityConstant != 0){
+		if (settings.attractionGravityConstant != 0)
 			body.ForceEachBody += (body2) => body.AttractionGravity(body2);
-			body.ForceOnce += () => body.bodiesAlreadyGravited.Clear();
-		}
 
 		if (settings.calculateCollisions){
 

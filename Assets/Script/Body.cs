@@ -14,7 +14,6 @@ public class Body : MonoBehaviour{
 	public Action ForceOnce, ForceAfterPosition;
 	public Action<Body> ForceEachBody;
 	public List<Body> bodiesAlreadyCollided = new List<Body>();
-	public List<Body> bodiesAlreadyGravited = new List<Body>();
 
 	// Other Stuff
 	private BodyController bodyController;
@@ -50,10 +49,10 @@ public class Body : MonoBehaviour{
 	public static int n = 0;
 
 	// Movement
-	private Vector2Double acceleration = Vector2Double.zero;
+	private Vector2Double acceleration;
 	public void UpdateVelocity(){
 
-		
+		acceleration = Vector2Double.zero;
 
 		for (int i = 0; i < bodyController.bodies.Count; i++){
 
@@ -66,17 +65,23 @@ public class Body : MonoBehaviour{
 		ForceOnce();
 
 		velocity += acceleration * settings.secondsPerFrame;
-
-		acceleration = Vector2Double.zero;
 	}
+
+	private Vector2Double lastPosition = Vector2Double.zero;
 
 	public void UpdatePosition(){
 		position += velocity * settings.secondsPerFrame;
 		ForceAfterPosition();
 	}
 
+	public void DrawLine(){
+		bodyController.lineController.CreateLine(lastPosition, position, color, true, settings.lineDuration, "Line", settings.lineThickness);	
+	}
+
 	public void ApplyPosition(){
+		
 		transform.localPosition = (position - bodyController.cameraController.position).ToVector2();
+		lastPosition = position;
 	}
 
 	// Gravity Forces
@@ -110,13 +115,7 @@ public class Body : MonoBehaviour{
 	}
 
 	public void AttractionGravity(Body body){
-		if (bodiesAlreadyGravited.Contains(body))
-			return;
-
-		Vector2Double force = Direction(body) * settings.AttractionGravity(this, body);
-		acceleration += force;
-		body.acceleration -= force;
-		body.bodiesAlreadyGravited.Add(this);
+		acceleration += Direction(body) * settings.AttractionGravity(this, body);
 	}
 
 	// Collisions

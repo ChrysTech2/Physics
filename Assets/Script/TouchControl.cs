@@ -23,6 +23,7 @@ public class TouchControl : MonoBehaviour{
 	Vector2Double velocity = Vector2Double.zero;
 
 	private void Update(){
+		
 
 		if (Input.GetKeyDown(KeyCode.Mouse0)){
 
@@ -42,6 +43,8 @@ public class TouchControl : MonoBehaviour{
 
 		if (Input.GetKeyUp(KeyCode.Mouse0) && bodyInstantiated){
 
+			bodyController.lineController.DeleteAllLines("TouchLine");
+
 			AddBody();
 
 			bodyInfo.SetText("");
@@ -49,17 +52,20 @@ public class TouchControl : MonoBehaviour{
 			canAddBody = false;
 			bodyInstantiated = false;
 		}
+		
 
 		if (Input.GetKey(KeyCode.Mouse0) && bodyInstantiated){
+
+			bodyController.lineController.DeleteAllLines("TouchLine");
 
 			Vector2Double worldPosition2 = ToWorldPosition(cameraPosition);
 
 			Vector2Double distance = worldPosition2 - worldPosition1;
 
-			distance *= bodyController.scale;
+			bodyController.lineController.CreateLine(worldPosition1, worldPosition2, Color.red, true, 1, "TouchLine");
 
 			velocity.x = (startVelocity.x + distance.x) * bodyController.settings.touchMultiplier;
-			velocity.y = (startVelocity.y + distance.y) * bodyController.settings.touchMultiplier; 
+			velocity.y = (startVelocity.y + distance.y) * bodyController.settings.touchMultiplier;
 
 			bodyInfo.SetText($"velocity : {(int)velocity.magnitude} m/s , angle : {(int)(Math.Atan2(velocity.y, velocity.x) * 180/Math.PI)} °");
 		}

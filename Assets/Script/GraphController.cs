@@ -3,68 +3,210 @@ using TMPro;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using System.Linq;
+using System;
+using System.Security.Cryptography;
 
 public class GraphController : MonoBehaviour{
 
 	[SerializeField] private BodyController bodyController;
 	[SerializeField] private GameObject graphArea;
-	[SerializeField] private GameObject lineToCreate;
-	[SerializeField] private Toggle position, velocity, acceleration;
+	[SerializeField] private GameObject pointToCreate;
+	[SerializeField] private TMP_Text lowerBound, upperBound;
 
-	private List<RectTransform> lines = new List<RectTransform>();
-	private Vector2 lastPosition, lastVelocity, lastAcceleration;
+	[SerializeField] private Toggle position, velocity, acceleration;
+	[SerializeField] private Toggle positionAngle, velocityAngle, accelerationAngle;
+	[SerializeField] private Toggle positionX, positionY, velocityX, velocityY, accelerationX, accelerationY;
+	[SerializeField] private Toggle totalMomentum, totalKineticEnergy;
+
+	[SerializeField] private int offsetX, maxX, maxY;
+
+	private List<RectTransform> points = new List<RectTransform>();
 	private Body bodyToGraph;
 
-
-	private void DrawGraphLine(Vector2 start, Vector2 end, Color color){
-
-		GameObject line = Instantiate(lineToCreate);
-
-		line.transform.SetParent(graphArea.transform, true);
-
-		line.GetComponent<Image>().color = color;
-
-		Vector2 difference = end - start;
-
-		float length = difference.magnitude;
-		float angle = Mathf.Atan2(difference.y, difference.x) * 180/Mathf.PI;
-
-		RectTransform rectTransform = line.GetComponent<RectTransform>();
-
-		rectTransform.sizeDelta = new Vector2(length, 5);
-		rectTransform.eulerAngles = new Vector3(0, 0, angle);
-
-		rectTransform.localPosition = start;
-		rectTransform.localScale = Vector2.one * 1f;
-
-		lines.Add(rectTransform);
+	private void Start(){
+		x = offsetX;
 	}
 
-	private float x = 0;
+	private void DrawPoint(Vector2 position, Color color){
+
+		GameObject point = Instantiate(pointToCreate);
+
+		point.transform.SetParent(graphArea.transform, true);
+
+		point.GetComponent<Image>().color = color;
+
+		RectTransform rectTransform = point.GetComponent<RectTransform>();
+
+		rectTransform.sizeDelta = new Vector2(10, 10);
+
+		rectTransform.localPosition = position;
+		rectTransform.localScale = Vector2.one * 1f;
+
+		points.Add(rectTransform);
+	}
+
+	public void DestroyAllPoints(){
+
+		while (points.Count > 0)
+			DestroyPoint(0);
+		
+		x = offsetX;
+	}
+
+	private void ScaleAllPoints(float scale){
+
+		for (int i = 0; i < points.Count; i++)
+			ScalePoint(points[i], scale);
+	}
+
+	private void TranslateAllPoints(){
+
+		for (int i = 0; i < points.Count; i++){
+
+			points[i].localPosition = points[i].localPosition - 1 * Vector3.right;
+		}
+
+		DestroyPoint(0);
+		x = maxX;
+	}
+
+	private int x;
+	private float max = 1;
+
+	private void PlotPoint(float y, Color color){
+
+		float oldMax = max;
+
+		Vector2 position = new Vector2(x, y * maxY/oldMax);
+		DrawPoint(position, color);
+
+		if (points.Count > 0)
+			max = points.Max(point => Mathf.Abs(point.localPosition.y) * oldMax/maxY);
+
+		if (max == 0)
+			max = 1;
+
+		if (oldMax != max)
+			ScaleAllPoints(oldMax / max);
+
+		upperBound.SetText(max.ToString());
+		lowerBound.SetText((-max).ToString());
+
+
+		x++;
+
+		if (x > maxX)
+			TranslateAllPoints();	
+	}
+
+	private Action drawGraphs = new Action(() => {});
 
 	private void FixedUpdate(){
 
 		bodyToGraph = bodyController.bodyEditor.bodyToEdit;
 
-		float max = lines.Max(gameObject => Mathf.Abs(gameObject.GetComponent<RectTransform>().localPosition.y));
+		drawGraphs();
+		
+	}
 
-		x++;
+	private void DestroyPoint(int index){
 
-		if (x > 300){
+		GameObject point = points[index].gameObject;
+		points.RemoveAt(index);
+		DestroyImmediate(point.gameObject);
+	}
 
-			GameObject lineToDestroy = lines[0].gameObject;
-			lines.RemoveAt(0);
-			DestroyImmediate(lineToDestroy);
-			x = 0;
+	private void ScalePoint(RectTransform point, float scale){
+
+		Vector2 position = point.localPosition;
+		point.localPosition = new Vector2(position.x, position.y * scale);
+	}
+
+	private float TotalMomentum(){
+
+		float totalMomentum = 0;
+
+		for (int i = 0; i < bodyController.bodies.Count; i++){
+
+			Body body = bodyController.bodies[i];
+
+			totalMomentum += (float)(body.velocity.magnitude * body.mass);
 		}
 
-
-		PlotPosition(x);
-
+		return totalMomentum;
 	}
 
-	private void PlotPosition(float x){
-		DrawGraphLine(lastPosition, new Vector2(x,(float)bodyToGraph.position.x), Color.red);
+	private float TotalKineticEnergy(){
+
+		float totalKineticEnergy = 0;
+
+		for (int i = 0; i < bodyController.bodies.Count; i++){
+
+			Body body = bodyController.bodies[i];
+
+			totalKineticEnergy += (float)(Math.Pow(body.velocity.magnitude, 2) * body.mass * 0.5);
+		}
+
+		return totalKineticEnergy;
 	}
 
+
+	public void OnTogglesChange(){
+
+		drawGraphs = new Action(() => {});
+
+		/// Magnitudes
+		if (position.isOn)
+			drawGraphs += () => PlotPoint((float)bodyToGraph.position.magnitude, Utils.ColorOfCheckmark(position));
+
+		if (velocity.isOn)
+			drawGraphs += () => PlotPoint((float)bodyToGraph.velocity.magnitude, Utils.ColorOfCheckmark(velocity));
+
+		if (acceleration.isOn)
+			drawGraphs += () => PlotPoint((float)bodyToGraph.acceleration.magnitude, Utils.ColorOfCheckmark(acceleration));
+
+		// Angles
+		if (positionAngle.isOn)
+			drawGraphs += () => PlotPoint((float)bodyToGraph.position.ToDegrees(), Utils.ColorOfCheckmark(positionAngle));
+
+		if (velocityAngle.isOn)
+			drawGraphs += () => PlotPoint((float)bodyToGraph.velocity.ToDegrees(), Utils.ColorOfCheckmark(velocityAngle));
+		
+		if (accelerationAngle.isOn)
+			drawGraphs += () => PlotPoint((float)bodyToGraph.acceleration.ToDegrees(), Utils.ColorOfCheckmark(accelerationAngle));
+
+		// 2 Axis Position
+		if (positionX.isOn)
+			drawGraphs += () => PlotPoint((float)bodyToGraph.position.x, Utils.ColorOfCheckmark(positionX));
+
+		if (positionY.isOn)
+			drawGraphs += () => PlotPoint((float)bodyToGraph.position.y, Utils.ColorOfCheckmark(positionY));
+
+		// 2 Axis Velocity
+		if (velocityX.isOn)
+			drawGraphs += () => PlotPoint((float)bodyToGraph.velocity.x, Utils.ColorOfCheckmark(velocityX));
+
+		if (velocityY.isOn)
+			drawGraphs += () => PlotPoint((float)bodyToGraph.velocity.y, Utils.ColorOfCheckmark(velocityY));
+
+		// 2 Axis Acceleration
+		if (accelerationX.isOn)
+			drawGraphs += () => PlotPoint((float)bodyToGraph.acceleration.x, Utils.ColorOfCheckmark(accelerationX));
+
+		if (accelerationY.isOn)
+			drawGraphs += () => PlotPoint((float)bodyToGraph.acceleration.y, Utils.ColorOfCheckmark(accelerationY));
+
+		// Other
+		if (totalMomentum.isOn)
+			drawGraphs += () => PlotPoint((float)TotalMomentum(), Utils.ColorOfCheckmark(totalMomentum));
+
+		if (totalKineticEnergy.isOn)
+			drawGraphs += () => PlotPoint((float)TotalKineticEnergy(), Utils.ColorOfCheckmark(totalKineticEnergy));
+
+		DestroyAllPoints();
+	}
+
+	private void OnEnable(){
+		OnTogglesChange();
+	}
 }

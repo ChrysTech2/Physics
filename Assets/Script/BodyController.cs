@@ -26,17 +26,14 @@ public class BodyController : MonoBehaviour{
 
 	private void Update(){
 
+		CheckInputs();
+		DebugInformation();
+
 		foreach (Body body in bodies)
 			body.ApplyPosition();
 
 		if (settings.showCenterOfGravity)
 			ShowCenterOfGravity();
-
-		if (settingsController.gameObject.activeSelf)
-			return;
-		
-		CheckInputs();
-		DebugInformation();
 	}
 
 	private void ShowCenterOfGravity(){

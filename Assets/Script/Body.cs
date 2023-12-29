@@ -49,7 +49,7 @@ public class Body : MonoBehaviour{
 	public static int n = 0;
 
 	// Movement
-	private Vector2Double acceleration;
+	public Vector2Double acceleration;
 	public void UpdateVelocity(){
 
 		acceleration = Vector2Double.zero;

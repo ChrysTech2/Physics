@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using Unity.VisualScripting;
 
 public static class GravityMode{
 	public const int Disabled = 0;
@@ -33,6 +34,25 @@ public static class Times{
 }
 
 public class Utils : MonoBehaviour{
+
+	// Used for Camera / Zoom / AddOnTouch Controls
+	public static bool mouseOverEditor = false;
+	public static bool mouseOverControls = false;
+	public static bool mouseOverAddOnTouchButton = false;
+
+	public static void SetMouseOverEditor(bool value){
+		mouseOverEditor = value;
+	}
+
+	public static void SetMouseOverControls(bool value){
+		mouseOverControls = value;
+	}
+
+	public static void SetMouseOverAddOnTouchButton(bool value){
+		mouseOverAddOnTouchButton = value;
+	}
+
+	// Other Stuff
 	
 	public static void SetActiveTrue(GameObject obj){
 		obj.SetActive(true);
@@ -121,4 +141,7 @@ public class Utils : MonoBehaviour{
 		return new Vector2Double(vector.x, vector.y);
 	}
 
+	public static Color ColorOfCheckmark(Toggle toggle){
+		return toggle.gameObject.transform.GetChild(1).GetChild(0).GetComponent<Image>().color;
+	}
 }

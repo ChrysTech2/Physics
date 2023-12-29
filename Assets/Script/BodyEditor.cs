@@ -6,31 +6,32 @@ public class BodyEditor : MonoBehaviour{
 
 	[SerializeField] private BodyController bodyController;
 
-	public TMP_Dropdown bodiesDropdown;
-
 	// Input
 	[SerializeField] private TMP_InputField x, y;
 	[SerializeField] private TMP_InputField velocityX, velocityY;
 	[SerializeField] private TMP_InputField mass, radius;
+	[SerializeField] private Toggle showColor, showAngle;
 
 	// Output
 	[SerializeField] private TMP_InputField outputX, outputY;
 	[SerializeField] private TMP_InputField outputVelocityX, outputVelocityY;
 	[SerializeField] private TMP_InputField outputMass, outputRadius;
-	[SerializeField] private Toggle showColor, showAngle;
 	[SerializeField] private Image backgroundImage;
 	[SerializeField] private Button showEditorButton;
 
+	public TMP_Dropdown bodiesDropdown;
 	public Body bodyToEdit;
 
 	private void OnEnable(){
 		bodyController.touchControl.addOnTouch.gameObject.SetActive(false);
 		showEditorButton.transform.GetChild(0).GetComponent<TMP_Text>().text = ">";
+		Utils.SetMouseOverAddOnTouchButton(false);
 	}
 
 	private void OnDisable(){
 		bodyController.touchControl.addOnTouch.gameObject.SetActive(true);
 		showEditorButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "<";
+		Utils.SetMouseOverEditor(false);
 	}
 
 	public void ToggleMenu(){
@@ -51,7 +52,7 @@ public class BodyEditor : MonoBehaviour{
 		OnShowColorChange();
 	}
 
-	private void Update(){
+	private void FixedUpdate(){
 
 		if (!showAngle.isOn){
 		
@@ -118,6 +119,8 @@ public class BodyEditor : MonoBehaviour{
 		
 		bodyController.cameraController.Focus = FocusMode.Enabled;
 		bodyController.cameraController.Index = bodiesDropdown.value;
+
+		bodyController.scale = (float)(1/bodyController.bodies[bodiesDropdown.value].radius);
 	}
 
 	public void DeleteBody(){

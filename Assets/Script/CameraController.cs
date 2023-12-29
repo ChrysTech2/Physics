@@ -1,6 +1,6 @@
+using System;
 using TMPro;
 using UnityEngine;
-
 public class CameraController : MonoBehaviour{
 
 	[SerializeField] private BodyController bodyController;
@@ -55,14 +55,16 @@ public class CameraController : MonoBehaviour{
 
 		if (Input.GetKeyDown(KeyCode.Mouse0)){
 
-			float percentageY = Input.mousePosition.y / Screen.height;
-			float percentageX = Input.mousePosition.x / Screen.width;
+			bool condition1 = !settingsController.gameObject.activeSelf;
+			bool condition2 = bodyEditor.gameObject.activeSelf && !Utils.mouseOverEditor;
+			bool condition3 = !bodyEditor.gameObject.activeSelf && !touchControl.addOnTouch.isOn;
+			bool condition4 = Utils.mouseOverControls || Utils.mouseOverAddOnTouchButton;
+			bool condition5 = Input.touchCount < 2;
 
-			bool condition1 = !touchControl.addOnTouch.isOn && !(bodyEditor.gameObject.activeSelf && percentageX > 0.7);
-			bool condition2 = !settingsController.gameObject.activeSelf;
-			bool condition3 = touchControl.addOnTouch.isOn && bodyEditor.gameObject.activeSelf && percentageX < 0.7;
+			canCalculateOffset = Index != -1 && condition5 && ((condition1 && (condition2 || condition3)) || condition4);
 
-			canCalculateOffset = ((condition1 && condition2) || percentageY < 0.2 || condition3) && Index != -1;
+			if (canCalculateOffset)
+				CheckBodiesAtMousePosition();
 		}
 
 		if (Input.GetKeyUp(KeyCode.Mouse0))
@@ -71,17 +73,17 @@ public class CameraController : MonoBehaviour{
 		if (!canCalculateOffset)
 			return;
 
-		float x = -Input.GetAxis("Mouse X");
-		float y = -Input.GetAxis("Mouse Y");
+		float mouseX = -Input.GetAxis("Mouse X");
+		float mouseY = -Input.GetAxis("Mouse Y");
 
-		offset += new Vector2Double(x, y) / (sensibiliy * bodyController.scale);
+		offset += new Vector2Double(mouseX, mouseY) / (sensibiliy * bodyController.scale);
 	}
 
 	private void Center(){
 
-		if (Focus != FocusMode.Disabled)
+		if (Focus != FocusMode.Disabled){
 			offset = Vector2Double.zero;
-
+		}
 	}
 
 	public void NextBody(){
@@ -175,5 +177,17 @@ public class CameraController : MonoBehaviour{
 		else if (Index > index)
 			Index --;
 	}
-		
+
+	private void CheckBodiesAtMousePosition(){
+
+		foreach (Body body in bodyController.bodies){
+
+			Vector2Double mousePosition = touchControl.mouseWorldPosition;
+
+			if (Vector2Double.Distance(mousePosition, body.position) - body.radius < 0){
+				Index = body.Index();
+				return;
+			}
+		}
+	}	
 }

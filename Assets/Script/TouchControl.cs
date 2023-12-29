@@ -3,7 +3,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 
-public class TouchControl : MonoBehaviour{
+public class TouchControl : MonoBehaviour
+{
 
 	[SerializeField] private BodyController bodyController;
 	[SerializeField] private TMP_Text bodyInfo;
@@ -23,19 +24,19 @@ public class TouchControl : MonoBehaviour{
 	Vector2Double velocity = Vector2Double.zero;
 
 	private void Update(){
-		
+
+		/*if (Input.touchCount > 1)
+			CheckForDoubleTouch();*/
 
 		if (Input.GetKeyDown(KeyCode.Mouse0)){
 
-			float percentageY = Input.mousePosition.y / Screen.height;
-			float percentageX = Input.mousePosition.x / Screen.width;
+			bool condition1 = !bodyEditor.gameObject.activeSelf && !settingsController.gameObject.activeSelf;
+			bool condition2 = !Utils.mouseOverControls && !Utils.mouseOverAddOnTouchButton && addOnTouch.isOn;
+			bool condition3 = Input.touchCount < 2;
 
-			bool condition1 = addOnTouch.isOn && !settingsController.gameObject.activeSelf && !bodyEditor.gameObject.activeSelf;
-			bool condition2 = percentageY > 0.2 && !(percentageY > 0.75 && percentageX > 0.8);
+			canAddBody = condition1 && condition2 && condition3;
 
-			canAddBody = condition1 && condition2;
-
-			worldPosition1 = ToWorldPosition(cameraPosition);
+			worldPosition1 = mouseWorldPosition;
 
 			if (canAddBody)
 				InstantiateBody();
@@ -52,13 +53,12 @@ public class TouchControl : MonoBehaviour{
 			canAddBody = false;
 			bodyInstantiated = false;
 		}
-		
 
 		if (Input.GetKey(KeyCode.Mouse0) && bodyInstantiated){
 
 			bodyController.lineController.DeleteAllLines("TouchLine");
 
-			Vector2Double worldPosition2 = ToWorldPosition(cameraPosition);
+			Vector2Double worldPosition2 = mouseWorldPosition;
 
 			Vector2Double distance = worldPosition2 - worldPosition1;
 
@@ -67,20 +67,20 @@ public class TouchControl : MonoBehaviour{
 			velocity.x = (startVelocity.x + distance.x) * bodyController.settings.touchMultiplier;
 			velocity.y = (startVelocity.y + distance.y) * bodyController.settings.touchMultiplier;
 
-			bodyInfo.SetText($"velocity : {(int)velocity.magnitude} m/s , angle : {(int)(Math.Atan2(velocity.y, velocity.x) * 180/Math.PI)} °");
+			bodyInfo.SetText($"velocity : {(int)velocity.magnitude} m/s , angle : {(int)(Math.Atan2(velocity.y, velocity.x) * 180 / Math.PI)} °");
 		}
 	}
 
 	private void InstantiateBody(){
 
 		bodyInstantiated = true;
-		
+
 		ExpressionEvaluator.Evaluate(settingsController.velocityX.text, out startVelocity.x);
 		ExpressionEvaluator.Evaluate(settingsController.velocityY.text, out startVelocity.y);
 
 		if (!settingsController.randomMode.isOn)
 			return;
-			
+
 		System.Random random = new System.Random();
 
 		int maxValueVX = (int)Math.Abs(startVelocity.x);
@@ -102,7 +102,7 @@ public class TouchControl : MonoBehaviour{
 		settingsController.AddBody(true);
 	}
 
-	private Vector2 cameraPosition{
+	private Vector2 mousePosition{
 		get{
 			return Camera.main.ScreenToWorldPoint(Input.mousePosition);
 		}
@@ -110,5 +110,33 @@ public class TouchControl : MonoBehaviour{
 
 	private Vector2Double ToWorldPosition(Vector2 mousePosition){
 		return Utils.ToVector2Double(mousePosition) / bodyController.scale + bodyController.cameraController.position;
+	}
+
+	public Vector2Double mouseWorldPosition{
+		get{
+			return ToWorldPosition(mousePosition);
+		}
+	}
+
+	private void CheckForDoubleTouch(){
+
+		Touch finger1 = Input.GetTouch(0);
+		Touch finger2 = Input.GetTouch(1);
+
+		Vector2 old1 = finger1.position - finger1.deltaPosition; // delta = new - old // old = new - delta // old = new - (new - old)
+		Vector2 old2 = finger2.position - finger2.deltaPosition; // old = new -new + old // old = old
+
+		Vector2 new1 = finger1.position;
+		Vector2 new2 = finger2.position;
+
+		float deltaOld = (old2 - old1).magnitude;
+		float deltaNew = (new2 - new1).magnitude;
+
+		float delta = deltaNew - deltaOld;
+
+		Debug.Log(delta/300);
+
+		bodyController.scale *= Mathf.Pow(1.05f, Mathf.Sign(delta));
+
 	}
 }

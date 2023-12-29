@@ -43,6 +43,7 @@ public class SettingsController : MonoBehaviour{
 	private void OnEnable(){
 		bodyController.touchControl.addOnTouch.gameObject.SetActive(false);
 		bodyController.informations.gameObject.SetActive(false);
+		Utils.SetMouseOverAddOnTouchButton(false);
 	}
 
 	private void OnDisable(){

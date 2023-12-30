@@ -36,21 +36,7 @@ public static class Times{
 public class Utils : MonoBehaviour{
 
 	// Used for Camera / Zoom / AddOnTouch Controls
-	public static bool mouseOverEditor = false;
-	public static bool mouseOverControls = false;
-	public static bool mouseOverAddOnTouchButton = false;
 
-	public static void SetMouseOverEditor(bool value){
-		mouseOverEditor = value;
-	}
-
-	public static void SetMouseOverControls(bool value){
-		mouseOverControls = value;
-	}
-
-	public static void SetMouseOverAddOnTouchButton(bool value){
-		mouseOverAddOnTouchButton = value;
-	}
 
 	// Other Stuff
 	

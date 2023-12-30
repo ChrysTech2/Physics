@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WorldLineLineController : MonoBehaviour{
+public class WorldLineController : MonoBehaviour{
 
     [SerializeField] private GameObject lineToCreate;
     [SerializeField] private BodyController bodyController;
@@ -50,7 +50,6 @@ public class WorldLineLineController : MonoBehaviour{
             Destroy(line.gameObject, (float)deleteAfter);
 
         lines.Add(line);
-
     }
 
     public void DeleteAllLines(){
@@ -64,7 +63,6 @@ public class WorldLineLineController : MonoBehaviour{
         foreach (WorldLine line in lines)
 			if (line.tag == tag)
             	Destroy(line.gameObject);
-		
     }
 
 	public void DrawPolygon(double radius, int nPieces, string tag = "Border"){

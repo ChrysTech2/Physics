@@ -3,8 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 
-public class TouchControl : MonoBehaviour
-{
+public class TouchControl : MonoBehaviour{
 
 	[SerializeField] private BodyController bodyController;
 	[SerializeField] private TMP_Text bodyInfo;
@@ -13,25 +12,27 @@ public class TouchControl : MonoBehaviour
 	private BodyEditor bodyEditor;
 	public Toggle addOnTouch;
 
+	public bool canAddBody = false, bodyInstantiated = false;
+	private Vector2Double worldPosition1 = Vector2Double.zero;
+	private Vector2Double startVelocity = Vector2Double.zero;
+	private Vector2Double velocity = Vector2Double.zero;
+
 	void Start(){
 		settingsController = bodyController.settingsController;
 		bodyEditor = bodyController.bodyEditor;
 	}
 
-	public bool canAddBody = false, bodyInstantiated = false;
-	Vector2Double worldPosition1 = Vector2Double.zero;
-	Vector2Double startVelocity = Vector2Double.zero;
-	Vector2Double velocity = Vector2Double.zero;
-
 	private void Update(){
 
 		/*if (Input.touchCount > 1)
-			CheckForDoubleTouch();*/
+			TouchZoom();*/
+
+		bodyController.cameraController.CalculateOffset();
 
 		if (Input.GetKeyDown(KeyCode.Mouse0)){
 
 			bool condition1 = !bodyEditor.gameObject.activeSelf && !settingsController.gameObject.activeSelf;
-			bool condition2 = !Utils.mouseOverControls && !Utils.mouseOverAddOnTouchButton && addOnTouch.isOn;
+			bool condition2 = !UIHitboxController.MouseOverControls && !UIHitboxController.MouseOverAddOnTouchButton && addOnTouch.isOn;
 			bool condition3 = Input.touchCount < 2;
 
 			canAddBody = condition1 && condition2 && condition3;
@@ -42,7 +43,7 @@ public class TouchControl : MonoBehaviour
 				InstantiateBody();
 		}
 
-		if (Input.GetKeyUp(KeyCode.Mouse0) && bodyInstantiated){
+		if ((Input.GetKeyUp(KeyCode.Mouse0) || Input.touchCount > 1) && bodyInstantiated){
 
 			bodyController.lineController.DeleteAllLines("TouchLine");
 
@@ -118,7 +119,7 @@ public class TouchControl : MonoBehaviour
 		}
 	}
 
-	private void CheckForDoubleTouch(){
+	private void TouchZoom(){
 
 		Touch finger1 = Input.GetTouch(0);
 		Touch finger2 = Input.GetTouch(1);

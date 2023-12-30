@@ -25,13 +25,11 @@ public class BodyEditor : MonoBehaviour{
 	private void OnEnable(){
 		bodyController.touchControl.addOnTouch.gameObject.SetActive(false);
 		showEditorButton.transform.GetChild(0).GetComponent<TMP_Text>().text = ">";
-		Utils.SetMouseOverAddOnTouchButton(false);
 	}
 
 	private void OnDisable(){
 		bodyController.touchControl.addOnTouch.gameObject.SetActive(true);
 		showEditorButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "<";
-		Utils.SetMouseOverEditor(false);
 	}
 
 	public void ToggleMenu(){

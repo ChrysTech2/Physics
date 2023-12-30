@@ -1,4 +1,3 @@
-using System;
 using TMPro;
 using UnityEngine;
 public class CameraController : MonoBehaviour{
@@ -27,8 +26,6 @@ public class CameraController : MonoBehaviour{
 	
 	private void Update(){
 
-		CalculateOffset();
-
 		if (Index == -1)
 			return;
 
@@ -51,14 +48,14 @@ public class CameraController : MonoBehaviour{
 
 	private bool canCalculateOffset = false;
 
-	private void CalculateOffset(){
+	public void CalculateOffset(){
 
 		if (Input.GetKeyDown(KeyCode.Mouse0)){
 
 			bool condition1 = !settingsController.gameObject.activeSelf;
-			bool condition2 = bodyEditor.gameObject.activeSelf && !Utils.mouseOverEditor;
+			bool condition2 = bodyEditor.gameObject.activeSelf && !UIHitboxController.MouseOverBodyEditor;
 			bool condition3 = !bodyEditor.gameObject.activeSelf && !touchControl.addOnTouch.isOn;
-			bool condition4 = Utils.mouseOverControls || Utils.mouseOverAddOnTouchButton;
+			bool condition4 = UIHitboxController.MouseOverControls || UIHitboxController.MouseOverAddOnTouchButton;
 			bool condition5 = Input.touchCount < 2;
 
 			canCalculateOffset = Index != -1 && condition5 && ((condition1 && (condition2 || condition3)) || condition4);

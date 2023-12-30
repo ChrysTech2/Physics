@@ -4987,7 +4987,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1639516269}
   m_Direction: 2
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.609375
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -5261,7 +5261,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -746, y: 80}
+  m_AnchoredPosition: {x: -746, y: 65}
   m_SizeDelta: {x: 200, y: 110}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &125664099
@@ -7721,9 +7721,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 207412015}
-  - component: {fileID: 207412016}
   m_Layer: 5
-  m_Name: Simulation
+  m_Name: Controls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7741,7 +7740,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1781340353}
   - {fileID: 125664098}
   - {fileID: 1904628505}
   - {fileID: 250699896}
@@ -7755,54 +7753,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 538}
-  m_SizeDelta: {x: 1920, y: 1078}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &207412016
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 207412014}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1941686624}
-          m_TargetAssemblyTypeName: Utils, Assembly-CSharp
-          m_MethodName: SetMouseOverControls
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 1
-          m_CallState: 2
-  - eventID: 1
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1941686624}
-          m_TargetAssemblyTypeName: Utils, Assembly-CSharp
-          m_MethodName: SetMouseOverControls
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+  m_AnchoredPosition: {x: -856.00024, y: 12.999878}
+  m_SizeDelta: {x: 1712, y: 130}
+  m_Pivot: {x: 0, y: 0}
 --- !u!1 &210564125
 GameObject:
   m_ObjectHideFlags: 0
@@ -10176,7 +10129,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -322, y: 80}
+  m_AnchoredPosition: {x: -322, y: 65}
   m_SizeDelta: {x: 200, y: 110}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &250699897
@@ -14707,7 +14660,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 746, y: 80}
+  m_AnchoredPosition: {x: 746, y: 65}
   m_SizeDelta: {x: 200, y: 110}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &345822233
@@ -15967,6 +15920,7 @@ GameObject:
   - component: {fileID: 392413926}
   - component: {fileID: 392413928}
   - component: {fileID: 392413927}
+  - component: {fileID: 392413929}
   m_Layer: 5
   m_Name: VariableName
   m_TagString: Untagged
@@ -16091,6 +16045,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 392413925}
   m_CullTransparentMesh: 1
+--- !u!114 &392413929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 392413925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
 --- !u!1 &392762864
 GameObject:
   m_ObjectHideFlags: 0
@@ -20904,6 +20871,7 @@ GameObject:
   - component: {fileID: 529804575}
   - component: {fileID: 529804577}
   - component: {fileID: 529804576}
+  - component: {fileID: 529804578}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -20969,6 +20937,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 529804574}
   m_CullTransparentMesh: 1
+--- !u!114 &529804578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 529804574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!1 &534457187
 GameObject:
   m_ObjectHideFlags: 0
@@ -23102,7 +23087,6 @@ GameObject:
   - component: {fileID: 591400306}
   - component: {fileID: 591400308}
   - component: {fileID: 591400307}
-  - component: {fileID: 591400309}
   m_Layer: 5
   m_Name: BodyEditor
   m_TagString: Untagged
@@ -23138,9 +23122,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -384.61035, y: 618}
+  m_AnchoredPosition: {x: -654.61035, y: 165.99997}
   m_SizeDelta: {x: 540, y: 904}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0, y: 0}
 --- !u!114 &591400307
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23179,51 +23163,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 591400305}
   m_CullTransparentMesh: 1
---- !u!114 &591400309
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 591400305}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1941686624}
-          m_TargetAssemblyTypeName: Utils, Assembly-CSharp
-          m_MethodName: SetMouseOverEditor
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 1
-          m_CallState: 2
-  - eventID: 1
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1941686624}
-          m_TargetAssemblyTypeName: Utils, Assembly-CSharp
-          m_MethodName: SetMouseOverEditor
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!1 &601594313
 GameObject:
   m_ObjectHideFlags: 0
@@ -27762,7 +27701,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 102, y: 80}
+  m_AnchoredPosition: {x: 102, y: 65}
   m_SizeDelta: {x: 200, y: 110}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &686970806
@@ -36982,6 +36921,7 @@ GameObject:
   - component: {fileID: 918577821}
   - component: {fileID: 918577820}
   - component: {fileID: 918577824}
+  - component: {fileID: 918577825}
   m_Layer: 5
   m_Name: UserInterface
   m_TagString: Untagged
@@ -37093,6 +37033,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvasScaler: {fileID: 918577821}
   ratio: 1.77
+--- !u!114 &918577825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 918577819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77b3b7727bbe23e4ca2e53f9d6ae33b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bodyEditorHitboxToAssign: {fileID: 591400306}
+  controlsHitboxToAssign: {fileID: 207412015}
+  addOnTouchHitboxToAssign: {fileID: 1899591023}
+  toggleEditorHitboxToAssign: {fileID: 2074579984}
+  canvasToAssign: {fileID: 918577822}
 --- !u!1 &922983948
 GameObject:
   m_ObjectHideFlags: 0
@@ -40978,6 +40935,7 @@ GameObject:
   - component: {fileID: 1044937009}
   - component: {fileID: 1044937008}
   - component: {fileID: 1044937007}
+  - component: {fileID: 1044937010}
   m_Layer: 5
   m_Name: Dropdown
   m_TagString: Untagged
@@ -41123,6 +41081,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1044937005}
   m_CullTransparentMesh: 1
+--- !u!114 &1044937010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1044937005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!1 &1046708840
 GameObject:
   m_ObjectHideFlags: 0
@@ -55346,7 +55321,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 323, y: 80}
+  m_AnchoredPosition: {x: 323, y: 65}
   m_SizeDelta: {x: 200, y: 110}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1524302665
@@ -63773,7 +63748,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 526, y: 80}
+  m_AnchoredPosition: {x: 526, y: 65}
   m_SizeDelta: {x: 200, y: 110}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1778799353
@@ -63881,82 +63856,6 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1778799351}
-  m_CullTransparentMesh: 1
---- !u!1 &1781340352
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1781340353}
-  - component: {fileID: 1781340355}
-  - component: {fileID: 1781340354}
-  m_Layer: 5
-  m_Name: Image
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1781340353
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1781340352}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 207412015}
-  m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -459}
-  m_SizeDelta: {x: 1692, y: 130}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1781340354
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1781340352}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1781340355
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1781340352}
   m_CullTransparentMesh: 1
 --- !u!1 &1786139798
 GameObject:
@@ -67175,7 +67074,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1899591023}
   - component: {fileID: 1899591024}
-  - component: {fileID: 1899591025}
   m_Layer: 5
   m_Name: AddOnTouch
   m_TagString: Untagged
@@ -67203,9 +67101,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -180.42584, y: -60}
+  m_AnchoredPosition: {x: -350.42578, y: -109.99997}
   m_SizeDelta: {x: 340, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0, y: 0}
 --- !u!114 &1899591024
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67278,51 +67176,6 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   m_IsOn: 0
---- !u!114 &1899591025
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1899591022}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1941686624}
-          m_TargetAssemblyTypeName: Utils, Assembly-CSharp
-          m_MethodName: SetMouseOverAddOnTouchButton
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 1
-          m_CallState: 2
-  - eventID: 1
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1941686624}
-          m_TargetAssemblyTypeName: Utils, Assembly-CSharp
-          m_MethodName: SetMouseOverAddOnTouchButton
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!1 &1900405398
 GameObject:
   m_ObjectHideFlags: 0
@@ -67495,7 +67348,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -526, y: 80}
+  m_AnchoredPosition: {x: -526, y: 65}
   m_SizeDelta: {x: 200, y: 110}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1904628506
@@ -68865,7 +68718,6 @@ GameObject:
   - component: {fileID: 1941686625}
   - component: {fileID: 1941686627}
   - component: {fileID: 1941686628}
-  - component: {fileID: 1941686629}
   m_Layer: 5
   m_Name: Settings
   m_TagString: Untagged
@@ -69001,51 +68853,6 @@ MonoBehaviour:
   mergeBodiesInCollisions: 0
   touchMultiplier: 1
   showCenterOfGravity: 0
---- !u!114 &1941686629
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1941686622}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1941686624}
-          m_TargetAssemblyTypeName: Utils, Assembly-CSharp
-          m_MethodName: SetMouseOverSettings
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 1
-          m_CallState: 2
-  - eventID: 1
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1941686624}
-          m_TargetAssemblyTypeName: Utils, Assembly-CSharp
-          m_MethodName: SetMouseOverSettings
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!1 &1950049901
 GameObject:
   m_ObjectHideFlags: 0
@@ -71475,7 +71282,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -102, y: 80}
+  m_AnchoredPosition: {x: -102, y: 65}
   m_SizeDelta: {x: 200, y: 110}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2049741265
@@ -72221,7 +72028,6 @@ GameObject:
   - component: {fileID: 2074579987}
   - component: {fileID: 2074579986}
   - component: {fileID: 2074579985}
-  - component: {fileID: 2074579988}
   m_Layer: 5
   m_Name: ToggleEditor
   m_TagString: Untagged
@@ -72247,9 +72053,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -49.885742, y: -204.8999}
+  m_AnchoredPosition: {x: -99.8855, y: -244.8999}
   m_SizeDelta: {x: 100, y: 80}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0, y: 0}
 --- !u!114 &2074579985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -72356,51 +72162,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2074579983}
   m_CullTransparentMesh: 1
---- !u!114 &2074579988
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2074579983}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1941686624}
-          m_TargetAssemblyTypeName: Utils, Assembly-CSharp
-          m_MethodName: SetMouseOverControls
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 1
-          m_CallState: 2
-  - eventID: 1
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1941686624}
-          m_TargetAssemblyTypeName: Utils, Assembly-CSharp
-          m_MethodName: SetMouseOverControls
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!1 &2075302834
 GameObject:
   m_ObjectHideFlags: 0

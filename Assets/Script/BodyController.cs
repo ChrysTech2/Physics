@@ -11,7 +11,7 @@ public class BodyController : MonoBehaviour{
 
 	public CameraController cameraController;
 	public SettingsController settingsController;
-	public WorldLineLineController lineController;
+	public WorldLineController lineController;
 	public Settings settings;
 	public BodyEditor bodyEditor;
 

@@ -22,10 +22,16 @@ public class TouchControl : MonoBehaviour{
 		bodyEditor = bodyController.bodyEditor;
 	}
 
+	public bool twoFingers;
+
 	private void Update(){
 
-		/*if (Input.touchCount > 1)
-			TouchZoom();*/
+		twoFingers = false;
+
+		if (Input.touchCount > 1){
+			// ZoomTouch();
+			twoFingers = true;
+		}
 
 		bodyController.cameraController.CalculateOffset();
 
@@ -33,7 +39,7 @@ public class TouchControl : MonoBehaviour{
 
 			bool condition1 = !bodyEditor.gameObject.activeSelf && !settingsController.gameObject.activeSelf;
 			bool condition2 = !UIHitboxController.MouseOverControls && !UIHitboxController.MouseOverAddOnTouchButton && addOnTouch.isOn;
-			bool condition3 = Input.touchCount < 2;
+			bool condition3 = !twoFingers;
 
 			canAddBody = condition1 && condition2 && condition3;
 
@@ -43,7 +49,7 @@ public class TouchControl : MonoBehaviour{
 				InstantiateBody();
 		}
 
-		if ((Input.GetKeyUp(KeyCode.Mouse0) || Input.touchCount > 1) && bodyInstantiated){
+		if (bodyInstantiated && (Input.GetKeyUp(KeyCode.Mouse0) || twoFingers)){
 
 			bodyController.lineController.DeleteAllLines("TouchLine");
 
@@ -55,7 +61,7 @@ public class TouchControl : MonoBehaviour{
 			bodyInstantiated = false;
 		}
 
-		if (Input.GetKey(KeyCode.Mouse0) && bodyInstantiated){
+		if (bodyInstantiated && Input.GetKey(KeyCode.Mouse0)){
 
 			bodyController.lineController.DeleteAllLines("TouchLine");
 

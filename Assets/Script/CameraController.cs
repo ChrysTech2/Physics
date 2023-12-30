@@ -46,7 +46,7 @@ public class CameraController : MonoBehaviour{
 		position = bodyPosition + offset;
 	}
 
-	private bool canCalculateOffset = false;
+	public bool canCalculateOffset = false;
 
 	public void CalculateOffset(){
 
@@ -56,19 +56,17 @@ public class CameraController : MonoBehaviour{
 			bool condition2 = bodyEditor.gameObject.activeSelf && !UIHitboxController.MouseOverBodyEditor;
 			bool condition3 = !bodyEditor.gameObject.activeSelf && !touchControl.addOnTouch.isOn;
 			bool condition4 = UIHitboxController.MouseOverControls || UIHitboxController.MouseOverAddOnTouchButton;
-			bool condition5 = Input.touchCount < 2;
 
-			canCalculateOffset = Index != -1 && condition5 && ((condition1 && (condition2 || condition3)) || condition4);
-
-			if (canCalculateOffset)
-				CheckBodiesAtMousePosition();
+			canCalculateOffset = Index != -1 && ((condition1 && (condition2 || condition3)) || condition4);
 		}
 
-		if (Input.GetKeyUp(KeyCode.Mouse0))
+		if (Input.GetKeyUp(KeyCode.Mouse0) || touchControl.twoFingers)
 			canCalculateOffset = false;
 
 		if (!canCalculateOffset)
 			return;
+
+		CheckBodiesAtMousePosition();
 
 		float mouseX = -Input.GetAxis("Mouse X");
 		float mouseY = -Input.GetAxis("Mouse Y");

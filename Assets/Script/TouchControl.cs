@@ -22,18 +22,23 @@ public class TouchControl : MonoBehaviour{
 		bodyEditor = bodyController.bodyEditor;
 	}
 
-	public bool twoFingers;
+	public bool twoFingers = false, twoFingersOld = false;
 
 	private void Update(){
 
-		twoFingers = false;
-
-		if (Input.touchCount > 1){
-			// ZoomTouch();
-			twoFingers = true;
-		}
+		twoFingers = Input.touchCount > 1;
 
 		bodyController.cameraController.CalculateOffset();
+
+		TouchZoom();
+
+		TouchBodyCreation();
+
+		twoFingersOld = Input.touchCount > 1;
+	}
+
+	private void TouchBodyCreation(){
+
 
 		if (Input.GetKeyDown(KeyCode.Mouse0)){
 
@@ -127,6 +132,9 @@ public class TouchControl : MonoBehaviour{
 
 	private void TouchZoom(){
 
+		if (!twoFingers)
+			return;
+
 		Touch finger1 = Input.GetTouch(0);
 		Touch finger2 = Input.GetTouch(1);
 
@@ -139,11 +147,8 @@ public class TouchControl : MonoBehaviour{
 		float deltaOld = (old2 - old1).magnitude;
 		float deltaNew = (new2 - new1).magnitude;
 
-		float delta = deltaNew - deltaOld;
+		float delta = (deltaNew - deltaOld)/(10 * bodyController.fps);
 
-		Debug.Log(delta/300);
-
-		bodyController.scale *= Mathf.Pow(1.05f, Mathf.Sign(delta));
-
+		bodyController.ZoomIn(1 + delta);
 	}
 }

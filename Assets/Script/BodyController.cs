@@ -17,7 +17,7 @@ public class BodyController : MonoBehaviour{
 
 	public List<Body> bodies = new List<Body>();
 	public int speedMultiplier = 0;
-	private float t = 0, fps = 60;
+	public float t = 0, fps = 60;
 
 	private void Start(){
 		settings = settingsController.settings;

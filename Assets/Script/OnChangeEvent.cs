@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class OnChangeEvent : MonoBehaviour{
 	
 	[SerializeField] private SettingsController settings;
+	[SerializeField] private BodyEditor bodyEditor;
 	[SerializeField] private Image colorPreview;
 
 	public void OnColorChange(){

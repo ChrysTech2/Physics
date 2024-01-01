@@ -5,11 +5,12 @@ public class WorldLine : MonoBehaviour{
 	public Vector2Double position = Vector2Double.zero;
 	public BodyController bodyController;
 	public double height;
+	public Transform lineTransform;
 
 	public void ApplyPosition(){
 
-		transform.localPosition = (position - bodyController.cameraController.position).ToVector2();
-		transform.localScale = new Vector2(transform.localScale.x, (float)height / bodyController.scale);
+		lineTransform.localPosition = (position - bodyController.cameraController.position).ToVector2();
+		lineTransform.localScale = new Vector2(lineTransform.localScale.x, (float)height / bodyController.scale);
 	}
 	
 	private void OnDestroy(){

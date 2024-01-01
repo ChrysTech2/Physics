@@ -304,4 +304,8 @@ public class SettingsController : MonoBehaviour{
 		else if (parent.value > index + 1)
 			parent.value --;
 	}
+
+	public void SetGToRealValue(){
+		attractionGravityConstant.text = "6.6743e-11";
+	}
 }

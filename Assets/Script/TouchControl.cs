@@ -44,7 +44,7 @@ public class TouchControl : MonoBehaviour{
 
 			bool condition1 = !bodyEditor.gameObject.activeSelf && !settingsController.gameObject.activeSelf;
 			bool condition2 = !UIHitboxController.MouseOverControls && !UIHitboxController.MouseOverAddOnTouchButton && addOnTouch.isOn;
-			bool condition3 = !twoFingers;
+			bool condition3 = !twoFingers && !bodyController.startupMenu.activeSelf;
 
 			canAddBody = condition1 && condition2 && condition3;
 
@@ -76,10 +76,12 @@ public class TouchControl : MonoBehaviour{
 
 			bodyController.lineController.CreateLine(worldPosition1, worldPosition2, Color.red, true, 1, "TouchLine");
 
-			velocity.x = (startVelocity.x + distance.x) * bodyController.settings.touchMultiplier;
-			velocity.y = (startVelocity.y + distance.y) * bodyController.settings.touchMultiplier;
+			velocity.x = distance.x;
+			velocity.y = distance.y;
+			
+			velocity = velocity * bodyController.settings.touchMultiplier + startVelocity;
 
-			bodyInfo.SetText($"velocity : {(int)velocity.magnitude} m/s , angle : {(int)(Math.Atan2(velocity.y, velocity.x) * 180 / Math.PI)} °");
+			bodyInfo.SetText($"velocity : {(float)velocity.magnitude} m/s , angle : {(distance.x)} °");
 		}
 	}
 
@@ -108,8 +110,6 @@ public class TouchControl : MonoBehaviour{
 
 		body.position = worldPosition1;
 		body.velocity = velocity;
-
-		body.velocity += velocity;
 
 		settingsController.AddBody(true);
 	}
@@ -147,7 +147,7 @@ public class TouchControl : MonoBehaviour{
 		float deltaOld = (old2 - old1).magnitude;
 		float deltaNew = (new2 - new1).magnitude;
 
-		float delta = (deltaNew - deltaOld)/(10 * bodyController.fps);
+		float delta = bodyController.fps * (deltaNew - deltaOld)/ 6000;
 
 		bodyController.ZoomIn(1 + delta);
 	}

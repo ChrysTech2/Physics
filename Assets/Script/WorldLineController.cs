@@ -33,6 +33,7 @@ public class WorldLineController : MonoBehaviour{
         line.bodyController = bodyController;
         line.gameObject.transform.GetChild(0).GetComponent<Renderer>().material.color = color;
         line.transform.parent = bodyController.transform;
+		line.lineTransform = line.transform;
 
 		Vector2Double difference = end - start;
 

@@ -35,9 +35,6 @@ public static class Times{
 
 public class Utils : MonoBehaviour{
 
-	// Used for Camera / Zoom / AddOnTouch Controls
-
-
 	// Other Stuff
 	
 	public static void SetActiveTrue(GameObject obj){
@@ -68,6 +65,9 @@ public class Utils : MonoBehaviour{
 	}
 
 	public static bool IsValidName(string name){
+
+		if (name.Contains(DataController.LINE_SEPARATOR) || name.Contains(DataController.TEXT_VALUE_SEPARATOR))
+			return false;
 
 		if (string.IsNullOrWhiteSpace(name))
 			return false;
@@ -109,7 +109,7 @@ public class Utils : MonoBehaviour{
 		GetTextChild(obj, textIndex).SetText(text);
 	}
 
-	public void ResetWorld(){
+	public static void ResetWorld(){
 		SceneManager.LoadScene("Simulation");
 	}
 
@@ -130,4 +130,13 @@ public class Utils : MonoBehaviour{
 	public static Color ColorOfCheckmark(Toggle toggle){
 		return toggle.gameObject.transform.GetChild(1).GetChild(0).GetComponent<Image>().color;
 	}
+
+	public static void Quit(){
+		Application.Quit();
+	}
+
+	public static void OpenInstagram(){
+		Application.OpenURL("https://www.instagram.com/chrys_tech/");
+	}
+
 }

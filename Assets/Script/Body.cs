@@ -18,6 +18,7 @@ public class Body : MonoBehaviour{
 	// Other Stuff
 	private BodyController bodyController;
 	private Settings settings;
+	private Transform bodyTransform;
 
 	public int nCollisions = 0;
 
@@ -39,6 +40,7 @@ public class Body : MonoBehaviour{
 		settings = bodyController.settingsController.settings;
 		
 		transform.parent = bodyController.transform;
+		bodyTransform = transform;
 		
 		SetRadius(radius);
 		SetColor(color);
@@ -80,7 +82,7 @@ public class Body : MonoBehaviour{
 
 	public void ApplyPosition(){
 		
-		transform.localPosition = (position - bodyController.cameraController.position).ToVector2();
+		bodyTransform.localPosition = (position - bodyController.cameraController.position).ToVector2();
 		lastPosition = position;
 	}
 
@@ -270,7 +272,7 @@ public class Body : MonoBehaviour{
 
 	public void SetRadius(double radius){
 		this.radius = radius;
-		transform.localScale = Vector2.one * (float)radius;
+		bodyTransform.localScale = Vector2.one * (float)radius;
 	}
 
 	public void SetColor(Color color){

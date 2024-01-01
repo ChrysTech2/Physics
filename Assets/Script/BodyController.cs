@@ -5,6 +5,8 @@ using TMPro;
 
 public class BodyController : MonoBehaviour{
 
+	public GameObject startupMenu;
+
 	public TMP_Text informations;
 	public TouchControl touchControl;
 	public GameObject centerOfGravity;
@@ -14,6 +16,7 @@ public class BodyController : MonoBehaviour{
 	public WorldLineController lineController;
 	public Settings settings;
 	public BodyEditor bodyEditor;
+	public GraphController graphController;
 
 	public List<Body> bodies = new List<Body>();
 	public int speedMultiplier = 0;
@@ -149,6 +152,10 @@ public class BodyController : MonoBehaviour{
 			speedMultiplier = 0;
 		else
 			speedMultiplier /= 2;
+	}
+
+	public void StopTime(){
+		speedMultiplier = 0;
 	}
 
 	public void ZoomOut(float zoomFactor = 1.25f){

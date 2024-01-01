@@ -10,11 +10,11 @@ public class CameraController : MonoBehaviour{
 	private SettingsController settingsController;
 	private BodyEditor bodyEditor;
 
-	private int focus = 0;
-	private int index = -1;
+	public int focus = 0;
+	public int index = -1;
 
-	private Vector2Double bodyPosition = Vector2Double.zero;
-	private Vector2Double offset = Vector2Double.zero;
+	public Vector2Double bodyPosition = Vector2Double.zero;
+	public Vector2Double offset = Vector2Double.zero;
 
 	public Vector2Double position = Vector2Double.zero;
 
@@ -57,7 +57,7 @@ public class CameraController : MonoBehaviour{
 			bool condition3 = !bodyEditor.gameObject.activeSelf && !touchControl.addOnTouch.isOn;
 			bool condition4 = UIHitboxController.MouseOverControls || UIHitboxController.MouseOverAddOnTouchButton;
 
-			canCalculateOffsetAtTheMoment = Index != -1 && ((condition1 && (condition2 || condition3)) || condition4);
+			canCalculateOffsetAtTheMoment = Index != -1 && !bodyController.startupMenu.activeSelf && ((condition1 && (condition2 || condition3)) || condition4);
 		}
 
 		if (Input.GetKeyUp(KeyCode.Mouse0))
@@ -76,8 +76,8 @@ public class CameraController : MonoBehaviour{
 			mouseX = 0;
 			mouseY = 0;
 		}
-		
-		CheckBodiesAtMousePosition();
+
+		//CheckBodiesAtMousePosition();
 		
 		offset += new Vector2Double(mouseX, mouseY) / (sensibiliy * bodyController.scale);
 	}

@@ -4,7 +4,6 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using System.Linq;
 using System;
-using System.Security.Cryptography;
 
 public class GraphController : MonoBehaviour{
 
@@ -12,11 +11,13 @@ public class GraphController : MonoBehaviour{
 	[SerializeField] private GameObject graphArea;
 	[SerializeField] private GameObject pointToCreate;
 	[SerializeField] private TMP_Text lowerBound, upperBound;
+	
+	public GameObject hideButton, showButton;
 
-	[SerializeField] private Toggle position, velocity, acceleration;
-	[SerializeField] private Toggle positionAngle, velocityAngle, accelerationAngle;
-	[SerializeField] private Toggle positionX, positionY, velocityX, velocityY, accelerationX, accelerationY;
-	[SerializeField] private Toggle totalMomentum, totalKineticEnergy;
+	public Toggle position, velocity, acceleration;
+	public Toggle positionAngle, velocityAngle, accelerationAngle;
+	public Toggle positionX, positionY, velocityX, velocityY, accelerationX, accelerationY;
+	public Toggle totalMomentum, totalKineticEnergy;
 
 	[SerializeField] private int offsetX, maxX, maxY;
 
@@ -92,21 +93,18 @@ public class GraphController : MonoBehaviour{
 		upperBound.SetText(max.ToString());
 		lowerBound.SetText((-max).ToString());
 
-
 		x++;
 
 		if (x > maxX)
 			TranslateAllPoints();	
 	}
 
-	private Action drawGraphs = new Action(() => {});
+	private Action DrawGraphs = new Action(() => {});
 
 	private void FixedUpdate(){
 
 		bodyToGraph = bodyController.bodyEditor.bodyToEdit;
-
-		drawGraphs();
-		
+		DrawGraphs();
 	}
 
 	private void DestroyPoint(int index){
@@ -153,55 +151,55 @@ public class GraphController : MonoBehaviour{
 
 	public void OnTogglesChange(){
 
-		drawGraphs = new Action(() => {});
+		DrawGraphs = new Action(() => {});
 
 		/// Magnitudes
 		if (position.isOn)
-			drawGraphs += () => PlotPoint((float)bodyToGraph.position.magnitude, Utils.ColorOfCheckmark(position));
+			DrawGraphs += () => PlotPoint((float)bodyToGraph.position.magnitude, Utils.ColorOfCheckmark(position));
 
 		if (velocity.isOn)
-			drawGraphs += () => PlotPoint((float)bodyToGraph.velocity.magnitude, Utils.ColorOfCheckmark(velocity));
+			DrawGraphs += () => PlotPoint((float)bodyToGraph.velocity.magnitude, Utils.ColorOfCheckmark(velocity));
 
 		if (acceleration.isOn)
-			drawGraphs += () => PlotPoint((float)bodyToGraph.acceleration.magnitude, Utils.ColorOfCheckmark(acceleration));
+			DrawGraphs += () => PlotPoint((float)bodyToGraph.acceleration.magnitude, Utils.ColorOfCheckmark(acceleration));
 
 		// Angles
 		if (positionAngle.isOn)
-			drawGraphs += () => PlotPoint((float)bodyToGraph.position.ToDegrees(), Utils.ColorOfCheckmark(positionAngle));
+			DrawGraphs += () => PlotPoint((float)bodyToGraph.position.ToDegrees(), Utils.ColorOfCheckmark(positionAngle));
 
 		if (velocityAngle.isOn)
-			drawGraphs += () => PlotPoint((float)bodyToGraph.velocity.ToDegrees(), Utils.ColorOfCheckmark(velocityAngle));
+			DrawGraphs += () => PlotPoint((float)bodyToGraph.velocity.ToDegrees(), Utils.ColorOfCheckmark(velocityAngle));
 		
 		if (accelerationAngle.isOn)
-			drawGraphs += () => PlotPoint((float)bodyToGraph.acceleration.ToDegrees(), Utils.ColorOfCheckmark(accelerationAngle));
+			DrawGraphs += () => PlotPoint((float)bodyToGraph.acceleration.ToDegrees(), Utils.ColorOfCheckmark(accelerationAngle));
 
 		// 2 Axis Position
 		if (positionX.isOn)
-			drawGraphs += () => PlotPoint((float)bodyToGraph.position.x, Utils.ColorOfCheckmark(positionX));
+			DrawGraphs += () => PlotPoint((float)bodyToGraph.position.x, Utils.ColorOfCheckmark(positionX));
 
 		if (positionY.isOn)
-			drawGraphs += () => PlotPoint((float)bodyToGraph.position.y, Utils.ColorOfCheckmark(positionY));
+			DrawGraphs += () => PlotPoint((float)bodyToGraph.position.y, Utils.ColorOfCheckmark(positionY));
 
 		// 2 Axis Velocity
 		if (velocityX.isOn)
-			drawGraphs += () => PlotPoint((float)bodyToGraph.velocity.x, Utils.ColorOfCheckmark(velocityX));
+			DrawGraphs += () => PlotPoint((float)bodyToGraph.velocity.x, Utils.ColorOfCheckmark(velocityX));
 
 		if (velocityY.isOn)
-			drawGraphs += () => PlotPoint((float)bodyToGraph.velocity.y, Utils.ColorOfCheckmark(velocityY));
+			DrawGraphs += () => PlotPoint((float)bodyToGraph.velocity.y, Utils.ColorOfCheckmark(velocityY));
 
 		// 2 Axis Acceleration
 		if (accelerationX.isOn)
-			drawGraphs += () => PlotPoint((float)bodyToGraph.acceleration.x, Utils.ColorOfCheckmark(accelerationX));
+			DrawGraphs += () => PlotPoint((float)bodyToGraph.acceleration.x, Utils.ColorOfCheckmark(accelerationX));
 
 		if (accelerationY.isOn)
-			drawGraphs += () => PlotPoint((float)bodyToGraph.acceleration.y, Utils.ColorOfCheckmark(accelerationY));
+			DrawGraphs += () => PlotPoint((float)bodyToGraph.acceleration.y, Utils.ColorOfCheckmark(accelerationY));
 
 		// Other
 		if (totalMomentum.isOn)
-			drawGraphs += () => PlotPoint((float)TotalMomentum(), Utils.ColorOfCheckmark(totalMomentum));
+			DrawGraphs += () => PlotPoint((float)TotalMomentum(), Utils.ColorOfCheckmark(totalMomentum));
 
 		if (totalKineticEnergy.isOn)
-			drawGraphs += () => PlotPoint((float)TotalKineticEnergy(), Utils.ColorOfCheckmark(totalKineticEnergy));
+			DrawGraphs += () => PlotPoint((float)TotalKineticEnergy(), Utils.ColorOfCheckmark(totalKineticEnergy));
 
 		DestroyAllPoints();
 	}

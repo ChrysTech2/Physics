@@ -10,7 +10,7 @@ public class BodyEditor : MonoBehaviour{
 	[SerializeField] private TMP_InputField x, y;
 	[SerializeField] private TMP_InputField velocityX, velocityY;
 	[SerializeField] private TMP_InputField mass, radius;
-	[SerializeField] private Toggle showColor, showAngle;
+	public Toggle showColor, showAngle;
 
 	// Output
 	[SerializeField] private TMP_InputField outputX, outputY;
@@ -47,36 +47,17 @@ public class BodyEditor : MonoBehaviour{
 
 	public void AssignBody(){
 		bodyToEdit = bodyController.bodies[DropdownValue];
-		OnShowColorChange();
 	}
 
 	private void FixedUpdate(){
 
-		if (!showAngle.isOn){
-		
-			outputX.text = ((float)bodyToEdit.position.x).ToString() + " m";
-			outputY.text = ((float)bodyToEdit.position.y).ToString() + " m";
-
-			outputVelocityX.text = ((float)bodyToEdit.velocity.x).ToString() + " m/s";
-			outputVelocityY.text = ((float)bodyToEdit.velocity.y).ToString()+ " m/s";
-
-			outputMass.text = ((float)bodyToEdit.mass).ToString()+ " Kg";
-			outputRadius.text = ((float)bodyToEdit.radius).ToString()+ " m";
+		if (!showColor.isOn){
+			backgroundImage.color = new Color(0.46f, 0.46f, 0.46f, 0.78f);
 		}
 		else{
-
-			outputX.text = ((float)bodyToEdit.position.magnitude).ToString() + " m";
-			outputY.text = ((float)bodyToEdit.position.ToDegrees()).ToString() + "°";
-
-			outputVelocityX.text = ((float)bodyToEdit.velocity.magnitude).ToString() + " m/s";
-			outputVelocityY.text = ((float)bodyToEdit.velocity.ToDegrees()).ToString() + "°";
-
-			outputMass.text = ((float)bodyToEdit.Volume).ToString() + " m^3";
-			outputRadius.text = ((float)bodyToEdit.Density).ToString() + " Kg/m^3";
+			Color color = bodyToEdit.color;
+			backgroundImage.color = new Color(color.r, color.g, color.b, 0.78f);	
 		}
-	}
-
-	public void OnShowAngleChange(){
 
 		if (!showAngle.isOn){
 
@@ -88,7 +69,16 @@ public class BodyEditor : MonoBehaviour{
 
 			Utils.SetTextChild(outputMass, "Mass", 2);
 			Utils.SetTextChild(outputRadius, "Radius", 2);
-			
+		
+			outputX.text = ((float)bodyToEdit.position.x).ToString() + " m";
+			outputY.text = ((float)bodyToEdit.position.y).ToString() + " m";
+
+			outputVelocityX.text = ((float)bodyToEdit.velocity.x).ToString() + " m/s";
+			outputVelocityY.text = ((float)bodyToEdit.velocity.y).ToString()+ " m/s";
+
+			outputMass.text = ((float)bodyToEdit.mass).ToString()+ " Kg";
+			outputRadius.text = ((float)bodyToEdit.radius).ToString()+ " m";
+
 			return;
 		}
 
@@ -100,18 +90,18 @@ public class BodyEditor : MonoBehaviour{
 
 		Utils.SetTextChild(outputMass, "Vlm", 2);
 		Utils.SetTextChild(outputRadius, "Dst", 2);	
+
+		outputX.text = ((float)bodyToEdit.position.magnitude).ToString() + " m";
+		outputY.text = ((float)bodyToEdit.position.ToDegrees()).ToString() + "°";
+
+		outputVelocityX.text = ((float)bodyToEdit.velocity.magnitude).ToString() + " m/s";
+		outputVelocityY.text = ((float)bodyToEdit.velocity.ToDegrees()).ToString() + "°";
+
+		outputMass.text = ((float)bodyToEdit.Volume).ToString() + " m^3";
+		outputRadius.text = ((float)bodyToEdit.Density).ToString() + " Kg/m^3";			
 	}
 
-	public void OnShowColorChange(){
-
-		if (!showColor.isOn){
-			backgroundImage.color = new Color(0.46f, 0.46f, 0.46f, 0.78f);
-			return;
-		}
-
-		Color color = bodyToEdit.color;
-		backgroundImage.color = new Color(color.r, color.g, color.b, 0.78f);		
-	}
+	
 
 	public void FocusBody(){
 		

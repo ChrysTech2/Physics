@@ -17,14 +17,15 @@ public class DataController : MonoBehaviour{
 					|_Save 1
 	*/
 
-	public const string FORMAT = "txt", LINE_SEPARATOR = " #\n", TEXT_VALUE_SEPARATOR = " : ", BODIES_SEPARATOR = "...........................................\n\n";
-
-	private string rootPath, simulationsPath;
-
 	[SerializeField] private DataLoader dataLoader;
 	[SerializeField] private DataSaver dataSaver;
 	[SerializeField] private TMP_Dropdown simulationsDropdown, templateDropdown;
 	[SerializeField] private GameObject saveMenu, loadMenu;
+	[SerializeField] private TMP_InputField simulationName;
+	[SerializeField] private TMP_Text saveErrorMessage, loadErrorMessage;
+
+	[SerializeField] private TextAsset[] templatesBodies, templatesSettings;
+	[SerializeField] private string[] templatesNames;
 
 	public BodyController bodyController;
 	public GraphController graphController;
@@ -32,24 +33,39 @@ public class DataController : MonoBehaviour{
 	public SettingsController settings;
 	public BodyEditor bodyEditor;
 
-	[SerializeField] private TMP_InputField simulationName;
-	[SerializeField] private TMP_Text saveErrorMessage, loadErrorMessage;
+
+	private string rootPath, simulationsPath, customBodiesPath, customMaterialsPath;
+
 	private const string CONFIRM_OVERWRITE_MESSAGE = "A simulation with the same name already exist, click `Save` again to overwrite";
 	private const string SAVE_ERROR_MESSAGE = "That name is not valid.";
 	private const string LOAD_ERROR_MESSAGE = "I could not load the selected simulation.";
 	private const string DELETE_ERROR_MESSAGE = "I could not delete the selected simulation.";
-	
 	private const string CONFIRM_DELETE_MESSAGE = "Click `Delete` again to confirm.";
+
+	public const string FORMAT = "txt";
+	public const string LINE_SEPARATOR = " #\n";
+	public const string TEXT_VALUE_SEPARATOR = " : ";
+	public const string BODIES_SEPARATOR = "...........................................\n\n";
 
 	private void Start(){
 
 		rootPath =  Application.persistentDataPath + Path.AltDirectorySeparatorChar + "Data";
 		simulationsPath = rootPath + Path.AltDirectorySeparatorChar + "Simulations";
 
+		customBodiesPath = rootPath + Path.AltDirectorySeparatorChar + "custom_bodies." + FORMAT;
+		customMaterialsPath = rootPath + Path.AltDirectorySeparatorChar + "custom_materials." + FORMAT;
+
 		Directory.CreateDirectory(rootPath);
 		Directory.CreateDirectory(simulationsPath);
 
-		LoadOptionsInDropdown();
+		if (!File.Exists(customBodiesPath))
+			File.WriteAllText(customBodiesPath, $"number_of_custom_bodies{TEXT_VALUE_SEPARATOR}0");
+
+		if (!File.Exists(customMaterialsPath))
+			File.WriteAllText(customMaterialsPath, $"number_of_custom_materials{TEXT_VALUE_SEPARATOR}");
+
+		LoadOptionsInDropdown(simulationsDropdown, Directory.GetDirectories(simulationsPath));
+		LoadOptionsInDropdown(templateDropdown, templatesNames);
 	}
 
 	// Save Data
@@ -58,7 +74,7 @@ public class DataController : MonoBehaviour{
 		if (saveErrorMessage.text == CONFIRM_OVERWRITE_MESSAGE){
 			dataSaver.SaveSimulationOnFolder(simulationName.text);
 			saveMenu.SetActive(false);
-			LoadOptionsInDropdown();
+			LoadOptionsInDropdown(simulationsDropdown, Directory.GetDirectories(simulationsPath));
 			saveErrorMessage.SetText("");
 			return;
 		}
@@ -69,7 +85,7 @@ public class DataController : MonoBehaviour{
 		if (!FolderAlreadyExist(simulationName.text)){
 			dataSaver.SaveSimulationOnFolder(simulationName.text);
 			saveMenu.SetActive(false);
-			LoadOptionsInDropdown();
+			LoadOptionsInDropdown(simulationsDropdown, Directory.GetDirectories(simulationsPath));
 			return;	
 		}
 
@@ -120,16 +136,38 @@ public class DataController : MonoBehaviour{
 		}
 	}
 
-	private void LoadOptionsInDropdown(){
+	public void LoadTemplateButton(){
 
-		string[] savedSimulations = Directory.GetDirectories(simulationsPath);
+		try{
 
-		for (int i = 0; i < savedSimulations.Length; i++){
-			savedSimulations[i] = Path.GetFileName(savedSimulations[i]);
+			string templateName = templatesNames[templateDropdown.value];
+			TextAsset templateBodies = templatesBodies[templateDropdown.value];
+			TextAsset templateSettings = templatesSettings[templateDropdown.value];
+			
+			simulationName.text = templateName;
+
+			dataLoader.LoadSimulationFromTextFiles(templateSettings, templateBodies);
+			loadErrorMessage.SetText("");
+
+			loadMenu.SetActive(false);
+			gameObject.SetActive(false);
+			settings.gameObject.SetActive(false);
+			bodyEditor.gameObject.SetActive(false);
+		}
+		catch{
+
+			loadErrorMessage.SetText(LOAD_ERROR_MESSAGE);
+		}
+	}
+
+	private void LoadOptionsInDropdown(TMP_Dropdown dropdown, string[] options){
+
+		for (int i = 0; i < options.Length; i++){
+			options[i] = Path.GetFileName(options[i]);
 		}
 
-		simulationsDropdown.ClearOptions();
-		simulationsDropdown.AddOptions(savedSimulations.ToList());
+		dropdown.ClearOptions();
+		dropdown.AddOptions(options.ToList());
 	}
 
 
@@ -142,7 +180,7 @@ public class DataController : MonoBehaviour{
 			if (loadErrorMessage.text == CONFIRM_DELETE_MESSAGE){
 
 				dataLoader.DeleteSimulationFolder(selectedSimulationName);
-				LoadOptionsInDropdown();
+				LoadOptionsInDropdown(simulationsDropdown, Directory.GetDirectories(simulationsPath));
 				loadErrorMessage.SetText("");
 				return;	
 			}
@@ -168,5 +206,12 @@ public class DataController : MonoBehaviour{
 		get{
 			return simulationsPath;
 		}
+	}
+
+	public void ResetErrors(){
+
+		loadErrorMessage.SetText("");
+		saveErrorMessage.SetText("");
+		
 	}
 }

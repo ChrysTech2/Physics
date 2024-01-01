@@ -76,12 +76,14 @@ public class TouchControl : MonoBehaviour{
 
 			bodyController.lineController.CreateLine(worldPosition1, worldPosition2, Color.red, true, 1, "TouchLine");
 
-			velocity.x = distance.x;
-			velocity.y = distance.y;
+			distance *= bodyController.scale;
+
+			velocity.x = Math.Log(1/bodyController.scale) + Math.Sqrt(1/bodyController.scale) * distance.x;
+			velocity.y = Math.Log(1/bodyController.scale) + Math.Sqrt(1/bodyController.scale) * distance.y;
 			
 			velocity = velocity * bodyController.settings.touchMultiplier + startVelocity;
 
-			bodyInfo.SetText($"velocity : {(float)velocity.magnitude} m/s , angle : {(distance.x)} °");
+			bodyInfo.SetText($"velocity : {(float)velocity.magnitude} m/s\n angle : {(float)velocity.ToDegrees()} °");
 		}
 	}
 
@@ -147,7 +149,7 @@ public class TouchControl : MonoBehaviour{
 		float deltaOld = (old2 - old1).magnitude;
 		float deltaNew = (new2 - new1).magnitude;
 
-		float delta = bodyController.fps * (deltaNew - deltaOld)/ 6000;
+		float delta = bodyController.fps * (deltaNew - deltaOld) / 36_000;
 
 		bodyController.ZoomIn(1 + delta);
 	}

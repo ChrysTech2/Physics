@@ -12,8 +12,25 @@ public class DataLoader : MonoBehaviour{
 
 		string simulationPath = data.SimulationsPath + Path.AltDirectorySeparatorChar + simulationName;
 
-		LoadBodiesFromFile(simulationPath);
-		LoadSettingsFromFile(simulationPath);
+		string finalBodiesPath = $"{simulationPath}{Path.AltDirectorySeparatorChar}bodies.{DataController.FORMAT}";
+		string finalSettingsPath = $"{simulationPath}{Path.AltDirectorySeparatorChar}settings.{DataController.FORMAT}";
+		
+		string bodiesToString = File.ReadAllText(finalBodiesPath);
+		string settingsToString = File.ReadAllText(finalSettingsPath);
+		
+		LoadBodiesFromString(bodiesToString);
+		LoadSettingsFromString(settingsToString);
+		
+		data.settings.ApplyDataToSettings();
+	}
+
+	public void LoadSimulationFromTextFiles(TextAsset settings, TextAsset bodies){
+		
+		string bodiesToString = bodies.text;
+		string settingsToString = settings.text;
+		
+		LoadBodiesFromString(bodiesToString);
+		LoadSettingsFromString(settingsToString);
 		
 		data.settings.ApplyDataToSettings();
 	}
@@ -21,19 +38,14 @@ public class DataLoader : MonoBehaviour{
 	public void DeleteSimulationFolder(string simulationName){
 
 		string simulationPath = data.SimulationsPath + Path.AltDirectorySeparatorChar + simulationName;
-
 		Directory.Delete(simulationPath, true);
 	}
 
 	private string[] settingsList;
 	private int i = 0;
-	private void LoadSettingsFromFile(string simulationPath){
+	private void LoadSettingsFromString(string settingsToString){
 
 		i = 0;
-
-		string finalPath = $"{simulationPath}{Path.AltDirectorySeparatorChar}settings.{DataController.FORMAT}";
-
-		string settingsToString = File.ReadAllText(finalPath);
 
 		settingsList = settingsToString.Split(new[] {DataController.LINE_SEPARATOR}, StringSplitOptions.None);
 
@@ -145,16 +157,12 @@ public class DataLoader : MonoBehaviour{
 		data.graphController.showButton.SetActive(!graphActive);
 	}
 
-	private void LoadBodiesFromFile(string simulationPath){
+	private void LoadBodiesFromString(string settingsToString){
 
 		while(data.bodyController.bodies.Count > 0){
 
 			data.bodyController.DeleteBody(data.bodyController.bodies[0]);
 		}
-
-		string finalPath = $"{simulationPath}{Path.AltDirectorySeparatorChar}bodies.{DataController.FORMAT}";
-
-		string settingsToString = File.ReadAllText(finalPath);
 
 		settingsList = settingsToString.Split(new[] {DataController.LINE_SEPARATOR}, StringSplitOptions.None);
 

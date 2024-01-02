@@ -129,7 +129,7 @@ public class MaterialsTable : MonoBehaviour{
 			}
 			else{
 				
-				settingsController.fluidDensity.text = Utils.FormatText(materials[tableDataController.materialsDropdown.value].density.ToString());
+				settingsController.fluidDensity.text = Utils.FormatText(customMaterials[tableDataController.materialsDropdown.value].density.ToString());
 			}
 
 			transform.parent.gameObject.SetActive(false);

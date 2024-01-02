@@ -106,6 +106,8 @@ public class MaterialsTableDataController : MonoBehaviour{
 			
 			SubtractOneToCount();
 			LoadMaterialsInDropdown();
+
+			return;
 		}
 
 		errorMessage.SetText(CONFIRM_DELETE);

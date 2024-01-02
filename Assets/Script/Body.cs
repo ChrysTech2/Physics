@@ -32,6 +32,8 @@ public class Body : MonoBehaviour{
 
 		to.color = from.color;
 		to.name = from.name;
+
+		to.nCollisions = from.nCollisions;
 	}
 
 	public void Initialize(BodyController bodyController){
@@ -80,8 +82,7 @@ public class Body : MonoBehaviour{
 		bodyController.lineController.CreateLine(lastPosition, position, color, true, settings.lineDuration, "Line", settings.lineThickness);	
 	}
 
-	public void ApplyPosition(){
-		
+	public void ApplyPosition(){	
 		bodyTransform.localPosition = (position - bodyController.cameraController.position).ToVector2();
 		lastPosition = position;
 	}

@@ -2,6 +2,7 @@ using System.IO;
 using UnityEngine;
 using TMPro;
 using System.Linq;
+using System.Collections.Generic;
 
 public class DataController : MonoBehaviour{
 
@@ -16,13 +17,14 @@ public class DataController : MonoBehaviour{
 
 	[SerializeField] private DataLoader dataLoader;
 	[SerializeField] private DataSaver dataSaver;
-	[SerializeField] private TMP_Dropdown simulationsDropdown, templateDropdown;
-	[SerializeField] private GameObject saveMenu, loadMenu;
 	[SerializeField] private TMP_InputField simulationName;
 	[SerializeField] private TMP_Text saveErrorMessage, loadErrorMessage;
 
 	[SerializeField] private TextAsset[] templatesBodies, templatesSettings;
 	[SerializeField] private string[] templatesNames;
+
+	public GameObject saveMenu, loadMenu;
+	public TMP_Dropdown simulationsDropdown, templateDropdown;
 
 	public BodyController bodyController;
 	public GraphController graphController;
@@ -31,35 +33,28 @@ public class DataController : MonoBehaviour{
 	public BodyEditor bodyEditor;
 
 
-	private string rootPath, simulationsPath, customBodiesPath, customMaterialsPath;
+	public static string rootPath, simulationsPath;
 
+	// Messages
 	private const string CONFIRM_OVERWRITE_MESSAGE = "A simulation with the same name already exist, click `Save` again to overwrite";
 	private const string SAVE_ERROR_MESSAGE = "That name is not valid.";
 	private const string LOAD_ERROR_MESSAGE = "I could not load the selected simulation.";
 	private const string DELETE_ERROR_MESSAGE = "I could not delete the selected simulation.";
 	private const string CONFIRM_DELETE_MESSAGE = "Click `Delete` again to confirm.";
 
+	// File Design
 	public const string FORMAT = "txt";
 	public const string LINE_SEPARATOR = " #\n";
 	public const string TEXT_VALUE_SEPARATOR = " : ";
-	public const string BODIES_SEPARATOR = "...........................................\n\n";
+	public const string GROUP_SEPARATOR = "...........................................\n\n";
 
-	private void Start(){
+	private void Awake(){
 
 		rootPath =  Application.persistentDataPath + Path.AltDirectorySeparatorChar + "Data";
 		simulationsPath = rootPath + Path.AltDirectorySeparatorChar + "Simulations";
 
-		customBodiesPath = rootPath + Path.AltDirectorySeparatorChar + "custom_bodies." + FORMAT;
-		customMaterialsPath = rootPath + Path.AltDirectorySeparatorChar + "custom_materials." + FORMAT;
-
 		Directory.CreateDirectory(rootPath);
 		Directory.CreateDirectory(simulationsPath);
-
-		if (!File.Exists(customBodiesPath))
-			File.WriteAllText(customBodiesPath, $"number_of_custom_bodies{TEXT_VALUE_SEPARATOR}0");
-
-		if (!File.Exists(customMaterialsPath))
-			File.WriteAllText(customMaterialsPath, $"number_of_custom_materials{TEXT_VALUE_SEPARATOR}");
 
 		LoadOptionsInDropdown(simulationsDropdown, Directory.GetDirectories(simulationsPath));
 		LoadOptionsInDropdown(templateDropdown, templatesNames);
@@ -68,10 +63,10 @@ public class DataController : MonoBehaviour{
 	// Save Data
 	public void SaveButton(){
 
+		OnSimulationNameChange();
+
 		if (saveErrorMessage.text == CONFIRM_OVERWRITE_MESSAGE){
 			dataSaver.SaveSimulationOnFolder(simulationName.text);
-			saveMenu.SetActive(false);
-			LoadOptionsInDropdown(simulationsDropdown, Directory.GetDirectories(simulationsPath));
 			saveErrorMessage.SetText("");
 			return;
 		}
@@ -81,8 +76,6 @@ public class DataController : MonoBehaviour{
 
 		if (!FolderAlreadyExist(simulationName.text)){
 			dataSaver.SaveSimulationOnFolder(simulationName.text);
-			saveMenu.SetActive(false);
-			LoadOptionsInDropdown(simulationsDropdown, Directory.GetDirectories(simulationsPath));
 			return;	
 		}
 
@@ -157,17 +150,6 @@ public class DataController : MonoBehaviour{
 		}
 	}
 
-	private void LoadOptionsInDropdown(TMP_Dropdown dropdown, string[] options){
-
-		for (int i = 0; i < options.Length; i++){
-			options[i] = Path.GetFileName(options[i]);
-		}
-
-		dropdown.ClearOptions();
-		dropdown.AddOptions(options.ToList());
-	}
-
-
 	// Delete Data
 	public void DeleteButton(){
 
@@ -209,6 +191,32 @@ public class DataController : MonoBehaviour{
 
 		loadErrorMessage.SetText("");
 		saveErrorMessage.SetText("");
-		
+	}
+
+	public static string RemoveVariableName(string str){
+		if (str.Length <= 0)
+			return str;
+		return str.Substring(str.IndexOf(TEXT_VALUE_SEPARATOR) + TEXT_VALUE_SEPARATOR.Length);
+	}
+
+	public static void RemoveAllVariableNames(string[] stringList){
+		for (int i = 0; i < stringList.Length; i++)
+			stringList[i] = RemoveVariableName(stringList[i]);
+	}
+
+	public static void SetTextValueSeparator(List<string> list){
+
+		for (int i = 0; i < list.Count; i++)
+			list[i] = list[i].Replace(" : ", DataController.TEXT_VALUE_SEPARATOR);
+	}
+
+	public static void LoadOptionsInDropdown(TMP_Dropdown dropdown, string[] options){
+
+		for (int i = 0; i < options.Length; i++){
+			options[i] = Path.GetFileName(options[i]);
+		}
+
+		dropdown.ClearOptions();
+		dropdown.AddOptions(options.ToList());
 	}
 }

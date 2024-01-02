@@ -179,6 +179,7 @@ public class BodyController : MonoBehaviour{
 
 		Body createdBody = Instantiate(settingsController.bodyToCreate);
 		Body.CopyData(settingsController.bodyToCreate, createdBody);
+		settingsController.bodyToCreate.nCollisions = 0;
 
 		createdBody.Initialize(this);
 		CompileFunctions(createdBody);
@@ -203,6 +204,11 @@ public class BodyController : MonoBehaviour{
 		bodies.Remove(body);
 		
 		DestroyImmediate(body.gameObject);
+	}
+
+	public void DeleteAllBodies(){
+		while(bodies.Count > 0)
+			DeleteBody(bodies[0]);
 	}
 
 	public void CompileFunctions(Body body){

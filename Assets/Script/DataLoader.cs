@@ -18,6 +18,7 @@ public class DataLoader : MonoBehaviour{
 		string bodiesToString = File.ReadAllText(finalBodiesPath);
 		string settingsToString = File.ReadAllText(finalSettingsPath);
 		
+		data.bodyController.DeleteAllBodies();
 		LoadBodiesFromString(bodiesToString);
 		LoadSettingsFromString(settingsToString);
 		
@@ -29,6 +30,7 @@ public class DataLoader : MonoBehaviour{
 		string bodiesToString = bodies.text;
 		string settingsToString = settings.text;
 		
+		data.bodyController.DeleteAllBodies();
 		LoadBodiesFromString(bodiesToString);
 		LoadSettingsFromString(settingsToString);
 		
@@ -42,16 +44,13 @@ public class DataLoader : MonoBehaviour{
 	}
 
 	private string[] settingsList;
-	private int i = 0;
+	private int settingsListIndex = 0;
 	private void LoadSettingsFromString(string settingsToString){
 
-		i = 0;
-
 		settingsList = settingsToString.Split(new[] {DataController.LINE_SEPARATOR}, StringSplitOptions.None);
+		settingsListIndex = 0;
 
-		for (int i = 0; i < settingsList.Length; i++){
-			settingsList[i] = RemoveVariableName(settingsList[i]);
-		}
+		DataController.RemoveAllVariableNames(settingsList);
 
 		data.bodyController.touchControl.addOnTouch.isOn = false;
 
@@ -107,9 +106,9 @@ public class DataLoader : MonoBehaviour{
 		SetValue(data.settings.dragCoefficient);
 
 		// BodyController
-		ExpressionEvaluator.Evaluate(settingsList[i], out float scale); 
+		ExpressionEvaluator.Evaluate(settingsList[settingsListIndex], out float scale); 
 		data.bodyController.scale = scale;
-		i++;
+		settingsListIndex++;
 
 		SetValue(ref data.bodyController.t);
 
@@ -149,7 +148,6 @@ public class DataLoader : MonoBehaviour{
 		SetValue(data.graphController.totalKineticEnergy);
 
 		bool graphActive = true;
-
 		SetValue(ref graphActive);
 		
 		data.graphController.gameObject.SetActive(graphActive);
@@ -159,23 +157,16 @@ public class DataLoader : MonoBehaviour{
 
 	private void LoadBodiesFromString(string settingsToString){
 
-		while(data.bodyController.bodies.Count > 0){
-
-			data.bodyController.DeleteBody(data.bodyController.bodies[0]);
-		}
-
 		settingsList = settingsToString.Split(new[] {DataController.LINE_SEPARATOR}, StringSplitOptions.None);
-
-		for (int i = 0; i < settingsList.Length; i++){
-			settingsList[i] = RemoveVariableName(settingsList[i]);
-		}
+		
+		DataController.RemoveAllVariableNames(settingsList);
 
 		ExpressionEvaluator.Evaluate(settingsList[0], out int nBodies);
 		Body bodyToCreate = data.settings.bodyToCreate;
 
 		for (int i = 0; i < nBodies; i++){
 
-			int index = i * 12 + 1;
+			int index = i * 12 + 1; // 12 = Number of settings per body
 
 			bodyToCreate.name = settingsList[index];
 
@@ -198,58 +189,59 @@ public class DataLoader : MonoBehaviour{
 			data.bodyController.AddBody();
 
 		}
-
 	}
 
-	private string RemoveVariableName(string str){
-		return str.Substring(str.IndexOf(DataController.TEXT_VALUE_SEPARATOR) + DataController.TEXT_VALUE_SEPARATOR.Length);
-	}
+	// Other Stuff 1
+
+	
+
+	// Other Stuff 2
 
 	private void SetValue(TMP_InputField field){
 
-		field.text = settingsList[i];
-		i++;
+		field.text = settingsList[settingsListIndex];
+		settingsListIndex++;
 	}
 
 	private void SetValue(Slider slider){
 
-		ExpressionEvaluator.Evaluate(settingsList[i], out float value);
+		ExpressionEvaluator.Evaluate(settingsList[settingsListIndex], out float value);
 		slider.value = value;
-		i++;
+		settingsListIndex++;
 	}
 
 	private void SetValue(Toggle toggle){
 
-		bool.TryParse(settingsList[i], out bool value);
+		bool.TryParse(settingsList[settingsListIndex], out bool value);
 		toggle.isOn = value;
-		i++;
+		settingsListIndex++;
 	}
 
 	private void SetValue(TMP_Dropdown dropdown){
 
-		ExpressionEvaluator.Evaluate(settingsList[i], out int value);
+		ExpressionEvaluator.Evaluate(settingsList[settingsListIndex], out int value);
 		dropdown.value = value;
-		i++;
+		settingsListIndex++;
 	}
 
 	private void SetValue(ref float value){
-		ExpressionEvaluator.Evaluate(settingsList[i], out value);
-		i++;
+		ExpressionEvaluator.Evaluate(settingsList[settingsListIndex], out value);
+		settingsListIndex++;
 	}
 
 	private void SetValue(ref int value){
-		ExpressionEvaluator.Evaluate(settingsList[i], out value);
-		i++;
+		ExpressionEvaluator.Evaluate(settingsList[settingsListIndex], out value);
+		settingsListIndex++;
 	}
 
 	private void SetValue(ref double value){
-		ExpressionEvaluator.Evaluate(settingsList[i], out value);
-		i++;
+		ExpressionEvaluator.Evaluate(settingsList[settingsListIndex], out value);
+		settingsListIndex++;
 	}
 
 	private void SetValue(ref bool value){
-		bool.TryParse(settingsList[i], out value);
-		i++;
+		bool.TryParse(settingsList[settingsListIndex], out value);
+		settingsListIndex++;
 	}
 
 }

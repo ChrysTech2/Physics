@@ -4,11 +4,14 @@ using UnityEngine.UI;
 public class OnChangeEvent : MonoBehaviour{
 	
 	[SerializeField] private SettingsController settings;
-	[SerializeField] private BodyEditor bodyEditor;
-	[SerializeField] private Image colorPreview;
+	[SerializeField] private BodiesTableDataController tableDataController;
 
-	public void OnColorChange(){
-		colorPreview.color = new Color(settings.r.value, settings.g.value, settings.b.value, settings.a.value);
+	public void OnColorChangeSettings(Image image){
+		image.color = new Color(settings.r.value, settings.g.value, settings.b.value, settings.a.value);
+	}
+
+	public void OnColorChangePresets(Image image){
+		image.color = new Color(tableDataController.r.value, tableDataController.g.value, tableDataController.b.value, tableDataController.a.value);
 	}
 
 	// Events

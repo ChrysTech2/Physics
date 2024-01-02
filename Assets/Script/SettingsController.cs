@@ -24,7 +24,6 @@ public class SettingsController : MonoBehaviour{
 	public Slider r, g, b, a;
 
 	// Other Stuff
-	[SerializeField] private TouchControl addOnTouch;
 	[SerializeField] private TMP_Text errorMessage;
 	[SerializeField] private Toggle toggleEditor;
 
@@ -38,6 +37,7 @@ public class SettingsController : MonoBehaviour{
 	
 	private void Start(){
 		errorMessage.SetText("");
+		bodyToCreate.nCollisions = 0;
 	}
 
 	private void OnEnable(){

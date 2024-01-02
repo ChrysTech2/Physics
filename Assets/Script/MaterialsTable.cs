@@ -14,6 +14,12 @@ public class MaterialPreset{
 		this.color = color;
 	}
 
+	public MaterialPreset(){
+		name = "Material 1";
+		density = 0;
+		color = Color.white;
+	}
+
 	public double MassFromRadius(double radius){
 		return density * Math.Pow(radius, 3) * 4 * Math.PI / 3;
 	}
@@ -22,6 +28,8 @@ public class MaterialPreset{
 public class MaterialsTable : MonoBehaviour{
 
 	[SerializeField] private SettingsController settingsController;
+	[SerializeField] private MaterialsTableDataController tableDataController;
+	public List<MaterialPreset> customMaterials = new List<MaterialPreset>();
 
 	[SerializeField] private List<MaterialPreset> materials = new List<MaterialPreset>() {
 
@@ -95,5 +103,39 @@ public class MaterialsTable : MonoBehaviour{
 		}
 
 		transform.parent.gameObject.SetActive(false);
+	}
+
+	public void SelectCustomMaterial(){
+
+		try{
+
+			if (massMode){
+
+				ExpressionEvaluator.Evaluate(settingsController.radius.text, out double radius);
+
+				if (radius == 0){
+					settingsController.radius.text = "1";
+					radius = 1;
+				}
+
+				MaterialPreset material = customMaterials[tableDataController.materialsDropdown.value];
+
+				settingsController.mass.text = Utils.FormatText(((float)material.MassFromRadius(radius)).ToString());
+
+				settingsController.r.value = material.color.r;
+				settingsController.g.value = material.color.g;
+				settingsController.b.value = material.color.b;
+				settingsController.a.value = material.color.a;
+			}
+			else{
+				
+				settingsController.fluidDensity.text = Utils.FormatText(materials[tableDataController.materialsDropdown.value].density.ToString());
+			}
+
+			transform.parent.gameObject.SetActive(false);
+		}
+		catch{
+			tableDataController.errorMessage.SetText(MaterialsTableDataController.LOAD_ERROR_MESSAGE);
+		}
 	}
 }

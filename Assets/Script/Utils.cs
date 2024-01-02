@@ -142,5 +142,4 @@ public class Utils : MonoBehaviour{
 	public static void OpenInstagram(){
 		Application.OpenURL("https://www.instagram.com/chrys_tech/");
 	}
-
 }

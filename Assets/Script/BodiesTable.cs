@@ -15,13 +15,22 @@ public class BodyPreset{
 		this.radius = radius;
 		this.color = color;
 	}
+
+	public BodyPreset(){
+		name = "Material 1";
+		mass = 10500;
+		radius = 1;
+		color = Color.white;
+	}
 }
 
 public class BodiesTable : MonoBehaviour{
 
 	[SerializeField] private SettingsController settingsController;
+	[SerializeField] private BodiesTableDataController tableDataController;
+	public List<BodyPreset> customBodies = new List<BodyPreset>();
 
-	[SerializeField] private List<BodyPreset> bodies = new List<BodyPreset>() {
+	private List<BodyPreset> bodies = new List<BodyPreset>() {
 
 		new BodyPreset("Mercury", 	3.285 * Math.Pow(10,23), 2_439_700, 	new Color(0.31f, 0.31f, 0.31f, 1f)),
 		new BodyPreset("Venus", 	4.867 * Math.Pow(10,24), 6_051_800, 	new Color(0.878f, 0.643f, 0.259f, 1f)),
@@ -74,5 +83,26 @@ public class BodiesTable : MonoBehaviour{
 		settingsController.a.value = body.color.a;
 
 		transform.parent.gameObject.SetActive(false);
+	}
+
+	public void SelectCustomMaterial(){
+
+		try{
+			BodyPreset body = customBodies[tableDataController.bodiesDropdown.value];
+
+			settingsController.mass.text = Utils.FormatText(((float)body.mass).ToString());
+			settingsController.radius.text = Utils.FormatText(((float)body.radius).ToString());
+
+			settingsController.r.value = body.color.r;
+			settingsController.g.value = body.color.g;
+			settingsController.b.value = body.color.b;
+			settingsController.a.value = body.color.a;
+
+			transform.parent.gameObject.SetActive(false);
+		}
+		catch{
+
+			tableDataController.errorMessage.SetText(BodiesTableDataController.LOAD_ERROR_MESSAGE);
+		}
 	}
 }

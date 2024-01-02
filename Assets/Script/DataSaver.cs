@@ -15,6 +15,9 @@ public class DataSaver : MonoBehaviour{
 		Directory.CreateDirectory(simulationPath);
 		SaveSettingsOnFile(simulationPath);
 		SaveBodiesOnFile(simulationPath);
+
+		data.saveMenu.SetActive(false);
+		DataController.LoadOptionsInDropdown(data.simulationsDropdown, Directory.GetDirectories(DataController.simulationsPath));
 	}
 	
 	public void SaveSettingsOnFile(string simulationPath){
@@ -114,7 +117,7 @@ public class DataSaver : MonoBehaviour{
 			$"graph_open : {data.graphController.gameObject.activeSelf}",
 		};
 
-		SetTextValueSeparator(settingsToStringList);
+		DataController.SetTextValueSeparator(settingsToStringList);
 
 		string settingsToString = string.Join(DataController.LINE_SEPARATOR, settingsToStringList);	
 
@@ -133,7 +136,7 @@ public class DataSaver : MonoBehaviour{
 
 			List<string> currentBodyToStringList = new List<string>(){
 
-				$"{DataController.BODIES_SEPARATOR}name : {body.name}",
+				$"{DataController.GROUP_SEPARATOR}name : {body.name}",
 
 				$"x : {body.position.x}",
 				$"y : {body.position.y}",
@@ -155,7 +158,7 @@ public class DataSaver : MonoBehaviour{
 			bodiesToStringList.Add(string.Join(DataController.LINE_SEPARATOR, currentBodyToStringList));
 		}
 
-		SetTextValueSeparator(bodiesToStringList);
+		DataController.SetTextValueSeparator(bodiesToStringList);
 
 		string bodiesToString = string.Join(DataController.LINE_SEPARATOR, bodiesToStringList);
 
@@ -165,10 +168,5 @@ public class DataSaver : MonoBehaviour{
 
 	}
 
-	private void SetTextValueSeparator(List<string> list){
-
-		for (int i = 0; i < list.Count; i++)
-			list[i] = list[i].Replace(" : ", DataController.TEXT_VALUE_SEPARATOR);
-
-	}
+	
 }

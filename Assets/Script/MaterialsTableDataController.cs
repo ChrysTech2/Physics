@@ -21,6 +21,7 @@ public class MaterialsTableDataController : MonoBehaviour{
 	private const string SAVE_ALREADY_EXIST = "There is already another material with that name.";
 	private const string SAVE_ERROR_MESSAGE = "That name is not valid.";
 	public const string LOAD_ERROR_MESSAGE = "I could not load the selected material.";
+	public const string CONFIRM_DELETE = "Click `Delete` again to confirm.";
 
 	private void Start(){
 
@@ -83,24 +84,31 @@ public class MaterialsTableDataController : MonoBehaviour{
 
 	public void DeleteMaterial(){
 
-		List<string> settingsList = FileContentToList(customMaterialsPath).ToList();
-		ExpressionEvaluator.Evaluate(DataController.RemoveVariableName(settingsList[0]), out int nMaterials);
+		if (errorMessage.text == CONFIRM_DELETE){
+			
+			errorMessage.SetText("");
 
-		if (nMaterials == 0)
-			return;
+			List<string> settingsList = FileContentToList(customMaterialsPath).ToList();
+			ExpressionEvaluator.Evaluate(DataController.RemoveVariableName(settingsList[0]), out int nMaterials);
 
-		int index = materialsDropdown.value * 6 + 1;
+			if (nMaterials == 0)
+				return;
 
-		settingsList[index - 1] = settingsList[index - 1].Replace(DataController.LINE_SEPARATOR, "");
+			int index = materialsDropdown.value * 6 + 1;
 
-		for (int i = 0; i < 6; i++){
-			settingsList.RemoveAt(index); // 7 : Number of settings per customBody
+			settingsList[index - 1] = settingsList[index - 1].Replace(DataController.LINE_SEPARATOR, "");
+
+			for (int i = 0; i < 6; i++){
+				settingsList.RemoveAt(index); // 6 : Number of settings per customBody
+			}
+
+			File.WriteAllText(customMaterialsPath, string.Join(DataController.LINE_SEPARATOR, settingsList));
+			
+			SubtractOneToCount();
+			LoadMaterialsInDropdown();
 		}
 
-		File.WriteAllText(customMaterialsPath, string.Join(DataController.LINE_SEPARATOR, settingsList));
-		
-		SubtractOneToCount();
-		LoadMaterialsInDropdown();
+		errorMessage.SetText(CONFIRM_DELETE);
 	}
 
 	// Load
@@ -116,7 +124,7 @@ public class MaterialsTableDataController : MonoBehaviour{
 
 		for (int i = 0; i < nMaterials; i++){
 
-			int index =  i * 7 + 1; // 7 : Number of settings per customBody
+			int index =  i * 6 + 1; // 6 : Number of settings per customBody
 
 			materialsTable.customMaterials.Add(new MaterialPreset());
 

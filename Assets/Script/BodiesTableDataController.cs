@@ -21,6 +21,7 @@ public class BodiesTableDataController : MonoBehaviour{
 	private const string SAVE_ALREADY_EXIST = "There is already another body with that name.";
 	private const string SAVE_ERROR_MESSAGE = "That name is not valid.";
 	public const string LOAD_ERROR_MESSAGE = "I could not load the selected body.";
+	public const string CONFIRM_DELETE = "Click `Delete` again to confirm.";
 
 	private void Start(){
 
@@ -84,24 +85,33 @@ public class BodiesTableDataController : MonoBehaviour{
 
 	public void DeleteBody(){
 
-		List<string> settingsList = FileContentToList(customBodiesPath).ToList();
-		ExpressionEvaluator.Evaluate(DataController.RemoveVariableName(settingsList[0]), out int nBodies);
+		if (errorMessage.text == CONFIRM_DELETE){
 
-		if (nBodies == 0)
+			errorMessage.SetText("");
+
+			List<string> settingsList = FileContentToList(customBodiesPath).ToList();
+			ExpressionEvaluator.Evaluate(DataController.RemoveVariableName(settingsList[0]), out int nBodies);
+
+			if (nBodies == 0)
+				return;
+
+			int index = bodiesDropdown.value * 7 + 1;
+
+			settingsList[index - 1] = settingsList[index - 1].Replace(DataController.LINE_SEPARATOR, "");
+
+			for (int i = 0; i < 7; i++){
+				settingsList.RemoveAt(index); // 7 : Number of settings per customBody
+			}
+
+			File.WriteAllText(customBodiesPath, string.Join(DataController.LINE_SEPARATOR, settingsList));
+			
+			SubtractOneToCount();
+			LoadBodiesInDropdown();
+			
 			return;
-
-		int index = bodiesDropdown.value * 7 + 1;
-
-		settingsList[index - 1] = settingsList[index - 1].Replace(DataController.LINE_SEPARATOR, "");
-
-		for (int i = 0; i < 7; i++){
-			settingsList.RemoveAt(index); // 7 : Number of settings per customBody
 		}
 
-		File.WriteAllText(customBodiesPath, string.Join(DataController.LINE_SEPARATOR, settingsList));
-		
-		SubtractOneToCount();
-		LoadBodiesInDropdown();
+		errorMessage.SetText(CONFIRM_DELETE);
 	}
 
 	// Load

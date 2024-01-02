@@ -63,13 +63,13 @@ public class DataController : MonoBehaviour{
 	// Save Data
 	public void SaveButton(){
 
-		OnSimulationNameChange();
-
 		if (saveErrorMessage.text == CONFIRM_OVERWRITE_MESSAGE){
 			dataSaver.SaveSimulationOnFolder(simulationName.text);
 			saveErrorMessage.SetText("");
 			return;
 		}
+
+		OnSimulationNameChange();
 
 		if (saveErrorMessage.text != "")
 			return;

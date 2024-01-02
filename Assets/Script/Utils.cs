@@ -60,7 +60,11 @@ public class Utils : MonoBehaviour{
 
 	public static void EvaluateInputField(TMP_InputField inputField){
 
-		ExpressionEvaluator.Evaluate(inputField.text, out float value);
+		string toEvaluate = inputField.text.Replace("K", "*(1000)").Replace("k", "*(1000)");
+		toEvaluate = toEvaluate.Replace("M", "*(1000000)").Replace("G", "*(1000000000)");
+
+		ExpressionEvaluator.Evaluate(toEvaluate, out float value);
+
 		inputField.text = FormatText(value.ToString());
 	}
 

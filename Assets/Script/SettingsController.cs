@@ -41,13 +41,15 @@ public class SettingsController : MonoBehaviour{
 	}
 
 	private void OnEnable(){
-		bodyController.touchControl.addOnTouch.gameObject.SetActive(false);
 		bodyController.informations.gameObject.SetActive(false);
+		bodyController.touchControl.addOnTouch.gameObject.SetActive(false);
 	}
 
 	private void OnDisable(){
-		bodyController.touchControl.addOnTouch.gameObject.SetActive(true);
 		bodyController.informations.gameObject.SetActive(true);
+
+		if (!bodyController.bodyEditor.gameObject.activeSelf)
+			bodyController.touchControl.addOnTouch.gameObject.SetActive(true);
 	}
 
 	public void AddBody(bool addedOnTouch = false){

@@ -23,13 +23,15 @@ public class BodyEditor : MonoBehaviour{
 	public Body bodyToEdit;
 
 	private void OnEnable(){
-		bodyController.touchControl.addOnTouch.gameObject.SetActive(false);
 		showEditorButton.transform.GetChild(0).GetComponent<TMP_Text>().text = ">";
+		bodyController.touchControl.addOnTouch.gameObject.SetActive(false);
 	}
 
 	private void OnDisable(){
-		bodyController.touchControl.addOnTouch.gameObject.SetActive(true);
 		showEditorButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "<";
+
+		if (!bodyController.settingsController.gameObject.activeSelf)
+			bodyController.touchControl.addOnTouch.gameObject.SetActive(true);
 	}
 
 	public void ToggleMenu(){
@@ -46,29 +48,15 @@ public class BodyEditor : MonoBehaviour{
 	}
 
 	public void AssignBody(){
-		bodyToEdit = bodyController.bodies[DropdownValue];
+		if (bodyController.bodies.Count > 0){
+			bodyToEdit = bodyController.bodies[DropdownValue];
+			CheckShowColor();
+		}
 	}
 
 	private void FixedUpdate(){
 
-		if (!showColor.isOn){
-			backgroundImage.color = new Color(0.46f, 0.46f, 0.46f, 0.78f);
-		}
-		else{
-			Color color = bodyToEdit.color;
-			backgroundImage.color = new Color(color.r, color.g, color.b, 0.78f);	
-		}
-
 		if (!showAngle.isOn){
-
-			Utils.SetTextChild(outputX, "X", 2);
-			Utils.SetTextChild(outputY, "Y", 2);
-
-			Utils.SetTextChild(outputVelocityX, "Vx", 2);
-			Utils.SetTextChild(outputVelocityY, "Vy", 2);
-
-			Utils.SetTextChild(outputMass, "Mass", 2);
-			Utils.SetTextChild(outputRadius, "Radius", 2);
 		
 			outputX.text = ((float)bodyToEdit.position.x).ToString() + " m";
 			outputY.text = ((float)bodyToEdit.position.y).ToString() + " m";
@@ -82,15 +70,6 @@ public class BodyEditor : MonoBehaviour{
 			return;
 		}
 
-		Utils.SetTextChild(outputX, "Dst", 2);
-		Utils.SetTextChild(outputY, "Angle", 2);
-
-		Utils.SetTextChild(outputVelocityX, "V", 2);
-		Utils.SetTextChild(outputVelocityY, "Angle", 2);
-
-		Utils.SetTextChild(outputMass, "Vlm", 2);
-		Utils.SetTextChild(outputRadius, "Dst", 2);	
-
 		outputX.text = ((float)bodyToEdit.position.magnitude).ToString() + " m";
 		outputY.text = ((float)bodyToEdit.position.ToDegrees()).ToString() + "°";
 
@@ -101,7 +80,42 @@ public class BodyEditor : MonoBehaviour{
 		outputRadius.text = ((float)bodyToEdit.Density).ToString() + " Kg/m^3";			
 	}
 
-	
+	public void OnShowAngleChange(){
+
+		if (!showAngle.isOn){
+
+			Utils.SetTextChild(outputX, "X", 2);
+			Utils.SetTextChild(outputY, "Y", 2);
+
+			Utils.SetTextChild(outputVelocityX, "Vx", 2);
+			Utils.SetTextChild(outputVelocityY, "Vy", 2);
+
+			Utils.SetTextChild(outputMass, "Mass", 2);
+			Utils.SetTextChild(outputRadius, "Radius", 2);
+
+			return;
+		}
+
+		Utils.SetTextChild(outputX, "Dst", 2);
+		Utils.SetTextChild(outputY, "Angle", 2);
+
+		Utils.SetTextChild(outputVelocityX, "V", 2);
+		Utils.SetTextChild(outputVelocityY, "Angle", 2);
+
+		Utils.SetTextChild(outputMass, "Vlm", 2);
+		Utils.SetTextChild(outputRadius, "Dst", 2);	
+	}
+
+	private void CheckShowColor(){
+
+		if (showColor.isOn){
+			Color color = bodyToEdit.color;
+			backgroundImage.color = new Color(color.r, color.g, color.b, 0.78f);	
+			return;
+		}
+		
+		backgroundImage.color = new Color(0.46f, 0.46f, 0.46f, 0.78f);
+	}
 
 	public void FocusBody(){
 		

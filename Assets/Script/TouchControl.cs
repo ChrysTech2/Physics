@@ -78,8 +78,8 @@ public class TouchControl : MonoBehaviour{
 
 			distance *= bodyController.scale;
 
-			velocity.x = Math.Log(1/bodyController.scale) + Math.Sqrt(1/bodyController.scale) * distance.x;
-			velocity.y = Math.Log(1/bodyController.scale) + Math.Sqrt(1/bodyController.scale) * distance.y;
+			velocity.x = (Math.Log(1/bodyController.scale) + Math.Sqrt(1/bodyController.scale)) * distance.x;
+			velocity.y = (Math.Log(1/bodyController.scale) + Math.Sqrt(1/bodyController.scale)) * distance.y;
 			
 			velocity = velocity * bodyController.settings.touchMultiplier + startVelocity;
 

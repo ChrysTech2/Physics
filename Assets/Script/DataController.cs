@@ -1,9 +1,6 @@
 using System.IO;
-using System.Collections.Generic;
 using UnityEngine;
-using System;
 using TMPro;
-using UnityEngine.UI;
 using System.Linq;
 
 public class DataController : MonoBehaviour{

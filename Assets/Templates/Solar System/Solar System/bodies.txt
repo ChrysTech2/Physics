@@ -1,0 +1,351 @@
+number_of_bodies : 25 #
+...........................................
+
+name : Sun #
+x : 0 #
+y : 0 #
+velocity_x : 0 #
+velocity_y : 0 #
+mass : 1,989E+30 #
+radius : 696340000 #
+color_red_value : 1 #
+color_green_value : 1 #
+color_blue_value : 1 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+...........................................
+
+name : Mercury #
+x : 0 #
+y : 46376000000 #
+velocity_x : 58950 #
+velocity_y : 0 #
+mass : 3,285E+23 #
+radius : 2439700 #
+color_red_value : 0,31 #
+color_green_value : 0,31 #
+color_blue_value : 0,31 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+...........................................
+
+name : Venus #
+x : 0 #
+y : 109208000000 #
+velocity_x : 34790 #
+velocity_y : 0 #
+mass : 4,867E+24 #
+radius : 6051800 #
+color_red_value : 0,878 #
+color_green_value : 0,643 #
+color_blue_value : 0,259 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+...........................................
+
+name : Earth #
+x : 0 #
+y : 146608000000 #
+velocity_x : 30290 #
+velocity_y : 0 #
+mass : 5,972E+24 #
+radius : 6371000 #
+color_red_value : 0,243 #
+color_green_value : 0,714 #
+color_blue_value : 0,906 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+...........................................
+
+name : Mars #
+x : 0 #
+y : 234872000000 #
+velocity_x : 23450 #
+velocity_y : 0 #
+mass : 6,417E+23 #
+radius : 3389500 #
+color_red_value : 0,871 #
+color_green_value : 0,522 #
+color_blue_value : 0,22 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+...........................................
+
+name : Jupiter #
+x : 0 #
+y : 740520000000 #
+velocity_x : 13700 #
+velocity_y : 0 #
+mass : 1,898E+27 #
+radius : 69911000 #
+color_red_value : 0,659 #
+color_green_value : 0,533 #
+color_blue_value : 0,4 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+...........................................
+
+name : Saturn #
+x : 0 #
+y : 1470568000000 #
+velocity_x : 9360 #
+velocity_y : 0 #
+mass : 5,683E+26 #
+radius : 58232000 #
+color_red_value : 0,827 #
+color_green_value : 0,761 #
+color_blue_value : 0,576 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+...........................................
+
+name : Uranus #
+x : 0 #
+y : 2942632000000 #
+velocity_x : 6630 #
+velocity_y : 0 #
+mass : 8,681E+25 #
+radius : 25362000 #
+color_red_value : 0,714 #
+color_green_value : 0,89 #
+color_blue_value : 0,961 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+...........................................
+
+name : Neptune #
+x : 0 #
+y : 4474536000000 #
+velocity_x : 5460 #
+velocity_y : 0 #
+mass : 1,024E+26 #
+radius : 24622000 #
+color_red_value : 0,176 #
+color_green_value : 0,243 #
+color_blue_value : 0,686 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+...........................................
+
+name : Pluto #
+x : 0 #
+y : 5188128000000 #
+velocity_x : 5360 #
+velocity_y : 0 #
+mass : 1,309E+22 #
+radius : 1188300 #
+color_red_value : 0,894 #
+color_green_value : 0,757 #
+color_blue_value : 0,616 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+...........................................
+
+name : Moon #
+x : 0 #
+y : 146965000000 #
+velocity_x : 31390 #
+velocity_y : 0 #
+mass : 7,348E+22 #
+radius : 1737400 #
+color_red_value : 0,361 #
+color_green_value : 0,357 #
+color_blue_value : 0,349 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+...........................................
+
+name : Io #
+x : 0 #
+y : 740940000000 #
+velocity_x : 31106 #
+velocity_y : 0 #
+mass : 8,932E+22 #
+radius : 1821600 #
+color_red_value : 0,643 #
+color_green_value : 0,525 #
+color_blue_value : 0,247 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+...........................................
+
+name : Ganymede #
+x : 0 #
+y : 741589200000 #
+velocity_x : 24592 #
+velocity_y : 0 #
+mass : 1,482E+23 #
+radius : 2634100 #
+color_red_value : 0,341 #
+color_green_value : 0,306 #
+color_blue_value : 0,282 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+...........................................
+
+name : Callisto #
+x : 0 #
+y : 742389000000 #
+velocity_x : 21904 #
+velocity_y : 0 #
+mass : 1,076E+23 #
+radius : 2410300 #
+color_red_value : 0,259 #
+color_green_value : 0,243 #
+color_blue_value : 0,208 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+...........................................
+
+name : Europa #
+x : 0 #
+y : 741184862000 #
+velocity_x : 27443,36 #
+velocity_y : 0 #
+mass : 4,8E+22 #
+radius : 1560800 #
+color_red_value : 0,576 #
+color_green_value : 0,549 #
+color_blue_value : 0,522 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+...........................................
+
+name : Titan #
+x : 0 #
+y : 1471754680000 #
+velocity_x : 14930 #
+velocity_y : 0 #
+mass : 1,345E+23 #
+radius : 2574700 #
+color_red_value : 0,855 #
+color_green_value : 0,714 #
+color_blue_value : 0,4 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+...........................................
+
+name : Mimas #
+x : 0 #
+y : 1470749902000 #
+velocity_x : 23640 #
+velocity_y : 0 #
+mass : 3,751E+19 #
+radius : 198200 #
+color_red_value : 0,286 #
+color_green_value : 0,286 #
+color_blue_value : 0,286 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+...........................................
+
+name : Iapetus #
+x : 0 #
+y : 1474026936000 #
+velocity_x : 12620 #
+velocity_y : 0 #
+mass : 1,806E+21 #
+radius : 734500 #
+color_red_value : 0,545 #
+color_green_value : 0,522 #
+color_blue_value : 0,475 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+...........................................
+
+name : Tethys #
+x : 0 #
+y : 1470863000000 #
+velocity_x : 20710 #
+velocity_y : 0 #
+mass : 6,17E+20 #
+radius : 531000 #
+color_red_value : 0,6 #
+color_green_value : 0,6 #
+color_blue_value : 0,6 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+...........................................
+
+name : Dione #
+x : 0 #
+y : 1470945400000 #
+velocity_x : 19390 #
+velocity_y : 0 #
+mass : 1,05E+21 #
+radius : 561400 #
+color_red_value : 0,702 #
+color_green_value : 0,702 #
+color_blue_value : 0,702 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+...........................................
+
+name : Enceladus #
+x : 0 #
+y : 1470806000000 #
+velocity_x : 22000 #
+velocity_y : 0 #
+mass : 1,081E+20 #
+radius : 252100 #
+color_red_value : 0,576 #
+color_green_value : 0,631 #
+color_blue_value : 0,69 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+...........................................
+
+name : Triton #
+x : 0 #
+y : 4474890800000 #
+velocity_x : 1070 #
+velocity_y : 0 #
+mass : 2,139E+22 #
+radius : 2700000 #
+color_red_value : 0,455 #
+color_green_value : 0,42 #
+color_blue_value : 0,404 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+...........................................
+
+name : Charon #
+x : 0 #
+y : 5188147640000 #
+velocity_x : 5590 #
+velocity_y : 0 #
+mass : 1,586E+21 #
+radius : 606000 #
+color_red_value : 0,545 #
+color_green_value : 0,545 #
+color_blue_value : 0,537 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+...........................................
+
+name : Ceres #
+x : 0 #
+y : 413000000000 #
+velocity_x : 17900 #
+velocity_y : 0 #
+mass : 9,1E+20 #
+radius : 473000 #
+color_red_value : 0,478 #
+color_green_value : 0,447 #
+color_blue_value : 0,431 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+...........................................
+
+name : Vesta #
+x : 0 #
+y : 353056000000 #
+velocity_x : 19340 #
+velocity_y : 0 #
+mass : 2,589E+20 #
+radius : 262700 #
+color_red_value : 0,537 #
+color_green_value : 0,514 #
+color_blue_value : 0,467 #
+color_opacity_value : 1 #
+number_of_collisions : 0

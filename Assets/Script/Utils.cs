@@ -62,6 +62,7 @@ public class Utils : MonoBehaviour{
 
 		string toEvaluate = inputField.text.Replace("K", "*(1000)").Replace("k", "*(1000)");
 		toEvaluate = toEvaluate.Replace("M", "*(1000000)").Replace("G", "*(1000000000)");
+		toEvaluate = toEvaluate.Replace("AU", "*(1.496e11)").Replace("au", "*(1.496e11)");
 
 		ExpressionEvaluator.Evaluate(toEvaluate, out float value);
 

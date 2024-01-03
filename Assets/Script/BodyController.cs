@@ -29,14 +29,17 @@ public class BodyController : MonoBehaviour{
 
 	private void Update(){
 
-		CheckInputs();
-		DebugInformation();
-
 		foreach (Body body in bodies)
 			body.ApplyPosition();
 
 		if (settings.showCenterOfGravity)
 			ShowCenterOfGravity();
+
+		if (settingsController.gameObject.activeSelf)
+			return;
+
+		CheckInputs();
+		DebugInformation();
 	}
 
 	private void ShowCenterOfGravity(){
@@ -71,11 +74,17 @@ public class BodyController : MonoBehaviour{
 		if (Input.GetKeyDown(KeyCode.Period))
 			SpeedUp();
 
-		if (Input.GetKey(KeyCode.Minus))
+		if (Input.GetKey(KeyCode.Minus) || Input.GetKey(KeyCode.KeypadMinus))
 			ZoomOut(1.025f);
 
-		if (Input.GetKey(KeyCode.Equals))
+		if (Input.GetKey(KeyCode.Equals) || Input.GetKey(KeyCode.KeypadPlus))
 			ZoomIn(1.025f);
+
+		if (Input.GetKeyDown(KeyCode.LeftBracket))
+			cameraController.PreviousBody();
+
+		if (Input.GetKeyDown(KeyCode.RightBracket))
+			cameraController.NextBody();
 	}
 
 	private void DebugInformation(){

@@ -3,9 +3,10 @@ using UnityEngine;
 public class CameraController : MonoBehaviour{
 
 	[SerializeField] private BodyController bodyController;
-	[SerializeField] private TMP_Text focusModeText;
-	[SerializeField] private double sensibiliy = 6;
 	[SerializeField] private TouchControl touchControl;
+	[SerializeField] private TMP_Text mouseOnBody;
+	[SerializeField] private double sensibiliy = 6;
+	[SerializeField] private TMP_Text focusModeText;
 
 	private SettingsController settingsController;
 	private BodyEditor bodyEditor;
@@ -60,8 +61,10 @@ public class CameraController : MonoBehaviour{
 			canCalculateOffsetAtTheMoment = Index != -1 && !bodyController.startupMenu.activeSelf && ((condition1 && (condition2 || condition3)) || condition4);
 		}
 
-		if (Input.GetKeyUp(KeyCode.Mouse0))
+		if (Input.GetKeyUp(KeyCode.Mouse0)){
 			canCalculateOffsetAtTheMoment = false;
+			mouseOnBody.SetText("");
+		}
 
 		if (!canCalculateOffsetAtTheMoment)
 			return;
@@ -77,7 +80,7 @@ public class CameraController : MonoBehaviour{
 			mouseY = 0;
 		}
 
-		//CheckBodiesAtMousePosition();
+		CheckBodiesAtMousePosition();
 		
 		offset += new Vector2Double(mouseX, mouseY) / (sensibiliy * bodyController.scale);
 	}
@@ -166,9 +169,13 @@ public class CameraController : MonoBehaviour{
 		}
 		set{
 			focus = value;
-			focusModeText.SetText($"F : {FocusModeToString()}");
+			SetFocusModeText();
 			Center();
 		}
+	}
+
+	public void SetFocusModeText(){
+		focusModeText.SetText($"F : {FocusModeToString()}");
 	}
 
 	public void BodyEliminated(int index){
@@ -188,7 +195,8 @@ public class CameraController : MonoBehaviour{
 			Vector2Double mousePosition = touchControl.mouseWorldPosition;
 
 			if (Vector2Double.Distance(mousePosition, body.position) - body.radius < 0){
-				Index = body.Index();
+				//Index = body.Index();
+				mouseOnBody.SetText($"Body : {body.name}");
 				return;
 			}
 		}

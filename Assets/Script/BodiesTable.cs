@@ -30,7 +30,7 @@ public class BodiesTable : MonoBehaviour{
 	[SerializeField] private BodiesTableDataController tableDataController;
 	public List<BodyPreset> customBodies = new List<BodyPreset>();
 
-	private List<BodyPreset> bodies = new List<BodyPreset>() {
+	private List<BodyPreset> bodies = new List<BodyPreset>(){
 
 		new BodyPreset("Mercury", 	3.285 * Math.Pow(10,23), 2_439_700, 	new Color(0.31f, 0.31f, 0.31f, 1f)),
 		new BodyPreset("Venus", 	4.867 * Math.Pow(10,24), 6_051_800, 	new Color(0.878f, 0.643f, 0.259f, 1f)),
@@ -52,8 +52,8 @@ public class BodiesTable : MonoBehaviour{
 
 		new BodyPreset("Moon", 		7.348 * Math.Pow(10,22), 1_737_400, 	new Color(0.361f, 0.357f, 0.349f, 1f)),
 		new BodyPreset("Vesta", 	2.589 * Math.Pow(10,20), 262_700, 		new Color(0.537f, 0.514f, 0.467f, 1f)),
-		new BodyPreset("Eris", 		1.670 * Math.Pow(10,22), 1_163_000, 	new Color(0.416f, 0.384f, 0.38f, 1f)),
-		new BodyPreset("Makemake", 	3.100 * Math.Pow(10,21), 715_000, 		new Color(0.588f, 0.451f, 0.424f, 1f)),
+		new BodyPreset("Charon", 	1.586 * Math.Pow(10,21), 606_000, 		new Color(0.545f, 0.545f, 0.537f, 1f)),
+		new BodyPreset("Triton", 	2.139 * Math.Pow(10,22), 2_700_000, 	new Color(0.455f, 0.42f, 0.404f, 1f)),
 		new BodyPreset("Tethys", 	6.170 * Math.Pow(10,20), 531_000, 		new Color(0.6f, 0.6f, 0.6f, 1f)),
 
 		new BodyPreset("Titan", 	1.345 * Math.Pow(10,23), 2_574_700, 	new Color(0.855f, 0.714f, 0.4f, 1f)),

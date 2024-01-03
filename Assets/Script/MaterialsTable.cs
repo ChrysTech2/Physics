@@ -31,7 +31,7 @@ public class MaterialsTable : MonoBehaviour{
 	[SerializeField] private MaterialsTableDataController tableDataController;
 	public List<MaterialPreset> customMaterials = new List<MaterialPreset>();
 
-	[SerializeField] private List<MaterialPreset> materials = new List<MaterialPreset>() {
+	[SerializeField] private List<MaterialPreset> materials = new List<MaterialPreset>(){
 
 		new MaterialPreset("Gold", 		19300, 	new Color(1f, 0.824f, 0.035f, 1f)),
 		new MaterialPreset("Iron", 		7874,  	new Color(0.388f, 0.388f, 0.388f, 1f)),

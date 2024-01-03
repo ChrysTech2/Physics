@@ -118,6 +118,8 @@ public class DataLoader : MonoBehaviour{
 		SetValue(ref data.cameraController.focus);
 		SetValue(ref data.cameraController.index);
 
+		data.cameraController.SetFocusModeText();
+
 		SetValue(ref data.cameraController.offset.x);
 		SetValue(ref data.cameraController.offset.y);
 

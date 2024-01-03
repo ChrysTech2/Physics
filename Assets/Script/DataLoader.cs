@@ -65,6 +65,8 @@ public class DataLoader : MonoBehaviour{
 		SetValue(data.settings.radius);
 		SetValue(data.settings.bodyName);
 
+		SetValue(ref data.settings.n);
+
 		SetValue(data.settings.r);
 		SetValue(data.settings.g);
 		SetValue(data.settings.b);

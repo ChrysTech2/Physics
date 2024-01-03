@@ -34,6 +34,8 @@ public class DataSaver : MonoBehaviour{
 			$"radius : {data.settings.radius.text}",
 			$"name : {data.settings.bodyName.text}",
 
+			$"auto_name_number : {data.settings.n}",
+
 			$"color_red_value : {data.settings.r.value}",
 			$"color_green_value : {data.settings.g.value}",
 			$"color_blue_value : {data.settings.b.value}",

@@ -31,7 +31,7 @@ public class SettingsController : MonoBehaviour{
 	public BodyController bodyController;
 	
 	public Body bodyToCreate;
-	private int n = 1;
+	public int n = 1;
 
 	[SerializeField] private Canvas canvas;
 	

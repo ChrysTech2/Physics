@@ -72,7 +72,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1759334619
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 3286163911610860551, guid: 0bee749cdaaf80a4b8f9979f91fe7244, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -100,7 +100,6 @@ MonoBehaviour:
   mass: 10500
   radius: 1
   color: {r: 1, g: 1, b: 1, a: 1}
-  bodiesAlreadyCollided: []
   nCollisions: 0
   area: 0
   density: 0

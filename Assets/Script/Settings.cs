@@ -19,7 +19,7 @@ public class Settings : MonoBehaviour{
 	public Vector2Double gravity, gravityDirection;
 
 	public double AttractionGravity(Body body1, Body body2){
-		return attractionGravityConstant * body2.mass / Math.Pow(body1.Distance(body2), 2);
+		return attractionGravityConstant * body1.mass *body2.mass / Math.Pow(body1.Distance(body2), 2);
 	}
 
 	public double AirDrag(Body body){

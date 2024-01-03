@@ -260,10 +260,8 @@ public class BodyController : MonoBehaviour{
 
 			if (settings.mergeBodiesInCollisions)
 				body.ForceEachBody += (body2) => body.CollisionMerge(body2);
-			else{
+			else
 				body.ForceEachBody += (body2) => body.Collision(body2);
-				body.ForceOnce += () => body.bodiesAlreadyCollided.Clear();
-			}
 		}
 
 		if (settings.borderMode == BorderMode.Rectangle)

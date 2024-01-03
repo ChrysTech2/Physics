@@ -128,7 +128,7 @@ public class GraphController : MonoBehaviour{
 
 			Body body = bodyController.bodies[i];
 
-			totalMomentum += (float)(body.velocity.magnitude * body.mass);
+			totalMomentum += (float)((body.velocity.x + body.velocity.y ) * body.mass);
 		}
 
 		return totalMomentum;

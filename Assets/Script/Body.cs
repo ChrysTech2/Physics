@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Body : MonoBehaviour{
@@ -13,7 +12,6 @@ public class Body : MonoBehaviour{
 	// Functions
 	public Action ForceOnce, ForceAfterPosition;
 	public Action<Body> ForceEachBody;
-	public List<Body> bodiesAlreadyCollided = new List<Body>();
 
 	// Other Stuff
 	private BodyController bodyController;
@@ -54,22 +52,17 @@ public class Body : MonoBehaviour{
 	public static int n = 0;
 
 	// Movement
-	public Vector2Double acceleration;
+	public Vector2Double acceleration = Vector2Double.zero;
 	public void UpdateVelocity(){
 
-		acceleration = Vector2Double.zero;
-
-		for (int i = Index() + 1; i < bodyController.bodies.Count; i++){
-
-			Body body = bodyController.bodies[i];
-
-			if (body != this)
-				ForceEachBody(body);
-		}
+		for (int i = Index() + 1; i < bodyController.bodies.Count; i++)
+			ForceEachBody(bodyController.bodies[i]);
 		
 		ForceOnce();
 
 		velocity += acceleration * settings.secondsPerFrame;
+
+		acceleration = Vector2Double.zero;
 	}
 
 	private Vector2Double lastPosition = Vector2Double.zero;
@@ -119,7 +112,10 @@ public class Body : MonoBehaviour{
 	}
 
 	public void AttractionGravity(Body body){
-		acceleration += Direction(body) * settings.AttractionGravity(this, body);
+
+		Vector2Double force = Direction(body) * settings.AttractionGravity(this, body);
+		acceleration += force / mass;
+		body.acceleration -= force / body.mass;
 	}
 
 	// Collisions
@@ -128,9 +124,6 @@ public class Body : MonoBehaviour{
 		double distance = DistanceFromSurface(body);
 		
 		if (distance > 0)
-			return;
-
-		if (bodiesAlreadyCollided.Contains(body))
 			return;
 
 		Vector2Double direction = Direction(body);
@@ -161,8 +154,6 @@ public class Body : MonoBehaviour{
 		// End
 		nCollisions ++;
 		body.nCollisions ++;
-
-		body.bodiesAlreadyCollided.Add(this);
 	}
 
 	public void CollisionMerge(Body body){

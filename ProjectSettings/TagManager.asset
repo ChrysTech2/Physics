@@ -44,12 +44,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Line
+    uniqueID: 3554958367
+    locked: 0
   - name: Body
     uniqueID: 2535632677
     locked: 0
   - name: CenterOfGravity
     uniqueID: 3142518621
-    locked: 0
-  - name: Line
-    uniqueID: 3554958367
     locked: 0

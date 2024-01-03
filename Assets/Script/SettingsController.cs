@@ -285,7 +285,7 @@ public class SettingsController : MonoBehaviour{
 
 		foreach (Body body in bodyController.bodies){
 
-			if (body.position == bodyToCreate.position){
+			if (Vector2Double.Distance(bodyToCreate.position, body.position) < Math.Pow(10,-5)){
 				errorMessage.SetText("There is already a body in that position.");
 				return;
 			}

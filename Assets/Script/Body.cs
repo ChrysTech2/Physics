@@ -21,6 +21,7 @@ public class Body : MonoBehaviour{
 	private Transform bodyTransform;
 
 	public int nCollisions = 0;
+	public double area, density, volume;
 
 	public static void CopyData(Body from, Body to){
 
@@ -44,8 +45,8 @@ public class Body : MonoBehaviour{
 		transform.parent = bodyController.transform;
 		bodyTransform = transform;
 		
-		SetRadius(radius);
-		SetColor(color);
+		Radius = radius;
+		Color = color;
 		
 		ApplyPosition();
 	}
@@ -58,7 +59,7 @@ public class Body : MonoBehaviour{
 
 		acceleration = Vector2Double.zero;
 
-		for (int i = 0; i < bodyController.bodies.Count; i++){
+		for (int i = Index() + 1; i < bodyController.bodies.Count; i++){
 
 			Body body = bodyController.bodies[i];
 
@@ -93,7 +94,7 @@ public class Body : MonoBehaviour{
 	}
 
 	public void DirectionalGravityBuoyancy(){
-		acceleration += settings.gravity * (1 - settings.fluidDensity/Density);
+		acceleration += settings.gravity * (1 - settings.fluidDensity/density);
 	}
 
 	public void CenteredGravity(){
@@ -101,7 +102,7 @@ public class Body : MonoBehaviour{
 	}
 	
 	public void CenteredGravityBuoyancy(){
-		acceleration += position.direction.opposite * settings.gravityAcceleration * (1 - settings.fluidDensity/Density);
+		acceleration += position.direction.opposite * settings.gravityAcceleration * (1 - settings.fluidDensity/density);
 	}
 
 	public void VelocityGravity(){
@@ -109,7 +110,7 @@ public class Body : MonoBehaviour{
 	}
 
 	public void VelocityGravityBuoyancy(){
-		acceleration += velocity.direction.SumVectorAsAngle(settings.gravityDirection) * settings.gravityAcceleration * (1 - settings.fluidDensity/Density);
+		acceleration += velocity.direction.SumVectorAsAngle(settings.gravityDirection) * settings.gravityAcceleration * (1 - settings.fluidDensity/density);
 	}
 
 	// Other Forces
@@ -171,16 +172,16 @@ public class Body : MonoBehaviour{
 		if (distance > 0)
 			return;
 
+		double areaTot = area + body.area;
+		float percentage1 = (float)(area / areaTot);
+		float percentage2 = (float)(body.area / areaTot);
+
 		velocity = (mass * velocity + body.mass * body.velocity) / (mass + body.mass);
-		radius = Math.Cbrt(Math.Pow(radius, 3) + Math.Pow(body.radius, 3));
-		mass += body.mass;
 
-		double areaTot = Area + body.Area;
-		float percentage1 = (float)(Area / areaTot);
-		float percentage2 = (float)(body.Area / areaTot);
+		Radius = Math.Cbrt(Math.Pow(radius, 3) + Math.Pow(body.radius, 3));
+		Color = color * percentage1 + body.color * percentage2;
 
-		SetColor(color * percentage1 + body.color * percentage2);
-		SetRadius(radius);
+		Mass = mass + body.mass;
 
 		nCollisions ++;
 
@@ -241,21 +242,27 @@ public class Body : MonoBehaviour{
 	
 	// Other Stuff
  
-	public double Area{
-		get{
-			return Math.PI * Math.Pow(radius, 2);
+	public double Radius{
+		set{
+			radius = value;
+			bodyTransform.localScale = Vector2.one * (float)radius;
+			area = Math.PI * Math.Pow(radius, 2);
+			volume = 4 * Math.PI / 3 * Math.Pow(radius, 3);
+			density = mass / volume;
 		}
 	}
 
-	public double Volume{
-		get{
-			return 4 * Math.PI / 3 * Math.Pow(radius, 3);
+	public double Mass{
+		set{
+			mass = value;
+			density = mass / volume;
 		}
 	}
 
-	public double Density{
-		get{
-			return mass / Volume;
+	public Color Color{
+		set{
+			color = value;
+			GetComponent<Renderer>().material.color = color;
 		}
 	}
 
@@ -269,16 +276,6 @@ public class Body : MonoBehaviour{
 
 	private Vector2Double Direction(Body body){
 		return (body.position - position).direction;
-	}
-
-	public void SetRadius(double radius){
-		this.radius = radius;
-		bodyTransform.localScale = Vector2.one * (float)radius;
-	}
-
-	public void SetColor(Color color){
-		this.color = color;
-		GetComponent<Renderer>().material.color = color;
 	}
 
 	public int Index(){

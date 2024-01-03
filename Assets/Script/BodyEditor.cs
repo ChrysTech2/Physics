@@ -76,8 +76,8 @@ public class BodyEditor : MonoBehaviour{
 		outputVelocityX.text = ((float)bodyToEdit.velocity.magnitude).ToString() + " m/s";
 		outputVelocityY.text = ((float)bodyToEdit.velocity.ToDegrees()).ToString() + "°";
 
-		outputMass.text = ((float)bodyToEdit.Volume).ToString() + " m^3";
-		outputRadius.text = ((float)bodyToEdit.Density).ToString() + " Kg/m^3";			
+		outputMass.text = ((float)bodyToEdit.volume).ToString() + " m^3";
+		outputRadius.text = ((float)bodyToEdit.density).ToString() + " Kg/m^3";			
 	}
 
 	public void OnShowAngleChange(){
@@ -212,7 +212,7 @@ public class BodyEditor : MonoBehaviour{
 			value += bodyToEdit.radius;
 		
 		if (value > 0)
-			bodyToEdit.SetRadius(value);
+			bodyToEdit.Radius = value;
 	}
 
 	public void ChangeMass(bool sum = false){
@@ -223,6 +223,6 @@ public class BodyEditor : MonoBehaviour{
 			value += bodyToEdit.mass;
 		
 		if (value != 0)
-			bodyToEdit.mass = value;
+			bodyToEdit.Mass = value;
 	}
 }

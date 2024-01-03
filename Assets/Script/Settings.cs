@@ -23,6 +23,6 @@ public class Settings : MonoBehaviour{
 	}
 
 	public double AirDrag(Body body){
-		return Math.Pow(body.velocity.magnitude, 2) * dragCoefficient * fluidDensity * body.Area / (2 * body.mass);
+		return Math.Pow(body.velocity.magnitude, 2) * dragCoefficient * fluidDensity * body.area / (2 * body.mass);
 	}
 }

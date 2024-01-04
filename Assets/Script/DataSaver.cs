@@ -93,6 +93,7 @@ public class DataSaver : MonoBehaviour{
 			// BodyEditor
 			$"editor_show_color : {data.bodyEditor.showColor.isOn}",
 			$"editor_show_angle : {data.bodyEditor.showAngle.isOn}",
+			$"editor_mantain_density : {data.bodyEditor.mantainDensity.isOn}",
 
 			// GraphController
 			$"graph_position : {data.graphController.position.isOn}",
@@ -112,11 +113,12 @@ public class DataSaver : MonoBehaviour{
 			$"graph_acceleration_x : {data.graphController.accelerationX.isOn}",
 			$"graph_acceleration_y : {data.graphController.accelerationY.isOn}",
 
-			$"graph_total_momentum : {data.graphController.totalMomentum.isOn}",
+			$"graph_total_momentum_x : {data.graphController.totalMomentumX.isOn}",
+			$"graph_total_momentum_y : {data.graphController.totalMomentumY.isOn}",
+
+			$"graph_number_of_collisions : {data.graphController.numberOfCollisions.isOn}",
 			$"graph_total_kinetic_energy : {data.graphController.totalKineticEnergy.isOn}",
 
-			// Menus
-			$"graph_open : {data.graphController.gameObject.activeSelf}",
 		};
 
 		DataController.SetTextValueSeparator(settingsToStringList);

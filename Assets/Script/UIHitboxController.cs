@@ -13,9 +13,7 @@ public class UIHitboxController : MonoBehaviour{
 	private static RectTransform controlsHitbox;
 	private static RectTransform addOnTouchHitbox;
 	private static RectTransform toggleEditorHitbox;
-	private static CanvasScaler canvasScaler;
 	private static Canvas canvas;
-	
 	
 	private void Start(){
 		bodyEditorHitbox = bodyEditorHitboxToAssign;
@@ -23,9 +21,7 @@ public class UIHitboxController : MonoBehaviour{
 		addOnTouchHitbox = addOnTouchHitboxToAssign;
 		toggleEditorHitbox = toggleEditorHitboxToAssign;
 		canvas = canvasToAssign;
-		canvasScaler = canvas.GetComponent<CanvasScaler>();
 	}
-
 
 	private static bool IsMouseOverRect(RectTransform rect){
 

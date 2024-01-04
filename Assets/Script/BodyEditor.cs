@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System;
 
 public class BodyEditor : MonoBehaviour{
 
@@ -10,7 +11,7 @@ public class BodyEditor : MonoBehaviour{
 	[SerializeField] private TMP_InputField x, y;
 	[SerializeField] private TMP_InputField velocityX, velocityY;
 	[SerializeField] private TMP_InputField mass, radius;
-	public Toggle showColor, showAngle;
+	public Toggle showColor, showAngle, mantainDensity;
 
 	// Output
 	[SerializeField] private TMP_InputField outputX, outputY;
@@ -96,14 +97,14 @@ public class BodyEditor : MonoBehaviour{
 			return;
 		}
 
-		Utils.SetTextChild(outputX, "Dst", 2);
+		Utils.SetTextChild(outputX, "Dist.", 2);
 		Utils.SetTextChild(outputY, "Angle", 2);
 
 		Utils.SetTextChild(outputVelocityX, "V", 2);
 		Utils.SetTextChild(outputVelocityY, "Angle", 2);
 
-		Utils.SetTextChild(outputMass, "Vlm", 2);
-		Utils.SetTextChild(outputRadius, "Dst", 2);	
+		Utils.SetTextChild(outputMass, "Vol.", 2);
+		Utils.SetTextChild(outputRadius, "Density", 2);	
 	}
 
 	private void CheckShowColor(){
@@ -211,8 +212,16 @@ public class BodyEditor : MonoBehaviour{
 		if (sum)
 			value += bodyToEdit.radius;
 		
-		if (value > 0)
+		if (value > 0){
+			double oldDensity = bodyToEdit.density;
+
 			bodyToEdit.Radius = value;
+
+			if (mantainDensity.isOn){
+				bodyToEdit.Mass = oldDensity * bodyToEdit.volume;
+			}
+
+		}
 	}
 
 	public void ChangeMass(bool sum = false){
@@ -222,7 +231,15 @@ public class BodyEditor : MonoBehaviour{
 		if (sum)
 			value += bodyToEdit.mass;
 		
-		if (value != 0)
+		if (value != 0){
+			double oldDensity = bodyToEdit.density;
 			bodyToEdit.Mass = value;
+
+			if (mantainDensity.isOn){
+				double newVolume = bodyToEdit.mass / oldDensity;
+				bodyToEdit.Radius = Math.Cbrt(3 * newVolume / (4 * Math.PI));
+			}
+
+		}
 	}
 }

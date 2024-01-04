@@ -129,6 +129,7 @@ public class DataLoader : MonoBehaviour{
 		// BodyEditor
 		SetValue(data.bodyEditor.showColor);
 		SetValue(data.bodyEditor.showAngle);
+		SetValue(data.bodyEditor.mantainDensity);
 
 		// GraphController
 		SetValue(data.graphController.position);
@@ -148,15 +149,11 @@ public class DataLoader : MonoBehaviour{
 		SetValue(data.graphController.accelerationX);
 		SetValue(data.graphController.accelerationY);
 
-		SetValue(data.graphController.totalMomentum);
-		SetValue(data.graphController.totalKineticEnergy);
+		SetValue(data.graphController.totalMomentumX);
+		SetValue(data.graphController.totalMomentumY);
 
-		bool graphActive = true;
-		SetValue(ref graphActive);
-		
-		data.graphController.gameObject.SetActive(graphActive);
-		data.graphController.hideButton.SetActive(graphActive);
-		data.graphController.showButton.SetActive(!graphActive);
+		SetValue(data.graphController.numberOfCollisions);
+		SetValue(data.graphController.totalKineticEnergy);
 	}
 
 	private void LoadBodiesFromString(string settingsToString){
@@ -195,12 +192,7 @@ public class DataLoader : MonoBehaviour{
 		}
 	}
 
-	// Other Stuff 1
-
-	
-
-	// Other Stuff 2
-
+	// Other Stuff
 	private void SetValue(TMP_InputField field){
 
 		field.text = settingsList[settingsListIndex];

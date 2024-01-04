@@ -52,7 +52,8 @@ public class Body : MonoBehaviour{
 	public static int n = 0;
 
 	// Movement
-	public Vector2Double acceleration = Vector2Double.zero;
+	private Vector2Double acceleration = Vector2Double.zero;
+	public Vector2Double accelerationBeforeReset;
 	public void UpdateVelocity(){
 
 		for (int i = Index() + 1; i < bodyController.bodies.Count; i++)
@@ -61,6 +62,8 @@ public class Body : MonoBehaviour{
 		ForceOnce();
 
 		velocity += acceleration * settings.secondsPerFrame;
+
+		accelerationBeforeReset = acceleration;
 
 		acceleration = Vector2Double.zero;
 	}
@@ -91,7 +94,7 @@ public class Body : MonoBehaviour{
 	}
 
 	public void CenteredGravity(){
-		acceleration = position.direction.opposite * settings.gravityAcceleration;
+		acceleration += position.direction.opposite * settings.gravityAcceleration;
 	}
 	
 	public void CenteredGravityBuoyancy(){

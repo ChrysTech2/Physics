@@ -14,7 +14,7 @@ public class SettingsController : MonoBehaviour{
 	public Toggle calculateCollisions, mergeBodiesInCollisions;
 	public TMP_InputField coefOfRestitution;
 	public Toggle useParent, sumParentRadius, sumBodyRadius, sumAutoVelocity;
-	public Toggle randomMode, showCenterOfGravity;
+	public Toggle randomMode, showCenterOfGravity, controllable;
 	public TMP_InputField borderX, borderY, touchMultiplier;
 	
 	// Body Input

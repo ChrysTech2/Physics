@@ -47,6 +47,7 @@ public class OnChangeEvent : MonoBehaviour{
 	public void OnForcesSettingsChange(){
 
 		Utils.SetActiveIf(settings.dragCoefficient, settings.fluidDensity.text != "0");
+
 	}
 
 	public void OnRandomChange(){

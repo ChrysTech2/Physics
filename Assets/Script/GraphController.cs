@@ -11,15 +11,13 @@ public class GraphController : MonoBehaviour{
 	[SerializeField] private GameObject graphArea;
 	[SerializeField] private GameObject pointToCreate;
 	[SerializeField] private TMP_Text lowerBound, upperBound;
-	
-	public GameObject hideButton, showButton;
+	[SerializeField] private int offsetX, maxX, maxY;
 
 	public Toggle position, velocity, acceleration;
 	public Toggle positionAngle, velocityAngle, accelerationAngle;
 	public Toggle positionX, positionY, velocityX, velocityY, accelerationX, accelerationY;
-	public Toggle totalMomentum, totalKineticEnergy;
-
-	[SerializeField] private int offsetX, maxX, maxY;
+	public Toggle totalKineticEnergy, numberOfCollisions;
+	public Toggle totalMomentumX, totalMomentumY;
 
 	private List<RectTransform> points = new List<RectTransform>();
 	private Body bodyToGraph;
@@ -120,15 +118,15 @@ public class GraphController : MonoBehaviour{
 		point.localPosition = new Vector2(position.x, position.y * scale);
 	}
 
-	private float TotalMomentum(){
+	private Vector2Double TotalMomentum(){
 
-		float totalMomentum = 0;
+		Vector2Double totalMomentum = Vector2Double.zero;
 
 		for (int i = 0; i < bodyController.bodies.Count; i++){
 
 			Body body = bodyController.bodies[i];
 
-			totalMomentum += (float)((body.velocity.x + body.velocity.y ) * body.mass);
+			totalMomentum += body.velocity * body.mass;
 		}
 
 		return totalMomentum;
@@ -161,7 +159,7 @@ public class GraphController : MonoBehaviour{
 			DrawGraphs += () => PlotPoint((float)bodyToGraph.velocity.magnitude, Utils.ColorOfCheckmark(velocity));
 
 		if (acceleration.isOn)
-			DrawGraphs += () => PlotPoint((float)bodyToGraph.acceleration.magnitude, Utils.ColorOfCheckmark(acceleration));
+			DrawGraphs += () => PlotPoint((float)bodyToGraph.accelerationBeforeReset.magnitude, Utils.ColorOfCheckmark(acceleration));
 
 		// Angles
 		if (positionAngle.isOn)
@@ -171,7 +169,7 @@ public class GraphController : MonoBehaviour{
 			DrawGraphs += () => PlotPoint((float)bodyToGraph.velocity.ToDegrees(), Utils.ColorOfCheckmark(velocityAngle));
 		
 		if (accelerationAngle.isOn)
-			DrawGraphs += () => PlotPoint((float)bodyToGraph.acceleration.ToDegrees(), Utils.ColorOfCheckmark(accelerationAngle));
+			DrawGraphs += () => PlotPoint((float)bodyToGraph.accelerationBeforeReset.ToDegrees(), Utils.ColorOfCheckmark(accelerationAngle));
 
 		// 2 Axis Position
 		if (positionX.isOn)
@@ -189,14 +187,21 @@ public class GraphController : MonoBehaviour{
 
 		// 2 Axis Acceleration
 		if (accelerationX.isOn)
-			DrawGraphs += () => PlotPoint((float)bodyToGraph.acceleration.x, Utils.ColorOfCheckmark(accelerationX));
+			DrawGraphs += () => PlotPoint((float)bodyToGraph.accelerationBeforeReset.x, Utils.ColorOfCheckmark(accelerationX));
 
 		if (accelerationY.isOn)
-			DrawGraphs += () => PlotPoint((float)bodyToGraph.acceleration.y, Utils.ColorOfCheckmark(accelerationY));
+			DrawGraphs += () => PlotPoint((float)bodyToGraph.accelerationBeforeReset.y, Utils.ColorOfCheckmark(accelerationY));
 
-		// Other
-		if (totalMomentum.isOn)
-			DrawGraphs += () => PlotPoint((float)TotalMomentum(), Utils.ColorOfCheckmark(totalMomentum));
+		// 2 Axis Momentum
+		if (totalMomentumX.isOn)
+			DrawGraphs += () => PlotPoint((float)TotalMomentum().x, Utils.ColorOfCheckmark(totalMomentumX));
+
+		if (totalMomentumY.isOn)
+			DrawGraphs += () => PlotPoint((float)TotalMomentum().y, Utils.ColorOfCheckmark(totalMomentumY));
+
+		// Other Stuff
+		if (numberOfCollisions.isOn)
+			DrawGraphs += () => PlotPoint(bodyToGraph.nCollisions, Utils.ColorOfCheckmark(numberOfCollisions));
 
 		if (totalKineticEnergy.isOn)
 			DrawGraphs += () => PlotPoint((float)TotalKineticEnergy(), Utils.ColorOfCheckmark(totalKineticEnergy));

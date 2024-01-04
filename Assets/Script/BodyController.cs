@@ -22,12 +22,26 @@ public class BodyController : MonoBehaviour{
 	public int speedMultiplier = 0;
 	public float t = 0, fps = 60;
 
+	public bool isZoomingOut = false, isZoomingIn = false;
 	private void Start(){
 		settings = settingsController.settings;
 		Application.targetFrameRate = 240;
 	}
 
+	public void SetIsZoomingIn(bool value){
+		isZoomingIn = value;
+	}
+
+	public void SetIsZoomingOut(bool value){
+		isZoomingOut = value;
+	}
+
 	private void Update(){
+
+		if (isZoomingIn)
+			ZoomIn(1.025f);
+		else if (isZoomingOut)
+			ZoomOut(1.025f);
 
 		foreach (Body body in bodies)
 			body.ApplyPosition();

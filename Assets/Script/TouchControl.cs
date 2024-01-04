@@ -74,7 +74,7 @@ public class TouchControl : MonoBehaviour{
 
 			Vector2Double distance = worldPosition2 - worldPosition1;
 
-			bodyController.lineController.CreateLine(worldPosition1, worldPosition2, Color.red, true, 1, "TouchLine");
+			bodyController.lineController.CreateLine(worldPosition1, worldPosition2, Color.red, false, 0, "TouchLine");
 
 			distance *= bodyController.scale;
 

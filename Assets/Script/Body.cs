@@ -84,41 +84,48 @@ public class Body : MonoBehaviour{
 		lastPosition = position;
 	}
 
-	// Gravity Forces
+	// Gravity Forces //
+	// Directional
 	public void DirectionalGravity(){
 		acceleration += settings.gravity;
 	}
-
 	public void DirectionalGravityBuoyancy(){
 		acceleration += settings.gravity * (1 - settings.fluidDensity/density);
 	}
 
+	// Centered
 	public void CenteredGravity(){
 		acceleration += position.direction.opposite * settings.gravityAcceleration;
 	}
-	
 	public void CenteredGravityBuoyancy(){
 		acceleration += position.direction.opposite * settings.gravityAcceleration * (1 - settings.fluidDensity/density);
 	}
 
+	// Velocity
 	public void VelocityGravity(){
 		acceleration += velocity.direction.SumVectorAsAngle(settings.gravityDirection) * settings.gravityAcceleration;
 	}
-
 	public void VelocityGravityBuoyancy(){
 		acceleration += velocity.direction.SumVectorAsAngle(settings.gravityDirection) * settings.gravityAcceleration * (1 - settings.fluidDensity/density);
 	}
 
-	// Other Forces
-	public void AirDrag(){
-		acceleration += velocity.direction.opposite * settings.AirDrag(this);
-	}
-
+	// Attraction
 	public void AttractionGravity(Body body){
 
 		Vector2Double force = Direction(body) * settings.AttractionGravity(this, body);
 		acceleration += force / mass;
 		body.acceleration -= force / body.mass;
+	}
+	public void AttractionGravityBuoyancy(Body body){
+		
+		Vector2Double force = Direction(body) * settings.AttractionGravity(this, body);
+		acceleration += force / mass * (1 - settings.fluidDensity / density);
+		body.acceleration -= force / body.mass * (1 - settings.fluidDensity / body.density);
+	}
+
+	// Other Forces
+	public void Drag(){
+		acceleration += velocity.direction.opposite * settings.AirDrag(this);
 	}
 
 	// Collisions

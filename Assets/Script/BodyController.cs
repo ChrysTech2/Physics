@@ -40,6 +40,7 @@ public class BodyController : MonoBehaviour{
 
 		if (isZoomingIn)
 			ZoomIn(1.025f);
+			
 		else if (isZoomingOut)
 			ZoomOut(1.025f);
 
@@ -241,7 +242,7 @@ public class BodyController : MonoBehaviour{
 		body.ForceEachBody = new Action<Body>((body2) => {});
 		
 		if (settings.fluidDensity != 0 && settings.dragCoefficient != 0)
-			body.ForceOnce += () => body.AirDrag();
+			body.ForceOnce += () => body.Drag();
 		
 		if (settings.gravityAcceleration != 0){
 
@@ -276,8 +277,13 @@ public class BodyController : MonoBehaviour{
 			}	
 		}
 
-		if (settings.attractionGravityConstant != 0)
-			body.ForceEachBody += (body2) => body.AttractionGravity(body2);
+		if (settings.attractionGravityConstant != 0){
+
+			if (settings.fluidDensity == 0)
+				body.ForceEachBody += (body2) => body.AttractionGravity(body2);
+			else
+				body.ForceEachBody += (body2) => body.AttractionGravityBuoyancy(body2);
+		}
 
 		if (settings.calculateCollisions){
 

@@ -154,6 +154,11 @@ public class DataLoader : MonoBehaviour{
 
 		SetValue(data.graphController.numberOfCollisions);
 		SetValue(data.graphController.totalKineticEnergy);
+
+		SetValue(data.settings.controllable);
+		SetValue(data.settings.thrustForce);
+		SetValue(ref data.settings.settings.thrustDirection.x);
+		SetValue(ref data.settings.settings.thrustDirection.y);
 	}
 
 	private void LoadBodiesFromString(string settingsToString){
@@ -167,7 +172,7 @@ public class DataLoader : MonoBehaviour{
 
 		for (int i = 0; i < nBodies; i++){
 
-			int index = i * 12 + 1; // 12 = Number of settings per body
+			int index = i * 13 + 1; // 13 = Number of settings per body
 
 			bodyToCreate.name = settingsList[index];
 
@@ -186,6 +191,7 @@ public class DataLoader : MonoBehaviour{
 			ExpressionEvaluator.Evaluate(settingsList[index + 10], out bodyToCreate.color.a);
 
 			ExpressionEvaluator.Evaluate(settingsList[index + 11], out bodyToCreate.nCollisions);
+			bool.TryParse(settingsList[index + 12], out bodyToCreate.controllable);
 
 			data.bodyController.AddBody();
 

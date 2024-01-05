@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class UIHitboxController : MonoBehaviour{
 	
@@ -7,12 +6,14 @@ public class UIHitboxController : MonoBehaviour{
 	[SerializeField] private RectTransform controlsHitboxToAssign;
 	[SerializeField] private RectTransform addOnTouchHitboxToAssign;
 	[SerializeField] private RectTransform toggleEditorHitboxToAssign;
+	[SerializeField] private RectTransform thrustControlsToAssign;
 	[SerializeField] private Canvas canvasToAssign;
 
 	private static RectTransform bodyEditorHitbox;
 	private static RectTransform controlsHitbox;
 	private static RectTransform addOnTouchHitbox;
 	private static RectTransform toggleEditorHitbox;
+	private static RectTransform thrustControls;
 	private static Canvas canvas;
 	
 	private void Start(){
@@ -20,6 +21,7 @@ public class UIHitboxController : MonoBehaviour{
 		controlsHitbox = controlsHitboxToAssign;
 		addOnTouchHitbox = addOnTouchHitboxToAssign;
 		toggleEditorHitbox = toggleEditorHitboxToAssign;
+		thrustControls = thrustControlsToAssign;
 		canvas = canvasToAssign;
 	}
 
@@ -57,6 +59,12 @@ public class UIHitboxController : MonoBehaviour{
 	public static bool MouseOverAddOnTouchButton{
 		get{
 			return IsMouseOverRect(addOnTouchHitbox);
+		}
+	}
+
+	public static bool MouseOverThrustControls{
+		get{
+			return IsMouseOverRect(thrustControls);
 		}
 	}
 }

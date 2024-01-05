@@ -12,7 +12,7 @@ public class SettingsController : MonoBehaviour{
 	public TMP_InputField attractionGravityConstant;
 	public TMP_InputField fluidDensity, dragCoefficient;
 	public Toggle calculateCollisions, mergeBodiesInCollisions;
-	public TMP_InputField coefOfRestitution;
+	public TMP_InputField coefOfRestitution, thrustForce;
 	public Toggle useParent, sumParentRadius, sumBodyRadius, sumAutoVelocity;
 	public Toggle randomMode, showCenterOfGravity, controllable;
 	public TMP_InputField borderX, borderY, touchMultiplier;
@@ -43,13 +43,16 @@ public class SettingsController : MonoBehaviour{
 	private void OnEnable(){
 		bodyController.informations.gameObject.SetActive(false);
 		bodyController.touchControl.addOnTouch.gameObject.SetActive(false);
+		bodyController.thrustControls.transform.GetChild(0).gameObject.SetActive(false);
 	}
 
 	private void OnDisable(){
 		bodyController.informations.gameObject.SetActive(true);
 
-		if (!bodyController.bodyEditor.gameObject.activeSelf)
+		if (!bodyController.bodyEditor.gameObject.activeSelf){
 			bodyController.touchControl.addOnTouch.gameObject.SetActive(true);
+			bodyController.thrustControls.transform.GetChild(0).gameObject.SetActive(true);
+		}
 	}
 
 	public void AddBody(bool addedOnTouch = false){
@@ -78,6 +81,8 @@ public class SettingsController : MonoBehaviour{
 
 		ExpressionEvaluator.Evaluate(mass.text, out bodyToCreate.mass);
 		ExpressionEvaluator.Evaluate(radius.text, out bodyToCreate.radius);
+
+		bodyToCreate.controllable = controllable.isOn;
 
 		bodyToCreate.name = bodyName.text;
 
@@ -134,6 +139,8 @@ public class SettingsController : MonoBehaviour{
 		ExpressionEvaluator.Evaluate(lineThickness.text, out settings.lineThickness);
 
 		ExpressionEvaluator.Evaluate(touchMultiplier.text, out settings.touchMultiplier);
+
+		ExpressionEvaluator.Evaluate(thrustForce.text, out settings.thrustAcceleration);
 
 		settings.calculateCollisions = calculateCollisions.isOn;
 		settings.mergeBodiesInCollisions = mergeBodiesInCollisions.isOn;

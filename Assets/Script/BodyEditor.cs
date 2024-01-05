@@ -19,6 +19,7 @@ public class BodyEditor : MonoBehaviour{
 	[SerializeField] private TMP_InputField outputMass, outputRadius;
 	[SerializeField] private Image backgroundImage;
 	[SerializeField] private Button showEditorButton;
+	[SerializeField] private TMP_Text variableInfo;
 
 	public TMP_Dropdown bodiesDropdown;
 	public Body bodyToEdit;
@@ -26,13 +27,20 @@ public class BodyEditor : MonoBehaviour{
 	private void OnEnable(){
 		showEditorButton.transform.GetChild(0).GetComponent<TMP_Text>().text = ">";
 		bodyController.touchControl.addOnTouch.gameObject.SetActive(false);
+		bodyController.thrustControls.transform.GetChild(0).gameObject.SetActive(false);
 	}
 
 	private void OnDisable(){
 		showEditorButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "<";
 
-		if (!bodyController.settingsController.gameObject.activeSelf)
+		if (!bodyController.settingsController.gameObject.activeSelf){
 			bodyController.touchControl.addOnTouch.gameObject.SetActive(true);
+			bodyController.thrustControls.transform.GetChild(0).gameObject.SetActive(true);
+		}
+	}
+
+	public void SetVariableInfoText(string value){
+		variableInfo.SetText(value);
 	}
 
 	public void ToggleMenu(){

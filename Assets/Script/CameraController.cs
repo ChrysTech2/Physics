@@ -58,8 +58,9 @@ public class CameraController : MonoBehaviour{
 			bool condition3 = !bodyEditor.gameObject.activeSelf && !touchControl.addOnTouch.isOn;
 			bool condition4 = UIHitboxController.MouseOverControls || UIHitboxController.MouseOverAddOnTouchButton;
 			bool condition5 = !bodyController.startupMenu.activeSelf;
+			bool condition6 = UIHitboxController.MouseOverThrustControls;
 
-			canCalculateOffsetAtTheMoment = Index != -1 && condition5 &&((condition1 && (condition2 || condition3)) || condition4);
+			canCalculateOffsetAtTheMoment = Index != -1 && condition5 && ((condition1 && (condition2 || condition3 || condition6)) || condition4);
 		}
 
 		if (Input.GetKeyUp(KeyCode.Mouse0)){
@@ -88,9 +89,9 @@ public class CameraController : MonoBehaviour{
 
 	private void Center(){
 
-		if (Focus != FocusMode.Disabled){
+		if (Focus != FocusMode.Disabled)
 			offset = Vector2Double.zero;
-		}
+		
 	}
 
 	public void NextBody(){
@@ -98,7 +99,7 @@ public class CameraController : MonoBehaviour{
 		if (Index == -1)
 			return;
 
-		focus = FocusMode.Enabled;
+		Focus = FocusMode.Enabled;
 
 		if (Index == bodyController.bodies.Count - 1)
 			Index = 0;
@@ -111,25 +112,25 @@ public class CameraController : MonoBehaviour{
 		if (Index == -1)
 			return;
 
-		focus = FocusMode.Enabled;
+		Focus = FocusMode.Enabled;
 
 		if (Index == 0)
-			index = bodyController.bodies.Count - 1;
+			Index = bodyController.bodies.Count - 1;
 		else
 			Index --;		
 	}
 
 	public void ChangeFocusMode(){
 
-		/*if (Focus == FocusMode.YAxis)
+		if (Focus == FocusMode.YAxis)
 			Focus = FocusMode.Disabled;
 		else
-			Focus ++;*/
+			Focus ++;
 
-		if (Focus == FocusMode.Enabled)
+		/*if (Focus == FocusMode.Enabled)
 			Focus = FocusMode.Disabled;
 		else	
-			Focus = FocusMode.Enabled;
+			Focus = FocusMode.Enabled;*/
 	}
 
 	public string FocusModeToString(){

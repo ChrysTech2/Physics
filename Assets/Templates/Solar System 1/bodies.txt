@@ -13,7 +13,6 @@ color_green_value : 1 #
 color_blue_value : 1 #
 color_opacity_value : 1 #
 number_of_collisions : 0 #
-is_controllable : False #
 ...........................................
 
 name : Mercury #
@@ -28,7 +27,6 @@ color_green_value : 0,31 #
 color_blue_value : 0,31 #
 color_opacity_value : 1 #
 number_of_collisions : 0 #
-is_controllable : False #
 ...........................................
 
 name : Venus #
@@ -43,7 +41,6 @@ color_green_value : 0,643 #
 color_blue_value : 0,259 #
 color_opacity_value : 1 #
 number_of_collisions : 0 #
-is_controllable : False #
 ...........................................
 
 name : Earth #
@@ -58,7 +55,6 @@ color_green_value : 0,714 #
 color_blue_value : 0,906 #
 color_opacity_value : 1 #
 number_of_collisions : 0 #
-is_controllable : False #
 ...........................................
 
 name : Mars #
@@ -73,7 +69,6 @@ color_green_value : 0,522 #
 color_blue_value : 0,22 #
 color_opacity_value : 1 #
 number_of_collisions : 0 #
-is_controllable : False #
 ...........................................
 
 name : Jupiter #
@@ -88,7 +83,6 @@ color_green_value : 0,533 #
 color_blue_value : 0,4 #
 color_opacity_value : 1 #
 number_of_collisions : 0 #
-is_controllable : False #
 ...........................................
 
 name : Saturn #
@@ -103,7 +97,6 @@ color_green_value : 0,761 #
 color_blue_value : 0,576 #
 color_opacity_value : 1 #
 number_of_collisions : 0 #
-is_controllable : False #
 ...........................................
 
 name : Uranus #
@@ -118,7 +111,6 @@ color_green_value : 0,89 #
 color_blue_value : 0,961 #
 color_opacity_value : 1 #
 number_of_collisions : 0 #
-is_controllable : False #
 ...........................................
 
 name : Neptune #
@@ -133,7 +125,6 @@ color_green_value : 0,243 #
 color_blue_value : 0,686 #
 color_opacity_value : 1 #
 number_of_collisions : 0 #
-is_controllable : False #
 ...........................................
 
 name : Pluto #
@@ -148,7 +139,6 @@ color_green_value : 0,757 #
 color_blue_value : 0,616 #
 color_opacity_value : 1 #
 number_of_collisions : 0 #
-is_controllable : False #
 ...........................................
 
 name : Moon #
@@ -163,7 +153,6 @@ color_green_value : 0,357 #
 color_blue_value : 0,349 #
 color_opacity_value : 1 #
 number_of_collisions : 0 #
-is_controllable : False #
 ...........................................
 
 name : Io #
@@ -178,7 +167,6 @@ color_green_value : 0,525 #
 color_blue_value : 0,247 #
 color_opacity_value : 1 #
 number_of_collisions : 0 #
-is_controllable : False #
 ...........................................
 
 name : Ganymede #
@@ -193,7 +181,6 @@ color_green_value : 0,306 #
 color_blue_value : 0,282 #
 color_opacity_value : 1 #
 number_of_collisions : 0 #
-is_controllable : False #
 ...........................................
 
 name : Callisto #
@@ -208,7 +195,6 @@ color_green_value : 0,243 #
 color_blue_value : 0,208 #
 color_opacity_value : 1 #
 number_of_collisions : 0 #
-is_controllable : False #
 ...........................................
 
 name : Europa #
@@ -223,7 +209,6 @@ color_green_value : 0,549 #
 color_blue_value : 0,522 #
 color_opacity_value : 1 #
 number_of_collisions : 0 #
-is_controllable : False #
 ...........................................
 
 name : Titan #
@@ -238,7 +223,6 @@ color_green_value : 0,714 #
 color_blue_value : 0,4 #
 color_opacity_value : 1 #
 number_of_collisions : 0 #
-is_controllable : False #
 ...........................................
 
 name : Mimas #
@@ -253,7 +237,6 @@ color_green_value : 0,286 #
 color_blue_value : 0,286 #
 color_opacity_value : 1 #
 number_of_collisions : 0 #
-is_controllable : False #
 ...........................................
 
 name : Iapetus #
@@ -268,7 +251,6 @@ color_green_value : 0,522 #
 color_blue_value : 0,475 #
 color_opacity_value : 1 #
 number_of_collisions : 0 #
-is_controllable : False #
 ...........................................
 
 name : Tethys #
@@ -283,7 +265,6 @@ color_green_value : 0,6 #
 color_blue_value : 0,6 #
 color_opacity_value : 1 #
 number_of_collisions : 0 #
-is_controllable : False #
 ...........................................
 
 name : Dione #
@@ -298,7 +279,6 @@ color_green_value : 0,702 #
 color_blue_value : 0,702 #
 color_opacity_value : 1 #
 number_of_collisions : 0 #
-is_controllable : False #
 ...........................................
 
 name : Enceladus #
@@ -313,7 +293,6 @@ color_green_value : 0,631 #
 color_blue_value : 0,69 #
 color_opacity_value : 1 #
 number_of_collisions : 0 #
-is_controllable : False #
 ...........................................
 
 name : Triton #
@@ -328,7 +307,6 @@ color_green_value : 0,42 #
 color_blue_value : 0,404 #
 color_opacity_value : 1 #
 number_of_collisions : 0 #
-is_controllable : False #
 ...........................................
 
 name : Charon #
@@ -343,7 +321,6 @@ color_green_value : 0,545 #
 color_blue_value : 0,537 #
 color_opacity_value : 1 #
 number_of_collisions : 0 #
-is_controllable : False #
 ...........................................
 
 name : Ceres #
@@ -358,7 +335,6 @@ color_green_value : 0,447 #
 color_blue_value : 0,431 #
 color_opacity_value : 1 #
 number_of_collisions : 0 #
-is_controllable : False #
 ...........................................
 
 name : Vesta #
@@ -372,5 +348,4 @@ color_red_value : 0,537 #
 color_green_value : 0,514 #
 color_blue_value : 0,467 #
 color_opacity_value : 1 #
-number_of_collisions : 0 #
-is_controllable : False
+number_of_collisions : 0

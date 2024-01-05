@@ -10,6 +10,7 @@ public class BodyController : MonoBehaviour{
 	public TMP_Text informations;
 	public TouchControl touchControl;
 	public GameObject centerOfGravity;
+	public GameObject thrustControls;
 
 	public CameraController cameraController;
 	public SettingsController settingsController;
@@ -53,7 +54,7 @@ public class BodyController : MonoBehaviour{
 		if (settingsController.gameObject.activeSelf)
 			return;
 
-		CheckInputs();
+		CheckInput();
 		DebugInformation();
 	}
 
@@ -74,7 +75,7 @@ public class BodyController : MonoBehaviour{
 		centerOfGravity.transform.localPosition = (position - cameraController.position).ToVector2() * scale;
 	}
 
-	private void CheckInputs(){
+	private void CheckInput(){
 
 		float mouseWheel = Input.GetAxis("Mouse ScrollWheel");
 
@@ -100,6 +101,30 @@ public class BodyController : MonoBehaviour{
 
 		if (Input.GetKeyDown(KeyCode.RightBracket))
 			cameraController.NextBody();
+
+		CheckThrustInput();
+	}
+
+	private void CheckThrustInput(){
+
+		if (Input.GetKeyDown(KeyCode.W))
+			settings.SetIsApplyingThrust(true);
+
+		if (Input.GetKeyDown(KeyCode.D))
+			settings.SetIsRotatingBackward(true);
+
+		if (Input.GetKeyDown(KeyCode.A))
+			settings.SetIsRotatingForward(true);
+
+		
+		if (Input.GetKeyUp(KeyCode.W))
+			settings.SetIsApplyingThrust(false);
+
+		if (Input.GetKeyUp(KeyCode.D))
+			settings.SetIsRotatingBackward(false);
+
+		if (Input.GetKeyUp(KeyCode.A))
+			settings.SetIsRotatingForward(false);
 	}
 
 	private void DebugInformation(){
@@ -148,6 +173,12 @@ public class BodyController : MonoBehaviour{
 
 		foreach(Body body in bodies)
 			body.DrawLine();
+
+		if (settings.isRotatingForward)
+			settings.thrustDirection = settings.thrustDirection.SumVectorAsAngle(Vector2Double.ToVector2Double(0.08));
+
+		if (settings.isRotatingBackward)
+			settings.thrustDirection = settings.thrustDirection.SubtractVectorAsAngle(Vector2Double.ToVector2Double(0.08));
 	}
 
 	private void CalculateOneFrame(){
@@ -215,18 +246,29 @@ public class BodyController : MonoBehaviour{
 		bodyEditor.bodiesDropdown.AddOptions(nameToList);
 
 		cameraController.Index = bodies.Count - 1;
+
+		if (createdBody.controllable)
+			thrustControls.gameObject.SetActive(true);
 	}
 
 	public void DeleteBody(Body body){
+
+		bool showControls = false;
+
+		foreach (Body body1 in bodies)
+			if (body1.controllable && body1 != body)
+				showControls = true;
+
+		thrustControls.gameObject.SetActive(showControls);
 		
 		int index = body.Index();
 
 		settingsController.BodyEliminated(index);
 		bodyEditor.BodyEliminated(index);
 		cameraController.BodyEliminated(index);
-		
+
 		bodies.Remove(body);
-		
+
 		DestroyImmediate(body.gameObject);
 	}
 
@@ -276,6 +318,9 @@ public class BodyController : MonoBehaviour{
 					break;
 			}	
 		}
+
+		if (body.controllable)
+			body.ForceOnce += () => body.Thrust();
 
 		if (settings.attractionGravityConstant != 0){
 

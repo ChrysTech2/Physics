@@ -119,6 +119,12 @@ public class DataSaver : MonoBehaviour{
 			$"graph_number_of_collisions : {data.graphController.numberOfCollisions.isOn}",
 			$"graph_total_kinetic_energy : {data.graphController.totalKineticEnergy.isOn}",
 
+			$"body_is_controllable : {data.settings.controllable.isOn}",
+			$"thrust_force : {data.settings.thrustForce.text}",
+
+			$"thrust_force_direction_x : {data.settings.settings.thrustDirection.x}",
+			$"thrust_force_direction_y : {data.settings.settings.thrustDirection.y}",
+
 		};
 
 		DataController.SetTextValueSeparator(settingsToStringList);
@@ -157,6 +163,7 @@ public class DataSaver : MonoBehaviour{
 				$"color_opacity_value : {body.color.a}",
 
 				$"number_of_collisions : {body.nCollisions}",
+				$"is_controllable : {body.controllable}",
 			};
 
 			bodiesToStringList.Add(string.Join(DataController.LINE_SEPARATOR, currentBodyToStringList));

@@ -8,6 +8,7 @@ public class Body : MonoBehaviour{
 
 	public double mass, radius;
 	public Color color;
+	public bool controllable;
 
 	// Functions
 	public Action ForceOnce, ForceAfterPosition;
@@ -126,6 +127,15 @@ public class Body : MonoBehaviour{
 	// Other Forces
 	public void Drag(){
 		acceleration += velocity.direction.opposite * settings.AirDrag(this);
+	}
+
+	public void Thrust(){
+
+		// This needs to be accounted in buoyancy
+		if (settings.isApplyingThrust)
+			acceleration += settings.thrustDirection * settings.thrustAcceleration;
+
+		bodyController.lineController.CreateLine(position, position + settings.thrustDirection * radius * 2, color, true, 0.02, "InfoLine");
 	}
 
 	// Collisions

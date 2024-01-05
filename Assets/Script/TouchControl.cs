@@ -39,14 +39,14 @@ public class TouchControl : MonoBehaviour{
 
 	private void TouchBodyCreation(){
 
-
 		if (Input.GetKeyDown(KeyCode.Mouse0)){
 
 			bool condition1 = !bodyEditor.gameObject.activeSelf && !settingsController.gameObject.activeSelf;
 			bool condition2 = !UIHitboxController.MouseOverControls && !UIHitboxController.MouseOverAddOnTouchButton && addOnTouch.isOn;
 			bool condition3 = !twoFingers && !bodyController.startupMenu.activeSelf;
+			bool condition4 = !UIHitboxController.MouseOverThrustControls;
 
-			canAddBody = condition1 && condition2 && condition3;
+			canAddBody = condition1 && condition2 && condition3 && condition4;
 
 			worldPosition1 = mouseWorldPosition;
 

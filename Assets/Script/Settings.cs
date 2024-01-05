@@ -25,4 +25,23 @@ public class Settings : MonoBehaviour{
 	public double AirDrag(Body body){
 		return Math.Pow(body.velocity.magnitude, 2) * dragCoefficient * fluidDensity * body.area / (2 * body.mass);
 	}
+ 
+	public bool isApplyingThrust = false;
+	public bool isRotatingForward = false;
+	public bool isRotatingBackward = false;
+
+	public void SetIsApplyingThrust(bool value){
+		isApplyingThrust = value;
+	}
+
+	public void SetIsRotatingForward(bool value){
+		isRotatingForward = value;
+	}
+
+	public void SetIsRotatingBackward(bool value){
+		isRotatingBackward = value;
+	}
+	
+	public Vector2Double thrustDirection = Vector2Double.up;
+	public double thrustAcceleration;
 }

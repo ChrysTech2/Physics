@@ -33,6 +33,7 @@ global_gravity_acceleration : 9.8 #
 global_gravity_angle : -90 #
 fluid_density : 0 #
 drag_coefficient : 0.47 #
+calculate_buoyancy : True #
 controller_scale : 2,074915E-09 #
 controller_time : 30664,86 #
 camera_focus_mode : 0 #
@@ -62,5 +63,6 @@ graph_number_of_collisions : False #
 graph_total_kinetic_energy : False #
 body_is_controllable : True #
 thrust_force : 100 #
+thrust_rotation_speed : 0.08 #
 thrust_force_direction_x : 0 #
 thrust_force_direction_y : 1

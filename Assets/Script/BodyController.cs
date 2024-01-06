@@ -83,10 +83,10 @@ public class BodyController : MonoBehaviour{
 			body.DrawLine();
 
 		if (settings.isRotatingForward)
-			settings.thrustDirection = settings.thrustDirection.SumVectorAsAngle(Vector2Double.ToVector2Double(0.08));
+			settings.thrustDirection = settings.thrustDirection.SumVectorAsAngle(Vector2Double.ToVector2Double(settings.thrustDirectionSensibiliy));
 
 		if (settings.isRotatingBackward)
-			settings.thrustDirection = settings.thrustDirection.SubtractVectorAsAngle(Vector2Double.ToVector2Double(0.08));
+			settings.thrustDirection = settings.thrustDirection.SubtractVectorAsAngle(Vector2Double.ToVector2Double(settings.thrustDirectionSensibiliy));
 	}
 
 	public void CalculateOneFrame(){
@@ -271,28 +271,30 @@ public class BodyController : MonoBehaviour{
 
 				case GravityMode.Directional:
 
-					if (settings.fluidDensity != 0)
-						body.ForceOnce += () => body.DirectionalGravityBuoyancy();
-					else
+					if (settings.fluidDensity == 0 || !settings.calculateBuoyancy)
 						body.ForceOnce += () => body.DirectionalGravity();
+					else
+						body.ForceOnce += () => body.DirectionalGravityBuoyancy();
+
 
 					break;
 
 				case GravityMode.Centered:
 
-					if (settings.fluidDensity != 0)
-						body.ForceOnce += () => body.CenteredGravityBuoyancy();
-					else
+					if (settings.fluidDensity == 0 || !settings.calculateBuoyancy)
 						body.ForceOnce += () => body.CenteredGravity();
+					else
+						body.ForceOnce += () => body.CenteredGravityBuoyancy();
+
 
 					break;
 
 				case GravityMode.Velocity:
 
-					if (settings.fluidDensity != 0)
-						body.ForceOnce += () => body.VelocityGravityBuoyancy();
-					else
+					if (settings.fluidDensity == 0 || !settings.calculateBuoyancy)
 						body.ForceOnce += () => body.VelocityGravity();
+					else
+						body.ForceOnce += () => body.VelocityGravityBuoyancy();
 
 					break;
 			}	
@@ -303,7 +305,7 @@ public class BodyController : MonoBehaviour{
 
 		if (settings.attractionGravityConstant != 0){
 
-			if (settings.fluidDensity == 0)
+			if (settings.fluidDensity == 0 || !settings.calculateBuoyancy)
 				body.ForceEachBody += (body2) => body.AttractionGravity(body2);
 			else
 				body.ForceEachBody += (body2) => body.AttractionGravityBuoyancy(body2);

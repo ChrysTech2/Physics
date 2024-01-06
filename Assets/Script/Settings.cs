@@ -15,6 +15,7 @@ public class Settings : MonoBehaviour{
 
 	public double touchMultiplier;
 	public bool showCenterOfGravity;
+	public bool calculateBuoyancy;
 	
 	public Vector2Double gravity, gravityDirection;
 
@@ -53,4 +54,5 @@ public class Settings : MonoBehaviour{
 	
 	public Vector2Double thrustDirection = Vector2Double.up;
 	public double thrustAcceleration;
+	public double thrustDirectionSensibiliy;
 }

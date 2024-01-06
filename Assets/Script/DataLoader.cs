@@ -106,6 +106,7 @@ public class DataLoader : MonoBehaviour{
 		// Settings -> Forces
 		SetValue(data.settings.fluidDensity);
 		SetValue(data.settings.dragCoefficient);
+		SetValue(data.settings.calculateBuoyancy);
 
 		// BodyController
 		ExpressionEvaluator.Evaluate(settingsList[settingsListIndex], out float scale); 
@@ -156,7 +157,9 @@ public class DataLoader : MonoBehaviour{
 		SetValue(data.graphController.totalKineticEnergy);
 
 		SetValue(data.settings.controllable);
-		SetValue(data.settings.thrustForce);
+		SetValue(data.settings.thrustAcceleration);
+		SetValue(data.settings.thrustDirectionSensibiliy);
+
 		SetValue(ref data.settings.settings.thrustDirection.x);
 		SetValue(ref data.settings.settings.thrustDirection.y);
 	}

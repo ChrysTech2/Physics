@@ -75,6 +75,7 @@ public class DataSaver : MonoBehaviour{
 			// Settings -> Forces
 			$"fluid_density : {data.settings.fluidDensity.text}",
 			$"drag_coefficient : {data.settings.dragCoefficient.text}",
+			$"calculate_buoyancy : {data.settings.calculateBuoyancy.isOn}",
 			
 			// BodyController
 			$"controller_scale : {data.bodyController.scale}",
@@ -119,12 +120,14 @@ public class DataSaver : MonoBehaviour{
 			$"graph_number_of_collisions : {data.graphController.numberOfCollisions.isOn}",
 			$"graph_total_kinetic_energy : {data.graphController.totalKineticEnergy.isOn}",
 
+			// Thrust
+
 			$"body_is_controllable : {data.settings.controllable.isOn}",
-			$"thrust_force : {data.settings.thrustForce.text}",
+			$"thrust_force : {data.settings.thrustAcceleration.text}",
+			$"thrust_rotation_speed : {data.settings.thrustDirectionSensibiliy.text}",
 
 			$"thrust_force_direction_x : {data.settings.settings.thrustDirection.x}",
 			$"thrust_force_direction_y : {data.settings.settings.thrustDirection.y}",
-
 		};
 
 		DataController.SetTextValueSeparator(settingsToStringList);

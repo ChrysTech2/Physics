@@ -47,6 +47,8 @@ public class OnChangeEvent : MonoBehaviour{
 	public void OnForcesSettingsChange(){
 
 		Utils.SetActiveIf(settings.dragCoefficient, settings.fluidDensity.text != "0");
+		bool condition1 = settings.gravityMode.value != GravityMode.Disabled && settings.gravityAcceleration.text != "0";
+		Utils.SetActiveIf(settings.calculateBuoyancy, settings.fluidDensity.text != "0" && (condition1 || settings.attractionGravityConstant.text != "0"));
 
 	}
 
@@ -75,7 +77,5 @@ public class OnChangeEvent : MonoBehaviour{
 			settings.bodyController.lineController.DeleteAllLines("Line");
 
 		settings.settings.lineDuration = 0;
-		
-
 	}
 }

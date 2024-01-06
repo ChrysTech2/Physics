@@ -58,10 +58,9 @@ public class CameraController : MonoBehaviour{
 			bool condition3 = !bodyEditor.gameObject.activeSelf && !touchControl.addOnTouch.isOn;
 			bool condition4 = UIHitboxController.MouseOverControls || UIHitboxController.MouseOverAddOnTouchButton;
 			bool condition5 = !bodyController.startupMenu.activeSelf;
-			bool condition6 = UIHitboxController.MouseOverThrustControls;
-			bool condition7 = !bodyController.settings.isApplyingThrust && !bodyController.settings.isRotatingBackward && !bodyController.settings.isRotatingForward;
+			bool condition6 = !UIHitboxController.MouseOverThrustControls;
 
-			canCalculateOffsetAtTheMoment = Index != -1 && condition5 && condition7 && ((condition1 && (condition2 || condition3 || condition6)) || condition4);
+			canCalculateOffsetAtTheMoment = Index != -1 && condition5 && condition6 && ((condition1 && (condition2 || condition3)) || condition4);
 		}
 
 		if (Input.GetKeyUp(KeyCode.Mouse0)){

@@ -17,36 +17,42 @@ public class BodyController : MonoBehaviour{
 	public WorldLineController lineController;
 	public Settings settings;
 	public BodyEditor bodyEditor;
-	public GraphController graphController;
 
 	public List<Body> bodies = new List<Body>();
 	public int speedMultiplier = 0;
-	public float t = 0, fps = 60;
+	public double t = 0;
+	public float fps = 60;
 
-	public bool isZoomingOut = false, isZoomingIn = false;
+	private int numberOfControllableBodies = 0;
+
+	private int NumberOfControllableBodies{
+		get{
+			return numberOfControllableBodies;
+		}
+		set{
+			numberOfControllableBodies = value;
+
+			if (numberOfControllableBodies == 0)
+				thrustControls.gameObject.SetActive(false);
+			else
+				thrustControls.gameObject.SetActive(true);
+		}
+	}
+
 	private void Start(){
 		settings = settingsController.settings;
 		Application.targetFrameRate = 240;
 	}
 
-	public void SetIsZoomingIn(bool value){
-		isZoomingIn = value;
-	}
-
-	public void SetIsZoomingOut(bool value){
-		isZoomingOut = value;
-	}
-
 	private void Update(){
-
-		if (isZoomingIn)
-			ZoomIn(1.025f);
-			
-		else if (isZoomingOut)
-			ZoomOut(1.025f);
 
 		foreach (Body body in bodies)
 			body.ApplyPosition();
+
+		if (settings.isZoomingIn)
+			ZoomIn(1.0075f);
+		else if (settings.isZoomingOut)
+			ZoomOut(1.0075f);
 
 		if (settings.showCenterOfGravity)
 			ShowCenterOfGravity();
@@ -56,6 +62,42 @@ public class BodyController : MonoBehaviour{
 
 		CheckInput();
 		DebugInformation();
+
+		if (NumberOfControllableBodies == 0)
+			return;
+		
+		CheckThrustInput();
+		
+		foreach (Body body in bodies)
+			if (body.controllable)
+		
+		lineController.CreateLine(body.position, body.position + settings.thrustDirection * body.radius * 3, body.color, true, 0.02, "InfoLine");
+	}
+
+	private void FixedUpdate(){
+
+		for (int i = 0; i < speedMultiplier; i++)
+			CalculateOneFrame();
+
+		foreach(Body body in bodies)
+			body.DrawLine();
+
+		if (settings.isRotatingForward)
+			settings.thrustDirection = settings.thrustDirection.SumVectorAsAngle(Vector2Double.ToVector2Double(0.08));
+
+		if (settings.isRotatingBackward)
+			settings.thrustDirection = settings.thrustDirection.SubtractVectorAsAngle(Vector2Double.ToVector2Double(0.08));
+	}
+
+	public void CalculateOneFrame(){
+
+		for(int i = 0; i < bodies.Count; i++)
+			bodies[i].UpdateVelocity();
+
+		foreach (Body body in bodies)
+			body.UpdatePosition();
+
+		t += (float)settingsController.settings.secondsPerFrame;
 	}
 
 	private void ShowCenterOfGravity(){
@@ -101,8 +143,6 @@ public class BodyController : MonoBehaviour{
 
 		if (Input.GetKeyDown(KeyCode.RightBracket))
 			cameraController.NextBody();
-
-		CheckThrustInput();
 	}
 
 	private void CheckThrustInput(){
@@ -129,67 +169,11 @@ public class BodyController : MonoBehaviour{
 
 	private void DebugInformation(){
 
-		float time; string timeUnit;
 		fps = 1/Time.deltaTime;
 
-		if (t < Times.SecondsPerMinute){
-			time = t;
-			timeUnit = "seconds";
-		}
-		else if (t < Times.SecondsPerHour){
-			time = t / Times.SecondsPerMinute;
-			timeUnit = "minutes";
-		}
-		else if (t < Times.SecondsPerDay){
-			time = t / Times.SecondsPerHour;
-			timeUnit = "hours";
-		}
-		else if (t < Times.SecondsPerWeek){
-			time = t / Times.SecondsPerDay;
-			timeUnit = "days";
-		}
-		else if (t < Times.SecondsPerMonth){
-			time = t / Times.SecondsPerWeek;
-			timeUnit = "weeks";
-		}
-		else if (t < Times.SecondsPerYear){
-			time = t / Times.SecondsPerMonth;
-			timeUnit = "months";
-		}
-		else{
-			time = t / Times.SecondsPerYear;
-			timeUnit = "years";
-		}
-
 		informations.SetText(
-			$"Speed : {(float)(speedMultiplier * settings.secondsPerFrame * 50)}x  |  Scale : {scale}\nTime ({timeUnit}): {time}\nFPS : {fps}"
+			$"Speed : {(float)(speedMultiplier * settings.secondsPerFrame * 50)}x  |  Scale : {scale}\n{Utils.FormatTime(t)}\nFPS : {fps}"
 		);
-	}
-
-	private void FixedUpdate(){
-
-		for (int i = 0; i < speedMultiplier; i++)
-			CalculateOneFrame();
-
-		foreach(Body body in bodies)
-			body.DrawLine();
-
-		if (settings.isRotatingForward)
-			settings.thrustDirection = settings.thrustDirection.SumVectorAsAngle(Vector2Double.ToVector2Double(0.08));
-
-		if (settings.isRotatingBackward)
-			settings.thrustDirection = settings.thrustDirection.SubtractVectorAsAngle(Vector2Double.ToVector2Double(0.08));
-	}
-
-	private void CalculateOneFrame(){
-
-		for(int i = 0; i < bodies.Count; i++)
-			bodies[i].UpdateVelocity();
-
-		foreach (Body body in bodies)
-			body.UpdatePosition();
-
-		t += (float)settingsController.settings.secondsPerFrame;
 	}
 
 	public void SpeedUp(){
@@ -248,19 +232,14 @@ public class BodyController : MonoBehaviour{
 		cameraController.Index = bodies.Count - 1;
 
 		if (createdBody.controllable)
-			thrustControls.gameObject.SetActive(true);
+			NumberOfControllableBodies ++;		
 	}
 
 	public void DeleteBody(Body body){
 
-		bool showControls = false;
+		if (body.controllable)
+			NumberOfControllableBodies --;
 
-		foreach (Body body1 in bodies)
-			if (body1.controllable && body1 != body)
-				showControls = true;
-
-		thrustControls.gameObject.SetActive(showControls);
-		
 		int index = body.Index();
 
 		settingsController.BodyEliminated(index);

@@ -29,6 +29,7 @@ public class Settings : MonoBehaviour{
 	public bool isApplyingThrust = false;
 	public bool isRotatingForward = false;
 	public bool isRotatingBackward = false;
+	public bool isZoomingIn = false, isZoomingOut = false;
 
 	public void SetIsApplyingThrust(bool value){
 		isApplyingThrust = value;
@@ -40,6 +41,14 @@ public class Settings : MonoBehaviour{
 
 	public void SetIsRotatingBackward(bool value){
 		isRotatingBackward = value;
+	}
+
+	public void SetIsZoomingIn(bool value){
+		isZoomingIn = value;
+	}
+
+	public void SetIsZoomingOut(bool value){
+		isZoomingOut = value;
 	}
 	
 	public Vector2Double thrustDirection = Vector2Double.up;

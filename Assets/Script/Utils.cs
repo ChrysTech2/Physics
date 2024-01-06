@@ -143,4 +143,43 @@ public class Utils : MonoBehaviour{
 	public static void OpenInstagram(){
 		Application.OpenURL("https://www.instagram.com/chrys_tech/");
 	}
+
+	public static string FormatTime(double t){
+
+		double time;
+		string timeUnit;
+
+		if (t < Times.SecondsPerMinute){
+			time = t;
+			timeUnit = "seconds";
+		}
+		else if (t < Times.SecondsPerHour){
+			time = t / Times.SecondsPerMinute;
+			timeUnit = "minutes";
+		}
+		else if (t < Times.SecondsPerDay){
+			time = t / Times.SecondsPerHour;
+			timeUnit = "hours";
+		}
+		else if (t < Times.SecondsPerWeek){
+			time = t / Times.SecondsPerDay;
+			timeUnit = "days";
+		}
+		else if (t < Times.SecondsPerMonth){
+			time = t / Times.SecondsPerWeek;
+			timeUnit = "weeks";
+		}
+		else if (t < Times.SecondsPerYear){
+			time = t / Times.SecondsPerMonth;
+			timeUnit = "months";
+		}
+		else{
+			time = t / Times.SecondsPerYear;
+			timeUnit = "years";
+		}
+
+		return $"Time ({timeUnit}): {(float)time}";
+
+	}
 }
+

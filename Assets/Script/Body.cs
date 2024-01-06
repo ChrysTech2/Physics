@@ -134,8 +134,6 @@ public class Body : MonoBehaviour{
 		// This needs to be accounted in buoyancy
 		if (settings.isApplyingThrust)
 			acceleration += settings.thrustDirection * settings.thrustAcceleration;
-
-		bodyController.lineController.CreateLine(position, position + settings.thrustDirection * radius * 2, color, true, 0.02, "InfoLine");
 	}
 
 	// Collisions

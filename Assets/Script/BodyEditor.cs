@@ -28,6 +28,7 @@ public class BodyEditor : MonoBehaviour{
 		showEditorButton.transform.GetChild(0).GetComponent<TMP_Text>().text = ">";
 		bodyController.touchControl.addOnTouch.gameObject.SetActive(false);
 		bodyController.thrustControls.transform.GetChild(0).gameObject.SetActive(false);
+		bodyController.settingsController.ResetErrors();
 	}
 
 	private void OnDisable(){

@@ -317,4 +317,8 @@ public class SettingsController : MonoBehaviour{
 	public void SetGToRealValue(){
 		attractionGravityConstant.text = "6.6743e-11";
 	}
+
+	public void ResetErrors(){
+		errorMessage.SetText("");
+	}
 }

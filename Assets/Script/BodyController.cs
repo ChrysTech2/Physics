@@ -71,7 +71,7 @@ public class BodyController : MonoBehaviour{
 		foreach (Body body in bodies)
 			if (body.controllable)
 		
-		lineController.CreateLine(body.position, body.position + settings.thrustDirection * body.radius * 3, body.color, true, 0.02, "InfoLine");
+		lineController.CreateLine(body.position, body.position + settings.thrustDirection * body.radius * 2, body.color, true, 0.02, "InfoLine");
 	}
 
 	private void FixedUpdate(){

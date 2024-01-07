@@ -18,9 +18,12 @@ public class WorldLineController : MonoBehaviour{
 			ShowCenterOfGravity();
 	}
 
-	public void CreateLine(Vector2Double start, Vector2Double end, Color color, bool delete, double deleteAfter = 0, string tag = "Line", double thickness = 0.1f){
+	public void CreateLine(Vector2Double start, Vector2Double end, Color color, bool delete, double deleteAfter = 0, string tag = "Line", double thickness = 0.1f, bool deleteIfZero = true){
 
-		if (start == end || start == Vector2Double.zero)
+		if (start == end)
+			return;
+
+		if (start == Vector2Double.zero && deleteIfZero)
 			return;
 		
 		if ((delete && deleteAfter <= 0) || thickness <= 0)

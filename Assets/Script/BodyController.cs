@@ -64,6 +64,8 @@ public class BodyController : MonoBehaviour{
 
 	private void Update(){
 
+		CheckThrustControls();
+
 		foreach (Body body in bodies)
 			body.ApplyPosition();
 
@@ -77,6 +79,9 @@ public class BodyController : MonoBehaviour{
 
 		CheckInput();
 		DebugInformation();
+	}
+
+	private void CheckThrustControls(){
 
 		if (NumberOfControllableBodies == 0)
 			return;
@@ -85,7 +90,7 @@ public class BodyController : MonoBehaviour{
 		
 		foreach (Body body in bodies){
 			if (body.controllable)
-				lineController.CreateLine(body.position, body.position + settings.thrustDirection * body.radius * 2, body.color, true, 0.02, "InfoLine");
+				lineController.CreateLine(body.position, body.position + settings.thrustDirection * body.radius * 2, body.color, true, 0.02, "InfoLine", 0.05, false);
 		}
 
 		if (settings.isRotatingForward)

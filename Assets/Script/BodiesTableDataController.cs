@@ -176,5 +176,4 @@ public class BodiesTableDataController : MonoBehaviour{
 		string bodiesToString = File.ReadAllText(path);
 		return bodiesToString.Split(new[] {DataController.LINE_SEPARATOR}, StringSplitOptions.None);
 	}
-
 }

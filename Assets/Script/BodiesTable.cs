@@ -64,7 +64,7 @@ public class BodiesTable : MonoBehaviour{
 
 		new BodyPreset("Neutr.Star",4.476 * Math.Pow(10,30), 11_000, 		new Color(0.812f, 0.925f, 0.922f, 1f)),
 		new BodyPreset("Whit.Dwarf",1.485 * Math.Pow(10,30), 7_000_000, 	new Color(1f, 1f, 1f, 1f)),
-		new BodyPreset("BlackHole", 8.155 * Math.Pow(10,36), 12_000_000_000,new Color(0.02f, 0.02f, 0.02f, 1f)),
+		new BodyPreset("Iss", 		450_000,				 44.13,			new Color(0.831f, 0.831f, 0.831f, 1f)),
 		new BodyPreset("Human", 	85.90, 					 0.2715, 		new Color(0.58f, 0.439f, 0.349f, 1f)),
 		new BodyPreset("Ball", 		0.482, 					 0.12, 			new Color(0.988f, 0.467f, 0.035f, 1f)),
 

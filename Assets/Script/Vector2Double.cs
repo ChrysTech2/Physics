@@ -140,11 +140,11 @@ public struct Vector2Double{
 		return result;
 	}
 
-    public override int GetHashCode(){
-        return base.GetHashCode();
-    }
+	public override int GetHashCode(){
+		return base.GetHashCode();
+	}
 
-    public override bool Equals(object obj){
-        return base.Equals(obj);
-    }
+	public override bool Equals(object obj){
+		return base.Equals(obj);
+	}
 }

@@ -3,68 +3,72 @@ using UnityEngine;
 
 public class WorldLineController : MonoBehaviour{
 
-    [SerializeField] private GameObject lineToCreate;
-    [SerializeField] private BodyController bodyController;
+	[SerializeField] private GameObject lineToCreate;
+	[SerializeField] private BodyController bodyController;
+	public GameObject centerOfGravity;
 
-    public List<WorldLine> lines = new List<WorldLine>();
+	public List<WorldLine> lines = new List<WorldLine>();
 
-    private void Update(){
+	private void Update(){
 
-        for (int i = 0; i < lines.Count; i++)
-				lines[i].ApplyPosition();
-    }
+		for (int i = 0; i < lines.Count; i++)
+			lines[i].ApplyPosition();
+		
+		if (bodyController.settings.showCenterOfGravity)
+			ShowCenterOfGravity();
+	}
 
-    public void CreateLine(Vector2Double start, Vector2Double end, Color color, bool delete, double deleteAfter = 0, string tag = "Line", double thickness = 0.1f){
+	public void CreateLine(Vector2Double start, Vector2Double end, Color color, bool delete, double deleteAfter = 0, string tag = "Line", double thickness = 0.1f){
 
 		if (start == end || start == Vector2Double.zero)
 			return;
 		
 		if ((delete && deleteAfter <= 0) || thickness <= 0)
-            return;
+			return;
 
 		if (tag == "Line" && (bodyController.speedMultiplier == 0 || bodyController.settings.secondsPerFrame == 0))
-            return;
+			return;
 
-        WorldLine line = Instantiate(lineToCreate).GetComponent<WorldLine>();
+		WorldLine line = Instantiate(lineToCreate).GetComponent<WorldLine>();
 
-        line.position = start;
+		line.position = start;
 		line.tag = tag;
 		
-        line.bodyController = bodyController;
-        line.gameObject.transform.GetChild(0).GetComponent<Renderer>().material.color = color;
-        line.transform.parent = bodyController.transform;
+		line.bodyController = bodyController;
+		line.gameObject.transform.GetChild(0).GetComponent<Renderer>().material.color = color;
+		line.transform.parent = bodyController.transform;
 		line.lineTransform = line.transform;
 
 		Vector2Double difference = end - start;
 
-        double length = difference.magnitude;
-        double angle = difference.ToDegrees();
+		double length = difference.magnitude;
+		double angle = difference.ToDegrees();
 
 		line.height = thickness;
 
-        line.transform.localScale = new Vector2((float)length, (float)thickness);
-        line.transform.localEulerAngles = new Vector3(0, 0, (float)angle);
+		line.transform.localScale = new Vector2((float)length, (float)thickness);
+		line.transform.localEulerAngles = new Vector3(0, 0, (float)angle);
 
-        line.ApplyPosition();
+		line.ApplyPosition();
 
-        if (delete)
-            Destroy(line.gameObject, (float)deleteAfter);
+		if (delete)
+			Destroy(line.gameObject, (float)deleteAfter);
 
-        lines.Add(line);
-    }
+		lines.Add(line);
+	}
 
-    public void DeleteAllLines(){
+	public void DeleteAllLines(){
 
-        foreach (WorldLine line in lines)
-            Destroy(line.gameObject);
-    }
+		foreach (WorldLine line in lines)
+			Destroy(line.gameObject);
+	}
 
 	public void DeleteAllLines(string tag){
 
-        foreach (WorldLine line in lines)
+		foreach (WorldLine line in lines)
 			if (line.tag == tag)
-            	Destroy(line.gameObject);
-    }
+				Destroy(line.gameObject);
+	}
 
 	public void DrawPolygon(double radius, int nPieces, string tag = "Border"){
 
@@ -96,5 +100,22 @@ public class WorldLineController : MonoBehaviour{
 		CreateLine(new Vector2Double(border.x, border.y), new Vector2Double(border.x, -border.y), Color.gray, false, 0, tag, 0.1f);
 		CreateLine(new Vector2Double(-border.x, border.y), new Vector2Double(-border.x, -border.y), Color.gray, false, 0, tag, 0.1f);
 
+	}
+
+	private void ShowCenterOfGravity(){
+
+		Vector2Double position = Vector2Double.zero;
+		double totalMass = 0;
+
+		foreach (Body body in bodyController.bodies){
+
+			position += body.position * body.mass;
+			totalMass += body.mass;
+		}
+
+		if (totalMass != 0)
+			position /= totalMass;
+
+		centerOfGravity.transform.localPosition = (position - bodyController.cameraController.position).ToVector2() * bodyController.scale;
 	}
 }

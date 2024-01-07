@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
-using Unity.VisualScripting;
 
 public static class GravityMode{
 	public const int Disabled = 0;

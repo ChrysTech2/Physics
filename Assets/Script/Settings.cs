@@ -27,13 +27,27 @@ public class Settings : MonoBehaviour{
 		return Math.Pow(body.velocity.magnitude, 2) * dragCoefficient * fluidDensity * body.area / (2 * body.mass);
 	}
  
-	public bool isApplyingThrust = false;
+	public bool isApplyingThrustForward = false;
+	public bool isApplyingThrustBackward = false;
+	public bool isApplyingThrustRight = false;
+	public bool isApplyingThrustLeft = false;
+
 	public bool isRotatingForward = false;
 	public bool isRotatingBackward = false;
+
 	public bool isZoomingIn = false, isZoomingOut = false;
 
-	public void SetIsApplyingThrust(bool value){
-		isApplyingThrust = value;
+	public void SetIsApplyingThrustForward(bool value){
+		isApplyingThrustForward = value;
+	}
+	public void SetIsApplyingThrustBackward(bool value){
+		isApplyingThrustBackward = value;
+	}
+	public void SetIsApplyingThrustRight(bool value){
+		isApplyingThrustRight = value;
+	}
+	public void SetIsApplyingThrustLeft(bool value){
+		isApplyingThrustLeft = value;
 	}
 
 	public void SetIsRotatingForward(bool value){
@@ -43,6 +57,7 @@ public class Settings : MonoBehaviour{
 	public void SetIsRotatingBackward(bool value){
 		isRotatingBackward = value;
 	}
+
 
 	public void SetIsZoomingIn(bool value){
 		isZoomingIn = value;
@@ -55,4 +70,5 @@ public class Settings : MonoBehaviour{
 	public Vector2Double thrustDirection = Vector2Double.up;
 	public double thrustAcceleration;
 	public double thrustDirectionSensibiliy;
+	public Vector2Double currentInputAcceleration = Vector2Double.zero;
 }

@@ -153,7 +153,7 @@ public class SettingsController : MonoBehaviour{
 		settings.borderMode = borderMode.value;
 
 		settings.showCenterOfGravity = showCenterOfGravity.isOn;
-		bodyController.centerOfGravity.gameObject.SetActive(showCenterOfGravity.isOn);
+		bodyController.lineController.centerOfGravity.gameObject.SetActive(showCenterOfGravity.isOn);
 
 		settings.gravityDirection = Vector2Double.ToVector2Double(settings.gravityAngle * Math.PI/180);
 		settings.gravity = settings.gravityDirection * settings.gravityAcceleration;
@@ -316,6 +316,8 @@ public class SettingsController : MonoBehaviour{
 			parent.value = 0;
 		else if (parent.value > index + 1)
 			parent.value --;
+
+		parent.RefreshShownValue();
 	}
 
 	public void SetGToRealValue(){

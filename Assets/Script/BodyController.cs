@@ -5,12 +5,10 @@ using TMPro;
 
 public class BodyController : MonoBehaviour{
 
-	public GameObject startupMenu;
-
 	public TMP_Text informations;
-	public TouchControl touchControl;
-	public GameObject centerOfGravity;
+	public TouchControl touchControl;	
 	public GameObject thrustControls;
+	public GameObject startupMenu;
 
 	public CameraController cameraController;
 	public SettingsController settingsController;
@@ -44,36 +42,6 @@ public class BodyController : MonoBehaviour{
 		Application.targetFrameRate = 240;
 	}
 
-	private void Update(){
-
-		foreach (Body body in bodies)
-			body.ApplyPosition();
-
-		if (settings.isZoomingIn)
-			ZoomIn(1.0075f);
-		else if (settings.isZoomingOut)
-			ZoomOut(1.0075f);
-
-		if (settings.showCenterOfGravity)
-			ShowCenterOfGravity();
-
-		if (settingsController.gameObject.activeSelf)
-			return;
-
-		CheckInput();
-		DebugInformation();
-
-		if (NumberOfControllableBodies == 0)
-			return;
-		
-		CheckThrustInput();
-		
-		foreach (Body body in bodies)
-			if (body.controllable)
-		
-		lineController.CreateLine(body.position, body.position + settings.thrustDirection * body.radius * 2, body.color, true, 0.02, "InfoLine");
-	}
-
 	private void FixedUpdate(){
 
 		for (int i = 0; i < speedMultiplier; i++)
@@ -81,12 +49,6 @@ public class BodyController : MonoBehaviour{
 
 		foreach(Body body in bodies)
 			body.DrawLine();
-
-		if (settings.isRotatingForward)
-			settings.thrustDirection = settings.thrustDirection.SumVectorAsAngle(Vector2Double.ToVector2Double(settings.thrustDirectionSensibiliy));
-
-		if (settings.isRotatingBackward)
-			settings.thrustDirection = settings.thrustDirection.SubtractVectorAsAngle(Vector2Double.ToVector2Double(settings.thrustDirectionSensibiliy));
 	}
 
 	public void CalculateOneFrame(){
@@ -100,71 +62,85 @@ public class BodyController : MonoBehaviour{
 		t += (float)settingsController.settings.secondsPerFrame;
 	}
 
-	private void ShowCenterOfGravity(){
+	private void Update(){
 
-		Vector2Double position = Vector2Double.zero;
-		double totalMass = 0;
+		foreach (Body body in bodies)
+			body.ApplyPosition();
 
+		if (settings.isZoomingIn)
+			ZoomIn(1.0075f);
+		else if (settings.isZoomingOut)
+			ZoomOut(1.0075f);
+
+		if (settingsController.gameObject.activeSelf)
+			return;
+
+		CheckInput();
+		DebugInformation();
+
+		if (NumberOfControllableBodies == 0)
+			return;
+		
+		CheckThrustInput();
+		
 		foreach (Body body in bodies){
-
-			position += body.position * body.mass;
-			totalMass += body.mass;
+			if (body.controllable)
+				lineController.CreateLine(body.position, body.position + settings.thrustDirection * body.radius * 2, body.color, true, 0.02, "InfoLine");
 		}
 
-		if (totalMass != 0)
-			position /= totalMass;
+		if (settings.isRotatingForward)
+			settings.thrustDirection = settings.thrustDirection.SumVectorAsAngle(Vector2Double.ToVector2Double(settings.thrustDirectionSensibiliy));
 
-		centerOfGravity.transform.localPosition = (position - cameraController.position).ToVector2() * scale;
+		if (settings.isRotatingBackward)
+			settings.thrustDirection = settings.thrustDirection.SubtractVectorAsAngle(Vector2Double.ToVector2Double(settings.thrustDirectionSensibiliy));
+
+		settings.currentInputAcceleration = Vector2Double.zero;
+
+		if (settings.isApplyingThrustForward)
+			settings.currentInputAcceleration += Vector2Double.right;
+
+		if (settings.isApplyingThrustBackward)
+			settings.currentInputAcceleration += Vector2Double.left;
+
+		if (settings.isApplyingThrustRight)
+			settings.currentInputAcceleration += Vector2Double.down;
+
+		if (settings.isApplyingThrustLeft)
+			settings.currentInputAcceleration += Vector2Double.up;
+
+		settings.currentInputAcceleration = settings.currentInputAcceleration.direction.SumVectorAsAngle(settings.thrustDirection) * settings.thrustAcceleration;
+		
 	}
 
 	private void CheckInput(){
 
 		float mouseWheel = Input.GetAxis("Mouse ScrollWheel");
 
-		if (mouseWheel > 0)
-			ZoomIn(1.1f);
-		else if (mouseWheel < 0)
-			ZoomOut(1.1f);
+		if (mouseWheel > 0) ZoomIn(1.1f);
+		else if (mouseWheel < 0) ZoomOut(1.1f);
 
-		if (Input.GetKeyDown(KeyCode.Comma))
-			SlowDown();
+		if (Input.GetKey(KeyCode.Minus) || Input.GetKey(KeyCode.KeypadMinus)) ZoomOut(1.025f);
+		if (Input.GetKey(KeyCode.Equals) || Input.GetKey(KeyCode.KeypadPlus)) ZoomIn(1.025f);
 
-		if (Input.GetKeyDown(KeyCode.Period))
-			SpeedUp();
-
-		if (Input.GetKey(KeyCode.Minus) || Input.GetKey(KeyCode.KeypadMinus))
-			ZoomOut(1.025f);
-
-		if (Input.GetKey(KeyCode.Equals) || Input.GetKey(KeyCode.KeypadPlus))
-			ZoomIn(1.025f);
-
-		if (Input.GetKeyDown(KeyCode.LeftBracket))
-			cameraController.PreviousBody();
-
-		if (Input.GetKeyDown(KeyCode.RightBracket))
-			cameraController.NextBody();
+		if (Input.GetKeyDown(KeyCode.LeftBracket)) cameraController.PreviousBody();
+		if (Input.GetKeyDown(KeyCode.RightBracket)) cameraController.NextBody();
 	}
 
 	private void CheckThrustInput(){
 
-		if (Input.GetKeyDown(KeyCode.W))
-			settings.SetIsApplyingThrust(true);
+		if (Input.GetKeyDown(KeyCode.W)) settings.SetIsApplyingThrustForward(true);
+		if (Input.GetKeyDown(KeyCode.S)) settings.SetIsApplyingThrustBackward(true);
+		if (Input.GetKeyDown(KeyCode.D)) settings.SetIsApplyingThrustRight(true);
+		if (Input.GetKeyDown(KeyCode.A)) settings.SetIsApplyingThrustLeft(true);
+		if (Input.GetKeyDown(KeyCode.E)) settings.SetIsRotatingBackward(true);
+		if (Input.GetKeyDown(KeyCode.Q)) settings.SetIsRotatingForward(true);
 
-		if (Input.GetKeyDown(KeyCode.D))
-			settings.SetIsRotatingBackward(true);
-
-		if (Input.GetKeyDown(KeyCode.A))
-			settings.SetIsRotatingForward(true);
-
-		
-		if (Input.GetKeyUp(KeyCode.W))
-			settings.SetIsApplyingThrust(false);
-
-		if (Input.GetKeyUp(KeyCode.D))
-			settings.SetIsRotatingBackward(false);
-
-		if (Input.GetKeyUp(KeyCode.A))
-			settings.SetIsRotatingForward(false);
+		if (Input.GetKeyUp(KeyCode.W)) settings.SetIsApplyingThrustForward(false);
+		if (Input.GetKeyUp(KeyCode.S)) settings.SetIsApplyingThrustBackward(false);
+		if (Input.GetKeyUp(KeyCode.D)) settings.SetIsApplyingThrustRight(false);
+		if (Input.GetKeyUp(KeyCode.A)) settings.SetIsApplyingThrustLeft(false);
+		if (Input.GetKeyUp(KeyCode.E)) settings.SetIsRotatingBackward(false);
+		if (Input.GetKeyUp(KeyCode.Q)) settings.SetIsRotatingForward(false);
 	}
 
 	private void DebugInformation(){

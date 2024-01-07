@@ -130,10 +130,7 @@ public class Body : MonoBehaviour{
 	}
 
 	public void Thrust(){
-
-		// This needs to be accounted in buoyancy
-		if (settings.isApplyingThrust)
-			acceleration += settings.thrustDirection * settings.thrustAcceleration;
+		acceleration += settings.currentInputAcceleration;
 	}
 
 	// Collisions

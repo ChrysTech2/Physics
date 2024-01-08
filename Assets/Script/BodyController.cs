@@ -32,8 +32,13 @@ public class BodyController : MonoBehaviour{
 
 			if (numberOfControllableBodies == 0)
 				thrustControls.gameObject.SetActive(false);
-			else
+			else{
 				thrustControls.gameObject.SetActive(true);
+
+				if (!bodyEditor.gameObject.activeSelf && !settingsController.gameObject.activeSelf){
+					thrustControls.transform.GetChild(0).gameObject.SetActive(true);
+				}
+			}
 		}
 	}
 
@@ -213,7 +218,7 @@ public class BodyController : MonoBehaviour{
 		cameraController.Index = bodies.Count - 1;
 
 		if (createdBody.controllable)
-			NumberOfControllableBodies ++;		
+			NumberOfControllableBodies ++;
 	}
 
 	public void DeleteBody(Body body){
@@ -257,7 +262,6 @@ public class BodyController : MonoBehaviour{
 					else
 						body.ForceOnce += () => body.DirectionalGravityBuoyancy();
 
-
 					break;
 
 				case GravityMode.Centered:
@@ -266,7 +270,6 @@ public class BodyController : MonoBehaviour{
 						body.ForceOnce += () => body.CenteredGravity();
 					else
 						body.ForceOnce += () => body.CenteredGravityBuoyancy();
-
 
 					break;
 

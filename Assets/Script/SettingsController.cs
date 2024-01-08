@@ -10,7 +10,7 @@ public class SettingsController : MonoBehaviour{
 	public TMP_Dropdown gravityMode, parent, borderMode;
 	public TMP_InputField gravityAcceleration, gravityAngle;
 	public TMP_InputField attractionGravityConstant;
-	public TMP_InputField fluidDensity, dragCoefficient;
+	public TMP_InputField fluidDensity, dragCoefficient, frictionCoefficient;
 	public Toggle calculateCollisions, mergeBodiesInCollisions, calculateBuoyancy;
 	public TMP_InputField coefOfRestitution, thrustAcceleration;
 	public Toggle useParent, sumParentRadius, sumBodyRadius, sumAutoVelocity;
@@ -25,8 +25,8 @@ public class SettingsController : MonoBehaviour{
 	public Slider r, g, b, a;
 
 	// Other Stuff
-	[SerializeField] private TMP_Text errorMessage;
 	[SerializeField] private Toggle toggleEditor;
+	public TMP_Text errorMessage;
 
 	public Settings settings;
 	public BodyController bodyController;
@@ -128,6 +128,7 @@ public class SettingsController : MonoBehaviour{
 
 		ExpressionEvaluator.Evaluate(fluidDensity.text, out settings.fluidDensity);
 		ExpressionEvaluator.Evaluate(dragCoefficient.text, out settings.dragCoefficient);
+		ExpressionEvaluator.Evaluate(frictionCoefficient.text, out settings.frictionCoefficient);
 
 		ExpressionEvaluator.Evaluate(attractionGravityConstant.text, out settings.attractionGravityConstant);
 

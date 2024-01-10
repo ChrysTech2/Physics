@@ -118,6 +118,9 @@ public class BodyEditor : MonoBehaviour{
 
 	private void CheckShowColor(){
 
+		if (bodyController.bodies.Count == 0)
+			return;
+
 		if (showColor.isOn){
 			Color color = bodyToEdit.color;
 			backgroundImage.color = new Color(color.r, color.g, color.b, 0.78f);	
@@ -138,6 +141,7 @@ public class BodyEditor : MonoBehaviour{
 	public void DeleteBody(){
 		AssignBody();
 		bodyController.DeleteBody(bodyToEdit);
+		CheckShowColor();
 	}
 
 	public void BodyEliminated(int index){

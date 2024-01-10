@@ -58,6 +58,7 @@ public class Body : MonoBehaviour{
 	public void UpdateVelocity(){
 
 		for (int i = Index() + 1; i < bodyController.bodies.Count; i++)
+			if (bodyController.bodies[i] != this)
 			ForceEachBody(bodyController.bodies[i]);
 		
 		ForceOnce();
@@ -80,7 +81,7 @@ public class Body : MonoBehaviour{
 		bodyController.lineController.CreateLine(lastPosition, position, color, true, settings.lineDuration, "Line", settings.lineThickness);	
 	}
 
-	public void ApplyPosition(){
+	public void ApplyPosition(){;
 		bodyTransform.localPosition = (position - bodyController.cameraController.position).ToVector2();
 		lastPosition = position;
 	}
@@ -138,7 +139,7 @@ public class Body : MonoBehaviour{
 
 		double distance = DistanceFromSurface(body);
 		
-		if (distance > 0)
+		if (distance >= 0)
 			return;
 
 		Vector2Double direction = Direction(body);
@@ -175,7 +176,7 @@ public class Body : MonoBehaviour{
 
 		double distance = DistanceFromSurface(body);
 		
-		if (distance > 0)
+		if (distance >= 0)
 			return;
 
 		double areaTot = area + body.area;

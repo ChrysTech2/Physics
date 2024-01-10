@@ -99598,10 +99598,16 @@ MonoBehaviour:
   loadErrorMessage: {fileID: 757238565}
   templatesBodies:
   - {fileID: 4900000, guid: 8031f54d86f764d45b41671e997c6187, type: 3}
+  - {fileID: 4900000, guid: a8f7a04a415bf1e4b971188675263773, type: 3}
+  - {fileID: 4900000, guid: 9f6764893ebb3d1468bb07140ea12426, type: 3}
   templatesSettings:
   - {fileID: 4900000, guid: 9412dc4f63e209f4bb22ff7519d26901, type: 3}
+  - {fileID: 4900000, guid: 350e4f93be6f4b443bfcb52f8afc774c, type: 3}
+  - {fileID: 4900000, guid: b371c0e1622505448a408fcc2b69139b, type: 3}
   templatesNames:
   - Solar System
+  - Pi Collisions
+  - 4 Bodies
   saveMenu: {fileID: 1647126077}
   loadMenu: {fileID: 755958625}
   simulationsDropdown: {fileID: 1644261971}

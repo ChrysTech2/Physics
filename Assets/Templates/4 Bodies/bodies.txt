@@ -1,0 +1,61 @@
+number_of_bodies : 4 #
+...........................................
+
+name : Body 7 #
+x : 0 #
+y : 7 #
+velocity_x : 3 #
+velocity_y : 0 #
+mass : 10500 #
+radius : 1 #
+color_red_value : 1 #
+color_green_value : 0 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+is_controllable : False #
+...........................................
+
+name : Body 8 #
+x : 0 #
+y : -7 #
+velocity_x : -3 #
+velocity_y : 0 #
+mass : 10500 #
+radius : 1 #
+color_red_value : 0 #
+color_green_value : 1 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+is_controllable : False #
+...........................................
+
+name : Body 9 #
+x : 7 #
+y : 0 #
+velocity_x : 0 #
+velocity_y : -3 #
+mass : 10500 #
+radius : 1 #
+color_red_value : 0 #
+color_green_value : 0 #
+color_blue_value : 1 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+is_controllable : False #
+...........................................
+
+name : Body 10 #
+x : -7 #
+y : 0 #
+velocity_x : 0 #
+velocity_y : 3 #
+mass : 10500 #
+radius : 1 #
+color_red_value : 1 #
+color_green_value : 1 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+is_controllable : False

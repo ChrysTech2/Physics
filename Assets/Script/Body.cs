@@ -200,28 +200,28 @@ public class Body : MonoBehaviour{
 		if (position.y - radius < -settings.border.y){
 
 			position.y = -settings.border.y + radius;
-			velocity.y = -velocity.y * settings.coefOfRestitution;
+			velocity.y = -velocity.y * settings.borderCoefOfRestitution;
 			nCollisions ++;
 		}
 
 		else if (position.y + radius > settings.border.y){
 
 			position.y = settings.border.y - radius;
-			velocity.y = -velocity.y * settings.coefOfRestitution;
+			velocity.y = -velocity.y * settings.borderCoefOfRestitution;
 			nCollisions ++;
 		}
 
 		if (position.x - radius < -settings.border.x){
 
 			position.x = -settings.border.x + radius;
-			velocity.x = -velocity.x * settings.coefOfRestitution;
+			velocity.x = -velocity.x * settings.borderCoefOfRestitution;
 			nCollisions ++;
 		}
 
 		else if (position.x + radius > settings.border.x){
 			
 			position.x = settings.border.x - radius;
-			velocity.x = -velocity.x * settings.coefOfRestitution;
+			velocity.x = -velocity.x * settings.borderCoefOfRestitution;
 			nCollisions ++;
 		}
 	}
@@ -236,7 +236,7 @@ public class Body : MonoBehaviour{
 		Vector2Double velocity1 = velocity.magnitude * velocity.direction.SubtractVectorAsAngle(direction);
 		Vector2Double velocityTemp1;
 
-		velocityTemp1.x = -1 * velocity1.x * settings.coefOfRestitution;
+		velocityTemp1.x = -1 * velocity1.x * settings.borderCoefOfRestitution;
 		velocityTemp1.y = velocity1.y;
 
 		velocity = velocityTemp1.magnitude * velocityTemp1.direction.SumVectorAsAngle(direction);

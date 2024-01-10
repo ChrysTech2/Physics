@@ -92,6 +92,7 @@ public class DataLoader : MonoBehaviour{
 		SetValue(data.settings.calculateCollisions);
 		SetValue(data.settings.mergeBodiesInCollisions);
 		SetValue(data.settings.coefOfRestitution);
+		SetValue(data.settings.borderCoefOfRestitution);
 
 		SetValue(data.settings.borderMode);
 		SetValue(data.settings.borderX);

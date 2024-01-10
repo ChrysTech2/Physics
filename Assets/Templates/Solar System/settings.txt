@@ -24,6 +24,7 @@ sum_body_radius : False #
 collisions : False #
 merge_bodies : False #
 coefficient_of_restitution : 0.8 #
+coefficient_of_restitution_border : 1 #
 border_mode_value : 0 #
 border_x : 20 #
 border_y : 20 #

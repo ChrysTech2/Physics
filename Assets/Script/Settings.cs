@@ -9,7 +9,7 @@ public class Settings : MonoBehaviour{
 	public double gravityAcceleration, gravityAngle;
 	public double attractionGravityConstant;
 	public double fluidDensity, dragCoefficient;
-	public double coefOfRestitution, frictionCoefficient;
+	public double coefOfRestitution, borderCoefOfRestitution, frictionCoefficient;
 	public bool calculateCollisions, mergeBodiesInCollisions;
 	public Vector2Double border;
 

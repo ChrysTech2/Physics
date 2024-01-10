@@ -18,11 +18,12 @@ public class OnChangeEvent : MonoBehaviour{
 	public void OnCollisionsSettingsChange(){
 
 		Utils.SetActiveIf(settings.mergeBodiesInCollisions, settings.calculateCollisions.isOn);
-		Utils.SetActiveIf(settings.coefOfRestitution, (settings.calculateCollisions.isOn && !settings.mergeBodiesInCollisions.isOn) || settings.borderMode.value != BorderMode.Disabled);
+		Utils.SetActiveIf(settings.coefOfRestitution, settings.calculateCollisions.isOn && !settings.mergeBodiesInCollisions.isOn);
 
 		Utils.SetActiveIf(settings.borderX, settings.borderMode.value != BorderMode.Disabled);
 		Utils.SetActiveIf(settings.borderY, settings.borderMode.value == BorderMode.Rectangle);
-
+		Utils.SetActiveIf(settings.borderCoefOfRestitution, settings.borderMode.value != BorderMode.Disabled);
+		
 		if (settings.borderMode.value == BorderMode.Rectangle)
 			Utils.SetTextChild(settings.borderX, "Border X");
 		else

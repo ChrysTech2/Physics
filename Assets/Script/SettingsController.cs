@@ -12,7 +12,7 @@ public class SettingsController : MonoBehaviour{
 	public TMP_InputField attractionGravityConstant;
 	public TMP_InputField fluidDensity, dragCoefficient, frictionCoefficient;
 	public Toggle calculateCollisions, mergeBodiesInCollisions, calculateBuoyancy;
-	public TMP_InputField coefOfRestitution, thrustAcceleration;
+	public TMP_InputField coefOfRestitution, borderCoefOfRestitution, thrustAcceleration;
 	public Toggle useParent, sumParentRadius, sumBodyRadius, sumAutoVelocity;
 	public Toggle randomMode, showCenterOfGravity, controllable;
 	public TMP_InputField borderX, borderY, touchMultiplier;
@@ -133,6 +133,7 @@ public class SettingsController : MonoBehaviour{
 		ExpressionEvaluator.Evaluate(attractionGravityConstant.text, out settings.attractionGravityConstant);
 
 		ExpressionEvaluator.Evaluate(coefOfRestitution.text, out settings.coefOfRestitution);
+		ExpressionEvaluator.Evaluate(borderCoefOfRestitution.text, out settings.borderCoefOfRestitution);
 
 		ExpressionEvaluator.Evaluate(borderX.text, out settings.border.x);
 		ExpressionEvaluator.Evaluate(borderY.text, out settings.border.y);

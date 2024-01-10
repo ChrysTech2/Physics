@@ -61,6 +61,7 @@ public class DataSaver : MonoBehaviour{
 			$"collisions : {data.settings.calculateCollisions.isOn}",
 			$"merge_bodies : {data.settings.mergeBodiesInCollisions.isOn}",
 			$"coefficient_of_restitution : {data.settings.coefOfRestitution.text}",
+			$"coefficient_of_restitution_border : {data.settings.borderCoefOfRestitution.text}",
 
 			$"border_mode_value : {data.settings.borderMode.value}",
 			$"border_x : {data.settings.borderX.text}",

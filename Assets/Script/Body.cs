@@ -59,7 +59,7 @@ public class Body : MonoBehaviour{
 
 		for (int i = Index() + 1; i < bodyController.bodies.Count; i++)
 			if (bodyController.bodies[i] != this)
-			ForceEachBody(bodyController.bodies[i]);
+				ForceEachBody(bodyController.bodies[i]);
 		
 		ForceOnce();
 
@@ -249,6 +249,14 @@ public class Body : MonoBehaviour{
 
 		velocityTemp1.x = -1 * velocity1.x * settings.borderCoefOfRestitution;
 		velocityTemp1.y = velocity1.y;
+
+		if (settings.frictionCoefficient != 0){
+			
+			double acceleration1 = (accelerationBeforeReset.magnitude * accelerationBeforeReset.direction.SubtractVectorAsAngle(direction)).x;
+			double accelerationTemp1 = -Math.Abs(acceleration1) * settings.frictionCoefficient * Math.Sign(velocity1.y);
+
+			acceleration = accelerationTemp1 * direction.SumVectorAsAngle(Vector2Double.up);
+		}
 
 		velocity = velocityTemp1.magnitude * velocityTemp1.direction.SumVectorAsAngle(direction);
 		position = position.direction * (settings.border.x - radius);

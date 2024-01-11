@@ -160,6 +160,8 @@ public class Body : MonoBehaviour{
 		velocityTemp1.y = velocity1.y;
 		velocityTemp2.y = velocity2.y;
 
+		// add friction
+
 		// Apply
 		velocity = velocityTemp1.magnitude * velocityTemp1.direction.SumVectorAsAngle(direction);
 		body.velocity = velocityTemp2.magnitude * velocityTemp2.direction.SumVectorAsAngle(direction);
@@ -198,31 +200,40 @@ public class Body : MonoBehaviour{
 
 	public void CheckRectangleCollision(){
 
-		if (position.y - radius < -settings.border.y){
+		double limitDown = -settings.border.y + radius;
+		double limitUp = settings.border.y - radius;
+		double limitLeft = -settings.border.x + radius;
+		double limitRight = settings.border.x - radius;
 
-			position.y = -settings.border.y + radius;
-			velocity.y = -velocity.y * settings.borderCoefOfRestitution;
+		if (position.y < limitDown){
+
+			position.y = limitDown;
+			velocity.y *= -settings.borderCoefOfRestitution;
+			acceleration.x = Math.Abs(accelerationBeforeReset.y) * -Math.Sign(velocity.x) * settings.frictionCoefficient;
 			nCollisions ++;
 		}
 
-		else if (position.y + radius > settings.border.y){
+		else if (position.y > limitUp){
 
-			position.y = settings.border.y - radius;
-			velocity.y = -velocity.y * settings.borderCoefOfRestitution;
+			position.y = limitUp;
+			velocity.y *= -settings.borderCoefOfRestitution;
+			acceleration.x = Math.Abs(accelerationBeforeReset.y) * -Math.Sign(velocity.x) * settings.frictionCoefficient;
 			nCollisions ++;
 		}
 
-		if (position.x - radius < -settings.border.x){
+		if (position.x < limitLeft){
 
-			position.x = -settings.border.x + radius;
-			velocity.x = -velocity.x * settings.borderCoefOfRestitution;
+			position.x = limitLeft;
+			velocity.x *= -settings.borderCoefOfRestitution;
+			acceleration.y = Math.Abs(accelerationBeforeReset.x) * -Math.Sign(velocity.y) * settings.frictionCoefficient;
 			nCollisions ++;
 		}
 
-		else if (position.x + radius > settings.border.x){
+		else if (position.x > limitRight){
 			
-			position.x = settings.border.x - radius;
-			velocity.x = -velocity.x * settings.borderCoefOfRestitution;
+			position.x = limitRight;
+			velocity.x *= -settings.borderCoefOfRestitution;
+			acceleration.y = Math.Abs(accelerationBeforeReset.x) * -Math.Sign(velocity.y) * settings.frictionCoefficient;
 			nCollisions ++;
 		}
 	}
@@ -233,7 +244,6 @@ public class Body : MonoBehaviour{
 			return;
 		
 		Vector2Double direction = -1 * position.direction;
-
 		Vector2Double velocity1 = velocity.magnitude * velocity.direction.SubtractVectorAsAngle(direction);
 		Vector2Double velocityTemp1;
 
@@ -241,7 +251,6 @@ public class Body : MonoBehaviour{
 		velocityTemp1.y = velocity1.y;
 
 		velocity = velocityTemp1.magnitude * velocityTemp1.direction.SumVectorAsAngle(direction);
-
 		position = position.direction * (settings.border.x - radius);
 
 		nCollisions ++;

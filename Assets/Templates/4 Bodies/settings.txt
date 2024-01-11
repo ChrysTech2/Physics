@@ -1,19 +1,19 @@
-x : -7 #
+x : 0 #
 y : 0 #
 velocity_x : 0 #
-velocity_y : 6 #
+velocity_y : 0 #
 mass : 10500 #
 radius : 1 #
-name : Body 11 #
-auto_name_number : 11 #
+name : Body 5 #
+auto_name_number : 5 #
 color_red_value : 1 #
 color_green_value : 1 #
-color_blue_value : 0 #
+color_blue_value : 1 #
 color_opacity_value : 1 #
-random_mode : False #
+random_mode : True #
 seconds_per_frame : 0.005 #
 touch_multiplier : 1 #
-line_duration : 10 #
+line_duration : 5 #
 line_thickness : 0.025 #
 show_center_of_gravity : False #
 use_parent : False #

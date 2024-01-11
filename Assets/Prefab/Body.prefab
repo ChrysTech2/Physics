@@ -97,9 +97,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04d885f7cb5635a4ab39794c360bfc02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mass: 10000
+  mass: 10500
   radius: 1
-  color: {r: 0, g: 0.7428572, b: 1, a: 1}
+  color: {r: 1, g: 1, b: 1, a: 1}
   controllable: 0
   nCollisions: 0
   area: 0

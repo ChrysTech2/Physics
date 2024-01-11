@@ -13,6 +13,7 @@ public class BodyController : MonoBehaviour{
 	public CameraController cameraController;
 	public SettingsController settingsController;
 	public WorldLineController lineController;
+	public GraphController graphController;
 	public Settings settings;
 	public BodyEditor bodyEditor;
 
@@ -134,6 +135,9 @@ public class BodyController : MonoBehaviour{
 
 		if (Input.GetKeyDown(KeyCode.LeftBracket)) cameraController.PreviousBody();
 		if (Input.GetKeyDown(KeyCode.RightBracket)) cameraController.NextBody();
+
+		if (Input.GetKeyDown(KeyCode.Period)) SpeedUp();
+		if (Input.GetKeyDown(KeyCode.Comma)) SlowDown();
 	}
 
 	private void CheckThrustInput(){
@@ -166,9 +170,10 @@ public class BodyController : MonoBehaviour{
 
 		if (speedMultiplier == 0)
 			speedMultiplier = 1;
-		else
-			if (fps > 20)
-				speedMultiplier *= 2;
+		else if (fps > 20)
+			speedMultiplier *= 2;
+
+		graphController.DestroyAllPoints();
 	}
 
 	public void SlowDown(){
@@ -177,6 +182,8 @@ public class BodyController : MonoBehaviour{
 			speedMultiplier = 0;
 		else
 			speedMultiplier /= 2;
+
+		graphController.DestroyAllPoints();
 	}
 
 	public void StopTime(){
@@ -287,14 +294,6 @@ public class BodyController : MonoBehaviour{
 		if (body.controllable)
 			body.ForceOnce += () => body.Thrust();
 
-		if (settings.attractionGravityConstant != 0){
-
-			if (settings.fluidDensity == 0 || !settings.calculateBuoyancy)
-				body.ForceEachBody += (body2) => body.AttractionGravity(body2);
-			else
-				body.ForceEachBody += (body2) => body.AttractionGravityBuoyancy(body2);
-		}
-
 		if (settings.calculateCollisions){
 
 			if (settings.mergeBodiesInCollisions)
@@ -308,5 +307,13 @@ public class BodyController : MonoBehaviour{
 
 		else if (settings.borderMode == BorderMode.Circle)
 			body.ForceAfterPosition += () => body.CheckCircleCollision();
+
+		if (settings.attractionGravityConstant != 0){
+
+			if (settings.fluidDensity == 0 || !settings.calculateBuoyancy)
+				body.ForceEachBody += (body2) => body.AttractionGravity(body2);
+			else
+				body.ForceEachBody += (body2) => body.AttractionGravityBuoyancy(body2);
+		}
 	}
 }

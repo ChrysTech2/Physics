@@ -1,7 +1,7 @@
 number_of_bodies : 4 #
 ...........................................
 
-name : Body 7 #
+name : Body 1 #
 x : 0 #
 y : 7 #
 velocity_x : 3 #
@@ -16,7 +16,7 @@ number_of_collisions : 0 #
 is_controllable : False #
 ...........................................
 
-name : Body 8 #
+name : Body 2 #
 x : 0 #
 y : -7 #
 velocity_x : -3 #
@@ -31,7 +31,7 @@ number_of_collisions : 0 #
 is_controllable : False #
 ...........................................
 
-name : Body 9 #
+name : Body 3 #
 x : 7 #
 y : 0 #
 velocity_x : 0 #
@@ -46,7 +46,7 @@ number_of_collisions : 0 #
 is_controllable : False #
 ...........................................
 
-name : Body 10 #
+name : Body 4 #
 x : -7 #
 y : 0 #
 velocity_x : 0 #

@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class Body : MonoBehaviour{
 
@@ -57,12 +58,12 @@ public class Body : MonoBehaviour{
 	public Vector2Double accelerationBeforeReset;
 	public void UpdateVelocity(){
 
+		ForceOnce();
+
 		for (int i = Index() + 1; i < bodyController.bodies.Count; i++)
 			if (bodyController.bodies[i] != this)
 				ForceEachBody(bodyController.bodies[i]);
 		
-		ForceOnce();
-
 		velocity += acceleration * settings.secondsPerFrame;
 
 		accelerationBeforeReset = acceleration;
@@ -135,6 +136,8 @@ public class Body : MonoBehaviour{
 	}
 
 	// Collisions
+
+	private List<Body> collidedBodies = new List<Body>();
 	public void Collision(Body body){
 
 		double distance = DistanceFromSurface(body);
@@ -160,8 +163,6 @@ public class Body : MonoBehaviour{
 		velocityTemp1.y = velocity1.y;
 		velocityTemp2.y = velocity2.y;
 
-		// add friction
-
 		// Apply
 		velocity = velocityTemp1.magnitude * velocityTemp1.direction.SumVectorAsAngle(direction);
 		body.velocity = velocityTemp2.magnitude * velocityTemp2.direction.SumVectorAsAngle(direction);
@@ -172,6 +173,9 @@ public class Body : MonoBehaviour{
 		// End
 		nCollisions ++;
 		body.nCollisions ++;
+
+		collidedBodies.Add(body);
+		body.collidedBodies.Add(this);
 	}
 
 	public void CollisionMerge(Body body){
@@ -196,6 +200,26 @@ public class Body : MonoBehaviour{
 
 		position = position *  percentage1 + body.position * percentage2;
 		bodyController.DeleteBody(body);
+	}
+
+	public void Friction(){
+
+		foreach (Body body in collidedBodies){
+
+			Vector2Double direction = Direction(body);
+			Vector2Double velocity1 = velocity.magnitude * velocity.direction.SubtractVectorAsAngle(direction);
+			
+			double acceleration1 = (accelerationBeforeReset.magnitude * accelerationBeforeReset.direction.SubtractVectorAsAngle(direction)).x;
+			double acceleration2 = (body.accelerationBeforeReset.magnitude * body.accelerationBeforeReset.direction.SubtractVectorAsAngle(direction)).x;
+			double relativeAcceleration = Math.Abs(-acceleration1 + acceleration2);
+
+			double accelerationTemp1 = -relativeAcceleration * settings.frictionCoefficient * Math.Sign(velocity1.y);
+			acceleration += accelerationTemp1 * direction.SumVectorAsAngle(Vector2Double.up);
+
+			// calculate him and do body.collidedBodies.Remove(this);
+		}
+
+		collidedBodies.Clear();
 	}
 
 	public void CheckRectangleCollision(){

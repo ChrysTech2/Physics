@@ -256,7 +256,7 @@ public class BodyController : MonoBehaviour{
 		body.ForceEachBody = new Action<Body>((body2) => {});
 		
 		if (settings.fluidDensity != 0 && settings.dragCoefficient != 0)
-			body.ForceOnce += () => body.Drag();
+			body.ForceOnce += body.Drag;
 		
 		if (settings.gravityAcceleration != 0){
 
@@ -265,34 +265,42 @@ public class BodyController : MonoBehaviour{
 				case GravityMode.Directional:
 
 					if (settings.fluidDensity == 0 || !settings.calculateBuoyancy)
-						body.ForceOnce += () => body.DirectionalGravity();
+						body.ForceOnce += body.DirectionalGravity;
 					else
-						body.ForceOnce += () => body.DirectionalGravityBuoyancy();
+						body.ForceOnce += body.DirectionalGravityBuoyancy;
 
 					break;
 
 				case GravityMode.Centered:
 
 					if (settings.fluidDensity == 0 || !settings.calculateBuoyancy)
-						body.ForceOnce += () => body.CenteredGravity();
+						body.ForceOnce += body.CenteredGravity;
 					else
-						body.ForceOnce += () => body.CenteredGravityBuoyancy();
+						body.ForceOnce += body.CenteredGravityBuoyancy;
 
 					break;
 
 				case GravityMode.Velocity:
 
 					if (settings.fluidDensity == 0 || !settings.calculateBuoyancy)
-						body.ForceOnce += () => body.VelocityGravity();
+						body.ForceOnce += body.VelocityGravity;
 					else
-						body.ForceOnce += () => body.VelocityGravityBuoyancy();
+						body.ForceOnce += body.VelocityGravityBuoyancy;
 
 					break;
 			}	
 		}
 
 		if (body.controllable)
-			body.ForceOnce += () => body.Thrust();
+			body.ForceOnce += body.Thrust;
+
+		if (settings.attractionGravityConstant != 0){
+
+			if (settings.fluidDensity == 0 || !settings.calculateBuoyancy)
+				body.ForceEachBody += (body2) => body.AttractionGravity(body2);
+			else
+				body.ForceEachBody += (body2) => body.AttractionGravityBuoyancy(body2);
+		}
 
 		if (settings.calculateCollisions){
 
@@ -303,17 +311,12 @@ public class BodyController : MonoBehaviour{
 		}
 
 		if (settings.borderMode == BorderMode.Rectangle)
-			body.ForceAfterPosition += () => body.CheckRectangleCollision();
+			body.ForceAfterPosition += body.CheckRectangleCollision;
 
 		else if (settings.borderMode == BorderMode.Circle)
-			body.ForceAfterPosition += () => body.CheckCircleCollision();
+			body.ForceAfterPosition += body.CheckCircleCollision;
 
-		if (settings.attractionGravityConstant != 0){
-
-			if (settings.fluidDensity == 0 || !settings.calculateBuoyancy)
-				body.ForceEachBody += (body2) => body.AttractionGravity(body2);
-			else
-				body.ForceEachBody += (body2) => body.AttractionGravityBuoyancy(body2);
-		}
+		if (settings.frictionCoefficient != 0)
+			body.ForceAfterPosition += body.Friction;
 	}
 }

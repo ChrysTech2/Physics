@@ -132,9 +132,9 @@ public class BodyEditor : MonoBehaviour{
 
 	public void FocusBody(){
 		
+		bodyController.cameraController.Focus = FocusMode.Enabled;
 		bodyController.cameraController.Index = bodiesDropdown.value;
-		bodyController.cameraController.offset = Vector2Double.zero;
-
+		
 		bodyController.scale = (float)(1/bodyController.bodies[bodiesDropdown.value].radius);
 	}
 

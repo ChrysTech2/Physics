@@ -155,17 +155,17 @@ public class Body : MonoBehaviour{
 		double percentage2 = mass / totalMass;
 
 		// Calculate
-		Vector2Double velocityTemp1, velocityTemp2;
+		Vector2Double finalVelocity1, finalVelocity2;
 
-		velocityTemp1.x = (mass * velocity1.x + body.mass * (velocity2.x * (1 + settings.coefOfRestitution) - settings.coefOfRestitution * velocity1.x)) / totalMass;
-		velocityTemp2.x = (body.mass * velocity2.x + mass * (velocity1.x * (1 + settings.coefOfRestitution) - settings.coefOfRestitution * velocity2.x)) / totalMass;
+		finalVelocity1.x = (mass * velocity1.x + body.mass * (velocity2.x * (1 + settings.coefOfRestitution) - settings.coefOfRestitution * velocity1.x)) / totalMass;
+		finalVelocity2.x = (body.mass * velocity2.x + mass * (velocity1.x * (1 + settings.coefOfRestitution) - settings.coefOfRestitution * velocity2.x)) / totalMass;
 		
-		velocityTemp1.y = velocity1.y;
-		velocityTemp2.y = velocity2.y;
+		finalVelocity1.y = velocity1.y;
+		finalVelocity2.y = velocity2.y;
 
 		// Apply
-		velocity = velocityTemp1.magnitude * velocityTemp1.direction.SumVectorAsAngle(direction);
-		body.velocity = velocityTemp2.magnitude * velocityTemp2.direction.SumVectorAsAngle(direction);
+		velocity = finalVelocity1.magnitude * finalVelocity1.direction.SumVectorAsAngle(direction);
+		body.velocity = finalVelocity2.magnitude * finalVelocity2.direction.SumVectorAsAngle(direction);
 
 		position -= Math.Abs(distance * percentage1) * direction;
 		body.position += Math.Abs(distance * percentage2) * direction;
@@ -207,22 +207,22 @@ public class Body : MonoBehaviour{
 		foreach (Body body in collidedBodies){
 
 			Vector2Double direction = Direction(body);
-			Vector2Double velocity1 = velocity.magnitude * velocity.direction.SubtractVectorAsAngle(direction);
+			Vector2Double velocityOnDirection = velocity.magnitude * velocity.direction.SubtractVectorAsAngle(direction);
 			
 			double acceleration1 = (accelerationBeforeReset.magnitude * accelerationBeforeReset.direction.SubtractVectorAsAngle(direction)).x;
 			double acceleration2 = (body.accelerationBeforeReset.magnitude * body.accelerationBeforeReset.direction.SubtractVectorAsAngle(direction)).x;
 			double relativeAcceleration = Math.Abs(-acceleration1 + acceleration2);
 
-			double accelerationTemp1 = -relativeAcceleration * settings.frictionCoefficient * Math.Sign(velocity1.y);
-			acceleration += accelerationTemp1 * direction.SumVectorAsAngle(Vector2Double.up);
-
-			// calculate him and do body.collidedBodies.Remove(this);
+			double finalAcceleration = -relativeAcceleration * settings.frictionCoefficient * Math.Sign(velocityOnDirection.y);
+			acceleration += finalAcceleration * direction.SumVectorAsAngle(Vector2Double.up);
 		}
 
 		collidedBodies.Clear();
 	}
 
 	public void CheckRectangleCollision(){
+
+		// add impulse force in normal force -> Math.Abs(accelerationBeforeReset.y) + Math.Abs(velocity.x - oldVelocity)
 
 		double limitDown = -settings.border.y + radius;
 		double limitUp = settings.border.y - radius;
@@ -233,32 +233,40 @@ public class Body : MonoBehaviour{
 
 			position.y = limitDown;
 			velocity.y *= -settings.borderCoefOfRestitution;
-			acceleration.x = Math.Abs(accelerationBeforeReset.y) * -Math.Sign(velocity.x) * settings.frictionCoefficient;
 			nCollisions ++;
+
+			if (settings.frictionCoefficient != 0)
+				acceleration.x = Math.Abs(accelerationBeforeReset.y) * -Math.Sign(velocity.x) * settings.frictionCoefficient;
 		}
 
 		else if (position.y > limitUp){
 
 			position.y = limitUp;
 			velocity.y *= -settings.borderCoefOfRestitution;
-			acceleration.x = Math.Abs(accelerationBeforeReset.y) * -Math.Sign(velocity.x) * settings.frictionCoefficient;
 			nCollisions ++;
+
+			if (settings.frictionCoefficient != 0)
+				acceleration.x = Math.Abs(accelerationBeforeReset.y) * -Math.Sign(velocity.x) * settings.frictionCoefficient;
 		}
 
 		if (position.x < limitLeft){
 
 			position.x = limitLeft;
 			velocity.x *= -settings.borderCoefOfRestitution;
-			acceleration.y = Math.Abs(accelerationBeforeReset.x) * -Math.Sign(velocity.y) * settings.frictionCoefficient;
 			nCollisions ++;
+
+			if (settings.frictionCoefficient != 0)
+				acceleration.y = Math.Abs(accelerationBeforeReset.x) * -Math.Sign(velocity.y) * settings.frictionCoefficient;
 		}
 
 		else if (position.x > limitRight){
 			
 			position.x = limitRight;
 			velocity.x *= -settings.borderCoefOfRestitution;
-			acceleration.y = Math.Abs(accelerationBeforeReset.x) * -Math.Sign(velocity.y) * settings.frictionCoefficient;
 			nCollisions ++;
+
+			if (settings.frictionCoefficient != 0)
+				acceleration.y = Math.Abs(accelerationBeforeReset.x) * -Math.Sign(velocity.y) * settings.frictionCoefficient;
 		}
 	}
 
@@ -268,24 +276,23 @@ public class Body : MonoBehaviour{
 			return;
 		
 		Vector2Double direction = -1 * position.direction;
-		Vector2Double velocity1 = velocity.magnitude * velocity.direction.SubtractVectorAsAngle(direction);
-		Vector2Double velocityTemp1;
+		Vector2Double velocityOnDirection = velocity.magnitude * velocity.direction.SubtractVectorAsAngle(direction);
+		Vector2Double finalVelocityOnDirection;
 
-		velocityTemp1.x = -1 * velocity1.x * settings.borderCoefOfRestitution;
-		velocityTemp1.y = velocity1.y;
+		finalVelocityOnDirection.x = -1 * velocityOnDirection.x * settings.borderCoefOfRestitution;
+		finalVelocityOnDirection.y = velocityOnDirection.y;
+
+		velocity = finalVelocityOnDirection.magnitude * finalVelocityOnDirection.direction.SumVectorAsAngle(direction);
+		position = position.direction * (settings.border.x - radius);
+		nCollisions ++;
 
 		if (settings.frictionCoefficient != 0){
 			
-			double acceleration1 = (accelerationBeforeReset.magnitude * accelerationBeforeReset.direction.SubtractVectorAsAngle(direction)).x;
-			double accelerationTemp1 = -Math.Abs(acceleration1) * settings.frictionCoefficient * Math.Sign(velocity1.y);
+			double accelerationOnDirection = (accelerationBeforeReset.magnitude * accelerationBeforeReset.direction.SubtractVectorAsAngle(direction)).x;
+			double finalAcceleration = -Math.Abs(accelerationOnDirection) * settings.frictionCoefficient * Math.Sign(velocityOnDirection.y);
 
-			acceleration = accelerationTemp1 * direction.SumVectorAsAngle(Vector2Double.up);
+			acceleration = finalAcceleration * direction.SumVectorAsAngle(Vector2Double.up);
 		}
-
-		velocity = velocityTemp1.magnitude * velocityTemp1.direction.SumVectorAsAngle(direction);
-		position = position.direction * (settings.border.x - radius);
-
-		nCollisions ++;
 	}
 	
 	// Other Stuff

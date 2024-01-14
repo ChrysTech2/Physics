@@ -40,8 +40,8 @@ controller_scale : 1,645069 #
 controller_time : 3138,24768474926 #
 camera_focus_mode : 0 #
 camera_index : 0 #
-camera_offset_x : -18,0493822756455 #
-camera_offset_y : -0,00499208176770315 #
+camera_offset_x : -18 #
+camera_offset_y : -0 #
 camera_body_x : 0 #
 camera_body_y : 0 #
 editor_show_color : True #

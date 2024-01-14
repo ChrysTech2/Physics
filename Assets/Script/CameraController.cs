@@ -196,10 +196,23 @@ public class CameraController : MonoBehaviour{
 			Vector2Double mousePosition = touchControl.mouseWorldPosition;
 
 			if (Vector2Double.Distance(mousePosition, body.position) - body.radius < 0){
-				//Index = body.Index();
+
+				ChangeIndexWithFixedOffset(body.Index());
+				
 				mouseOnBody.SetText($"Body : {body.name}");
 				return;
 			}
 		}
 	}	
+
+	public void ChangeIndexWithFixedOffset(int newIndex){
+
+		Vector2Double oldOffset = offset;
+		int oldIndex = index;
+		index = newIndex;
+
+		if (Focus != FocusMode.Disabled)
+			offset = oldOffset + ( bodyController.bodies[oldIndex].position - bodyController.bodies[index].position);
+
+	}
 }

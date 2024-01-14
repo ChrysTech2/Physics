@@ -8,6 +8,7 @@ public static class GravityMode{
 	public const int Directional = 1;
 	public const int Centered = 2;
 	public const int Velocity = 3;
+	public const int Camera = 4;
 }
 
 public static class FocusMode{

@@ -229,6 +229,11 @@ public class CameraController : MonoBehaviour{
 				offset = oldOffset + Vector2Double.up * (bodyController.bodies[oldIndex].position.y - bodyController.bodies[index].position.y); 
 				break;
 		}
+	}
 
+	public Vector2Double rotationDirection{
+		get{
+			return Vector2Double.ToVector2Double(transform.eulerAngles.z * Math.PI / 180);
+		}
 	}
 }

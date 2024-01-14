@@ -86,6 +86,10 @@ public struct Vector2Double{
 		return new Vector2Double(Math.Cos(angle), Math.Sin(angle));
 	}
 
+	public static Vector2Double ToVector2Double(Vector2 vector){
+		return new Vector2Double(vector.x, vector.y);
+	}
+
 	public static Vector2Double zero{
 		get{return new Vector2Double(0, 0);}
 	}

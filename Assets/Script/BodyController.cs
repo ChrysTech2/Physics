@@ -288,6 +288,15 @@ public class BodyController : MonoBehaviour{
 						body.ForceOnce += body.VelocityGravityBuoyancy;
 
 					break;
+
+				case GravityMode.Camera:
+
+					if (settings.fluidDensity == 0 || !settings.calculateBuoyancy)
+						body.ForceOnce += body.CameraGravity;
+					else
+						body.ForceOnce += body.CameraGravityBuoyancy;
+
+					break;
 			}	
 		}
 

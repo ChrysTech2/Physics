@@ -112,6 +112,14 @@ public class Body : MonoBehaviour{
 		acceleration += velocity.direction.SumVectorAsAngle(settings.gravityDirection) * settings.gravityAcceleration * (1 - settings.fluidDensity/density);
 	}
 
+	// Camera
+	public void CameraGravity(){
+		acceleration += bodyController.cameraController.rotationDirection.SubtractVectorAsAngle(Vector2Double.up) * settings.gravityAcceleration;
+	}
+	public void CameraGravityBuoyancy(){
+		acceleration += bodyController.cameraController.rotationDirection.SubtractVectorAsAngle(Vector2Double.up) * settings.gravityAcceleration * (1 - settings.fluidDensity/density);
+	}
+
 	// Attraction
 	public void AttractionGravity(Body body){
 

@@ -81,7 +81,8 @@ public class CameraController : MonoBehaviour{
 			mouseY = 0;
 		}
 
-		CheckBodiesAtMousePosition();
+		if (Input.GetKeyDown(KeyCode.Mouse0) && mouseX == 0 && mouseY == 0)
+			CheckBodiesAtMousePosition();
 		
 		offset += new Vector2Double(mouseX, mouseY) / (sensibiliy * bodyController.scale);
 	}

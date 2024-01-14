@@ -113,15 +113,18 @@ public class DataLoader : MonoBehaviour{
 		// BodyController
 		ExpressionEvaluator.Evaluate(settingsList[settingsListIndex], out float scale); 
 		data.bodyController.scale = scale;
-		settingsListIndex++;
+		settingsListIndex ++;
 
 		SetValue(ref data.bodyController.t);
 
 		// CameraController
 		SetValue(ref data.cameraController.focus);
 		SetValue(ref data.cameraController.index);
-
 		data.cameraController.SetFocusModeText();
+
+		ExpressionEvaluator.Evaluate(settingsList[settingsListIndex], out float rotation); 
+		data.cameraController.transform.eulerAngles = Vector3.forward * rotation;
+		settingsListIndex ++;
 
 		SetValue(ref data.cameraController.offset.x);
 		SetValue(ref data.cameraController.offset.y);

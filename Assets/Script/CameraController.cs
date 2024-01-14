@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 public class CameraController : MonoBehaviour{
@@ -5,7 +6,7 @@ public class CameraController : MonoBehaviour{
 	[SerializeField] private BodyController bodyController;
 	[SerializeField] private TouchControl touchControl;
 	[SerializeField] private TMP_Text mouseOnBody;
-	[SerializeField] private double sensibiliy = 6;
+	[SerializeField] private double sensibiliy = 6, rotationSensibiliy = 6;
 	[SerializeField] private TMP_Text focusModeText;
 
 	private SettingsController settingsController;
@@ -45,6 +46,12 @@ public class CameraController : MonoBehaviour{
 		}
 
 		position = bodyPosition + offset;
+
+		if (Input.GetKey(KeyCode.R))
+			transform.eulerAngles = Vector3.forward * (transform.eulerAngles.z + (float)rotationSensibiliy);
+
+		if (Input.GetKey(KeyCode.F))
+			transform.eulerAngles = Vector3.forward * (transform.eulerAngles.z - (float)rotationSensibiliy);
 	}
 
 	public bool canCalculateOffsetAtTheMoment = false;
@@ -81,10 +88,12 @@ public class CameraController : MonoBehaviour{
 			mouseY = 0;
 		}
 
-		if (Input.GetKeyDown(KeyCode.Mouse0) && mouseX == 0 && mouseY == 0)
+		if (Input.GetKeyDown(KeyCode.Mouse0) && Math.Abs(mouseX) < 0.05 && Math.Abs(mouseY) < 0.05)
 			CheckBodiesAtMousePosition();
 		
-		offset += new Vector2Double(mouseX, mouseY) / (sensibiliy * bodyController.scale);
+		Vector2Double offsetVector = new Vector2Double(mouseX, mouseY);
+		Vector2Double direction = Vector2Double.ToVector2Double(transform.eulerAngles.z * Math.PI / 180);
+		offset += offsetVector.magnitude * offsetVector.direction.SumVectorAsAngle(direction) / (sensibiliy * bodyController.scale);
 	}
 
 	private void Center(){
@@ -126,11 +135,6 @@ public class CameraController : MonoBehaviour{
 			Focus = FocusMode.Disabled;
 		else
 			Focus ++;
-
-		/*if (Focus == FocusMode.Enabled)
-			Focus = FocusMode.Disabled;
-		else	
-			Focus = FocusMode.Enabled;*/
 	}
 
 	public string FocusModeToString(){
@@ -161,6 +165,7 @@ public class CameraController : MonoBehaviour{
 				offset = Vector2Double.zero;
 				bodyPosition = Vector2Double.zero;
 				position = Vector2Double.zero;
+				transform.eulerAngles = Vector3.zero;
 			}
 		}
 	}
@@ -212,8 +217,18 @@ public class CameraController : MonoBehaviour{
 		int oldIndex = index;
 		index = newIndex;
 
-		if (Focus != FocusMode.Disabled)
-			offset = oldOffset + ( bodyController.bodies[oldIndex].position - bodyController.bodies[index].position);
+		switch(focus){
+
+			case FocusMode.Enabled:
+				offset = oldOffset + (bodyController.bodies[oldIndex].position - bodyController.bodies[index].position); 
+				break;
+			case FocusMode.XAxis:
+				offset = oldOffset + Vector2Double.right * (bodyController.bodies[oldIndex].position.x - bodyController.bodies[index].position.x); 
+				break;
+			case FocusMode.YAxis:
+				offset = oldOffset + Vector2Double.up * (bodyController.bodies[oldIndex].position.y - bodyController.bodies[index].position.y); 
+				break;
+		}
 
 	}
 }

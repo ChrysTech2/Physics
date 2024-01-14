@@ -135,7 +135,7 @@ public class BodyEditor : MonoBehaviour{
 		bodyController.cameraController.Focus = FocusMode.Enabled;
 		bodyController.cameraController.Index = bodiesDropdown.value;
 		
-		bodyController.scale = (float)(1/bodyController.bodies[bodiesDropdown.value].radius);
+		bodyController.scale = (float)(1/(bodyController.bodies[bodiesDropdown.value].radius * 2));
 	}
 
 	public void DeleteBody(){

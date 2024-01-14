@@ -86,6 +86,7 @@ public class DataSaver : MonoBehaviour{
 			// CameraController
 			$"camera_focus_mode : {data.cameraController.focus}",
 			$"camera_index : {data.cameraController.index}",
+			$"camera_rotation : {data.cameraController.transform.eulerAngles.z}",
 
 			$"camera_offset_x : {data.cameraController.offset.x}",
 			$"camera_offset_y : {data.cameraController.offset.y}",

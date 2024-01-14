@@ -40,6 +40,7 @@ controller_scale : 2,074915E-09 #
 controller_time : 30664,86 #
 camera_focus_mode : 0 #
 camera_index : 0 #
+camera_rotation : 0 #
 camera_offset_x : 0 #
 camera_offset_y : 0 #
 camera_body_x : 0 #

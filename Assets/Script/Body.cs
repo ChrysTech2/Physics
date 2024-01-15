@@ -156,13 +156,7 @@ public class Body : MonoBehaviour{
 	}
 
 	public void Lift(){
-		
-		Vector2Double direction = velocity.direction;
-
-		if (Math.Abs(direction.ToDegrees()) <= 90)
-			acceleration += velocity.direction.SumVectorAsAngle(Vector2Double.up) * settings.Lift(this);
-		else
-			acceleration += velocity.direction.SubtractVectorAsAngle(Vector2Double.up) * settings.Lift(this);
+		acceleration += velocity.direction.SumVectorAsAngle(Vector2Double.up) * settings.Lift(this);
 	}
 
 	public void Thrust(){

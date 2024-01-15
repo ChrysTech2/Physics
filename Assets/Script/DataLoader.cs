@@ -107,6 +107,8 @@ public class DataLoader : MonoBehaviour{
 		// Settings -> Forces
 		SetValue(data.settings.fluidDensity);
 		SetValue(data.settings.dragCoefficient);
+		SetValue(data.settings.liftCoefficient);
+		SetValue(data.settings.staticFrictionCoefficient);
 		SetValue(data.settings.frictionCoefficient);
 		SetValue(data.settings.calculateBuoyancy);
 

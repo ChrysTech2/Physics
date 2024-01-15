@@ -34,6 +34,8 @@ global_gravity_acceleration : 9.8 #
 global_gravity_angle : -90 #
 fluid_density : 0 #
 drag_coefficient : 0.47 #
+lift_coefficient : 0 #
+static_friction_coefficient : 0 #
 friction_coefficient : 0 #
 calculate_buoyancy : True #
 controller_scale : 0,2542554 #

@@ -23,7 +23,6 @@ public class BodyController : MonoBehaviour{
 	public float fps = 60;
 
 	private int numberOfControllableBodies = 0;
-
 	private int NumberOfControllableBodies{
 		get{
 			return numberOfControllableBodies;
@@ -69,6 +68,9 @@ public class BodyController : MonoBehaviour{
 	}
 
 	private void Update(){
+
+		if (startupMenu.activeSelf)
+			return;
 
 		CheckThrustControls();
 
@@ -257,6 +259,9 @@ public class BodyController : MonoBehaviour{
 		
 		if (settings.fluidDensity != 0 && settings.dragCoefficient != 0)
 			body.ForceOnce += body.Drag;
+
+		if (settings.fluidDensity != 0 && settings.liftCoefficient != 0)
+			body.ForceOnce += body.Lift;
 		
 		if (settings.gravityAcceleration != 0){
 

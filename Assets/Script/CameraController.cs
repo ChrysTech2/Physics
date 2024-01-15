@@ -76,7 +76,7 @@ public class CameraController : MonoBehaviour{
 		transform.eulerAngles = Vector3.forward * (transform.eulerAngles.z + (float)rotationSensibiliy * Time.deltaTime);
 	}
 
-	public bool canCalculateOffsetAtTheMoment = false;
+	public bool canCalculateOffset = false;
 	public void CalculateOffset(){
 
 		if (Input.GetKeyDown(KeyCode.Mouse0)){
@@ -87,15 +87,15 @@ public class CameraController : MonoBehaviour{
 			bool condition4 = UIHitboxController.MouseOverControls || UIHitboxController.MouseOverAddOnTouchButton;
 			bool condition5 = !UIHitboxController.MouseOverThrustControls;
 
-			canCalculateOffsetAtTheMoment = Index != -1 && condition5 && ((condition1 && (condition2 || condition3)) || condition4);
+			canCalculateOffset = Index != -1 && condition5 && ((condition1 && (condition2 || condition3)) || condition4);
 		}
 
 		if (Input.GetKeyUp(KeyCode.Mouse0)){
-			canCalculateOffsetAtTheMoment = false;
+			canCalculateOffset = false;
 			mouseOnBody.SetText("");
 		}
 
-		if (!canCalculateOffsetAtTheMoment)
+		if (!canCalculateOffset)
 			return;
 
 		if (touchControl.twoFingers)
@@ -109,7 +109,7 @@ public class CameraController : MonoBehaviour{
 			mouseY = 0;
 		}
 
-		if (Input.GetKeyDown(KeyCode.Mouse0) && Math.Abs(mouseX) < 0.05 && Math.Abs(mouseY) < 0.05)
+		if (Math.Abs(mouseX) < 0.05 && Math.Abs(mouseY) < 0.05)
 			CheckBodiesAtMousePosition();
 		
 		Vector2Double offsetVector = new Vector2Double(mouseX, mouseY);

@@ -7,8 +7,8 @@ public class Settings : MonoBehaviour{
 	public double secondsPerFrame, lineDuration, lineThickness;
 	public int gravityMode, borderMode;
 	public double gravityAcceleration, gravityAngle;
-	public double attractionGravityConstant;
-	public double fluidDensity, dragCoefficient;
+	public double attractionGravityConstant, staticFrictionCoefficient;
+	public double fluidDensity, dragCoefficient, liftCoefficient;
 	public double coefOfRestitution, borderCoefOfRestitution, frictionCoefficient;
 	public bool calculateCollisions, mergeBodiesInCollisions;
 	public Vector2Double border;
@@ -23,8 +23,12 @@ public class Settings : MonoBehaviour{
 		return attractionGravityConstant * body1.mass *body2.mass / Math.Pow(body1.Distance(body2), 2);
 	}
 
-	public double AirDrag(Body body){
+	public double Drag(Body body){
 		return Math.Pow(body.velocity.magnitude, 2) * dragCoefficient * fluidDensity * body.area / (2 * body.mass);
+	}
+
+	public double Lift(Body body){
+		return Math.Pow(body.velocity.magnitude, 2) * liftCoefficient * fluidDensity * body.area / (2 * body.mass);
 	}
  
 	public bool isApplyingThrustForward = false;

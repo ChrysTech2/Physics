@@ -152,7 +152,17 @@ public class Body : MonoBehaviour{
 
 	// Other Forces
 	public void Drag(){
-		acceleration += velocity.direction.opposite * settings.AirDrag(this);
+		acceleration += velocity.direction.opposite * settings.Drag(this);
+	}
+
+	public void Lift(){
+		
+		Vector2Double direction = velocity.direction;
+
+		if (Math.Abs(direction.ToDegrees()) <= 90)
+			acceleration += velocity.direction.SumVectorAsAngle(Vector2Double.up) * settings.Lift(this);
+		else
+			acceleration += velocity.direction.SubtractVectorAsAngle(Vector2Double.up) * settings.Lift(this);
 	}
 
 	public void Thrust(){

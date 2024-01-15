@@ -76,7 +76,11 @@ public class DataSaver : MonoBehaviour{
 			// Settings -> Forces
 			$"fluid_density : {data.settings.fluidDensity.text}",
 			$"drag_coefficient : {data.settings.dragCoefficient.text}",
+			$"lift_coefficient : {data.settings.liftCoefficient.text}",
+
+			$"static_friction_coefficient : {data.settings.staticFrictionCoefficient.text}",
 			$"friction_coefficient : {data.settings.frictionCoefficient.text}",
+			
 			$"calculate_buoyancy : {data.settings.calculateBuoyancy.isOn}",
 			
 			// BodyController

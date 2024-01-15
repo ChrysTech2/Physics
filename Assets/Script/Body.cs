@@ -120,6 +120,15 @@ public class Body : MonoBehaviour{
 		acceleration += bodyController.cameraController.rotationDirection.SubtractVectorAsAngle(Vector2Double.up) * settings.gravityAcceleration * (1 - settings.fluidDensity/density);
 	}
 
+	// Follow
+	public void FollowGravity(){
+		acceleration += (bodyController.touchControl.mouseWorldPosition - position).direction * settings.gravityAcceleration;
+	}
+	public void FollowGravityBuoyancy(){
+		Debug.Log(bodyController.touchControl.mouseWorldPosition);
+		acceleration += (bodyController.touchControl.mouseWorldPosition - position).direction * settings.gravityAcceleration * (1 - settings.fluidDensity/density);
+	}
+
 	// Attraction
 	public void AttractionGravity(Body body){
 

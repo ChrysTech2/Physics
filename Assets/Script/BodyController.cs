@@ -268,7 +268,6 @@ public class BodyController : MonoBehaviour{
 						body.ForceOnce += body.DirectionalGravity;
 					else
 						body.ForceOnce += body.DirectionalGravityBuoyancy;
-
 					break;
 
 				case GravityMode.Centered:
@@ -277,7 +276,6 @@ public class BodyController : MonoBehaviour{
 						body.ForceOnce += body.CenteredGravity;
 					else
 						body.ForceOnce += body.CenteredGravityBuoyancy;
-
 					break;
 
 				case GravityMode.Velocity:
@@ -286,7 +284,6 @@ public class BodyController : MonoBehaviour{
 						body.ForceOnce += body.VelocityGravity;
 					else
 						body.ForceOnce += body.VelocityGravityBuoyancy;
-
 					break;
 
 				case GravityMode.Camera:
@@ -295,6 +292,14 @@ public class BodyController : MonoBehaviour{
 						body.ForceOnce += body.CameraGravity;
 					else
 						body.ForceOnce += body.CameraGravityBuoyancy;
+					break;
+
+				case GravityMode.Follow:
+
+					if (settings.fluidDensity == 0 || !settings.calculateBuoyancy)
+						body.ForceOnce += body.FollowGravity;
+					else
+						body.ForceOnce += body.FollowGravityBuoyancy;
 
 					break;
 			}	

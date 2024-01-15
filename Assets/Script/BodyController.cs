@@ -294,12 +294,21 @@ public class BodyController : MonoBehaviour{
 						body.ForceOnce += body.CameraGravityBuoyancy;
 					break;
 
-				case GravityMode.Follow:
+				case GravityMode.LastClickPosition:
 
 					if (settings.fluidDensity == 0 || !settings.calculateBuoyancy)
-						body.ForceOnce += body.FollowGravity;
+						body.ForceOnce += body.LastClickGravity;
 					else
-						body.ForceOnce += body.FollowGravityBuoyancy;
+						body.ForceOnce += body.LastClickGravityBuoyancy;
+
+					break;
+				
+				case GravityMode.LastClickDirection:
+
+					if (settings.fluidDensity == 0 || !settings.calculateBuoyancy)
+						body.ForceOnce += body.LastClickDirectionGravity;
+					else
+						body.ForceOnce += body.LastClickDirectionGravityBuoyancy;
 
 					break;
 			}	

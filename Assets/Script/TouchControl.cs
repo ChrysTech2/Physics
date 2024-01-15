@@ -52,6 +52,8 @@ public class TouchControl : MonoBehaviour{
 			canAddBody = condition1 && condition2 && condition3 && condition4;
 
 			worldPosition1 = mouseWorldPosition;
+			
+			bodyController.settings.lastMousePosition = worldPosition1;
 
 			if (canAddBody)
 				InstantiateBody();

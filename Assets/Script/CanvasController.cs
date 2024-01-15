@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class CanvasScalerController : MonoBehaviour{
 	
 	[SerializeField] private CanvasScaler canvasScaler;
-	[SerializeField] private GameObject startup, ui, info;
+	[SerializeField] private GameObject startup, ui, cameraLeft, cameraRight;
 	[SerializeField] private float ratio;
 	private float lastWidth, lastHeight;
 	
@@ -30,19 +30,25 @@ public class CanvasScalerController : MonoBehaviour{
 		if (Input.GetKeyDown(KeyCode.F11))
 			Screen.SetResolution(Screen.currentResolution.width, Screen.currentResolution.height, !Screen.fullScreen);
 		
-		if (Input.GetKeyDown(KeyCode.F2)){
-
-			if (startup.activeSelf)
-				return;
-
-			ui.SetActive(!ui.activeSelf);
-			info.SetActive(!info.activeSelf);
-		}
-
+		if (Input.GetKeyDown(KeyCode.F2))
+			ToggleUI();
+		
 		if (Input.GetKeyDown(KeyCode.Escape)){
 			ui.SetActive(true);
-			info.SetActive(false);
+			cameraLeft.SetActive(true);
+			cameraRight.SetActive(true);
 		}
+		
+	}
+
+	public void ToggleUI(){
+
+		if (startup.activeSelf)
+			return;	
+
+		ui.SetActive(!ui.activeSelf);
+		cameraLeft.SetActive(!cameraLeft.activeSelf);
+		cameraRight.SetActive(!cameraRight.activeSelf);
 	}
 
 	private void AdjustScaler(){

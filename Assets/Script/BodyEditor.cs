@@ -29,6 +29,7 @@ public class BodyEditor : MonoBehaviour{
 		bodyController.touchControl.addOnTouch.gameObject.SetActive(false);
 		bodyController.thrustControls.transform.GetChild(0).gameObject.SetActive(false);
 		bodyController.settingsController.ResetErrors();
+		bodyController.settingsController.cameraControls.SetActive(false);
 	}
 
 	private void OnDisable(){
@@ -37,6 +38,7 @@ public class BodyEditor : MonoBehaviour{
 		if (!bodyController.settingsController.gameObject.activeSelf){
 			bodyController.touchControl.addOnTouch.gameObject.SetActive(true);
 			bodyController.thrustControls.transform.GetChild(0).gameObject.SetActive(true);
+			bodyController.settingsController.cameraControls.SetActive(true);
 		}
 	}
 

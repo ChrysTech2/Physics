@@ -120,13 +120,20 @@ public class Body : MonoBehaviour{
 		acceleration += bodyController.cameraController.rotationDirection.SubtractVectorAsAngle(Vector2Double.up) * settings.gravityAcceleration * (1 - settings.fluidDensity/density);
 	}
 
-	// Follow
-	public void FollowGravity(){
-		acceleration += (bodyController.touchControl.mouseWorldPosition - position).direction * settings.gravityAcceleration;
+	// Last Click
+	public void LastClickGravity(){
+		acceleration += (settings.lastMousePosition - position).direction * settings.gravityAcceleration;
 	}
-	public void FollowGravityBuoyancy(){
-		Debug.Log(bodyController.touchControl.mouseWorldPosition);
-		acceleration += (bodyController.touchControl.mouseWorldPosition - position).direction * settings.gravityAcceleration * (1 - settings.fluidDensity/density);
+	public void LastClickGravityBuoyancy(){
+		acceleration += (settings.lastMousePosition - position).direction * settings.gravityAcceleration * (1 - settings.fluidDensity/density);
+	}
+
+	// Last Click Direction
+	public void LastClickDirectionGravity(){
+		acceleration += settings.lastMousePosition.direction * settings.gravityAcceleration;
+	}
+	public void LastClickDirectionGravityBuoyancy(){
+		acceleration += settings.lastMousePosition.direction * settings.gravityAcceleration * (1 - settings.fluidDensity/density);
 	}
 
 	// Attraction
@@ -154,7 +161,7 @@ public class Body : MonoBehaviour{
 
 	// Collisions
 
-	private List<Body> collidedBodies = new List<Body>();
+	public List<Body> collidedBodies = new List<Body>();
 	public void Collision(Body body){
 
 		double distance = DistanceFromSurface(body);
@@ -313,7 +320,6 @@ public class Body : MonoBehaviour{
 	}
 	
 	// Other Stuff
- 
 	public double Radius{
 		set{
 			radius = value;

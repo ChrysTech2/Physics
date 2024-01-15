@@ -34,7 +34,7 @@ public class OnChangeEvent : MonoBehaviour{
 	public void OnGravitySettingsChange(){
 
 		Utils.SetActiveIf(settings.gravityAcceleration, settings.gravityMode.value != GravityMode.Disabled);
-		Utils.SetActiveIf(settings.gravityAngle, settings.gravityMode.value != GravityMode.Disabled && settings.gravityMode.value != GravityMode.Centered && settings.gravityMode.value != GravityMode.Camera);
+		Utils.SetActiveIf(settings.gravityAngle, settings.gravityMode.value == GravityMode.Velocity || settings.gravityMode.value == GravityMode.Directional);
 	}
 
 	public void OnParentSettingsChange(){

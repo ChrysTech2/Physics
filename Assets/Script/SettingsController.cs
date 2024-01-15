@@ -30,11 +30,10 @@ public class SettingsController : MonoBehaviour{
 
 	public Settings settings;
 	public BodyController bodyController;
+	public GameObject cameraControls;
 	
 	public Body bodyToCreate;
 	public int n = 1;
-
-	[SerializeField] private Canvas canvas;
 	
 	private void Start(){
 		errorMessage.SetText("");
@@ -45,6 +44,7 @@ public class SettingsController : MonoBehaviour{
 		bodyController.informations.gameObject.SetActive(false);
 		bodyController.touchControl.addOnTouch.gameObject.SetActive(false);
 		bodyController.thrustControls.transform.GetChild(0).gameObject.SetActive(false);
+		cameraControls.SetActive(false);
 	}
 
 	private void OnDisable(){
@@ -53,6 +53,7 @@ public class SettingsController : MonoBehaviour{
 		if (!bodyController.bodyEditor.gameObject.activeSelf){
 			bodyController.touchControl.addOnTouch.gameObject.SetActive(true);
 			bodyController.thrustControls.transform.GetChild(0).gameObject.SetActive(true);
+			cameraControls.SetActive(true);
 		}
 	}
 
@@ -162,8 +163,10 @@ public class SettingsController : MonoBehaviour{
 
 		DrawBorder();
 
-		foreach (Body body in bodyController.bodies)
+		foreach (Body body in bodyController.bodies){
 			bodyController.CompileFunctions(body);
+			body.collidedBodies.Clear();
+		}
 	}
 
 	private void DrawBorder(){

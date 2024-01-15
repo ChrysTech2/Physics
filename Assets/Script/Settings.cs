@@ -35,6 +35,8 @@ public class Settings : MonoBehaviour{
 	public bool isRotatingForward = false;
 	public bool isRotatingBackward = false;
 
+	public bool isCameraRotatingLeft = false, isCameraRotatingRigtht = false;
+
 	public bool isZoomingIn = false, isZoomingOut = false;
 
 	public void SetIsApplyingThrustForward(bool value){
@@ -53,22 +55,27 @@ public class Settings : MonoBehaviour{
 	public void SetIsRotatingForward(bool value){
 		isRotatingForward = value;
 	}
-
 	public void SetIsRotatingBackward(bool value){
 		isRotatingBackward = value;
 	}
 
-
 	public void SetIsZoomingIn(bool value){
 		isZoomingIn = value;
 	}
-
 	public void SetIsZoomingOut(bool value){
 		isZoomingOut = value;
+	}
+
+	public void SetIsCameraRotatingRight(bool value){
+		isCameraRotatingRigtht = value;
+	}
+	public void SetIsCameraRotatingLeft(bool value){
+		isCameraRotatingLeft = value;
 	}
 	
 	public Vector2Double thrustDirection = Vector2Double.up;
 	public double thrustAcceleration;
 	public double thrustDirectionSensibiliy;
 	public Vector2Double currentInputAcceleration = Vector2Double.zero;
+	public Vector2Double lastMousePosition = Vector2Double.zero;
 }

@@ -47,15 +47,36 @@ public class CameraController : MonoBehaviour{
 
 		position = bodyPosition + offset;
 
-		if (Input.GetKey(KeyCode.R))
-			transform.eulerAngles = Vector3.forward * (transform.eulerAngles.z + (float)rotationSensibiliy);
+		CheckRotationInput();
+	}
 
-		if (Input.GetKey(KeyCode.F))
-			transform.eulerAngles = Vector3.forward * (transform.eulerAngles.z - (float)rotationSensibiliy);
+	private void CheckRotationInput(){
+
+		if (Input.GetKeyDown(KeyCode.R))
+			bodyController.settings.SetIsCameraRotatingRight(true);
+		if (Input.GetKeyDown(KeyCode.F))
+			bodyController.settings.SetIsCameraRotatingLeft(true);
+
+		if (Input.GetKeyUp(KeyCode.R))
+			bodyController.settings.SetIsCameraRotatingRight(false);
+		if (Input.GetKeyUp(KeyCode.F))
+			bodyController.settings.SetIsCameraRotatingLeft(false);
+
+		if (bodyController.settings.isCameraRotatingLeft)
+			RotateLeft();
+
+		if (bodyController.settings.isCameraRotatingRigtht)
+			RotateRight();
+	}
+
+	private void RotateLeft(){
+		transform.eulerAngles = Vector3.forward * (transform.eulerAngles.z - (float)rotationSensibiliy);
+	}
+	private void RotateRight(){
+		transform.eulerAngles = Vector3.forward * (transform.eulerAngles.z + (float)rotationSensibiliy);
 	}
 
 	public bool canCalculateOffsetAtTheMoment = false;
-
 	public void CalculateOffset(){
 
 		if (Input.GetKeyDown(KeyCode.Mouse0)){
@@ -100,7 +121,6 @@ public class CameraController : MonoBehaviour{
 
 		if (Focus != FocusMode.Disabled)
 			offset = Vector2Double.zero;
-		
 	}
 
 	public void NextBody(){

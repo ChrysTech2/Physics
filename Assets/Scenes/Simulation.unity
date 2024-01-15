@@ -28400,7 +28400,7 @@ MonoBehaviour:
   touchControl: {fileID: 1872983330}
   mouseOnBody: {fileID: 551360503}
   sensibiliy: 6
-  rotationSensibiliy: 1.25
+  rotationSensibiliy: 80
   focusModeText: {fileID: 1920040401}
   focus: 0
   index: -1

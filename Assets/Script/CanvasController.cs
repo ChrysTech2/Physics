@@ -7,6 +7,7 @@ public class CanvasScalerController : MonoBehaviour{
 	[SerializeField] private CanvasScaler canvasScaler;
 	[SerializeField] private GameObject startup, ui, cameraLeft, cameraRight;
 	[SerializeField] private float ratio;
+	[SerializeField] private BodyController bodyController;
 	private float lastWidth, lastHeight;
 	
 	private void Start(){
@@ -34,9 +35,7 @@ public class CanvasScalerController : MonoBehaviour{
 			ToggleUI();
 		
 		if (Input.GetKeyDown(KeyCode.Escape)){
-			ui.SetActive(true);
-			cameraLeft.SetActive(true);
-			cameraRight.SetActive(true);
+			SetUIActive(true);
 		}
 		
 	}
@@ -46,9 +45,18 @@ public class CanvasScalerController : MonoBehaviour{
 		if (startup.activeSelf)
 			return;	
 
-		ui.SetActive(!ui.activeSelf);
-		cameraLeft.SetActive(!cameraLeft.activeSelf);
-		cameraRight.SetActive(!cameraRight.activeSelf);
+		SetUIActive(!ui.activeSelf);
+	}
+
+	private void SetUIActive(bool value){
+
+		ui.SetActive(value);
+		cameraLeft.SetActive(value);
+		cameraRight.SetActive(value);
+
+		bodyController.settingsController.gameObject.SetActive(false);
+		bodyController.bodyEditor.gameObject.SetActive(false);
+		bodyController.touchControl.addOnTouch.isOn = false;
 	}
 
 	private void AdjustScaler(){

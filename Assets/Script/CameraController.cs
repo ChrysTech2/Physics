@@ -70,10 +70,10 @@ public class CameraController : MonoBehaviour{
 	}
 
 	private void RotateLeft(){
-		transform.eulerAngles = Vector3.forward * (transform.eulerAngles.z - (float)rotationSensibiliy);
+		transform.eulerAngles = Vector3.forward * (transform.eulerAngles.z - (float)rotationSensibiliy * Time.deltaTime);
 	}
 	private void RotateRight(){
-		transform.eulerAngles = Vector3.forward * (transform.eulerAngles.z + (float)rotationSensibiliy);
+		transform.eulerAngles = Vector3.forward * (transform.eulerAngles.z + (float)rotationSensibiliy * Time.deltaTime);
 	}
 
 	public bool canCalculateOffsetAtTheMoment = false;

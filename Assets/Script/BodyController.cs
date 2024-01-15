@@ -76,9 +76,9 @@ public class BodyController : MonoBehaviour{
 			body.ApplyPosition();
 
 		if (settings.isZoomingIn)
-			ZoomIn(1.0075f);
+			ZoomIn(1 + Time.deltaTime);
 		else if (settings.isZoomingOut)
-			ZoomOut(1.0075f);
+			ZoomOut(1 + Time.deltaTime);
 
 		if (settingsController.gameObject.activeSelf)
 			return;
@@ -100,10 +100,10 @@ public class BodyController : MonoBehaviour{
 		}
 
 		if (settings.isRotatingForward)
-			settings.thrustDirection = settings.thrustDirection.SumVectorAsAngle(Vector2Double.ToVector2Double(settings.thrustDirectionSensibiliy));
+			settings.thrustDirection = settings.thrustDirection.SumVectorAsAngle(Vector2Double.ToVector2Double(settings.thrustDirectionSensibiliy * Time.deltaTime));
 
 		if (settings.isRotatingBackward)
-			settings.thrustDirection = settings.thrustDirection.SubtractVectorAsAngle(Vector2Double.ToVector2Double(settings.thrustDirectionSensibiliy));
+			settings.thrustDirection = settings.thrustDirection.SubtractVectorAsAngle(Vector2Double.ToVector2Double(settings.thrustDirectionSensibiliy * Time.deltaTime));
 
 		settings.currentInputAcceleration = Vector2Double.zero;
 

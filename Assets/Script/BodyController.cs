@@ -340,7 +340,6 @@ public class BodyController : MonoBehaviour{
 
 		if (settings.borderMode == BorderMode.Rectangle)
 			body.ForceAfterPosition += body.CheckRectangleCollision;
-
 		else if (settings.borderMode == BorderMode.Circle)
 			body.ForceAfterPosition += body.CheckCircleCollision;
 

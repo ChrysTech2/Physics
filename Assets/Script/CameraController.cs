@@ -46,8 +46,6 @@ public class CameraController : MonoBehaviour{
 		}
 
 		position = bodyPosition + offset;
-
-		CheckRotationInput();
 	}
 
 	private void CheckRotationInput(){
@@ -64,7 +62,6 @@ public class CameraController : MonoBehaviour{
 
 		if (bodyController.settings.isCameraRotatingLeft)
 			RotateLeft();
-
 		if (bodyController.settings.isCameraRotatingRigtht)
 			RotateRight();
 	}
@@ -78,6 +75,8 @@ public class CameraController : MonoBehaviour{
 
 	public bool canCalculateOffset = false;
 	public void CalculateOffset(){
+
+		CheckRotationInput();
 
 		if (Input.GetKeyDown(KeyCode.Mouse0)){
 
@@ -185,7 +184,6 @@ public class CameraController : MonoBehaviour{
 				offset = Vector2Double.zero;
 				bodyPosition = Vector2Double.zero;
 				position = Vector2Double.zero;
-				transform.eulerAngles = Vector3.zero;
 			}
 		}
 	}

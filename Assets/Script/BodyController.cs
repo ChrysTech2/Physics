@@ -338,12 +338,12 @@ public class BodyController : MonoBehaviour{
 				body.ForceEachBody += (body2) => body.Collision(body2);
 		}
 
+		if (settings.frictionCoefficient != 0)
+			body.ForceAfterPosition += body.Friction;
+
 		if (settings.borderMode == BorderMode.Rectangle)
 			body.ForceAfterPosition += body.CheckRectangleCollision;
 		else if (settings.borderMode == BorderMode.Circle)
 			body.ForceAfterPosition += body.CheckCircleCollision;
-
-		if (settings.frictionCoefficient != 0)
-			body.ForceAfterPosition += body.Friction;
 	}
 }

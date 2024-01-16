@@ -46847,7 +46847,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Version 0.7.7.1
+  m_text: Version 0.7.7.2
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b0777c19b06960446aeb06085e90db98, type: 2}
   m_sharedMaterial: {fileID: 4328353296713289982, guid: b0777c19b06960446aeb06085e90db98, type: 2}
@@ -50924,6 +50924,30 @@ MonoBehaviour:
       - m_Target: {fileID: 1941686628}
         m_TargetAssemblyTypeName: Settings, Assembly-CSharp
         m_MethodName: SetIsZoomingOut
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1941686628}
+        m_TargetAssemblyTypeName: Settings, Assembly-CSharp
+        m_MethodName: SetIsCameraRotatingLeft
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1941686628}
+        m_TargetAssemblyTypeName: Settings, Assembly-CSharp
+        m_MethodName: SetIsCameraRotatingRight
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -94212,8 +94236,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -450, y: 345.89246}
-  m_SizeDelta: {x: 900, y: 117.1951}
+  m_AnchoredPosition: {x: -369.5, y: 345.8925}
+  m_SizeDelta: {x: 739.0075, y: 117.1951}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1819737251
 MonoBehaviour:

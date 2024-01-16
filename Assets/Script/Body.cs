@@ -242,7 +242,7 @@ public class Body : MonoBehaviour{
 			double relativeAcceleration = Math.Abs(-acceleration1 + acceleration2);
 
 			double finalAcceleration = -relativeAcceleration * settings.frictionCoefficient * Math.Sign(velocityOnDirection.y);
-			acceleration += finalAcceleration * direction.SumVectorAsAngle(Vector2Double.up);
+			acceleration = finalAcceleration * direction.SumVectorAsAngle(Vector2Double.up);
 		}
 
 		collidedBodies.Clear();
@@ -263,7 +263,7 @@ public class Body : MonoBehaviour{
 			nCollisions ++;
 
 			if (settings.frictionCoefficient != 0)
-				acceleration.x = (Math.Abs(accelerationBeforeReset.y) + Math.Abs(velocity.y - oldVelocity)) * -Math.Sign(velocity.x) * settings.frictionCoefficient;
+				acceleration.x += (Math.Abs(accelerationBeforeReset.y) + Math.Abs(velocity.y - oldVelocity)) * -Math.Sign(velocity.x) * settings.frictionCoefficient;
 		}
 
 		else if (position.y > limitUp){
@@ -274,7 +274,7 @@ public class Body : MonoBehaviour{
 			nCollisions ++;
 
 			if (settings.frictionCoefficient != 0)
-				acceleration.x = (Math.Abs(accelerationBeforeReset.y) + Math.Abs(velocity.y - oldVelocity)) * -Math.Sign(velocity.x) * settings.frictionCoefficient;
+				acceleration.x += (Math.Abs(accelerationBeforeReset.y) + Math.Abs(velocity.y - oldVelocity)) * -Math.Sign(velocity.x) * settings.frictionCoefficient;
 		}
 
 		if (position.x < limitLeft){
@@ -285,7 +285,7 @@ public class Body : MonoBehaviour{
 			nCollisions ++;
 
 			if (settings.frictionCoefficient != 0)
-				acceleration.y = (Math.Abs(accelerationBeforeReset.x) + Math.Abs(velocity.x - oldVelocity)) * -Math.Sign(velocity.y) * settings.frictionCoefficient;
+				acceleration.y += (Math.Abs(accelerationBeforeReset.x) + Math.Abs(velocity.x - oldVelocity)) * -Math.Sign(velocity.y) * settings.frictionCoefficient;
 		}
 
 		else if (position.x > limitRight){
@@ -296,7 +296,7 @@ public class Body : MonoBehaviour{
 			nCollisions ++;
 
 			if (settings.frictionCoefficient != 0)
-				acceleration.y = (Math.Abs(accelerationBeforeReset.x) + Math.Abs(velocity.x - oldVelocity)) * -Math.Sign(velocity.y) * settings.frictionCoefficient;
+				acceleration.y += (Math.Abs(accelerationBeforeReset.x) + Math.Abs(velocity.x - oldVelocity)) * -Math.Sign(velocity.y) * settings.frictionCoefficient;
 		}
 	}
 
@@ -322,7 +322,7 @@ public class Body : MonoBehaviour{
 			double accelerationOnDirection = (accelerationBeforeReset.magnitude * accelerationBeforeReset.direction.SubtractVectorAsAngle(direction)).x;
 			double finalAcceleration = -(Math.Abs(accelerationOnDirection) + Math.Abs(finalVelocityOnDirection.x - oldVelocity)) * settings.frictionCoefficient * Math.Sign(velocityOnDirection.y);
 
-			acceleration = finalAcceleration * direction.SumVectorAsAngle(Vector2Double.up);
+			acceleration += finalAcceleration * direction.SumVectorAsAngle(Vector2Double.up);
 		}
 	}
 	

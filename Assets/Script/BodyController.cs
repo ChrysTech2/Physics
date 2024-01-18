@@ -251,6 +251,27 @@ public class BodyController : MonoBehaviour{
 			DeleteBody(bodies[0]);
 	}
 
+	public void SetDistanceFunction(){
+
+		switch(settingsController.distanceFunction.value){
+			case DistanceFunction.Pow:
+				settings.distanceFunction = (r) => {return Math.Pow(r, settings.aValue);};
+				break;
+			case DistanceFunction.Log:
+				settings.distanceFunction = (r) => {return Math.Log(r, settings.aValue);};
+				break;
+			case DistanceFunction.Exp:
+				settings.distanceFunction = (r) => {return Math.Pow(settings.aValue, r);};
+				break;
+			case DistanceFunction.Sin:
+				settings.distanceFunction = (r) => {return Math.Sin(r) * Math.Pow(r, settings.aValue);};
+				break;
+			case DistanceFunction.Arctan:
+				settings.distanceFunction = (r) => {return Math.Atan(r) * Math.Pow(r, settings.aValue);};
+				break;
+		}
+	}
+
 	public void CompileFunctions(Body body){
 
 		body.ForceOnce = new Action(() => {});

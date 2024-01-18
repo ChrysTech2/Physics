@@ -35,6 +35,24 @@ public class OnChangeEvent : MonoBehaviour{
 
 		Utils.SetActiveIf(settings.gravityAcceleration, settings.gravityMode.value != GravityMode.Disabled);
 		Utils.SetActiveIf(settings.gravityAngle, settings.gravityMode.value == GravityMode.Velocity || settings.gravityMode.value == GravityMode.Directional);
+		
+		switch(settings.distanceFunction.value){
+			case DistanceFunction.Pow:
+				settings.aValue.text = "-2";
+				break;
+			case DistanceFunction.Log:
+				settings.aValue.text = "0.5";
+				break;
+			case DistanceFunction.Exp:
+				settings.aValue.text = "0.5";
+				break;
+			case DistanceFunction.Sin:
+				settings.aValue.text = "-2";
+				break;
+			case DistanceFunction.Arctan:
+				settings.aValue.text = "-2";
+				break;
+		}
 	}
 
 	public void OnParentSettingsChange(){

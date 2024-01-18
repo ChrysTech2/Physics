@@ -11,6 +11,7 @@ color_green_value : 0 #
 color_blue_value : 0 #
 color_opacity_value : 1 #
 random_mode : False #
+body_is_controllable : False #
 seconds_per_frame : 1000 #
 touch_multiplier : 1 #
 line_duration : 10 #
@@ -35,8 +36,8 @@ global_gravity_angle : -90 #
 fluid_density : 0 #
 drag_coefficient : 0.47 #
 lift_coefficient : 0 #
-static_friction_coefficient : 0 #
 friction_coefficient : 0 #
+explosion_force : 0 #
 calculate_buoyancy : True #
 controller_scale : 2,074915E-09 #
 controller_time : 30664,86 #
@@ -66,8 +67,9 @@ graph_total_momentum_x : False #
 graph_total_momentum_y : False #
 graph_number_of_collisions : False #
 graph_total_kinetic_energy : False #
-body_is_controllable : True #
-thrust_force : 100 #
+thrust_acceleration : 100 #
 thrust_rotation_speed : 0.08 #
-thrust_force_direction_x : 0 #
-thrust_force_direction_y : 1
+thrust_direction_x : 0 #
+thrust_direction_y : 1 #
+distance_function : 0 #
+a_value : -2

@@ -42,6 +42,7 @@ public class DataSaver : MonoBehaviour{
 			$"color_opacity_value : {data.settings.a.value}",
 
 			$"random_mode : {data.settings.randomMode.isOn}",
+			$"body_is_controllable : {data.settings.controllable.isOn}",
 
 			// Settings -> General
 			$"seconds_per_frame : {data.settings.secondsPerFrame.text}",
@@ -127,13 +128,14 @@ public class DataSaver : MonoBehaviour{
 
 			// Thrust
 
-			$"body_is_controllable : {data.settings.controllable.isOn}",
-			$"thrust_force : {data.settings.thrustAcceleration.text}",
+			$"thrust_acceleration : {data.settings.thrustAcceleration.text}",
 			$"thrust_rotation_speed : {data.settings.thrustDirectionSensibiliy.text}",
 
-			$"thrust_force_direction_x : {data.settings.settings.thrustDirection.x}",
-			$"thrust_force_direction_y : {data.settings.settings.thrustDirection.y}",
-			
+			$"thrust_direction_x : {data.settings.settings.thrustDirection.x}",
+			$"thrust_direction_y : {data.settings.settings.thrustDirection.y}",
+
+			$"distance_function : {data.settings.distanceFunction.value}",
+			$"a_value : {data.settings.aValue.text}",
 		};
 
 		DataController.SetTextValueSeparator(settingsToStringList);

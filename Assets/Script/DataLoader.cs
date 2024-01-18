@@ -73,6 +73,7 @@ public class DataLoader : MonoBehaviour{
 		SetValue(data.settings.a);
 
 		SetValue(data.settings.randomMode);
+		SetValue(data.settings.controllable);
 
 		// Settings -> General
 		SetValue(data.settings.secondsPerFrame);
@@ -163,12 +164,14 @@ public class DataLoader : MonoBehaviour{
 		SetValue(data.graphController.numberOfCollisions);
 		SetValue(data.graphController.totalKineticEnergy);
 
-		SetValue(data.settings.controllable);
 		SetValue(data.settings.thrustAcceleration);
 		SetValue(data.settings.thrustDirectionSensibiliy);
 
 		SetValue(ref data.settings.settings.thrustDirection.x);
 		SetValue(ref data.settings.settings.thrustDirection.y);
+
+		SetValue(data.settings.distanceFunction);
+		SetValue(data.settings.aValue);
 	}
 
 	private void LoadBodiesFromString(string settingsToString){

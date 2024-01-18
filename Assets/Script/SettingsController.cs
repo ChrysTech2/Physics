@@ -7,8 +7,8 @@ public class SettingsController : MonoBehaviour{
 
 	// Settings Input
 	public TMP_InputField secondsPerFrame, lineDuration, lineThickness;
-	public TMP_Dropdown gravityMode, parent, borderMode;
-	public TMP_InputField gravityAcceleration, gravityAngle;
+	public TMP_Dropdown gravityMode, parent, borderMode, distanceFunction;
+	public TMP_InputField gravityAcceleration, gravityAngle, aValue;
 	public TMP_InputField attractionGravityConstant, liftCoefficient, impulseForce;
 	public TMP_InputField fluidDensity, dragCoefficient, frictionCoefficient;
 	public Toggle calculateCollisions, mergeBodiesInCollisions, calculateBuoyancy;
@@ -151,6 +151,8 @@ public class SettingsController : MonoBehaviour{
 		ExpressionEvaluator.Evaluate(liftCoefficient.text, out settings.liftCoefficient);
 		ExpressionEvaluator.Evaluate(impulseForce.text, out settings.impulseForce);
 
+		ExpressionEvaluator.Evaluate(aValue.text, out settings.aValue);
+
 		settings.calculateBuoyancy = calculateBuoyancy.isOn;
 
 		settings.calculateCollisions = calculateCollisions.isOn;
@@ -167,9 +169,10 @@ public class SettingsController : MonoBehaviour{
 
 		DrawBorder();
 
+		bodyController.SetDistanceFunction();
 		foreach (Body body in bodyController.bodies){
 			bodyController.CompileFunctions(body);
-			body.collidedBodies.Clear();
+			//body.collidedBodies.Clear();
 		}
 	}
 
@@ -331,6 +334,8 @@ public class SettingsController : MonoBehaviour{
 
 	public void SetGToRealValue(){
 		attractionGravityConstant.text = "6.6743e-11";
+		aValue.text = "-2";
+		distanceFunction.value = 0;
 	}
 
 	public void ResetErrors(){

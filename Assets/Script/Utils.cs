@@ -35,6 +35,14 @@ public static class Times{
 	public const int SecondsPerYear = 31_536_000;
 }
 
+public static class DistanceFunction{
+	public const int Pow = 0;
+	public const int Log = 1;
+	public const int Exp = 2;
+	public const int Sin = 3;
+	public const int Arctan = 4;
+}
+
 public class Utils : MonoBehaviour{
 
 	// Other Stuff

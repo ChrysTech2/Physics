@@ -168,7 +168,7 @@ public class Body : MonoBehaviour{
 	}
 
 	// Collisions
-	public List<Body> collidedBodies = new List<Body>();
+	//public List<Body> collidedBodies = new List<Body>();
 	public void Collision(Body body){
 
 		double distance = DistanceFromSurface(body);
@@ -205,8 +205,8 @@ public class Body : MonoBehaviour{
 		nCollisions ++;
 		body.nCollisions ++;
 
-		collidedBodies.Add(body);
-		body.collidedBodies.Add(this);
+		//collidedBodies.Add(body);
+		//body.collidedBodies.Add(this);
 	}
 
 	public void CollisionMerge(Body body){

@@ -13,6 +13,9 @@ public class Settings : MonoBehaviour{
 	public bool calculateCollisions, mergeBodiesInCollisions;
 	public Vector2Double border;
 
+	public Func<double, double> distanceFunction; // distance -> force
+	public double aValue;
+
 	public double touchMultiplier;
 	public bool showCenterOfGravity;
 	public bool calculateBuoyancy;
@@ -20,7 +23,7 @@ public class Settings : MonoBehaviour{
 	public Vector2Double gravity, gravityDirection;
 
 	public double AttractionGravity(Body body1, Body body2){
-		return attractionGravityConstant * body1.mass *body2.mass / Math.Pow(body1.Distance(body2), 2);
+		return attractionGravityConstant * body1.mass * body2.mass * distanceFunction(body1.Distance(body2));
 	}
 
 	public double Drag(Body body){

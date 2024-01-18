@@ -163,8 +163,11 @@ public class Body : MonoBehaviour{
 		acceleration += settings.currentInputAcceleration;
 	}
 
-	// Collisions
+	public void ImpulseForce(){
+		acceleration += (position - settings.lastMousePosition).direction * settings.ImpulseForce(this);
+	}
 
+	// Collisions
 	public List<Body> collidedBodies = new List<Body>();
 	public void Collision(Body body){
 
@@ -230,7 +233,7 @@ public class Body : MonoBehaviour{
 		bodyController.DeleteBody(body);
 	}
 
-	public void Friction(){
+	/*public void Friction(){
 
 		foreach (Body body in collidedBodies){
 
@@ -246,7 +249,7 @@ public class Body : MonoBehaviour{
 		}
 
 		collidedBodies.Clear();
-	}
+	}*/
 
 	public void CheckRectangleCollision(){
 

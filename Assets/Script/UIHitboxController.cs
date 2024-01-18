@@ -55,7 +55,13 @@ public class UIHitboxController : MonoBehaviour{
 
 	public static bool MouseOverControls{
 		get{
-			return IsMouseOverRect(controlsHitbox) || IsMouseOverRect(toggleEditorHitbox) || IsMouseOverRect(cameraControls);
+			return IsMouseOverRect(controlsHitbox) || IsMouseOverRect(toggleEditorHitbox);
+		}
+	}
+
+	public static bool MouseOverCameraControls{
+		get{
+			return IsMouseOverRect(cameraControls);
 		}
 	}
 

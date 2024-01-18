@@ -9535,7 +9535,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Static Friction Coef
+  m_text: Explosion Force
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b0777c19b06960446aeb06085e90db98, type: 2}
   m_sharedMaterial: {fileID: 4328353296713289982, guid: b0777c19b06960446aeb06085e90db98, type: 2}
@@ -15702,7 +15702,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Dynamic Friction Coef
+  m_text: Friction Coefficient
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b0777c19b06960446aeb06085e90db98, type: 2}
   m_sharedMaterial: {fileID: 4328353296713289982, guid: b0777c19b06960446aeb06085e90db98, type: 2}
@@ -45577,7 +45577,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ...
+  m_text: N
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b0777c19b06960446aeb06085e90db98, type: 2}
   m_sharedMaterial: {fileID: 4328353296713289982, guid: b0777c19b06960446aeb06085e90db98, type: 2}
@@ -46847,7 +46847,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Version 0.7.7.2
+  m_text: Version 0.7.8
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b0777c19b06960446aeb06085e90db98, type: 2}
   m_sharedMaterial: {fileID: 4328353296713289982, guid: b0777c19b06960446aeb06085e90db98, type: 2}
@@ -65965,12 +65965,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1209335805}
   m_Layer: 5
-  m_Name: StaticFrictionCoefficient
+  m_Name: ImpulseForce
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1209335805
 RectTransform:
   m_ObjectHideFlags: 0
@@ -100582,7 +100582,7 @@ MonoBehaviour:
   gravityAngle: {fileID: 1244641806}
   attractionGravityConstant: {fileID: 251972809}
   liftCoefficient: {fileID: 426849931}
-  staticFrictionCoefficient: {fileID: 362468838}
+  impulseForce: {fileID: 362468838}
   fluidDensity: {fileID: 1442362844}
   dragCoefficient: {fileID: 261946958}
   frictionCoefficient: {fileID: 249083965}
@@ -100655,7 +100655,7 @@ MonoBehaviour:
   gravityAcceleration: 0
   gravityAngle: 0
   attractionGravityConstant: 0
-  staticFrictionCoefficient: 0
+  impulseForce: 0
   fluidDensity: 0
   dragCoefficient: 0
   liftCoefficient: 0
@@ -100667,6 +100667,7 @@ MonoBehaviour:
   touchMultiplier: 1
   showCenterOfGravity: 0
   calculateBuoyancy: 0
+  actualImpulseForce: 0
   isApplyingThrustForward: 0
   isApplyingThrustBackward: 0
   isApplyingThrustRight: 0

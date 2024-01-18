@@ -254,7 +254,7 @@ public class BodyController : MonoBehaviour{
 	public void CompileFunctions(Body body){
 
 		body.ForceOnce = new Action(() => {});
-		body.ForceAfterPosition = new Action(() => {}); // add friction
+		body.ForceAfterPosition = new Action(() => {});
 		body.ForceEachBody = new Action<Body>((body2) => {});
 		
 		if (settings.fluidDensity != 0 && settings.dragCoefficient != 0)
@@ -322,6 +322,9 @@ public class BodyController : MonoBehaviour{
 		if (body.controllable)
 			body.ForceOnce += body.Thrust;
 
+		if (settings.impulseForce != 0)
+			body.ForceOnce += body.ImpulseForce;
+
 		if (settings.attractionGravityConstant != 0){
 
 			if (settings.fluidDensity == 0 || !settings.calculateBuoyancy)
@@ -338,8 +341,8 @@ public class BodyController : MonoBehaviour{
 				body.ForceEachBody += (body2) => body.Collision(body2);
 		}
 
-		if (settings.frictionCoefficient != 0)
-			body.ForceAfterPosition += body.Friction;
+		/*if (settings.frictionCoefficient != 0)
+			body.ForceAfterPosition += body.Friction;*/
 
 		if (settings.borderMode == BorderMode.Rectangle)
 			body.ForceAfterPosition += body.CheckRectangleCollision;

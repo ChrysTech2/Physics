@@ -46,7 +46,7 @@ public class DataController : MonoBehaviour{
 	public const string FORMAT = "txt";
 	public const string LINE_SEPARATOR = " #\n";
 	public const string TEXT_VALUE_SEPARATOR = " : ";
-	public const string GROUP_SEPARATOR = "...........................................\n\n";
+	public const string GROUP_SEPARATOR = "...............................\n";
 
 	private void Awake(){
 

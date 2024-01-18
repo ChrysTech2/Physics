@@ -7,7 +7,7 @@ public class Settings : MonoBehaviour{
 	public double secondsPerFrame, lineDuration, lineThickness;
 	public int gravityMode, borderMode;
 	public double gravityAcceleration, gravityAngle;
-	public double attractionGravityConstant, staticFrictionCoefficient;
+	public double attractionGravityConstant, impulseForce;
 	public double fluidDensity, dragCoefficient, liftCoefficient;
 	public double coefOfRestitution, borderCoefOfRestitution, frictionCoefficient;
 	public bool calculateCollisions, mergeBodiesInCollisions;
@@ -30,7 +30,12 @@ public class Settings : MonoBehaviour{
 	public double Lift(Body body){
 		return Math.Pow(body.velocity.magnitude, 2) * liftCoefficient * fluidDensity * body.area / (2 * body.mass);
 	}
- 
+
+	public double actualImpulseForce = 0;
+	public double ImpulseForce(Body body){
+		return actualImpulseForce / (body.mass * Math.Pow(Vector2Double.Distance(body.position, lastMousePosition),2));
+	}
+
 	public bool isApplyingThrustForward = false;
 	public bool isApplyingThrustBackward = false;
 	public bool isApplyingThrustRight = false;

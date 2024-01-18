@@ -45,29 +45,48 @@ public class TouchControl : MonoBehaviour{
 		if (Input.GetKeyDown(KeyCode.Mouse0)){
 
 			bool condition1 = !bodyEditor.gameObject.activeSelf && !settingsController.gameObject.activeSelf;
-			bool condition2 = !UIHitboxController.MouseOverControls && !UIHitboxController.MouseOverAddOnTouchButton && addOnTouch.isOn;
-			bool condition3 = !twoFingers;
+			bool condition2 = !UIHitboxController.MouseOverControls && !UIHitboxController.MouseOverAddOnTouchButton;
+			bool condition3 = !twoFingers && !UIHitboxController.MouseOverCameraControls;
 			bool condition4 = !UIHitboxController.MouseOverThrustControls;
 
 			canAddBody = condition1 && condition2 && condition3 && condition4;
 
 			worldPosition1 = mouseWorldPosition;
-			bodyController.settings.lastMousePosition = worldPosition1;
+
+			if (canAddBody){
+
+				if (!addOnTouch.isOn){
+
+					bodyController.settings.lastMousePosition = worldPosition1;
+					bodyController.settings.actualImpulseForce = bodyController.settings.impulseForce;
+
+					canAddBody = false;
+				}
+				else{
+					canAddBody = true;
+				}
+			}
 
 			if (canAddBody)
 				InstantiateBody();
 		}
 
-		if (bodyInstantiated && (Input.GetKeyUp(KeyCode.Mouse0) || twoFingers)){
+		if (Input.GetKeyUp(KeyCode.Mouse0) || twoFingers){
 
-			bodyController.lineController.DeleteAllLines("TouchLine");
+			bodyController.settings.actualImpulseForce = 0;
 
-			AddBody();
+			if (bodyInstantiated){
 
-			bodyInfo.SetText("");
+				bodyController.lineController.DeleteAllLines("TouchLine");
 
-			canAddBody = false;
-			bodyInstantiated = false;
+				AddBody();
+
+				bodyInfo.SetText("");
+
+				canAddBody = false;
+				bodyInstantiated = false;
+
+			}
 		}
 
 		if (bodyInstantiated && Input.GetKey(KeyCode.Mouse0)){

@@ -9,7 +9,7 @@ public class SettingsController : MonoBehaviour{
 	public TMP_InputField secondsPerFrame, lineDuration, lineThickness;
 	public TMP_Dropdown gravityMode, parent, borderMode;
 	public TMP_InputField gravityAcceleration, gravityAngle;
-	public TMP_InputField attractionGravityConstant, liftCoefficient, staticFrictionCoefficient;
+	public TMP_InputField attractionGravityConstant, liftCoefficient, impulseForce;
 	public TMP_InputField fluidDensity, dragCoefficient, frictionCoefficient;
 	public Toggle calculateCollisions, mergeBodiesInCollisions, calculateBuoyancy;
 	public TMP_InputField coefOfRestitution, borderCoefOfRestitution, thrustAcceleration;
@@ -149,7 +149,7 @@ public class SettingsController : MonoBehaviour{
 		ExpressionEvaluator.Evaluate(thrustDirectionSensibiliy.text, out settings.thrustDirectionSensibiliy);
 
 		ExpressionEvaluator.Evaluate(liftCoefficient.text, out settings.liftCoefficient);
-		ExpressionEvaluator.Evaluate(staticFrictionCoefficient.text, out settings.staticFrictionCoefficient);
+		ExpressionEvaluator.Evaluate(impulseForce.text, out settings.impulseForce);
 
 		settings.calculateBuoyancy = calculateBuoyancy.isOn;
 

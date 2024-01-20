@@ -320,16 +320,22 @@ public class Body : MonoBehaviour{
 		position = -direction * (settings.border.x - radius);
 
 		double normalAcceleration = -velocityOnDirection.x * (1 + settings.borderCoefOfRestitution) / settings.secondsPerFrame;
+
 		acceleration += normalAcceleration * direction;
+
+		Debug.Log(normalAcceleration);
 
 		if (settings.frictionCoefficient != 0){
 
 			double friction = Math.Abs(normalAcceleration) * -Math.Sign(velocityOnDirection.y) * settings.frictionCoefficient;
 
-			if (Math.Sign(velocityOnDirection.y) != Math.Sign(velocityOnDirection.y + friction * settings.secondsPerFrame))
-				velocity.y = 0;
-			else
+			if (Math.Sign(velocityOnDirection.y) != Math.Sign(velocityOnDirection.y + friction * settings.secondsPerFrame)){
+				velocityOnDirection.y = 0;
+				velocity = velocityOnDirection.magnitude * velocityOnDirection.direction.SumVectorAsAngle(direction);
+			}
+			else{
 				acceleration += friction * direction.SumVectorAsAngle(Vector2Double.up);
+			}
 		}
 
 		nCollisions ++;

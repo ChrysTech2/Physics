@@ -159,7 +159,6 @@ public class BodyEditor : MonoBehaviour{
 
 		if (bodiesDropdown.options.Count == 0){
 			gameObject.SetActive(false);
-			bodyController.touchControl.addOnTouch.isOn = false;
 			return;
 		}
 

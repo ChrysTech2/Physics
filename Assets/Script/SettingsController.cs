@@ -124,6 +124,10 @@ public class SettingsController : MonoBehaviour{
 	public void ApplyDataToSettings(){
 
 		ExpressionEvaluator.Evaluate(secondsPerFrame.text, out settings.secondsPerFrame);
+		if (settings.secondsPerFrame == 0){
+			settings.secondsPerFrame = 0.005;
+			secondsPerFrame.text = "0.005";
+		}
 
 		ExpressionEvaluator.Evaluate(gravityAcceleration.text, out settings.gravityAcceleration);
 		ExpressionEvaluator.Evaluate(gravityAngle.text, out settings.gravityAngle);
@@ -170,10 +174,9 @@ public class SettingsController : MonoBehaviour{
 		DrawBorder();
 
 		bodyController.SetDistanceFunction();
-		foreach (Body body in bodyController.bodies){
+		foreach (Body body in bodyController.bodies)
 			bodyController.CompileFunctions(body);
-			//body.collidedBodies.Clear();
-		}
+		
 	}
 
 	private void DrawBorder(){

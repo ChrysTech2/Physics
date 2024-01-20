@@ -65,7 +65,7 @@ public class Body : MonoBehaviour{
 				ForceEachBody(bodyController.bodies[i]);
 		
 		velocity += acceleration * settings.secondsPerFrame;
-
+		
 		accelerationBeforeReset = acceleration;
 
 		acceleration = Vector2Double.zero;
@@ -168,7 +168,6 @@ public class Body : MonoBehaviour{
 	}
 
 	// Collisions
-	//public List<Body> collidedBodies = new List<Body>();
 	public void Collision(Body body){
 
 		double distance = DistanceFromSurface(body);
@@ -204,9 +203,6 @@ public class Body : MonoBehaviour{
 		// End
 		nCollisions ++;
 		body.nCollisions ++;
-
-		//collidedBodies.Add(body);
-		//body.collidedBodies.Add(this);
 	}
 
 	public void CollisionMerge(Body body){
@@ -233,24 +229,6 @@ public class Body : MonoBehaviour{
 		bodyController.DeleteBody(body);
 	}
 
-	/*public void Friction(){
-
-		foreach (Body body in collidedBodies){
-
-			Vector2Double direction = Direction(body);
-			Vector2Double velocityOnDirection = velocity.magnitude * velocity.direction.SubtractVectorAsAngle(direction);
-			
-			double acceleration1 = (accelerationBeforeReset.magnitude * accelerationBeforeReset.direction.SubtractVectorAsAngle(direction)).x;
-			double acceleration2 = (body.accelerationBeforeReset.magnitude * body.accelerationBeforeReset.direction.SubtractVectorAsAngle(direction)).x;
-			double relativeAcceleration = Math.Abs(-acceleration1 + acceleration2);
-
-			double finalAcceleration = -relativeAcceleration * settings.frictionCoefficient * Math.Sign(velocityOnDirection.y);
-			acceleration = finalAcceleration * direction.SumVectorAsAngle(Vector2Double.up);
-		}
-
-		collidedBodies.Clear();
-	}*/
-
 	public void CheckRectangleCollision(){
 
 		double limitDown = -settings.border.y + radius;
@@ -261,45 +239,73 @@ public class Body : MonoBehaviour{
 		if (position.y < limitDown){
 
 			position.y = limitDown;
-			double oldVelocity = velocity.y;
-			velocity.y *= -settings.borderCoefOfRestitution;
+			double normalAcceleration = -velocity.y * (1 + settings.borderCoefOfRestitution) / settings.secondsPerFrame;
+			acceleration.y += normalAcceleration;
 			nCollisions ++;
 
-			if (settings.frictionCoefficient != 0)
-				acceleration.x += (Math.Abs(accelerationBeforeReset.y) + Math.Abs(velocity.y - oldVelocity)) * -Math.Sign(velocity.x) * settings.frictionCoefficient;
+			if (settings.frictionCoefficient != 0){
+
+				double friction = Math.Abs(normalAcceleration) * -Math.Sign(velocity.x) * settings.frictionCoefficient;
+				
+				if (Math.Sign(velocity.x) != Math.Sign(velocity.x + friction * settings.secondsPerFrame))
+					velocity.x = 0;
+				else
+					acceleration.x += friction;
+			}
 		}
 
 		else if (position.y > limitUp){
 
 			position.y = limitUp;
-			double oldVelocity = velocity.y;
-			velocity.y *= -settings.borderCoefOfRestitution;
+			double normalAcceleration = -velocity.y * (1 + settings.borderCoefOfRestitution) / settings.secondsPerFrame;
+			acceleration.y += normalAcceleration;
 			nCollisions ++;
 
-			if (settings.frictionCoefficient != 0)
-				acceleration.x += (Math.Abs(accelerationBeforeReset.y) + Math.Abs(velocity.y - oldVelocity)) * -Math.Sign(velocity.x) * settings.frictionCoefficient;
+			if (settings.frictionCoefficient != 0){
+
+				double friction = Math.Abs(normalAcceleration) * -Math.Sign(velocity.x) * settings.frictionCoefficient;
+
+				if (Math.Sign(velocity.x) != Math.Sign(velocity.x + friction * settings.secondsPerFrame))
+					velocity.x = 0;
+				else
+					acceleration.x += friction;
+			}
 		}
 
 		if (position.x < limitLeft){
 
 			position.x = limitLeft;
-			double oldVelocity = velocity.x;
-			velocity.x *= -settings.borderCoefOfRestitution;
+			double normalAcceleration = -velocity.x * (1 + settings.borderCoefOfRestitution) / settings.secondsPerFrame;
+			acceleration.x += normalAcceleration;
 			nCollisions ++;
 
-			if (settings.frictionCoefficient != 0)
-				acceleration.y += (Math.Abs(accelerationBeforeReset.x) + Math.Abs(velocity.x - oldVelocity)) * -Math.Sign(velocity.y) * settings.frictionCoefficient;
+			if (settings.frictionCoefficient != 0){
+
+				double friction = Math.Abs(normalAcceleration) * -Math.Sign(velocity.y) * settings.frictionCoefficient;
+
+				if (Math.Sign(velocity.y) != Math.Sign(velocity.y + friction * settings.secondsPerFrame))
+					velocity.y = 0;
+				else
+					acceleration.y += friction;
+			}
 		}
 
 		else if (position.x > limitRight){
 			
 			position.x = limitRight;
-			double oldVelocity = velocity.x;
-			velocity.x *= -settings.borderCoefOfRestitution;
+			double normalAcceleration = -velocity.x * (1 + settings.borderCoefOfRestitution) / settings.secondsPerFrame;
+			acceleration.x += normalAcceleration;
 			nCollisions ++;
 
-			if (settings.frictionCoefficient != 0)
-				acceleration.y += (Math.Abs(accelerationBeforeReset.x) + Math.Abs(velocity.x - oldVelocity)) * -Math.Sign(velocity.y) * settings.frictionCoefficient;
+			if (settings.frictionCoefficient != 0){
+
+				double friction = Math.Abs(normalAcceleration) * -Math.Sign(velocity.y) * settings.frictionCoefficient;
+
+				if (Math.Sign(velocity.y) != Math.Sign(velocity.y + friction * settings.secondsPerFrame))
+					velocity.y = 0;
+				else
+					acceleration.y += friction;
+			}
 		}
 	}
 
@@ -307,26 +313,26 @@ public class Body : MonoBehaviour{
 
 		if (settings.border.x - position.magnitude - radius > 0) // border.x is the radius here
 			return;
-		
+
 		Vector2Double direction = -1 * position.direction;
 		Vector2Double velocityOnDirection = velocity.magnitude * velocity.direction.SubtractVectorAsAngle(direction);
-		Vector2Double finalVelocityOnDirection;
 
-		double oldVelocity = velocityOnDirection.x;
-		finalVelocityOnDirection.x = -velocityOnDirection.x * settings.borderCoefOfRestitution;
-		finalVelocityOnDirection.y = velocityOnDirection.y;
+		position = -direction * (settings.border.x - radius);
 
-		velocity = finalVelocityOnDirection.magnitude * finalVelocityOnDirection.direction.SumVectorAsAngle(direction);
-		position = position.direction * (settings.border.x - radius);
-		nCollisions ++;
+		double normalAcceleration = -velocityOnDirection.x * (1 + settings.borderCoefOfRestitution) / settings.secondsPerFrame;
+		acceleration += normalAcceleration * direction;
 
 		if (settings.frictionCoefficient != 0){
-			
-			double accelerationOnDirection = (accelerationBeforeReset.magnitude * accelerationBeforeReset.direction.SubtractVectorAsAngle(direction)).x;
-			double finalAcceleration = -(Math.Abs(accelerationOnDirection) + Math.Abs(finalVelocityOnDirection.x - oldVelocity)) * settings.frictionCoefficient * Math.Sign(velocityOnDirection.y);
 
-			acceleration += finalAcceleration * direction.SumVectorAsAngle(Vector2Double.up);
+			double friction = Math.Abs(normalAcceleration) * -Math.Sign(velocityOnDirection.y) * settings.frictionCoefficient;
+
+			if (Math.Sign(velocityOnDirection.y) != Math.Sign(velocityOnDirection.y + friction * settings.secondsPerFrame))
+				velocity.y = 0;
+			else
+				acceleration += friction * direction.SumVectorAsAngle(Vector2Double.up);
 		}
+
+		nCollisions ++;
 	}
 	
 	// Other Stuff

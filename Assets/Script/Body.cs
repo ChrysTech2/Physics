@@ -203,6 +203,35 @@ public class Body : MonoBehaviour{
 		// End
 		nCollisions ++;
 		body.nCollisions ++;
+
+		if (settings.frictionCoefficient != 0){
+
+			double normalAcceleration1 = (finalVelocity1.x - velocity1.x) / settings.secondsPerFrame;
+			double normalAcceleration2 = (finalVelocity2.x - velocity2.x) / settings.secondsPerFrame;
+
+			double relativeVelocity = velocity1.y - velocity2.y; // velocity of second body
+
+			double friction1 = Math.Abs(normalAcceleration1) * Math.Sign(relativeVelocity) * settings.frictionCoefficient;
+			double friction2 = Math.Abs(normalAcceleration2) * -Math.Sign(relativeVelocity) * settings.frictionCoefficient;
+
+			Debug.Log(name + " " + normalAcceleration1 + " " + body.name + " " + normalAcceleration2);
+			
+			if (Math.Sign(relativeVelocity) != Math.Sign(relativeVelocity + friction2 * settings.secondsPerFrame)){
+				//velocity2.y = velocity1.y;
+				//body.velocity = velocity2.magnitude * velocity2.direction.SumVectorAsAngle(direction);
+			}
+			else{
+				body.acceleration += friction2 * direction.SubtractVectorAsAngle(Vector2Double.up);
+			}
+
+			if (Math.Sign(-relativeVelocity) != Math.Sign(-relativeVelocity + friction1 * settings.secondsPerFrame)){
+				//velocity1.y = velocity2.y;
+				//velocity = velocity1.magnitude * velocity1.direction.SubtractVectorAsAngle(direction);
+			}
+			else{
+				acceleration += friction1 * direction.SubtractVectorAsAngle(Vector2Double.up);
+			}
+		}
 	}
 
 	public void CollisionMerge(Body body){
@@ -322,8 +351,6 @@ public class Body : MonoBehaviour{
 		double normalAcceleration = -velocityOnDirection.x * (1 + settings.borderCoefOfRestitution) / settings.secondsPerFrame;
 
 		acceleration += normalAcceleration * direction;
-
-		Debug.Log(normalAcceleration);
 
 		if (settings.frictionCoefficient != 0){
 

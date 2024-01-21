@@ -122,6 +122,7 @@ public class BodyEditor : MonoBehaviour{
 			return;
 
 		if (showColor.isOn){
+
 			Color color = bodyToEdit.color;
 			backgroundImage.color = new Color(color.r, color.g, color.b, 0.78f);	
 			return;
@@ -141,29 +142,28 @@ public class BodyEditor : MonoBehaviour{
 	public void DeleteBody(){
 		AssignBody();
 		bodyController.DeleteBody(bodyToEdit);
-		CheckShowColor();
 	}
 
 	public void BodyEliminated(int index){
 
 		bodiesDropdown.options.RemoveAt(index);
 
-		if (DropdownValue < index)
-			return;
-
-		if (bodiesDropdown.value > index){
-			DropdownValue --;
-			AssignBody();
-			return;
-		}
-
 		if (bodiesDropdown.options.Count == 0){
 			gameObject.SetActive(false);
 			return;
 		}
+		
+		if (DropdownValue < index){
+			return;
+		}
+		
+		if (DropdownValue > index){
+			DropdownValue --;
+			return;
+		}
 
-		DropdownValue = 0;
-		AssignBody();
+		// == index
+		DropdownValue = bodiesDropdown.options.Count - 1;
 	}
 
 	private int DropdownValue{

@@ -221,8 +221,7 @@ public class CameraController : MonoBehaviour{
 
 			if (Vector2Double.Distance(mousePosition, body.position) - body.radius < 0){
 
-				ChangeIndexWithFixedOffset(body.Index());
-				
+				//ChangeIndexWithFixedOffset(body.Index());
 				mouseOnBody.SetText($"Body : {body.name}");
 				return;
 			}

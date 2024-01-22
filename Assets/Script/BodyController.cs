@@ -45,6 +45,9 @@ public class BodyController : MonoBehaviour{
 	private void Start(){
 		settings = settingsController.settings;
 		Application.targetFrameRate = 240;
+
+		Body.settings = settings;
+		Body.bodyController = this; 
 	}
 
 	private void FixedUpdate(){
@@ -215,7 +218,7 @@ public class BodyController : MonoBehaviour{
 		Body.CopyData(settingsController.bodyToCreate, createdBody);
 		settingsController.bodyToCreate.nCollisions = 0;
 
-		createdBody.Initialize(this);
+		createdBody.Initialize();
 		CompileFunctions(createdBody);
 		
 		bodies.Add(createdBody);

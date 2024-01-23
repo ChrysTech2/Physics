@@ -58,10 +58,12 @@ public class BodyEditor : MonoBehaviour{
 	}
 
 	public void AssignBody(){
-		if (bodyController.bodies.Count > 0){
-			bodyToEdit = bodyController.bodies[DropdownValue];
-			CheckShowColor();
-		}
+
+		if (bodyController.bodies.Count == 0)
+			return;
+
+		bodyToEdit = bodyController.bodies[DropdownValue];
+		CheckShowColor();
 	}
 
 	private void FixedUpdate(){
@@ -117,9 +119,6 @@ public class BodyEditor : MonoBehaviour{
 	}
 
 	private void CheckShowColor(){
-
-		if (bodyController.bodies.Count == 0)
-			return;
 
 		if (showColor.isOn){
 

@@ -241,12 +241,12 @@ public class BodyController : MonoBehaviour{
 		int index = body.Index();
 
 		settingsController.BodyEliminated(index);
-		bodyEditor.BodyEliminated(index);
 		cameraController.BodyEliminated(index);
 
 		bodies.Remove(body);
-
 		DestroyImmediate(body.gameObject);
+
+		bodyEditor.BodyEliminated(index);
 	}
 
 	public void DeleteAllBodies(){
@@ -365,9 +365,20 @@ public class BodyController : MonoBehaviour{
 				body.ForceEachBody += (body2) => body.Collision(body2);
 		}
 
-		if (settings.borderMode == BorderMode.Rectangle)
-			body.ForceAfterPosition += body.CheckRectangleCollision;
-		else if (settings.borderMode == BorderMode.Circle)
-			body.ForceAfterPosition += body.CheckCircleCollision;
+		switch(settings.borderMode){
+
+			case BorderMode.Rectangle:
+				body.ForceAfterPosition += body.RectangleCollisionDown;
+				body.ForceAfterPosition += body.RectangleCollisionUp;
+				body.ForceAfterPosition += body.RectangleCollisionLeft;
+				body.ForceAfterPosition += body.RectangleCollisionRight;
+				return;
+
+			case BorderMode.Circle:
+				body.ForceAfterPosition += body.CircleCollision;
+				return;
+
+			// add horizontal and vertical
+		}			
 	}
 }

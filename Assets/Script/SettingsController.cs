@@ -183,11 +183,16 @@ public class SettingsController : MonoBehaviour{
 
 		bodyController.lineController.DeleteAllLines("Border");
 
-		if (borderMode.value == BorderMode.Rectangle)
-			bodyController.lineController.DrawRectangle(settings.border);
+		switch(borderMode.value){
+			case BorderMode.Rectangle:
+				bodyController.lineController.DrawRectangle(settings.border);
+				return;
+			case BorderMode.Circle:
+				bodyController.lineController.DrawPolygon(settings.border.x, 100);
+				return;
+			// add horizontal and vertical
+		}
 			
-		else if (borderMode.value == BorderMode.Circle)
-			bodyController.lineController.DrawPolygon(settings.border.x, 100);
 	}
 
 	private void ApplyParent(bool addedOnTouch){

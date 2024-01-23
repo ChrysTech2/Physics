@@ -102,7 +102,6 @@ public class WorldLineController : MonoBehaviour{
 		CreateLine(new Vector2Double(-border.x, -border.y), new Vector2Double(border.x, -border.y), Color.gray, false, 0, tag, 0.1f);
 		CreateLine(new Vector2Double(border.x, border.y), new Vector2Double(border.x, -border.y), Color.gray, false, 0, tag, 0.1f);
 		CreateLine(new Vector2Double(-border.x, border.y), new Vector2Double(-border.x, -border.y), Color.gray, false, 0, tag, 0.1f);
-
 	}
 
 	private void ShowCenterOfGravity(){

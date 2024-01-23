@@ -24,6 +24,8 @@ public static class BorderMode{
 	public const int Disabled = 0;
 	public const int Rectangle = 1;
 	public const int Circle = 2;
+	public const int Horizontal = 3;
+	public const int Vertical = 4;
 }
 
 public static class Times{

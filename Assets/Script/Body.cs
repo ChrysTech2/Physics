@@ -52,13 +52,12 @@ public class Body : MonoBehaviour{
 	// Movement
 	private Vector2Double acceleration = Vector2Double.zero;
 	public Vector2Double accelerationBeforeReset;
-	public void UpdateVelocity(){
+	public void UpdateVelocity(int index){
 
 		ForceOnce();
 
-		for (int i = Index() + 1; i < bodyController.bodies.Count; i++)
-			if (bodyController.bodies[i] != this)
-				ForceEachBody(bodyController.bodies[i]);
+		for (int i = index + 1; i < bodyController.bodies.Count; i++)
+			ForceEachBody(bodyController.bodies[i]);
 		
 		velocity += acceleration * settings.secondsPerFrame;
 		

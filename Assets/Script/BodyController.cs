@@ -62,7 +62,7 @@ public class BodyController : MonoBehaviour{
 	public void CalculateOneFrame(){
 
 		for(int i = 0; i < bodies.Count; i++)
-			bodies[i].UpdateVelocity();
+			bodies[i].UpdateVelocity(i);
 
 		foreach (Body body in bodies)
 			body.UpdatePosition();

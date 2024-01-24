@@ -153,6 +153,7 @@ public class BodyEditor : MonoBehaviour{
 		}
 		
 		if (DropdownValue < index){
+			DropdownValue = DropdownValue;
 			return;
 		}
 		

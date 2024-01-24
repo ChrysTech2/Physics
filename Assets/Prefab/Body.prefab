@@ -99,7 +99,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mass: 10500
   radius: 1
-  color: {r: 0.93228227, g: 0.44133562, b: 0.15703434, a: 1}
+  color: {r: 0.09855166, g: 0.6989231, b: 0.6805605, a: 1}
   controllable: 0
   nCollisions: 0
   area: 0

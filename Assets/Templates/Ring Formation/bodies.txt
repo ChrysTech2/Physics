@@ -1,0 +1,3501 @@
+number_of_bodies : 250 #
+...............................
+name : Body 1 #
+x : -1991400,28807711 #
+y : 791,695483121102 #
+velocity_x : 22,0925359130449 #
+velocity_y : 0,773611474730627 #
+mass : 5,972E+24 #
+radius : 6371000 #
+color_red_value : 0,243 #
+color_green_value : 0,714 #
+color_blue_value : 0,906 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+is_controllable : False #
+...............................
+name : Body 206 #
+x : 11356654,9416887 #
+y : -5477376,46487708 #
+velocity_x : -162,123384256015 #
+velocity_y : -5324,09425347856 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 219 #
+is_controllable : False #
+...............................
+name : Body 208 #
+x : 14112826,4820374 #
+y : -864177,64954806 #
+velocity_x : 218,583602384195 #
+velocity_y : -6410,03368070357 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 305 #
+is_controllable : False #
+...............................
+name : Body 209 #
+x : 6801176,62927718 #
+y : -1302883,16714835 #
+velocity_x : -1059,43460194817 #
+velocity_y : -6168,93032742479 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 89 #
+is_controllable : False #
+...............................
+name : Body 210 #
+x : 13174052,0213109 #
+y : -2272468,52025027 #
+velocity_x : -185,465901284478 #
+velocity_y : -5687,21117110223 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 295 #
+is_controllable : False #
+...............................
+name : Body 211 #
+x : 8308942,48605683 #
+y : 1055854,55073408 #
+velocity_x : -516,495255237809 #
+velocity_y : -6329,54505311738 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 99 #
+is_controllable : False #
+...............................
+name : Body 212 #
+x : 9088360,59066268 #
+y : 1917610,87434154 #
+velocity_x : -517,763846856877 #
+velocity_y : -6317,79770327432 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 103 #
+is_controllable : False #
+...............................
+name : Body 214 #
+x : 15013166,8222809 #
+y : -410935,845912323 #
+velocity_x : 115,277647254594 #
+velocity_y : -6335,85451389499 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 125 #
+is_controllable : False #
+...............................
+name : Body 216 #
+x : 12444874,7715389 #
+y : -5562480,66992716 #
+velocity_x : -179,868604604331 #
+velocity_y : -5319,7557868867 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 97 #
+is_controllable : False #
+...............................
+name : Body 217 #
+x : 12728165,9226598 #
+y : -3026642,59862383 #
+velocity_x : -157,132855695046 #
+velocity_y : -5577,74461717955 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 325 #
+is_controllable : False #
+...............................
+name : Body 218 #
+x : 11924046,823308 #
+y : -1820776,91993246 #
+velocity_x : -283,863224844275 #
+velocity_y : -5767,48451332127 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 303 #
+is_controllable : False #
+...............................
+name : Body 219 #
+x : 12350353,7080306 #
+y : -4405998,93126601 #
+velocity_x : -210,872076913918 #
+velocity_y : -5342,59808432679 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 242 #
+is_controllable : False #
+...............................
+name : Body 220 #
+x : 8067599,90391808 #
+y : -70668,6563566431 #
+velocity_x : -854,657851009761 #
+velocity_y : -6170,756740127 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 268 #
+is_controllable : False #
+...............................
+name : Body 221 #
+x : 9131267,12216887 #
+y : -5521313,38526037 #
+velocity_x : -280,084528241 #
+velocity_y : -5374,01181494402 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 97 #
+is_controllable : False #
+...............................
+name : Body 222 #
+x : 8636433,76518089 #
+y : -4963399,81055819 #
+velocity_x : -185,009654800072 #
+velocity_y : -5744,24547429878 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 81 #
+is_controllable : False #
+...............................
+name : Body 223 #
+x : 6745520,17985836 #
+y : -2582880,78031442 #
+velocity_x : -950,781610554773 #
+velocity_y : -5821,15270828867 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 111 #
+is_controllable : False #
+...............................
+name : Body 224 #
+x : 10629897,8931287 #
+y : -373698,627886368 #
+velocity_x : -545,870458916805 #
+velocity_y : -6041,87629118417 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 318 #
+is_controllable : False #
+...............................
+name : Body 225 #
+x : 7509429,2515329 #
+y : 87976,7122192558 #
+velocity_x : -907,080713730914 #
+velocity_y : -6251,40093249961 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 109 #
+is_controllable : False #
+...............................
+name : Body 226 #
+x : 9168624,04188432 #
+y : -1764251,17340294 #
+velocity_x : -696,537656014127 #
+velocity_y : -5962,50091217081 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 284 #
+is_controllable : False #
+...............................
+name : Body 227 #
+x : 11919164,0923685 #
+y : -5291087,66892867 #
+velocity_x : -176,295421145827 #
+velocity_y : -5322,42200917785 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 217 #
+is_controllable : False #
+...............................
+name : Body 228 #
+x : 14495706,6700001 #
+y : -4423823,95204474 #
+velocity_x : -190,048392574197 #
+velocity_y : -5501,44170658829 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 151 #
+is_controllable : False #
+...............................
+name : Body 229 #
+x : 7751029,06428716 #
+y : -3345077,64526836 #
+velocity_x : -717,159197263573 #
+velocity_y : -5802,61893000135 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 208 #
+is_controllable : False #
+...............................
+name : Body 230 #
+x : 12444286,8528248 #
+y : -963793,356459957 #
+velocity_x : -417,375151591574 #
+velocity_y : -6005,9238719851 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 351 #
+is_controllable : False #
+...............................
+name : Body 231 #
+x : 11198120,5993086 #
+y : -2312888,78721847 #
+velocity_x : -473,721096142847 #
+velocity_y : -5756,92916244373 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 322 #
+is_controllable : False #
+...............................
+name : Body 232 #
+x : 14576162,4226332 #
+y : 195575,234703855 #
+velocity_x : 0,32421838261395 #
+velocity_y : -6317,53552519827 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 129 #
+is_controllable : False #
+...............................
+name : Body 233 #
+x : 9626797,11510839 #
+y : -1120508,82956332 #
+velocity_x : -736,975333218992 #
+velocity_y : -6039,20347265748 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 247 #
+is_controllable : False #
+...............................
+name : Body 234 #
+x : 9703845,62258878 #
+y : -5693048,26911103 #
+velocity_x : -280,389285847291 #
+velocity_y : -5442,10151905669 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 137 #
+is_controllable : False #
+...............................
+name : Body 235 #
+x : 9269686,11110264 #
+y : -4952384,67469117 #
+velocity_x : -179,946593655088 #
+velocity_y : -5412,7916416376 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 202 #
+is_controllable : False #
+...............................
+name : Body 236 #
+x : 13951950,152324 #
+y : -4183868,62519359 #
+velocity_x : -180,79754513773 #
+velocity_y : -5473,37191778942 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 217 #
+is_controllable : False #
+...............................
+name : Body 237 #
+x : 7595383,81689484 #
+y : -477485,756534248 #
+velocity_x : -971,973351773093 #
+velocity_y : -6256,04065040321 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 223 #
+is_controllable : False #
+...............................
+name : Body 238 #
+x : 12887515,2057485 #
+y : 1486936,5752847 #
+velocity_x : -123,895708346484 #
+velocity_y : -6477,9394047395 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 151 #
+is_controllable : False #
+...............................
+name : Body 239 #
+x : 8097191,43914321 #
+y : -634666,477037814 #
+velocity_x : -882,928041261596 #
+velocity_y : -6078,7257649571 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 239 #
+is_controllable : False #
+...............................
+name : Body 240 #
+x : 10380698,8377906 #
+y : -4295379,43658577 #
+velocity_x : -338,534372117294 #
+velocity_y : -5466,50809783892 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 332 #
+is_controllable : False #
+...............................
+name : Body 241 #
+x : 11545862,9096868 #
+y : 2008219,95597895 #
+velocity_x : -126,907487134764 #
+velocity_y : -6475,30172490214 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 94 #
+is_controllable : False #
+...............................
+name : Body 242 #
+x : 10456627,7768886 #
+y : 611806,336314563 #
+velocity_x : -601,581690232252 #
+velocity_y : -6164,46721296235 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 304 #
+is_controllable : False #
+...............................
+name : Body 243 #
+x : 8028528,62997483 #
+y : 532917,005894163 #
+velocity_x : -840,53227671061 #
+velocity_y : -6165,20793909594 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 176 #
+is_controllable : False #
+...............................
+name : Body 244 #
+x : 6791270,4149181 #
+y : -1995003,96447779 #
+velocity_x : -1078,75590523355 #
+velocity_y : -5821,56459422255 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 151 #
+is_controllable : False #
+...............................
+name : Body 245 #
+x : 11257537,7006899 #
+y : -1141871,36790799 #
+velocity_x : -468,952145159584 #
+velocity_y : -5886,83577099862 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 342 #
+is_controllable : False #
+...............................
+name : Body 246 #
+x : 12999236,7007035 #
+y : -5141138,48641337 #
+velocity_x : -184,002282740367 #
+velocity_y : -5367,66853011501 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 139 #
+is_controllable : False #
+...............................
+name : Body 247 #
+x : 13557237,3964965 #
+y : -806670,439959299 #
+velocity_x : 6,91162826384257 #
+velocity_y : -6446,51780798981 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 295 #
+is_controllable : False #
+...............................
+name : Body 248 #
+x : 9144632,53156245 #
+y : -2918557,41207561 #
+velocity_x : -618,850983213603 #
+velocity_y : -5712,38947379957 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 347 #
+is_controllable : False #
+...............................
+name : Body 249 #
+x : 9525666,23259793 #
+y : 352955,717723883 #
+velocity_x : -703,945662457527 #
+velocity_y : -6229,76454578545 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 311 #
+is_controllable : False #
+...............................
+name : Body 250 #
+x : 14688439,9059531 #
+y : -902376,449520133 #
+velocity_x : 235,328033511591 #
+velocity_y : -6360,05737980917 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 222 #
+is_controllable : False #
+...............................
+name : Body 251 #
+x : 13844844,9866603 #
+y : -376962,394714917 #
+velocity_x : 43,2149908334636 #
+velocity_y : -6483,22693332121 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 232 #
+is_controllable : False #
+...............................
+name : Body 252 #
+x : 11366108,5806019 #
+y : -4285165,75349221 #
+velocity_x : -278,288483404437 #
+velocity_y : -5335,24427310985 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 307 #
+is_controllable : False #
+...............................
+name : Body 253 #
+x : 8232226,31498594 #
+y : -3058516,0224302 #
+velocity_x : -731,745422279411 #
+velocity_y : -5774,92892175605 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 240 #
+is_controllable : False #
+...............................
+name : Body 254 #
+x : 11366177,2112834 #
+y : 1458414,04021452 #
+velocity_x : -321,948483445327 #
+velocity_y : -6387,90770143463 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 194 #
+is_controllable : False #
+...............................
+name : Body 255 #
+x : 11741566,8648459 #
+y : -283627,457027455 #
+velocity_x : -477,983897346657 #
+velocity_y : -6011,37404319155 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 281 #
+is_controllable : False #
+...............................
+name : Body 256 #
+x : 11594236,9873496 #
+y : -1947884,96146811 #
+velocity_x : -472,647311792951 #
+velocity_y : -5784,19956753753 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 312 #
+is_controllable : False #
+...............................
+name : Body 257 #
+x : 6994198,93580614 #
+y : -502454,194732287 #
+velocity_x : -989,366906379384 #
+velocity_y : -6190,72246224962 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 128 #
+is_controllable : False #
+...............................
+name : Body 258 #
+x : 14274779,7554808 #
+y : -2780054,42966084 #
+velocity_x : 55,1361185831084 #
+velocity_y : -5499,50437116089 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 216 #
+is_controllable : False #
+...............................
+name : Body 259 #
+x : 13720059,8495816 #
+y : -2355927,14989811 #
+velocity_x : -190,312483122676 #
+velocity_y : -6029,10730427167 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 266 #
+is_controllable : False #
+...............................
+name : Body 260 #
+x : 10840337,9930626 #
+y : -630047,12584796 #
+velocity_x : -530,375332366195 #
+velocity_y : -5965,18199629647 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 311 #
+is_controllable : False #
+...............................
+name : Body 261 #
+x : 11643083,3501993 #
+y : -2762771,49479544 #
+velocity_x : -388,958856544624 #
+velocity_y : -5565,66190729956 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 334 #
+is_controllable : False #
+...............................
+name : Body 262 #
+x : 10969489,0984622 #
+y : 2141123,10681092 #
+velocity_x : -100,064028487106 #
+velocity_y : -6337,47665879107 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 159 #
+is_controllable : False #
+...............................
+name : Body 263 #
+x : 8402752,35454252 #
+y : -4241602,07563164 #
+velocity_x : -478,889566585307 #
+velocity_y : -5687,75712827514 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 251 #
+is_controllable : False #
+...............................
+name : Body 264 #
+x : 11128616,9156131 #
+y : -3696348,22955489 #
+velocity_x : -254,41856235751 #
+velocity_y : -5510,60659390617 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 327 #
+is_controllable : False #
+...............................
+name : Body 265 #
+x : 10295352,7181161 #
+y : 1901485,26804469 #
+velocity_x : -377,110362243454 #
+velocity_y : -6364,48520296215 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 188 #
+is_controllable : False #
+...............................
+name : Body 266 #
+x : 8944146,66632507 #
+y : -4486117,35971259 #
+velocity_x : -435,997478108213 #
+velocity_y : -5605,22171194741 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 254 #
+is_controllable : False #
+...............................
+name : Body 267 #
+x : 11422631,2639698 #
+y : -3249730,22128846 #
+velocity_x : -270,771824265078 #
+velocity_y : -5522,56072029403 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 301 #
+is_controllable : False #
+...............................
+name : Body 268 #
+x : 11050963,3892069 #
+y : 493579,185543587 #
+velocity_x : -406,852539407674 #
+velocity_y : -6224,0625464612 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 292 #
+is_controllable : False #
+...............................
+name : Body 269 #
+x : 7725609,0674058 #
+y : -2027451,97656709 #
+velocity_x : -836,2692396496 #
+velocity_y : -5960,24092992408 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 241 #
+is_controllable : False #
+...............................
+name : Body 270 #
+x : 10314100,1701535 #
+y : -5459748,9532032 #
+velocity_x : -171,157790409155 #
+velocity_y : -5443,76037509201 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 147 #
+is_controllable : False #
+...............................
+name : Body 271 #
+x : 9946912,25406272 #
+y : 1416337,55594951 #
+velocity_x : -455,557471828405 #
+velocity_y : -6314,83461572372 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 249 #
+is_controllable : False #
+...............................
+name : Body 272 #
+x : 7230067,23170331 #
+y : -3005036,56185529 #
+velocity_x : -859,463574370523 #
+velocity_y : -5838,89573957405 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 180 #
+is_controllable : False #
+...............................
+name : Body 273 #
+x : 10171005,9772821 #
+y : -369835,437854188 #
+velocity_x : -670,263879551729 #
+velocity_y : -6104,64817001329 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 336 #
+is_controllable : False #
+...............................
+name : Body 274 #
+x : 9933102,66453196 #
+y : 783609,712342852 #
+velocity_x : -650,162524583346 #
+velocity_y : -6213,12546621908 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 287 #
+is_controllable : False #
+...............................
+name : Body 275 #
+x : 13075031,1220266 #
+y : -922389,479339195 #
+velocity_x : -61,5189000062949 #
+velocity_y : -6039,90403148373 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 344 #
+is_controllable : False #
+...............................
+name : Body 276 #
+x : 12620882,1786039 #
+y : 562803,914754157 #
+velocity_x : -289,005130910506 #
+velocity_y : -6390,52247198061 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 326 #
+is_controllable : False #
+...............................
+name : Body 277 #
+x : 14440930,1622905 #
+y : -3874766,22523909 #
+velocity_x : -306,014893316568 #
+velocity_y : -5507,19799082148 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 163 #
+is_controllable : False #
+...............................
+name : Body 278 #
+x : 10107956,2389774 #
+y : -1282322,12625388 #
+velocity_x : -608,523723439811 #
+velocity_y : -5924,82854058871 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 274 #
+is_controllable : False #
+...............................
+name : Body 279 #
+x : 14468084,094157 #
+y : -2251974,56841729 #
+velocity_x : 1006,16920365977 #
+velocity_y : -5609,68570925028 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 225 #
+is_controllable : False #
+...............................
+name : Body 280 #
+x : 9532088,64918206 #
+y : -3095356,28605206 #
+velocity_x : -601,613056624472 #
+velocity_y : -5699,64130460619 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 308 #
+is_controllable : False #
+...............................
+name : Body 281 #
+x : 8701937,7148265 #
+y : -1580904,58430017 #
+velocity_x : -775,118104443929 #
+velocity_y : -5939,34947095013 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 294 #
+is_controllable : False #
+...............................
+name : Body 282 #
+x : 10704696,2455423 #
+y : -2133219,12905469 #
+velocity_x : -562,737161905358 #
+velocity_y : -5818,76598126038 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 309 #
+is_controllable : False #
+...............................
+name : Body 283 #
+x : 10821308,6690467 #
+y : -4082303,54541462 #
+velocity_x : -345,639860878377 #
+velocity_y : -5406,5807038264 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 242 #
+is_controllable : False #
+...............................
+name : Body 284 #
+x : 11888611,1668357 #
+y : 1270043,11062533 #
+velocity_x : -270,071855511107 #
+velocity_y : -6292,25121221822 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 297 #
+is_controllable : False #
+...............................
+name : Body 285 #
+x : 13510712,7126841 #
+y : -4555468,29774275 #
+velocity_x : -219,757421033105 #
+velocity_y : -5414,91219311349 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 228 #
+is_controllable : False #
+...............................
+name : Body 286 #
+x : 14395176,2575667 #
+y : -1394926,17671135 #
+velocity_x : 413,446004078299 #
+velocity_y : -6402,04896738003 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 263 #
+is_controllable : False #
+...............................
+name : Body 287 #
+x : 8828615,34595335 #
+y : -3920084,66294605 #
+velocity_x : -528,544683864601 #
+velocity_y : -5658,65116491581 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 297 #
+is_controllable : False #
+...............................
+name : Body 288 #
+x : 13460394,4622731 #
+y : 1328935,86772001 #
+velocity_x : -137,963230361278 #
+velocity_y : -6565,36453210595 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 121 #
+is_controllable : False #
+...............................
+name : Body 289 #
+x : 8652852,99405219 #
+y : -817515,862338707 #
+velocity_x : -845,941392089545 #
+velocity_y : -6104,9780073162 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 283 #
+is_controllable : False #
+...............................
+name : Body 290 #
+x : 15491982,3204751 #
+y : -2974267,3481374 #
+velocity_x : 328,569894519779 #
+velocity_y : -7085,59104819083 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 98 #
+is_controllable : False #
+...............................
+name : Body 291 #
+x : 9132612,05719068 #
+y : -578292,819981801 #
+velocity_x : -785,861714868347 #
+velocity_y : -6029,90754037986 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 320 #
+is_controllable : False #
+...............................
+name : Body 292 #
+x : 13301318,5000424 #
+y : -4020160,39607919 #
+velocity_x : -152,456509899119 #
+velocity_y : -5364,91809542795 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 273 #
+is_controllable : False #
+...............................
+name : Body 293 #
+x : 14161892,1696251 #
+y : 607374,152986251 #
+velocity_x : -250,919899109512 #
+velocity_y : -6583,90617234319 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 149 #
+is_controllable : False #
+...............................
+name : Body 294 #
+x : 14997502,3832646 #
+y : -3682700,24474818 #
+velocity_x : -225,560438279127 #
+velocity_y : -5784,00820679021 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 118 #
+is_controllable : False #
+...............................
+name : Body 295 #
+x : 15879188,3877022 #
+y : -647568,820301935 #
+velocity_x : 944,244811070277 #
+velocity_y : -5847,11690779571 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 137 #
+is_controllable : False #
+...............................
+name : Body 296 #
+x : 8804515,64775811 #
+y : 756097,174450322 #
+velocity_x : -563,011174342163 #
+velocity_y : -6388,39832864541 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 190 #
+is_controllable : False #
+...............................
+name : Body 297 #
+x : 10453816,6862505 #
+y : -3753011,36421217 #
+velocity_x : -431,372033788059 #
+velocity_y : -5565,81445062744 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 316 #
+is_controllable : False #
+...............................
+name : Body 298 #
+x : 7940833,70673575 #
+y : -4613627,69589035 #
+velocity_x : -571,705177331735 #
+velocity_y : -5556,22965133075 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 132 #
+is_controllable : False #
+...............................
+name : Body 299 #
+x : 10842597,6929551 #
+y : -5220036,63672607 #
+velocity_x : -189,011963217373 #
+velocity_y : -5380,38044971825 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 243 #
+is_controllable : False #
+...............................
+name : Body 300 #
+x : 9636305,37931613 #
+y : -1515275,03172696 #
+velocity_x : -672,97886059488 #
+velocity_y : -5896,01203525497 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 303 #
+is_controllable : False #
+...............................
+name : Body 301 #
+x : 14978780,3699433 #
+y : -1417230,89530026 #
+velocity_x : 919,383427653515 #
+velocity_y : -6195,05219653846 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 282 #
+is_controllable : False #
+...............................
+name : Body 303 #
+x : 8651834,34112723 #
+y : -2675233,70048182 #
+velocity_x : -697,728118600946 #
+velocity_y : -5870,84108798225 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 331 #
+is_controllable : False #
+...............................
+name : Body 304 #
+x : 10811185,979105 #
+y : -1116188,39282811 #
+velocity_x : -578,028206654707 #
+velocity_y : -5887,90608691652 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 333 #
+is_controllable : False #
+...............................
+name : Body 305 #
+x : 10610372,4673228 #
+y : -2632565,49840271 #
+velocity_x : -496,757815030119 #
+velocity_y : -5669,92536668051 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 278 #
+is_controllable : False #
+...............................
+name : Body 306 #
+x : 10119851,492206 #
+y : -1802936,4826222 #
+velocity_x : -614,567914592585 #
+velocity_y : -5835,45609865386 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 328 #
+is_controllable : False #
+...............................
+name : Body 307 #
+x : 9402990,05864823 #
+y : 1467581,79203309 #
+velocity_x : -472,430363531552 #
+velocity_y : -6236,66938753243 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 232 #
+is_controllable : False #
+...............................
+name : Body 308 #
+x : 12151797,5715749 #
+y : 139032,704673468 #
+velocity_x : -352,883242085805 #
+velocity_y : -6170,83982645117 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 286 #
+is_controllable : False #
+...............................
+name : Body 309 #
+x : 9715527,00937231 #
+y : 1921665,00890355 #
+velocity_x : -395,23606747202 #
+velocity_y : -6304,82075573206 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 136 #
+is_controllable : False #
+...............................
+name : Body 310 #
+x : 13306664,6418169 #
+y : -227501,131389044 #
+velocity_x : -112,158706504699 #
+velocity_y : -6406,26193057844 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 295 #
+is_controllable : False #
+...............................
+name : Body 311 #
+x : 9128374,93899916 #
+y : -2337763,61335411 #
+velocity_x : -669,094283185338 #
+velocity_y : -5802,98606709121 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 344 #
+is_controllable : False #
+...............................
+name : Body 312 #
+x : 11838225,4232838 #
+y : -2279755,69638388 #
+velocity_x : -248,826605066868 #
+velocity_y : -5628,95957715847 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 285 #
+is_controllable : False #
+...............................
+name : Body 313 #
+x : 9786181,34366918 #
+y : -4543558,25896051 #
+velocity_x : -352,761624360688 #
+velocity_y : -5510,0830989648 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 303 #
+is_controllable : False #
+...............................
+name : Body 314 #
+x : 14029491,9838263 #
+y : -4773488,49910837 #
+velocity_x : -234,015837774018 #
+velocity_y : -5439,07865554718 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 135 #
+is_controllable : False #
+...............................
+name : Body 315 #
+x : 13022061,5108571 #
+y : 919384,144510412 #
+velocity_x : -235,041061896149 #
+velocity_y : -6454,13068541656 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 232 #
+is_controllable : False #
+...............................
+name : Body 316 #
+x : 10826509,9649189 #
+y : -5764478,27208635 #
+velocity_x : -144,231691927837 #
+velocity_y : -5354,86213140255 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 146 #
+is_controllable : False #
+...............................
+name : Body 317 #
+x : 13590419,8331358 #
+y : 762250,283265875 #
+velocity_x : -240,4425503478 #
+velocity_y : -6545,62856473531 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 194 #
+is_controllable : False #
+...............................
+name : Body 318 #
+x : 15483114,6945999 #
+y : -1104229,46180202 #
+velocity_x : 1660,38281365507 #
+velocity_y : -7194,52610050895 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 246 #
+is_controllable : False #
+...............................
+name : Body 319 #
+x : 11616925,4552332 #
+y : -3689768,00457499 #
+velocity_x : -227,025102832471 #
+velocity_y : -5441,55681674415 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 293 #
+is_controllable : False #
+...............................
+name : Body 320 #
+x : 9538672,45028401 #
+y : -2620632,18354692 #
+velocity_x : -605,441373009888 #
+velocity_y : -5825,21695779511 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 310 #
+is_controllable : False #
+...............................
+name : Body 321 #
+x : 10803749,3215202 #
+y : 1616692,94191622 #
+velocity_x : -310,115814528209 #
+velocity_y : -6239,83143145606 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 233 #
+is_controllable : False #
+...............................
+name : Body 322 #
+x : 13827776,3747224 #
+y : -1312436,77147544 #
+velocity_x : 312,556984677034 #
+velocity_y : -6213,221227527 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 291 #
+is_controllable : False #
+...............................
+name : Body 323 #
+x : 15486499,9815985 #
+y : -2356755,33059433 #
+velocity_x : 1091,60243704876 #
+velocity_y : -6520,99761981533 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 226 #
+is_controllable : False #
+...............................
+name : Body 324 #
+x : 9609534,56425275 #
+y : -141297,95941257 #
+velocity_x : -759,738638522062 #
+velocity_y : -6094,73759690718 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 339 #
+is_controllable : False #
+...............................
+name : Body 325 #
+x : 11889856,3203234 #
+y : -4743103,60536463 #
+velocity_x : -205,634908985969 #
+velocity_y : -5377,64807392405 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 229 #
+is_controllable : False #
+...............................
+name : Body 326 #
+x : 10432512,3423496 #
+y : -758123,153431723 #
+velocity_x : -565,289173032425 #
+velocity_y : -5939,2848435582 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 298 #
+is_controllable : False #
+...............................
+name : Body 327 #
+x : 11364625,0984984 #
+y : -4911657,52713346 #
+velocity_x : -216,553841215444 #
+velocity_y : -5322,16398985269 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 244 #
+is_controllable : False #
+...............................
+name : Body 328 #
+x : 7755570,63114274 #
+y : -2757278,38030165 #
+velocity_x : -875,83588271435 #
+velocity_y : -5817,5016711065 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 254 #
+is_controllable : False #
+...............................
+name : Body 329 #
+x : 9359376,41803689 #
+y : -4117559,76659394 #
+velocity_x : -428,898030596579 #
+velocity_y : -5638,152644947 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 268 #
+is_controllable : False #
+...............................
+name : Body 330 #
+x : 12077852,6206553 #
+y : 686616,906781987 #
+velocity_x : -373,989112111935 #
+velocity_y : -6228,68756647325 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 273 #
+is_controllable : False #
+...............................
+name : Body 331 #
+x : 12896893,6789848 #
+y : -1885698,53785851 #
+velocity_x : -168,754590250147 #
+velocity_y : -5729,21769564276 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 321 #
+is_controllable : False #
+...............................
+name : Body 332 #
+x : 12798004,2511781 #
+y : -1235931,54130879 #
+velocity_x : -103,914257613784 #
+velocity_y : -5967,21749749132 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 290 #
+is_controllable : False #
+...............................
+name : Body 333 #
+x : 12207410,4198699 #
+y : -2768314,34453857 #
+velocity_x : -283,122871869011 #
+velocity_y : -5579,09465188064 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 275 #
+is_controllable : False #
+...............................
+name : Body 334 #
+x : 8138053,93610719 #
+y : -1751659,58473093 #
+velocity_x : -802,387159759084 #
+velocity_y : -5982,89615917758 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 290 #
+is_controllable : False #
+...............................
+name : Body 335 #
+x : 7832923,47913343 #
+y : -4027888,02357197 #
+velocity_x : -672,790146543177 #
+velocity_y : -5571,13611658388 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 181 #
+is_controllable : False #
+...............................
+name : Body 336 #
+x : 10982383,5117913 #
+y : 1032782,71866644 #
+velocity_x : -409,669412907878 #
+velocity_y : -6282,07419634165 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 248 #
+is_controllable : False #
+...............................
+name : Body 337 #
+x : 11916694,5948496 #
+y : -4207956,89425517 #
+velocity_x : -230,442548119452 #
+velocity_y : -5384,38133134663 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 290 #
+is_controllable : False #
+...............................
+name : Body 338 #
+x : 7745043,07552928 #
+y : -1349470,60415388 #
+velocity_x : -889,538551721094 #
+velocity_y : -6054,56761326869 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 214 #
+is_controllable : False #
+...............................
+name : Body 339 #
+x : 10653459,0121784 #
+y : 100630,263721865 #
+velocity_x : -586,507610405873 #
+velocity_y : -6124,15170934205 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 322 #
+is_controllable : False #
+...............................
+name : Body 340 #
+x : 7293009,50898546 #
+y : -988956,836670058 #
+velocity_x : -1032,55687599629 #
+velocity_y : -6222,85343068723 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 196 #
+is_controllable : False #
+...............................
+name : Body 341 #
+x : 14995749,8038119 #
+y : -2011773,40016565 #
+velocity_x : 1313,16187268129 #
+velocity_y : -6165,11848643202 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 238 #
+is_controllable : False #
+...............................
+name : Body 342 #
+x : 10343034,2493666 #
+y : -4857665,06213667 #
+velocity_x : -228,478891367208 #
+velocity_y : -5433,9951708353 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 235 #
+is_controllable : False #
+...............................
+name : Body 343 #
+x : 10429324,7476535 #
+y : 1136961,88755503 #
+velocity_x : -400,021867462566 #
+velocity_y : -6180,41020033866 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 244 #
+is_controllable : False #
+...............................
+name : Body 344 #
+x : 12652196,9786607 #
+y : -3402911,45063515 #
+velocity_x : -164,221436561887 #
+velocity_y : -5443,87745900848 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 251 #
+is_controllable : False #
+...............................
+name : Body 345 #
+x : 12288083,3497422 #
+y : 1688239,0305277 #
+velocity_x : -200,578217039252 #
+velocity_y : -6324,95202250331 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 148 #
+is_controllable : False #
+...............................
+name : Body 346 #
+x : 11142796,5017503 #
+y : -2816215,15579598 #
+velocity_x : -420,834553959972 #
+velocity_y : -5632,17808814027 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 304 #
+is_controllable : False #
+...............................
+name : Body 347 #
+x : 10846493,122251 #
+y : -3286335,28871268 #
+velocity_x : -454,61698164787 #
+velocity_y : -5617,07073775114 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 309 #
+is_controllable : False #
+...............................
+name : Body 348 #
+x : 12701239,3385071 #
+y : 82562,4806510213 #
+velocity_x : -346,454387528811 #
+velocity_y : -6248,74305517713 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 322 #
+is_controllable : False #
+...............................
+name : Body 349 #
+x : 9299851,97090091 #
+y : -3524946,51008583 #
+velocity_x : -519,93167787823 #
+velocity_y : -5632,07257720205 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 261 #
+is_controllable : False #
+...............................
+name : Body 350 #
+x : 9722211,3240499 #
+y : -713105,189038408 #
+velocity_x : -741,912407235273 #
+velocity_y : -6109,38423542775 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 293 #
+is_controllable : False #
+...............................
+name : Body 352 #
+x : 8529169,54558609 #
+y : 279499,115367776 #
+velocity_x : -841,682370372792 #
+velocity_y : -6186,75440780532 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 287 #
+is_controllable : False #
+...............................
+name : Body 353 #
+x : 8662196,32159161 #
+y : -2042493,14555649 #
+velocity_x : -757,664041934828 #
+velocity_y : -5900,91508987031 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 297 #
+is_controllable : False #
+...............................
+name : Body 354 #
+x : 13742871,764995 #
+y : 181845,321017275 #
+velocity_x : -284,412567214393 #
+velocity_y : -6562,32917386916 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 220 #
+is_controllable : False #
+...............................
+name : Body 355 #
+x : 13275440,6566276 #
+y : -1325988,73767974 #
+velocity_x : 44,8257482428805 #
+velocity_y : -6015,1173932319 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 311 #
+is_controllable : False #
+...............................
+name : Body 356 #
+x : 14216217,2439127 #
+y : -3375282,96092014 #
+velocity_x : -105,749824488933 #
+velocity_y : -5446,93100104694 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 250 #
+is_controllable : False #
+...............................
+name : Body 357 #
+x : 7277144,29764232 #
+y : -2410054,4326465 #
+velocity_x : -907,926693721776 #
+velocity_y : -5853,57137810244 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 241 #
+is_controllable : False #
+...............................
+name : Body 358 #
+x : 11388255,1279705 #
+y : -651616,255972827 #
+velocity_x : -438,553439014075 #
+velocity_y : -6028,18885042065 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 291 #
+is_controllable : False #
+...............................
+name : Body 359 #
+x : 13778426,419618 #
+y : -3088778,98168299 #
+velocity_x : -114,57739824069 #
+velocity_y : -5461,01510780243 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 282 #
+is_controllable : False #
+...............................
+name : Body 360 #
+x : 9944663,0797927 #
+y : -4060308,28315598 #
+velocity_x : -442,482160140117 #
+velocity_y : -5572,29040132925 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 258 #
+is_controllable : False #
+...............................
+name : Body 361 #
+x : 8585378,35762293 #
+y : -333935,162621615 #
+velocity_x : -799,350285918132 #
+velocity_y : -6143,13641209813 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 275 #
+is_controllable : False #
+...............................
+name : Body 362 #
+x : 10863691,0425403 #
+y : -4605272,75651027 #
+velocity_x : -261,037563149277 #
+velocity_y : -5383,64701623285 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 276 #
+is_controllable : False #
+...............................
+name : Body 363 #
+x : 11600280,8379164 #
+y : 231380,354157298 #
+velocity_x : -332,300442267044 #
+velocity_y : -6151,12883739013 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 258 #
+is_controllable : False #
+...............................
+name : Body 364 #
+x : 11155286,367224 #
+y : -1722762,869674 #
+velocity_x : -534,644845856253 #
+velocity_y : -5850,78746153097 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 311 #
+is_controllable : False #
+...............................
+name : Body 365 #
+x : 15503236,3184142 #
+y : -1702521,6825906 #
+velocity_x : 1126,2132847663 #
+velocity_y : -5843,63779894116 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 208 #
+is_controllable : False #
+...............................
+name : Body 366 #
+x : 8276012,91455835 #
+y : -1159562,86326458 #
+velocity_x : -882,927701920233 #
+velocity_y : -6022,64585167249 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 268 #
+is_controllable : False #
+...............................
+name : Body 367 #
+x : 9821881,49388945 #
+y : -5143091,90226641 #
+velocity_x : -194,371074881127 #
+velocity_y : -5497,85241670617 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 214 #
+is_controllable : False #
+...............................
+name : Body 368 #
+x : 12455660,8522495 #
+y : 1118282,35964969 #
+velocity_x : -246,631124553567 #
+velocity_y : -6333,27172683065 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 272 #
+is_controllable : False #
+...............................
+name : Body 369 #
+x : -38450398,6974228 #
+y : -111150269,325459 #
+velocity_x : -76006,1285434193 #
+velocity_y : -177223,690513116 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 120 #
+is_controllable : False #
+...............................
+name : Body 370 #
+x : 14083847,1853462 #
+y : -1885053,49091677 #
+velocity_x : 161,63166651382 #
+velocity_y : -6323,14741681777 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 288 #
+is_controllable : False #
+...............................
+name : Body 371 #
+x : 9981426,33963134 #
+y : -2854830,58192104 #
+velocity_x : -573,163311950509 #
+velocity_y : -5780,13089020815 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 322 #
+is_controllable : False #
+...............................
+name : Body 372 #
+x : 9660388,07259235 #
+y : -2027899,17736338 #
+velocity_x : -605,692577854469 #
+velocity_y : -5837,36822090704 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 339 #
+is_controllable : False #
+...............................
+name : Body 373 #
+x : 13728835,1217417 #
+y : -3658401,21550451 #
+velocity_x : -54,2371682112546 #
+velocity_y : -5418,66586774956 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 263 #
+is_controllable : False #
+...............................
+name : Body 374 #
+x : 12237622,0471502 #
+y : -420466,047288195 #
+velocity_x : -244,244240285943 #
+velocity_y : -6119,07971124881 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 313 #
+is_controllable : False #
+...............................
+name : Body 375 #
+x : 14949021,1539575 #
+y : -2588593,38458674 #
+velocity_x : 797,022461584992 #
+velocity_y : -5920,89292101395 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 201 #
+is_controllable : False #
+...............................
+name : Body 376 #
+x : 8156189,76884791 #
+y : -2354107,70968346 #
+velocity_x : -725,22109358751 #
+velocity_y : -5961,2520113571 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 260 #
+is_controllable : False #
+...............................
+name : Body 377 #
+x : 11992473,0668469 #
+y : -3241498,9233809 #
+velocity_x : -297,619355034447 #
+velocity_y : -5487,82786984692 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 310 #
+is_controllable : False #
+...............................
+name : Body 378 #
+x : 11174875,8511894 #
+y : -157673,195517795 #
+velocity_x : -473,027723346511 #
+velocity_y : -5981,64278601344 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 331 #
+is_controllable : False #
+...............................
+name : Body 379 #
+x : 12922714,6948411 #
+y : -4563869,94291273 #
+velocity_x : -204,168853719066 #
+velocity_y : -5412,32528212413 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 244 #
+is_controllable : False #
+...............................
+name : Body 380 #
+x : 7241501,75072189 #
+y : -1664991,59325995 #
+velocity_x : -903,140666415891 #
+velocity_y : -6037,20437940693 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 220 #
+is_controllable : False #
+...............................
+name : Body 381 #
+x : 10374094,8362179 #
+y : -3222167,64334472 #
+velocity_x : -461,843851915783 #
+velocity_y : -5671,95355685471 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 297 #
+is_controllable : False #
+...............................
+name : Body 382 #
+x : 9379644,01881317 #
+y : 871583,225044672 #
+velocity_x : -604,661822539116 #
+velocity_y : -6225,31058935151 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 235 #
+is_controllable : False #
+...............................
+name : Body 383 #
+x : 13267061,9302139 #
+y : -2768585,82810485 #
+velocity_x : -158,183126412084 #
+velocity_y : -5565,03879477914 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 309 #
+is_controllable : False #
+...............................
+name : Body 384 #
+x : 8273248,60961638 #
+y : -3662613,74636784 #
+velocity_x : -571,675658733384 #
+velocity_y : -5719,46563894045 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 304 #
+is_controllable : False #
+...............................
+name : Body 385 #
+x : 12732134,6549301 #
+y : -4018618,9924249 #
+velocity_x : -173,447742860505 #
+velocity_y : -5396,29392920092 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 268 #
+is_controllable : False #
+...............................
+name : Body 386 #
+x : 11941421,5426707 #
+y : -853686,738767022 #
+velocity_x : -425,456058590095 #
+velocity_y : -5914,81701672616 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 328 #
+is_controllable : False #
+...............................
+name : Body 387 #
+x : 11775149,7718115 #
+y : -1423262,43091457 #
+velocity_x : -335,101538124421 #
+velocity_y : -5925,35140588439 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 295 #
+is_controllable : False #
+...............................
+name : Body 388 #
+x : 12427444,8019909 #
+y : -4996262,58024917 #
+velocity_x : -182,515888645237 #
+velocity_y : -5332,42046198694 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 244 #
+is_controllable : False #
+...............................
+name : Body 389 #
+x : 14439169,9436464 #
+y : -374407,532625183 #
+velocity_x : 50,3924411100255 #
+velocity_y : -6409,7719467102 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 247 #
+is_controllable : False #
+...............................
+name : Body 390 #
+x : 10068727,5682157 #
+y : 207165,952226047 #
+velocity_x : -612,883372487376 #
+velocity_y : -6219,1968039048 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 291 #
+is_controllable : False #
+...............................
+name : Body 391 #
+x : 12825820,7432908 #
+y : -2519430,53765547 #
+velocity_x : -196,892630104101 #
+velocity_y : -5678,65839233692 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 302 #
+is_controllable : False #
+...............................
+name : Body 392 #
+x : 10575323,1847717 #
+y : -1593046,91487233 #
+velocity_x : -549,913877766335 #
+velocity_y : -5893,68738364544 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 339 #
+is_controllable : False #
+...............................
+name : Body 393 #
+x : 12185512,0133308 #
+y : -3785748,68699198 #
+velocity_x : -195,035714366105 #
+velocity_y : -5449,81297240026 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 321 #
+is_controllable : False #
+...............................
+name : Body 394 #
+x : 8820982,12171665 #
+y : 1347553,50894675 #
+velocity_x : -444,462172825552 #
+velocity_y : -6392,55863564398 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 222 #
+is_controllable : False #
+...............................
+name : Body 395 #
+x : 14756828,5254215 #
+y : -3151068,11708096 #
+velocity_x : -4,85799346843806 #
+velocity_y : -5671,13251074501 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 204 #
+is_controllable : False #
+...............................
+name : Body 396 #
+x : 9069708,13838934 #
+y : 10436,5520895557 #
+velocity_x : -815,580636148556 #
+velocity_y : -6111,96241333569 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 249 #
+is_controllable : False #
+...............................
+name : Body 397 #
+x : 13225733,0589875 #
+y : -3361239,36411597 #
+velocity_x : -118,52014830458 #
+velocity_y : -5563,34152705136 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 265 #
+is_controllable : False #
+...............................
+name : Body 398 #
+x : 11520936,0819693 #
+y : 820139,245982142 #
+velocity_x : -371,596670007992 #
+velocity_y : -6161,49635737272 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 261 #
+is_controllable : False #
+...............................
+name : Body 399 #
+x : 13490103,8248986 #
+y : -1860356,74239167 #
+velocity_x : 169,088255371503 #
+velocity_y : -6016,25415487118 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 301 #
+is_controllable : False #
+...............................
+name : Body 400 #
+x : 10185962,5374507 #
+y : -2305054,09423474 #
+velocity_x : -574,269819917639 #
+velocity_y : -5777,10312808663 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 288 #
+is_controllable : False #
+...............................
+name : Body 401 #
+x : 8756538,99997849 #
+y : -3317011,53483604 #
+velocity_x : -591,668551950457 #
+velocity_y : -5694,53314317516 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 275 #
+is_controllable : False #
+...............................
+name : Body 402 #
+x : 9136083,68631428 #
+y : -1172384,95394099 #
+velocity_x : -738,698259487043 #
+velocity_y : -6025,6632059705 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 294 #
+is_controllable : False #
+...............................
+name : Body 403 #
+x : 11806351,9591287 #
+y : -5874378,88088654 #
+velocity_x : -151,678670107636 #
+velocity_y : -5323,0141724634 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 118 #
+is_controllable : False #
+...............................
+name : Body 404 #
+x : 13174321,508431 #
+y : 354605,4786656 #
+velocity_x : -252,533142287411 #
+velocity_y : -6450,44607103484 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 225 #
+is_controllable : False #
+...............................
+name : Body 405 #
+x : 9843635,92859291 #
+y : -3490266,26716292 #
+velocity_x : -516,428637625455 #
+velocity_y : -5584,00890312019 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 294 #
+is_controllable : False #
+...............................
+name : Body 407 #
+x : 12354433,9207792 #
+y : -2178638,33049363 #
+velocity_x : -177,237754172286 #
+velocity_y : -5718,297084541 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 74 #
+is_controllable : False #
+...............................
+name : Body 408 #
+x : 12340162,819697 #
+y : -1584912,51289895 #
+velocity_x : -304,748091543836 #
+velocity_y : -5735,34545756451 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 67 #
+is_controllable : False #
+...............................
+name : Body 409 #
+x : 12823050,297703 #
+y : -521328,489361095 #
+velocity_x : -267,890530293218 #
+velocity_y : -6219,39491546208 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 74 #
+is_controllable : False #
+...............................
+name : Body 410 #
+x : 11880510,2046697 #
+y : 1998697,03121974 #
+velocity_x : 782,347413896194 #
+velocity_y : -5277,84866877865 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+is_controllable : False #
+...............................
+name : Body 411 #
+x : 12142095,0060726 #
+y : 2123802,01319668 #
+velocity_x : 931,280705096613 #
+velocity_y : -5232,18079590269 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+is_controllable : False #
+...............................
+name : Body 412 #
+x : 12415051,4235657 #
+y : 2112428,56678896 #
+velocity_x : 864,041744249459 #
+velocity_y : -5196,95787355254 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+is_controllable : False #
+...............................
+name : Body 413 #
+x : 12608395,4733096 #
+y : 2021442,75263199 #
+velocity_x : 963,67440560527 #
+velocity_y : -5264,90242515801 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+is_controllable : False #
+...............................
+name : Body 414 #
+x : 12995084,7442006 #
+y : 1805352,24934886 #
+velocity_x : 865,050806529466 #
+velocity_y : -5194,71665297102 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+is_controllable : False #
+...............................
+name : Body 415 #
+x : 13393145,8508199 #
+y : 1634754,36029343 #
+velocity_x : 672,492444708018 #
+velocity_y : -5119,51303937262 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+is_controllable : False #
+...............................
+name : Body 416 #
+x : 13552370,8791692 #
+y : 1532395,68543032 #
+velocity_x : 642,176693892151 #
+velocity_y : -5078,66997669798 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+is_controllable : False #
+...............................
+name : Body 417 #
+x : 13916312,6715431 #
+y : 1327677,45715173 #
+velocity_x : 582,951838067768 #
+velocity_y : -5114,14225667992 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+is_controllable : False #
+...............................
+name : Body 418 #
+x : 14143777,2069355 #
+y : 1111587,5395702 #
+velocity_x : 539,717016797607 #
+velocity_y : -5024,75115376246 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+is_controllable : False #
+...............................
+name : Body 419 #
+x : 14484972,9850464 #
+y : 963735,957628606 #
+velocity_x : 475,091338945166 #
+velocity_y : -5092,35893842851 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+is_controllable : False #
+...............................
+name : Body 420 #
+x : 14769302,7025219 #
+y : 577046,97958845 #
+velocity_x : 283,139597960116 #
+velocity_y : -5006,74481420801 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+is_controllable : False #
+...............................
+name : Body 421 #
+x : 14905781,4237573 #
+y : 349583,029897604 #
+velocity_x : 236,627786694897 #
+velocity_y : -4989,7776001472 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+is_controllable : False #
+...............................
+name : Body 422 #
+x : 15178737,9876759 #
+y : 42507,0053082984 #
+velocity_x : 179,283220514985 #
+velocity_y : -4962,93895075188 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+is_controllable : False #
+...............................
+name : Body 423 #
+x : 15383456,2159545 #
+y : -207703,983623386 #
+velocity_x : -4,20298857451783 #
+velocity_y : -4913,1893362011 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+is_controllable : False #
+...............................
+name : Body 424 #
+x : 15372081,8909944 #
+y : -560272,91529118 #
+velocity_x : -101,432746058087 #
+velocity_y : -4942,70218261137 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+is_controllable : False #
+...............................
+name : Body 425 #
+x : 10036038,7822206 #
+y : -5849073,63120014 #
+velocity_x : -2241,5766483717 #
+velocity_y : -4991,37905289784 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+is_controllable : False #
+...............................
+name : Body 426 #
+x : 10257669,1525457 #
+y : -5990111,82346573 #
+velocity_x : -2146,50216146283 #
+velocity_y : -4897,58434678722 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+is_controllable : False #
+...............................
+name : Body 427 #
+x : 10902415,8506283 #
+y : -6070705,29853314 #
+velocity_x : -1996,44768627418 #
+velocity_y : -4866,67404239427 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+is_controllable : False #
+...............................
+name : Body 428 #
+x : 11567309,3610682 #
+y : -6111001,77666527 #
+velocity_x : -1898,48749851943 #
+velocity_y : -4732,74311534673 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+is_controllable : False #
+...............................
+name : Body 429 #
+x : 12091166,8841559 #
+y : -6090853,5375992 #
+velocity_x : -1877,33628817077 #
+velocity_y : -4635,90688845154 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+is_controllable : False #
+...............................
+name : Body 430 #
+x : 12655320,3017223 #
+y : -5889370,62813542 #
+velocity_x : -1728,61009784984 #
+velocity_y : -4633,70848412219 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+is_controllable : False #
+...............................
+name : Body 431 #
+x : 13138879,4660164 #
+y : -5667738,44199927 #
+velocity_x : -1610,14385799581 #
+velocity_y : -4609,10764909145 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+is_controllable : False #
+...............................
+name : Body 432 #
+x : 13622438,5006098 #
+y : -5425958,53560021 #
+velocity_x : -1383,15248643945 #
+velocity_y : -4582,53207169739 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+is_controllable : False #
+...............................
+name : Body 433 #
+x : 14065701,8352758 #
+y : -5103586,19174004 #
+velocity_x : -1423,86020746624 #
+velocity_y : -4634,61578637833 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+is_controllable : False #
+...............................
+name : Body 434 #
+x : 13844069,1303365 #
+y : -4821509,54780728 #
+velocity_x : -1379,86339070739 #
+velocity_y : -4652,18259088333 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+is_controllable : False #
+...............................
+name : Body 435 #
+x : 15274600,848468 #
+y : -4398395,10071129 #
+velocity_x : -1104,34136112549 #
+velocity_y : -4582,68472251783 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+is_controllable : False #
+...............................
+name : Body 436 #
+x : 15133562,3968008 #
+y : -4337949,99441073 #
+velocity_x : -1130,73829412033 #
+velocity_y : -4590,0852944363 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+is_controllable : False #
+...............................
+name : Body 437 #
+x : 15375343,0814046 #
+y : -3814093,70348048 #
+velocity_x : -966,172273027323 #
+velocity_y : -4623,75292144752 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+is_controllable : False #
+...............................
+name : Body 438 #
+x : 14791041,554473 #
+y : -4660323,3758772 #
+velocity_x : -1230,5258039808 #
+velocity_y : -4622,42594168965 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+is_controllable : False #
+...............................
+name : Body 439 #
+x : 14629855,1231414 #
+y : -4922250,7431376 #
+velocity_x : -1325,94613502933 #
+velocity_y : -4693,62336215131 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+is_controllable : False #
+...............................
+name : Body 440 #
+x : 13924663,3836087 #
+y : -5305069,10120383 #
+velocity_x : -1684,97085935668 #
+velocity_y : -4788,923306068 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+is_controllable : False #
+...............................
+name : Body 441 #
+x : 13300065,8973481 #
+y : -5566997,24666895 #
+velocity_x : -1795,35320224779 #
+velocity_y : -4746,29520481599 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+is_controllable : False #
+...............................
+name : Body 442 #
+x : 12635169,9874436 #
+y : -5869222,12966778 #
+velocity_x : -1961,35288070901 #
+velocity_y : -4721,67500747213 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+is_controllable : False #
+...............................
+name : Body 443 #
+x : 11909832,4731598 #
+y : -6131150,2751329 #
+velocity_x : -2224,43310498687 #
+velocity_y : -4782,17981014588 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+is_controllable : False #
+...............................
+name : Body 444 #
+x : 10983010,1930697 #
+y : -6312484,94553063 #
+velocity_x : -2360,42669815859 #
+velocity_y : -4739,24634062091 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+is_controllable : False #
+...............................
+name : Body 445 #
+x : 10439004,730849 #
+y : -6312484,94553063 #
+velocity_x : -2454,41781475821 #
+velocity_y : -4766,66818671945 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+is_controllable : False #
+...............................
+name : Body 446 #
+x : 9935296,41958322 #
+y : -6191594,73292952 #
+velocity_x : -2515,13065972244 #
+velocity_y : -4805,263459205 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+is_controllable : False #
+...............................
+name : Body 447 #
+x : 9653219,71080006 #
+y : -5849073,63120014 #
+velocity_x : -2474,45689056833 #
+velocity_y : -4941,34835256706 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+is_controllable : False #
+...............................
+name : Body 448 #
+x : 9350994,95750203 #
+y : -5647590,72173636 #
+velocity_x : -2505,74816652249 #
+velocity_y : -5006,13806056618 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+is_controllable : False #
+...............................
+name : Body 449 #
+x : 9109215,31050454 #
+y : -5446107,03406785 #
+velocity_x : -2616,97334481877 #
+velocity_y : -5082,65767225464 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+is_controllable : False #
+...............................
+name : Body 450 #
+x : 8645804,25557563 #
+y : -5224475,62613643 #
+velocity_x : -2534,93331353976 #
+velocity_y : -5204,62647810509 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+is_controllable : False #
+...............................
+name : Body 451 #
+x : 8565211,0399098 #
+y : -4982695,71973736 #
+velocity_x : -2486,25039898206 #
+velocity_y : -5200,71315723135 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+is_controllable : False #
+...............................
+name : Body 452 #
+x : 9471885,29980392 #
+y : 1142392,0430861 #
+velocity_x : 605,016706575156 #
+velocity_y : -5852,61129543178 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+is_controllable : False #
+...............................
+name : Body 453 #
+x : 9874851,24843227 #
+y : 1666248,33401634 #
+velocity_x : 851,331135117112 #
+velocity_y : -5683,33916428427 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+is_controllable : False #
+...............................
+name : Body 454 #
+x : 10297966,3440322 #
+y : 1988620,93727809 #
+velocity_x : 1104,9533172576 #
+velocity_y : -5571,40581358549 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+is_controllable : False #
+...............................
+name : Body 455 #
+x : 10902415,8506283 #
+y : 2069214,41234549 #
+velocity_x : 1104,11771453164 #
+velocity_y : -5481,99495712939 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+is_controllable : False #
+...............................
+name : Body 456 #
+x : 11627755,6995263 #
+y : 1968473,21701517 #
+velocity_x : 902,062789293307 #
+velocity_y : -5353,68107597358 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+is_controllable : False #
+...............................
+name : Body 457 #
+x : 11788942,1308579 #
+y : 2008769,95454887 #
+velocity_x : 559,038177328358 #
+velocity_y : -5224,48666970016 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+is_controllable : False #
+...............................
+name : Body 458 #
+x : 10902415,8506283 #
+y : 2250549,08274321 #
+velocity_x : 929,28495239629 #
+velocity_y : -5435,69567171622 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+is_controllable : False #
+...............................
+name : Body 459 #
+x : 10076334,8064 #
+y : 2169955,60767581 #
+velocity_x : 961,847926744557 #
+velocity_y : -5611,07211120431 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+is_controllable : False #
+...............................
+name : Body 460 #
+x : 9310698,86847226 #
+y : 2169955,60767581 #
+velocity_x : 1131,38848831633 #
+velocity_y : -5779,04449150464 #
+mass : 3,674E+20 #
+radius : 297091,2 #
+color_red_value : 1 #
+color_green_value : 0,5760475 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+is_controllable : False

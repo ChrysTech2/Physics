@@ -1,0 +1,141 @@
+number_of_bodies : 10 #
+...............................
+name : Body 1 #
+x : 0 #
+y : 0 #
+velocity_x : 0 #
+velocity_y : 0 #
+mass : 10500 #
+radius : 1 #
+color_red_value : 0,6399586 #
+color_green_value : 0,7040353 #
+color_blue_value : 0,4152478 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+is_controllable : False #
+...............................
+name : Body 29 #
+x : 1,73205080283833 #
+y : -1,00000000163871 #
+velocity_x : 0 #
+velocity_y : 0 #
+mass : 10500 #
+radius : 1 #
+color_red_value : 1 #
+color_green_value : 0 #
+color_blue_value : 1 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+is_controllable : False #
+...............................
+name : Body 30 #
+x : 1,73205080283833 #
+y : 1,00000000163871 #
+velocity_x : 0 #
+velocity_y : 0 #
+mass : 10500 #
+radius : 1 #
+color_red_value : 0 #
+color_green_value : 1 #
+color_blue_value : 1 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+is_controllable : False #
+...............................
+name : Body 31 #
+x : 3,46410160567666 #
+y : 2,00000000327742 #
+velocity_x : 0 #
+velocity_y : 0 #
+mass : 10500 #
+radius : 1 #
+color_red_value : 1 #
+color_green_value : 0,8592284 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+is_controllable : False #
+...............................
+name : Body 32 #
+x : 3,46410160567666 #
+y : 0 #
+velocity_x : 0 #
+velocity_y : 0 #
+mass : 10500 #
+radius : 1 #
+color_red_value : 0 #
+color_green_value : 1 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+is_controllable : False #
+...............................
+name : Body 33 #
+x : 3,46410160567666 #
+y : -2,00000000327742 #
+velocity_x : 0 #
+velocity_y : 0 #
+mass : 10500 #
+radius : 1 #
+color_red_value : 0 #
+color_green_value : 0 #
+color_blue_value : 1 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+is_controllable : False #
+...............................
+name : Body 34 #
+x : 5,19615240851499 #
+y : -3,00000000491613 #
+velocity_x : 0 #
+velocity_y : 0 #
+mass : 10500 #
+radius : 1 #
+color_red_value : 1 #
+color_green_value : 0 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+is_controllable : False #
+...............................
+name : Body 35 #
+x : 5,19615240851499 #
+y : -1,00000000163871 #
+velocity_x : 0 #
+velocity_y : 0 #
+mass : 10500 #
+radius : 1 #
+color_red_value : 1 #
+color_green_value : 0,4838374 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+is_controllable : False #
+...............................
+name : Body 37 #
+x : 5,19615240851499 #
+y : 3,00000000491613 #
+velocity_x : 0 #
+velocity_y : 0 #
+mass : 10500 #
+radius : 1 #
+color_red_value : 0,4880083 #
+color_green_value : 0,2773721 #
+color_blue_value : 1 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+is_controllable : False #
+...............................
+name : Body 38 #
+x : 5,19615240851499 #
+y : 1,00000000163871 #
+velocity_x : 0 #
+velocity_y : 0 #
+mass : 10500 #
+radius : 1 #
+color_red_value : 0,4223143 #
+color_green_value : 0,4275287 #
+color_blue_value : 0,4181437 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+is_controllable : False

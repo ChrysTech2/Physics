@@ -47291,7 +47291,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Version 0.8.2
+  m_text: Version 0.8.4
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b0777c19b06960446aeb06085e90db98, type: 2}
   m_sharedMaterial: {fileID: 4328353296713289982, guid: b0777c19b06960446aeb06085e90db98, type: 2}
@@ -48791,7 +48791,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Water
+  m_text: Paper
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b0777c19b06960446aeb06085e90db98, type: 2}
   m_sharedMaterial: {fileID: 4328353296713289982, guid: b0777c19b06960446aeb06085e90db98, type: 2}
@@ -103480,14 +103480,20 @@ MonoBehaviour:
   - {fileID: 4900000, guid: 8031f54d86f764d45b41671e997c6187, type: 3}
   - {fileID: 4900000, guid: a8f7a04a415bf1e4b971188675263773, type: 3}
   - {fileID: 4900000, guid: 9f6764893ebb3d1468bb07140ea12426, type: 3}
+  - {fileID: 4900000, guid: 038661d2241120c4f9326b06a83168c5, type: 3}
+  - {fileID: 4900000, guid: bc96b409c81827b4d9dca32a1b5d62db, type: 3}
   templatesSettings:
   - {fileID: 4900000, guid: 9412dc4f63e209f4bb22ff7519d26901, type: 3}
   - {fileID: 4900000, guid: 350e4f93be6f4b443bfcb52f8afc774c, type: 3}
   - {fileID: 4900000, guid: b371c0e1622505448a408fcc2b69139b, type: 3}
+  - {fileID: 4900000, guid: d567db49681a89d48b7aceac1e7a6c57, type: 3}
+  - {fileID: 4900000, guid: bbfc5f7001d0d4148a2a832d776beb85, type: 3}
   templatesNames:
   - Solar System
   - Pi Collisions
   - 4 Bodies
+  - Ring Formation
+  - Pool
   saveMenu: {fileID: 1647126077}
   loadMenu: {fileID: 755958625}
   simulationsDropdown: {fileID: 1644261971}

@@ -239,14 +239,13 @@ public class BodyController : MonoBehaviour{
 			NumberOfControllableBodies --;
 
 		int index = body.Index();
-
-		settingsController.BodyEliminated(index);
 		cameraController.BodyEliminated(index);
 
 		bodies.Remove(body);
 		DestroyImmediate(body.gameObject);
 
 		bodyEditor.BodyEliminated(index);
+		settingsController.BodyEliminated(index);
 	}
 
 	public void DeleteAllBodies(){

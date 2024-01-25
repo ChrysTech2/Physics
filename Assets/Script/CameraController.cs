@@ -50,6 +50,9 @@ public class CameraController : MonoBehaviour{
 
 	private void CheckRotationInput(){
 
+		if (settingsController.gameObject.activeSelf)
+			return;
+
 		if (Input.GetKeyDown(KeyCode.R))
 			bodyController.settings.SetIsCameraRotatingRight(true);
 		if (Input.GetKeyDown(KeyCode.F))

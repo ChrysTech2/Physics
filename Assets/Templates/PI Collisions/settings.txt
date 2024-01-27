@@ -40,7 +40,7 @@ friction_coefficient : 0 #
 explosion_force : 0 #
 calculate_buoyancy : True #
 controller_scale : 1,645069 #
-controller_time : 3138,24768474926 #
+controller_time : 0 #
 camera_focus_mode : 0 #
 camera_index : 0 #
 camera_rotation : 0 #
@@ -68,7 +68,7 @@ graph_total_momentum_y : False #
 graph_number_of_collisions : True #
 graph_total_kinetic_energy : False #
 thrust_acceleration : 10 #
-thrust_rotation_speed : 0.05 #
+thrust_rotation_speed : 4 #
 thrust_direction_x : 0 #
 thrust_direction_y : 1 #
 distance_function : 0 #

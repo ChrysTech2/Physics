@@ -2,16 +2,16 @@ x : 0 #
 y : 0 #
 velocity_x : 0 #
 velocity_y : 0 #
-mass : 420000 #
+mass : 42000000 #
 radius : 420000 #
-name : Sun 2 #
+name : SpaceCraft #
 auto_name_number : 4 #
 color_red_value : 1 #
 color_green_value : 0 #
 color_blue_value : 0 #
 color_opacity_value : 1 #
 random_mode : False #
-body_is_controllable : False #
+body_is_controllable : True #
 seconds_per_frame : 1000 #
 touch_multiplier : 1 #
 line_duration : 10 #
@@ -40,7 +40,7 @@ friction_coefficient : 0 #
 explosion_force : 0 #
 calculate_buoyancy : True #
 controller_scale : 2,074915E-09 #
-controller_time : 30664,86 #
+controller_time : 0 #
 camera_focus_mode : 0 #
 camera_index : 0 #
 camera_rotation : 0 #
@@ -67,8 +67,8 @@ graph_total_momentum_x : False #
 graph_total_momentum_y : False #
 graph_number_of_collisions : False #
 graph_total_kinetic_energy : False #
-thrust_acceleration : 100 #
-thrust_rotation_speed : 0.08 #
+thrust_acceleration : 0.1 #
+thrust_rotation_speed : 4 #
 thrust_direction_x : 0 #
 thrust_direction_y : 1 #
 distance_function : 0 #

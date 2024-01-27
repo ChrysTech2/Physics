@@ -29,7 +29,7 @@ coefficient_of_restitution_border : 1 #
 border_mode_value : 0 #
 border_x : 20 #
 border_y : 20 #
-attraction_gravity_constant : 0.01 #
+attraction_gravity_constant : 2.5 #
 global_gravity_mode_value : 0 #
 global_gravity_acceleration : 9.8 #
 global_gravity_angle : -90 #
@@ -39,10 +39,10 @@ lift_coefficient : 0 #
 friction_coefficient : 0 #
 explosion_force : 0 #
 calculate_buoyancy : True #
-controller_scale : 0,2542554 #
+controller_scale : 0,0810136 #
 controller_time : 0 #
 camera_focus_mode : 0 #
-camera_index : 3 #
+camera_index : 2 #
 camera_rotation : 0 #
 camera_offset_x : 0 #
 camera_offset_y : 0 #

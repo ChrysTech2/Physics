@@ -1,0 +1,43 @@
+number_of_bodies : 3 #
+...............................
+name : Body 5 #
+x : 0 #
+y : 30 #
+velocity_x : 12 #
+velocity_y : 0 #
+mass : 10500 #
+radius : 1 #
+color_red_value : 1 #
+color_green_value : 0 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+is_controllable : False #
+...............................
+name : Body 6 #
+x : -25,98076 #
+y : -15 #
+velocity_x : -6 #
+velocity_y : 10,3923 #
+mass : 10500 #
+radius : 1 #
+color_red_value : 0 #
+color_green_value : 0 #
+color_blue_value : 1 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+is_controllable : False #
+...............................
+name : Body 7 #
+x : 25,98076 #
+y : -15 #
+velocity_x : -6 #
+velocity_y : -10,3923 #
+mass : 10500 #
+radius : 1 #
+color_red_value : 0 #
+color_green_value : 1 #
+color_blue_value : 0 #
+color_opacity_value : 1 #
+number_of_collisions : 0 #
+is_controllable : False

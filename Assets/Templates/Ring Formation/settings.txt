@@ -40,12 +40,12 @@ friction_coefficient : 0 #
 explosion_force : 0 #
 calculate_buoyancy : True #
 controller_scale : 1,610712E-07 #
-controller_time : 760 #
+controller_time : 0 #
 camera_focus_mode : 0 #
 camera_index : 0 #
 camera_rotation : 0 #
-camera_offset_x : 10762674,958588 #
-camera_offset_y : -2851652,84489458 #
+camera_offset_x : 0 #
+camera_offset_y : 0 #
 camera_body_x : 0 #
 camera_body_y : 0 #
 editor_show_color : True #

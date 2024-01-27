@@ -13331,30 +13331,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1941686624}
-        m_TargetAssemblyTypeName: Utils, Assembly-CSharp
-        m_MethodName: SetActiveFalse
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 436454046}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1941686624}
-        m_TargetAssemblyTypeName: Utils, Assembly-CSharp
-        m_MethodName: SetActiveTrue
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 470230700}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &229311797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -103479,21 +103455,24 @@ MonoBehaviour:
   templatesBodies:
   - {fileID: 4900000, guid: 8031f54d86f764d45b41671e997c6187, type: 3}
   - {fileID: 4900000, guid: a8f7a04a415bf1e4b971188675263773, type: 3}
-  - {fileID: 4900000, guid: 9f6764893ebb3d1468bb07140ea12426, type: 3}
   - {fileID: 4900000, guid: 038661d2241120c4f9326b06a83168c5, type: 3}
   - {fileID: 4900000, guid: bc96b409c81827b4d9dca32a1b5d62db, type: 3}
+  - {fileID: 4900000, guid: 9f6764893ebb3d1468bb07140ea12426, type: 3}
+  - {fileID: 4900000, guid: 5d97898e4558e974592b34e45bc73f2d, type: 3}
   templatesSettings:
   - {fileID: 4900000, guid: 9412dc4f63e209f4bb22ff7519d26901, type: 3}
   - {fileID: 4900000, guid: 350e4f93be6f4b443bfcb52f8afc774c, type: 3}
-  - {fileID: 4900000, guid: b371c0e1622505448a408fcc2b69139b, type: 3}
   - {fileID: 4900000, guid: d567db49681a89d48b7aceac1e7a6c57, type: 3}
   - {fileID: 4900000, guid: bbfc5f7001d0d4148a2a832d776beb85, type: 3}
+  - {fileID: 4900000, guid: b371c0e1622505448a408fcc2b69139b, type: 3}
+  - {fileID: 4900000, guid: 6682dc9cbe5ec8e40a673871d22d67b3, type: 3}
   templatesNames:
   - Solar System
   - Pi Collisions
-  - 4 Bodies
   - Ring Formation
   - Pool
+  - 4 Bodies
+  - 3 Bodies
   saveMenu: {fileID: 1647126077}
   loadMenu: {fileID: 755958625}
   simulationsDropdown: {fileID: 1644261971}
